@@ -1,20 +1,50 @@
 {
- "generatedAt": "2026-11-02T20:44:06.688Z",
+ "generatedAt": "2026-11-02T20:55:00.061Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
   "minOdds": 1.3,
   "source": "backtest",
-  "generatedAt": "2026-11-02T20:41:32.067Z"
+  "generatedAt": "2026-11-02T20:45:10.071Z"
  },
- "picks": [],
+ "picks": [
+  {
+   "sportKey": "soccer_epl",
+   "engine": "piyasa",
+   "bookCount": 25,
+   "oddsAgeHours": 0,
+   "medianOdds": 4,
+   "agreement": null,
+   "id": "toa-59c5f635cfe11613c07e9a5520ced5c1",
+   "sport": "football",
+   "league": "EPL",
+   "kickoff": "2026-11-07T17:30:00Z",
+   "home": "Nottingham Forest",
+   "away": "Manchester City",
+   "market": "1x2",
+   "index": 1,
+   "selection": "MS X",
+   "odds": 4.37,
+   "probability": 0.2385,
+   "edge": 0.0421,
+   "minPlayableOdds": 4.36,
+   "bookmaker": "1xBet",
+   "sharp": true,
+   "verified": false,
+   "fdDiv": null,
+   "date": "2026-11-07",
+   "bestOdds": null,
+   "dossier": null
+  }
+ ],
  "stats": {
-  "evaluated": 0,
-  "withOdds": 0,
-  "modelled": 0,
+  "evaluated": 10,
+  "withOdds": 10,
+  "modelled": 10,
   "filtered": 0,
+  "thin": 0,
   "byEvaluated": {
-   "football": 0,
+   "football": 10,
    "basketball": 0
   },
   "knownToday": {
@@ -36,8 +66,8 @@
    "info": "0/64 lig, 0 maç, 0 oranlı · hata: HTTP 403 x5"
   },
   "The Odds API": {
-   "ok": false,
-   "info": "Anahtar eklenmedi"
+   "ok": true,
+   "info": "55 aktif lig, bu çalışmada 2 yenilendi, önbellekte 2, kalan kredi 498"
   },
   "TheSportsDB (maç sayımı)": {
    "ok": true,
@@ -45,8 +75,15 @@
   },
   "Haber taraması": {
    "ok": true,
-   "info": "0/0 seçim"
+   "info": "1/1 seçim"
   }
+ },
+ "everyMatch": {
+  "pending": 10,
+  "done": 0,
+  "motor": null,
+  "piyasa": null,
+  "isabetMotor": null
  },
  "evidence": "deneme",
  "bank": {
@@ -58,7 +95,7 @@
  "ledger": {
   "all": {
    "picks": 0,
-   "pending": 0,
+   "pending": 1,
    "won": 0,
    "profit": 0,
    "roi": null,
