@@ -1,11 +1,9 @@
 {
- "generatedAt": "2026-11-02T20:18:56.064Z",
- "filesLoaded": 154,
- "filesTotal": 154,
- "matches": 48633,
- "usable": 37001,
- "entry": "bet365 maç öncesi oranı",
- "fairSource": "Pinnacle (marjı çıkarılmış)",
+ "generatedAt": "2026-11-02T20:27:06.461Z",
+ "filesLoaded": 220,
+ "filesTotal": 220,
+ "usable": 65018,
+ "sharpShare": 0.893,
  "validationSeasons": [
   "2122",
   "2223",
@@ -17,243 +15,1258 @@
   "2627"
  ],
  "selected": {
-  "weight": 0.05,
-  "minEdge": 0.05,
-  "maxOdds": 8,
+  "minEdge": 0.04,
+  "maxOdds": 10,
   "minOdds": 1.3
  },
- "top5Validation": [
-  {
-   "weight": 0.05,
-   "minEdge": 0.05,
-   "maxOdds": 8,
-   "minOdds": 1.3,
-   "picks": 418,
-   "won": 98,
-   "hitRate": 0.2344,
-   "avgOdds": 5.48,
-   "profit": 90.6,
-   "roi": 0.2168,
-   "ciLow": -0.005,
-   "ciHigh": 0.4386
+ "scoresValidation": {
+  "matches": 22163,
+  "rps": {
+   "motor": 0.20219,
+   "piyasa": 0.20231,
+   "elo": 0.20808,
+   "dixonColes": 0.20794,
+   "pi": 0.20882
   },
-  {
-   "weight": 0,
-   "minEdge": 0.05,
-   "maxOdds": 8,
-   "minOdds": 1.3,
-   "picks": 387,
-   "won": 96,
-   "hitRate": 0.2481,
-   "avgOdds": 5.18,
-   "profit": 79.3,
-   "roi": 0.205,
-   "ciLow": -0.0156,
-   "ciHigh": 0.4257
+  "logLoss": {
+   "motor": 0.99537,
+   "piyasa": 0.99589
   },
-  {
-   "weight": 0.05,
-   "minEdge": 0.03,
-   "maxOdds": 8,
-   "minOdds": 1.3,
-   "picks": 868,
-   "won": 213,
-   "hitRate": 0.2454,
-   "avgOdds": 5.024,
-   "profit": 121.8,
-   "roi": 0.1403,
-   "ciLow": -0.0015,
-   "ciHigh": 0.282
-  },
-  {
-   "weight": 0.1,
-   "minEdge": 0.03,
-   "maxOdds": 8,
-   "minOdds": 1.3,
-   "picks": 1084,
-   "won": 259,
-   "hitRate": 0.2389,
-   "avgOdds": 5.102,
-   "profit": 141.6,
-   "roi": 0.1307,
-   "ciLow": 0.0035,
-   "ciHigh": 0.2578
-  },
-  {
-   "weight": 0.1,
-   "minEdge": 0.03,
-   "maxOdds": 4,
-   "minOdds": 1.3,
-   "picks": 317,
-   "won": 105,
-   "hitRate": 0.3312,
-   "avgOdds": 3.463,
-   "profit": 41.1,
-   "roi": 0.1297,
-   "ciLow": -0.0492,
-   "ciHigh": 0.3087
+  "isabet": {
+   "motor": 0.5086,
+   "piyasa": 0.50819
   }
- ],
+ },
+ "scoresTest": {
+  "matches": 16658,
+  "rps": {
+   "motor": 0.20336,
+   "piyasa": 0.20359,
+   "elo": 0.21036,
+   "dixonColes": 0.2103,
+   "pi": 0.21063
+  },
+  "logLoss": {
+   "motor": 0.99815,
+   "piyasa": 0.9991
+  },
+  "isabet": {
+   "motor": 0.50822,
+   "piyasa": 0.50786
+  }
+ },
  "validation": {
-  "picks": 418,
-  "won": 98,
-  "hitRate": 0.2344,
-  "avgOdds": 5.48,
-  "profit": 90.6,
-  "roi": 0.2168,
-  "ciLow": -0.005,
-  "ciHigh": 0.4386
+  "picks": 712,
+  "hitRate": 0.2921,
+  "avgOdds": 3.937,
+  "profit": 54.5,
+  "roi": 0.0766,
+  "ciLow": -0.0551,
+  "ciHigh": 0.2083,
+  "clv": 0.0213
  },
  "test": {
-  "picks": 136,
-  "won": 31,
-  "hitRate": 0.2279,
-  "avgOdds": 5.201,
-  "profit": 26.6,
-  "roi": 0.1959,
-  "ciLow": -0.1917,
-  "ciHigh": 0.5835
+  "picks": 247,
+  "hitRate": 0.2794,
+  "avgOdds": 3.72,
+  "profit": 1.4,
+  "roi": 0.0058,
+  "ciLow": -0.2077,
+  "ciHigh": 0.2194,
+  "clv": 0.0176
  },
  "testAvgOdds": {
-  "picks": 22,
-  "won": 6,
-  "hitRate": 0.2727,
-  "avgOdds": 4.94,
-  "profit": 0.2,
-  "roi": 0.01,
-  "ciLow": -0.7653,
-  "ciHigh": 0.7853
+  "picks": 20,
+  "hitRate": 0.3,
+  "avgOdds": 3.234,
+  "profit": 2.2,
+  "roi": 0.111,
+  "ciLow": -0.7291,
+  "ciHigh": 0.9511,
+  "clv": -0.0149
  },
  "testMaxOdds": {
-  "picks": 544,
-  "won": 114,
-  "hitRate": 0.2096,
-  "avgOdds": 5.085,
-  "profit": -2,
-  "roi": -0.0036,
-  "ciLow": -0.1761,
-  "ciHigh": 0.1689
+  "picks": 1047,
+  "hitRate": 0.3133,
+  "avgOdds": 3.66,
+  "profit": 58.1,
+  "roi": 0.0555,
+  "ciLow": -0.0439,
+  "ciHigh": 0.1548,
+  "clv": 0.0391
  },
  "bySeason": {
   "2425": {
-   "picks": 106,
-   "won": 26,
-   "hitRate": 0.2453,
-   "avgOdds": 5.335,
-   "profit": 38.4,
-   "roi": 0.3619,
-   "ciLow": -0.1098,
-   "ciHigh": 0.8336
+   "picks": 194,
+   "hitRate": 0.2784,
+   "avgOdds": 3.662,
+   "profit": 4.1,
+   "roi": 0.0211,
+   "ciLow": -0.2236,
+   "ciHigh": 0.2658,
+   "clv": 0.0163
   },
   "2526": {
-   "picks": 30,
-   "won": 5,
-   "hitRate": 0.1667,
-   "avgOdds": 4.726,
-   "profit": -11.7,
-   "roi": -0.3907,
-   "ciLow": -0.894,
-   "ciHigh": 0.1126
+   "picks": 52,
+   "hitRate": 0.2885,
+   "avgOdds": 3.918,
+   "profit": -1.7,
+   "roi": -0.0319,
+   "ciLow": -0.4723,
+   "ciHigh": 0.4085,
+   "clv": 0.023
   },
   "2627": {
-   "picks": 0,
-   "won": 0,
-   "hitRate": null,
-   "avgOdds": null,
-   "profit": 0,
-   "roi": null,
-   "ciLow": null,
-   "ciHigh": null
+   "picks": 1,
+   "hitRate": 0,
+   "avgOdds": 4.75,
+   "profit": -1,
+   "roi": -1,
+   "ciLow": -1,
+   "ciHigh": -1,
+   "clv": 0.0006
   }
  },
  "byLeague": {
   "Premier League": {
-   "picks": 0,
-   "roi": null
+   "picks": 1,
+   "hitRate": 0,
+   "avgOdds": 3.5,
+   "profit": -1,
+   "roi": -1,
+   "ciLow": -1,
+   "ciHigh": -1,
+   "clv": 0.0326
   },
   "Championship": {
-   "picks": 10,
-   "roi": 0.425
+   "picks": 19,
+   "hitRate": 0.4211,
+   "avgOdds": 3.452,
+   "profit": 7.4,
+   "roi": 0.3895,
+   "ciLow": -0.3446,
+   "ciHigh": 1.1235,
+   "clv": 0.0319
   },
   "League One": {
-   "picks": 8,
-   "roi": -0.6438
+   "picks": 15,
+   "hitRate": 0.2667,
+   "avgOdds": 3.647,
+   "profit": -1.5,
+   "roi": -0.1033,
+   "ciLow": -0.8599,
+   "ciHigh": 0.6532,
+   "clv": 0.0397
   },
   "League Two": {
    "picks": 10,
-   "roi": 0.985
+   "hitRate": 0.4,
+   "avgOdds": 3.718,
+   "profit": 4.8,
+   "roi": 0.478,
+   "ciLow": -0.78,
+   "ciHigh": 1.736,
+   "clv": 0.0146
   },
   "National League": {
-   "picks": 21,
-   "roi": 0.1357
+   "picks": 26,
+   "hitRate": 0.2692,
+   "avgOdds": 3.717,
+   "profit": -3.2,
+   "roi": -0.1231,
+   "ciLow": -0.6888,
+   "ciHigh": 0.4427,
+   "clv": 0.0147
   },
   "İskoçya Premiership": {
-   "picks": 4,
-   "roi": -1
+   "picks": 11,
+   "hitRate": 0.1818,
+   "avgOdds": 3.541,
+   "profit": -3.9,
+   "roi": -0.3545,
+   "ciLow": -1.1638,
+   "ciHigh": 0.4547,
+   "clv": 0.0208
   },
   "İskoçya Championship": {
-   "picks": 4,
-   "roi": -0.075
+   "picks": 9,
+   "hitRate": 0.1111,
+   "avgOdds": 3.522,
+   "profit": -5.3,
+   "roi": -0.5889,
+   "ciLow": -1.3486,
+   "ciHigh": 0.1708,
+   "clv": 0.0624
   },
   "İskoçya League One": {
-   "picks": 6,
-   "roi": 1
+   "picks": 7,
+   "hitRate": 0.2857,
+   "avgOdds": 4.4,
+   "profit": 5,
+   "roi": 0.7143,
+   "ciLow": -1.3324,
+   "ciHigh": 2.7609,
+   "clv": 0.0736
   },
   "İskoçya League Two": {
-   "picks": 4,
-   "roi": 2.2075
+   "picks": 8,
+   "hitRate": 0.25,
+   "avgOdds": 4.266,
+   "profit": 0.1,
+   "roi": 0.01,
+   "ciLow": -1.2064,
+   "ciHigh": 1.2264,
+   "clv": 0.0147
   },
   "Bundesliga": {
-   "picks": 0,
-   "roi": null
+   "picks": 4,
+   "hitRate": 0,
+   "avgOdds": 5.415,
+   "profit": -4,
+   "roi": -1,
+   "ciLow": -1,
+   "ciHigh": -1,
+   "clv": 0.1749
   },
   "2. Bundesliga": {
-   "picks": 1,
-   "roi": -1
+   "picks": 3,
+   "hitRate": 0,
+   "avgOdds": 3.95,
+   "profit": -3,
+   "roi": -1,
+   "ciLow": -1,
+   "ciHigh": -1,
+   "clv": -0.0527
   },
   "Serie A": {
-   "picks": 5,
-   "roi": -1
+   "picks": 3,
+   "hitRate": 0.3333,
+   "avgOdds": 3.433,
+   "profit": 0.3,
+   "roi": 0.1,
+   "ciLow": -1.6604,
+   "ciHigh": 1.8604,
+   "clv": 0.0348
   },
   "Serie B": {
-   "picks": 6,
-   "roi": -1
+   "picks": 35,
+   "hitRate": 0.3143,
+   "avgOdds": 3.341,
+   "profit": 0.3,
+   "roi": 0.0071,
+   "ciLow": -0.487,
+   "ciHigh": 0.5013,
+   "clv": 0.0055
   },
   "La Liga": {
-   "picks": 2,
-   "roi": -1
+   "picks": 6,
+   "hitRate": 0.5,
+   "avgOdds": 3.358,
+   "profit": 4.2,
+   "roi": 0.7,
+   "ciLow": -0.6813,
+   "ciHigh": 2.0813,
+   "clv": 0.0881
   },
   "La Liga 2": {
-   "picks": 11,
-   "roi": 0.7782
+   "picks": 28,
+   "hitRate": 0.2143,
+   "avgOdds": 3.181,
+   "profit": -8.2,
+   "roi": -0.2929,
+   "ciLow": -0.7946,
+   "ciHigh": 0.2089,
+   "clv": 0.0014
   },
   "Ligue 1": {
-   "picks": 2,
-   "roi": -1
+   "picks": 3,
+   "hitRate": 0.3333,
+   "avgOdds": 4.9,
+   "profit": 1,
+   "roi": 0.3333,
+   "ciLow": -1.8004,
+   "ciHigh": 2.4671,
+   "clv": -0.0403
   },
   "Ligue 2": {
-   "picks": 6,
-   "roi": -0.0417
+   "picks": 12,
+   "hitRate": 0.25,
+   "avgOdds": 3.217,
+   "profit": -2.3,
+   "roi": -0.1917,
+   "ciLow": -0.9846,
+   "ciHigh": 0.6013,
+   "clv": -0.0175
   },
   "Eredivisie": {
-   "picks": 10,
-   "roi": -0.375
+   "picks": 7,
+   "hitRate": 0.1429,
+   "avgOdds": 4.536,
+   "profit": -3.3,
+   "roi": -0.4714,
+   "ciLow": -1.4306,
+   "ciHigh": 0.4877,
+   "clv": 0.0271
   },
   "Belçika Pro League": {
-   "picks": 3,
-   "roi": 1.3333
+   "picks": 7,
+   "hitRate": 0.1429,
+   "avgOdds": 3.147,
+   "profit": -5.5,
+   "roi": -0.7814,
+   "ciLow": -1.178,
+   "ciHigh": -0.3848,
+   "clv": 0.0203
   },
   "Portekiz Primeira Liga": {
-   "picks": 0,
-   "roi": null
+   "picks": 4,
+   "hitRate": 0,
+   "avgOdds": 3.263,
+   "profit": -4,
+   "roi": -1,
+   "ciLow": -1,
+   "ciHigh": -1,
+   "clv": 0.0418
   },
   "Süper Lig": {
    "picks": 11,
-   "roi": 0.2727
+   "hitRate": 0.1818,
+   "avgOdds": 4.345,
+   "profit": -4.1,
+   "roi": -0.3727,
+   "ciLow": -1.1592,
+   "ciHigh": 0.4137,
+   "clv": -0.0934
   },
   "Yunanistan Süper Lig": {
-   "picks": 12,
-   "roi": 0.7292
+   "picks": 18,
+   "hitRate": 0.5556,
+   "avgOdds": 4.874,
+   "profit": 27.8,
+   "roi": 1.5417,
+   "ciLow": 0.311,
+   "ciHigh": 2.7723,
+   "clv": 0.0345
   }
- }
+ },
+ "weights": {
+  "piyasa": 1.11015,
+  "elo": -0.00468,
+  "pi": 0.01583,
+  "dixonColes": -0.05069,
+  "xGvekili": 0.03283,
+  "beraberlik": 0.04628,
+  "evSahibi": -0.01591,
+  "dinlenme": 0.00505
+ },
+ "topValidation": [
+  {
+   "minEdge": 0.04,
+   "maxOdds": 10,
+   "minOdds": 1.3,
+   "picks": 712,
+   "hitRate": 0.2921,
+   "avgOdds": 3.937,
+   "profit": 54.5,
+   "roi": 0.0766,
+   "ciLow": -0.0551,
+   "ciHigh": 0.2083,
+   "clv": 0.0213
+  },
+  {
+   "minEdge": 0.02,
+   "maxOdds": 10,
+   "minOdds": 1.3,
+   "picks": 1833,
+   "hitRate": 0.3164,
+   "avgOdds": 3.614,
+   "profit": 113.8,
+   "roi": 0.0621,
+   "ciLow": -0.0139,
+   "ciHigh": 0.1381,
+   "clv": 0.0122
+  },
+  {
+   "minEdge": 0.03,
+   "maxOdds": 10,
+   "minOdds": 1.3,
+   "picks": 1137,
+   "hitRate": 0.3026,
+   "avgOdds": 3.75,
+   "profit": 68.3,
+   "roi": 0.0601,
+   "ciLow": -0.0395,
+   "ciHigh": 0.1597,
+   "clv": 0.0154
+  },
+  {
+   "minEdge": 0.01,
+   "maxOdds": 10,
+   "minOdds": 1.3,
+   "picks": 2882,
+   "hitRate": 0.322,
+   "avgOdds": 3.485,
+   "profit": 156.3,
+   "roi": 0.0543,
+   "ciLow": -0.0054,
+   "ciHigh": 0.1139,
+   "clv": 0.0064
+  },
+  {
+   "minEdge": 0.02,
+   "maxOdds": 5,
+   "minOdds": 1.3,
+   "picks": 1681,
+   "hitRate": 0.3272,
+   "avgOdds": 3.325,
+   "profit": 71.3,
+   "roi": 0.0424,
+   "ciLow": -0.0313,
+   "ciHigh": 0.1162,
+   "clv": 0.0098
+  }
+ ],
+ "samples": [
+  {
+   "date": "2026-10-12",
+   "league": "Ligue 2",
+   "home": "Dijon",
+   "away": "Metz",
+   "score": "4-2",
+   "probs": [
+    0.354,
+    0.272,
+    0.375
+   ],
+   "market": [
+    0.353,
+    0.269,
+    0.378
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "BMBGG",
+   "formA": "BBGMB",
+   "h2h": [
+    "Metz 1-2 Dijon",
+    "Dijon 0-0 Metz"
+   ]
+  },
+  {
+   "date": "2026-10-10",
+   "league": "İskoçya League One",
+   "home": "Peterhead",
+   "away": "Queen of Sth",
+   "score": "0-1",
+   "probs": [
+    0.473,
+    0.256,
+    0.272
+   ],
+   "market": [
+    0.466,
+    0.253,
+    0.281
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "BMMMM",
+   "formA": "GBMMG",
+   "h2h": [
+    "Queen of Sth 4-0 Peterhead",
+    "Peterhead 3-0 Queen of Sth",
+    "Queen of Sth 0-2 Peterhead",
+    "Peterhead 1-1 Queen of Sth",
+    "Queen of Sth 0-1 Peterhead"
+   ]
+  },
+  {
+   "date": "2026-04-11",
+   "league": "Bundesliga",
+   "home": "Wolfsburg",
+   "away": "Ein Frankfurt",
+   "score": "1-2",
+   "probs": [
+    0.376,
+    0.264,
+    0.36
+   ],
+   "market": [
+    0.376,
+    0.261,
+    0.363
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MMBMM",
+   "formA": "GBGMB",
+   "h2h": [
+    "Wolfsburg 2-0 Ein Frankfurt",
+    "Ein Frankfurt 2-2 Wolfsburg",
+    "Wolfsburg 1-2 Ein Frankfurt",
+    "Ein Frankfurt 1-1 Wolfsburg",
+    "Ein Frankfurt 1-1 Wolfsburg"
+   ]
+  },
+  {
+   "date": "2026-04-11",
+   "league": "Ligue 2",
+   "home": "St Etienne",
+   "away": "Dunkerque",
+   "score": "2-1",
+   "probs": [
+    0.571,
+    0.235,
+    0.194
+   ],
+   "market": [
+    0.562,
+    0.236,
+    0.202
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "GGBGB",
+   "formA": "MBMMB",
+   "h2h": [
+    "St Etienne 2-0 Dunkerque",
+    "Dunkerque 1-0 St Etienne",
+    "Dunkerque 1-0 St Etienne"
+   ]
+  },
+  {
+   "date": "2026-03-21",
+   "league": "Bundesliga",
+   "home": "FC Koln",
+   "away": "M'gladbach",
+   "score": "3-3",
+   "probs": [
+    0.419,
+    0.274,
+    0.306
+   ],
+   "market": [
+    0.416,
+    0.272,
+    0.313
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MBMMB",
+   "formA": "MMGMG",
+   "h2h": [
+    "M'gladbach 5-2 FC Koln",
+    "FC Koln 0-0 M'gladbach",
+    "FC Koln 3-1 M'gladbach",
+    "M'gladbach 3-3 FC Koln",
+    "M'gladbach 3-1 FC Koln"
+   ]
+  },
+  {
+   "date": "2026-03-07",
+   "league": "Portekiz Primeira Liga",
+   "home": "Sp Braga",
+   "away": "Sp Lisbon",
+   "score": "2-2",
+   "probs": [
+    0.271,
+    0.28,
+    0.449
+   ],
+   "market": [
+    0.28,
+    0.277,
+    0.443
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "GGMGG",
+   "formA": "GBGGG",
+   "h2h": [
+    "Sp Braga 1-1 Sp Lisbon",
+    "Sp Lisbon 5-0 Sp Braga",
+    "Sp Braga 2-4 Sp Lisbon",
+    "Sp Lisbon 1-1 Sp Braga",
+    "Sp Lisbon 1-1 Sp Braga"
+   ]
+  },
+  {
+   "date": "2026-03-07",
+   "league": "Championship",
+   "home": "Blackburn",
+   "away": "Portsmouth",
+   "score": "1-1",
+   "probs": [
+    0.373,
+    0.305,
+    0.322
+   ],
+   "market": [
+    0.377,
+    0.299,
+    0.324
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MGGMM",
+   "formA": "MGGMM",
+   "h2h": [
+    "Blackburn 3-0 Portsmouth",
+    "Portsmouth 1-0 Blackburn",
+    "Portsmouth 2-1 Blackburn"
+   ]
+  },
+  {
+   "date": "2026-02-08",
+   "league": "Yunanistan Süper Lig",
+   "home": "Olympiakos",
+   "away": "Panathinaikos",
+   "score": "0-1",
+   "probs": [
+    0.62,
+    0.238,
+    0.142
+   ],
+   "market": [
+    0.606,
+    0.24,
+    0.153
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "BGGBG",
+   "formA": "MGMBG",
+   "h2h": [
+    "Panathinaikos 0-0 Olympiakos",
+    "Olympiakos 1-1 Panathinaikos",
+    "Olympiakos 4-2 Panathinaikos",
+    "Panathinaikos 0-1 Olympiakos",
+    "Panathinaikos 1-1 Olympiakos"
+   ]
+  },
+  {
+   "date": "2025-12-13",
+   "league": "Championship",
+   "home": "Birmingham",
+   "away": "Charlton",
+   "score": "1-1",
+   "probs": [
+    0.617,
+    0.232,
+    0.151
+   ],
+   "market": [
+    0.604,
+    0.234,
+    0.162
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "GBGMM",
+   "formA": "MMMMM",
+   "h2h": [
+    "Charlton 0-1 Birmingham",
+    "Birmingham 1-1 Charlton"
+   ]
+  },
+  {
+   "date": "2025-11-08",
+   "league": "Ligue 1",
+   "home": "Marseille",
+   "away": "Brest",
+   "score": "3-0",
+   "probs": [
+    0.671,
+    0.202,
+    0.126
+   ],
+   "market": [
+    0.655,
+    0.206,
+    0.139
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "GGMBG",
+   "formA": "BBMMB",
+   "h2h": [
+    "Marseille 1-2 Brest",
+    "Marseille 2-0 Brest",
+    "Brest 1-0 Marseille",
+    "Brest 1-5 Marseille",
+    "Marseille 4-1 Brest"
+   ]
+  },
+  {
+   "date": "2025-11-01",
+   "league": "Premier League",
+   "home": "Fulham",
+   "away": "Wolves",
+   "score": "3-0",
+   "probs": [
+    0.52,
+    0.277,
+    0.203
+   ],
+   "market": [
+    0.515,
+    0.273,
+    0.212
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "GMMMM",
+   "formA": "MBBMM",
+   "h2h": [
+    "Fulham 1-1 Wolves",
+    "Fulham 3-2 Wolves",
+    "Wolves 2-1 Fulham",
+    "Fulham 1-4 Wolves",
+    "Wolves 1-2 Fulham"
+   ]
+  },
+  {
+   "date": "2025-09-28",
+   "league": "Yunanistan Süper Lig",
+   "home": "Asteras Tripolis",
+   "away": "PAOK",
+   "score": "3-3",
+   "probs": [
+    0.131,
+    0.224,
+    0.645
+   ],
+   "market": [
+    0.145,
+    0.228,
+    0.628
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "MMMBM",
+   "formA": "GGGGB",
+   "h2h": [
+    "Asteras Tripolis 2-2 PAOK",
+    "PAOK 3-0 Asteras Tripolis",
+    "Asteras Tripolis 1-4 PAOK",
+    "Asteras Tripolis 1-2 PAOK",
+    "PAOK 2-0 Asteras Tripolis"
+   ]
+  },
+  {
+   "date": "2025-08-30",
+   "league": "Serie B",
+   "home": "Spezia",
+   "away": "Catanzaro",
+   "score": "0-0",
+   "probs": [
+    0.486,
+    0.289,
+    0.225
+   ],
+   "market": [
+    0.478,
+    0.286,
+    0.236
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "GMMGM",
+   "formA": "MBGBB",
+   "h2h": [
+    "Catanzaro 3-0 Spezia",
+    "Spezia 1-1 Catanzaro",
+    "Catanzaro 0-1 Spezia",
+    "Spezia 0-1 Catanzaro"
+   ]
+  },
+  {
+   "date": "2025-05-18",
+   "league": "Yunanistan Süper Lig",
+   "home": "Lamia",
+   "away": "Panetolikos",
+   "score": "1-3",
+   "probs": [
+    0.267,
+    0.274,
+    0.46
+   ],
+   "market": [
+    0.276,
+    0.273,
+    0.451
+   ],
+   "top": "MS 2",
+   "topHit": true,
+   "pick": null,
+   "formH": "MBMGM",
+   "formA": "BMBMG",
+   "h2h": [
+    "Lamia 1-0 Panetolikos",
+    "Panetolikos 1-2 Lamia",
+    "Panetolikos 0-1 Lamia",
+    "Lamia 0-1 Panetolikos",
+    "Panetolikos 1-0 Lamia"
+   ]
+  },
+  {
+   "date": "2025-05-10",
+   "league": "La Liga",
+   "home": "Ath Madrid",
+   "away": "Sociedad",
+   "score": "4-0",
+   "probs": [
+    0.58,
+    0.25,
+    0.17
+   ],
+   "market": [
+    0.57,
+    0.25,
+    0.18
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "GGMGB",
+   "formA": "GMBMB",
+   "h2h": [
+    "Sociedad 1-1 Ath Madrid",
+    "Ath Madrid 2-1 Sociedad",
+    "Ath Madrid 2-1 Sociedad",
+    "Sociedad 0-2 Ath Madrid",
+    "Sociedad 1-1 Ath Madrid"
+   ]
+  },
+  {
+   "date": "2025-04-28",
+   "league": "Serie A",
+   "home": "Lazio",
+   "away": "Parma",
+   "score": "2-2",
+   "probs": [
+    0.65,
+    0.21,
+    0.14
+   ],
+   "market": [
+    0.635,
+    0.214,
+    0.152
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MBGBG",
+   "formA": "BBBBG",
+   "h2h": [
+    "Lazio 2-0 Parma",
+    "Parma 0-1 Lazio",
+    "Parma 0-2 Lazio",
+    "Lazio 1-0 Parma",
+    "Parma 3-1 Lazio"
+   ]
+  },
+  {
+   "date": "2025-04-21",
+   "league": "National League",
+   "home": "Forest Green",
+   "away": "Tamworth",
+   "score": "3-0",
+   "probs": [
+    0.494,
+    0.261,
+    0.245
+   ],
+   "market": [
+    0.49,
+    0.259,
+    0.252
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "MGMMB",
+   "formA": "GGMGM",
+   "h2h": [
+    "Tamworth 1-1 Forest Green"
+   ]
+  },
+  {
+   "date": "2025-04-12",
+   "league": "League Two",
+   "home": "Chesterfield",
+   "away": "Fleetwood Town",
+   "score": "3-0",
+   "probs": [
+    0.44,
+    0.297,
+    0.263
+   ],
+   "market": [
+    0.443,
+    0.29,
+    0.267
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "BGGMB",
+   "formA": "MBGGM",
+   "h2h": [
+    "Fleetwood Town 2-0 Chesterfield"
+   ]
+  },
+  {
+   "date": "2025-04-07",
+   "league": "Premier League",
+   "home": "Leicester",
+   "away": "Newcastle",
+   "score": "0-3",
+   "probs": [
+    0.134,
+    0.213,
+    0.654
+   ],
+   "market": [
+    0.146,
+    0.216,
+    0.638
+   ],
+   "top": "MS 2",
+   "topHit": true,
+   "pick": null,
+   "formH": "MMMMM",
+   "formA": "MGMGG",
+   "h2h": [
+    "Leicester 4-0 Newcastle",
+    "Newcastle 2-1 Leicester",
+    "Leicester 0-3 Newcastle",
+    "Newcastle 0-0 Leicester",
+    "Newcastle 4-0 Leicester"
+   ]
+  },
+  {
+   "date": "2025-04-06",
+   "league": "Yunanistan Süper Lig",
+   "home": "Panathinaikos",
+   "away": "AEK",
+   "score": "3-1",
+   "probs": [
+    0.328,
+    0.319,
+    0.353
+   ],
+   "market": [
+    0.334,
+    0.312,
+    0.354
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "GMGBM",
+   "formA": "GGMBM",
+   "h2h": [
+    "AEK 2-2 Panathinaikos",
+    "Panathinaikos 2-1 AEK",
+    "AEK 3-0 Panathinaikos",
+    "AEK 2-0 Panathinaikos",
+    "Panathinaikos 1-0 AEK"
+   ]
+  },
+  {
+   "date": "2025-03-16",
+   "league": "İskoçya Premiership",
+   "home": "Dundee United",
+   "away": "Dundee",
+   "score": "2-4",
+   "probs": [
+    0.546,
+    0.247,
+    0.207
+   ],
+   "market": [
+    0.538,
+    0.246,
+    0.215
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MMGMB",
+   "formA": "MMMMB",
+   "h2h": [
+    "Dundee United 1-0 Dundee",
+    "Dundee 0-0 Dundee United",
+    "Dundee United 2-2 Dundee",
+    "Dundee United 2-2 Dundee",
+    "Dundee 1-2 Dundee United"
+   ]
+  },
+  {
+   "date": "2025-03-14",
+   "league": "Ligue 2",
+   "home": "Martigues",
+   "away": "Pau FC",
+   "score": "2-2",
+   "probs": [
+    0.254,
+    0.285,
+    0.46
+   ],
+   "market": [
+    0.267,
+    0.284,
+    0.449
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "MMGGM",
+   "formA": "MMBGM",
+   "h2h": [
+    "Pau FC 3-0 Martigues"
+   ]
+  },
+  {
+   "date": "2025-01-26",
+   "league": "Premier League",
+   "home": "Crystal Palace",
+   "away": "Brentford",
+   "score": "1-2",
+   "probs": [
+    0.477,
+    0.263,
+    0.26
+   ],
+   "market": [
+    0.469,
+    0.261,
+    0.269
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "BGBGG",
+   "formA": "BMGBM",
+   "h2h": [
+    "Crystal Palace 1-1 Brentford",
+    "Brentford 1-1 Crystal Palace",
+    "Brentford 1-1 Crystal Palace",
+    "Crystal Palace 3-1 Brentford",
+    "Brentford 2-1 Crystal Palace"
+   ]
+  },
+  {
+   "date": "2025-01-05",
+   "league": "Ligue 1",
+   "home": "Lens",
+   "away": "Toulouse",
+   "score": "0-1",
+   "probs": [
+    0.493,
+    0.271,
+    0.236
+   ],
+   "market": [
+    0.488,
+    0.269,
+    0.242
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "GMGGB",
+   "formA": "GMGMG",
+   "h2h": [
+    "Lens 3-0 Toulouse",
+    "Toulouse 0-1 Lens",
+    "Lens 2-1 Toulouse",
+    "Toulouse 0-2 Lens"
+   ]
+  },
+  {
+   "date": "2025-01-04",
+   "league": "League One",
+   "home": "Wrexham",
+   "away": "Peterboro",
+   "score": "1-0",
+   "probs": [
+    0.576,
+    0.233,
+    0.192
+   ],
+   "market": [
+    0.572,
+    0.231,
+    0.196
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "BBGGM",
+   "formA": "GMMMB",
+   "h2h": [
+    "Peterboro 0-2 Wrexham"
+   ]
+  },
+  {
+   "date": "2024-11-26",
+   "league": "League One",
+   "home": "Bristol Rvs",
+   "away": "Blackpool",
+   "score": "0-2",
+   "probs": [
+    0.301,
+    0.267,
+    0.432
+   ],
+   "market": [
+    0.311,
+    0.266,
+    0.423
+   ],
+   "top": "MS 2",
+   "topHit": true,
+   "pick": null,
+   "formH": "GMBBG",
+   "formA": "MBMBM",
+   "h2h": [
+    "Bristol Rvs 2-1 Blackpool",
+    "Bristol Rvs 2-1 Blackpool",
+    "Blackpool 1-0 Bristol Rvs",
+    "Blackpool 3-1 Bristol Rvs",
+    "Bristol Rvs 1-2 Blackpool"
+   ]
+  },
+  {
+   "date": "2024-09-23",
+   "league": "Süper Lig",
+   "home": "Goztep",
+   "away": "Kayserispor",
+   "score": "3-0",
+   "probs": [
+    0.534,
+    0.257,
+    0.209
+   ],
+   "market": [
+    0.52,
+    0.258,
+    0.222
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "MBBBG",
+   "formA": "MMBBB",
+   "h2h": [
+    "Kayserispor 1-0 Goztep",
+    "Goztep 1-1 Kayserispor",
+    "Kayserispor 1-1 Goztep",
+    "Kayserispor 1-1 Goztep",
+    "Goztep 1-2 Kayserispor"
+   ]
+  },
+  {
+   "date": "2024-08-31",
+   "league": "Eredivisie",
+   "home": "Heerenveen",
+   "away": "NAC Breda",
+   "score": "4-0",
+   "probs": [
+    0.58,
+    0.224,
+    0.195
+   ],
+   "market": [
+    0.557,
+    0.228,
+    0.214
+   ],
+   "top": "MS 1",
+   "topHit": true,
+   "pick": null,
+   "formH": "BMMMB",
+   "formA": "MBMGM",
+   "h2h": [
+    "Heerenveen 1-0 NAC Breda",
+    "NAC Breda 3-0 Heerenveen",
+    "NAC Breda 4-2 Heerenveen",
+    "Heerenveen 2-1 NAC Breda"
+   ]
+  },
+  {
+   "date": "2024-08-26",
+   "league": "National League",
+   "home": "Southend",
+   "away": "Dag and Red",
+   "score": "2-2",
+   "probs": [
+    0.527,
+    0.274,
+    0.199
+   ],
+   "market": [
+    0.521,
+    0.27,
+    0.208
+   ],
+   "top": "MS 1",
+   "topHit": false,
+   "pick": null,
+   "formH": "MBBGM",
+   "formA": "BGBMB",
+   "h2h": [
+    "Southend 0-3 Dag and Red",
+    "Dag and Red 1-1 Southend",
+    "Southend 2-0 Dag and Red",
+    "Dag and Red 0-2 Southend",
+    "Southend 1-1 Dag and Red"
+   ]
+  },
+  {
+   "date": "2024-08-24",
+   "league": "Serie A",
+   "home": "Parma",
+   "away": "Milan",
+   "score": "2-1",
+   "probs": [
+    0.18,
+    0.227,
+    0.593
+   ],
+   "market": [
+    0.197,
+    0.232,
+    0.571
+   ],
+   "top": "MS 2",
+   "topHit": false,
+   "pick": null,
+   "formH": "MMMMB",
+   "formA": "BGMBB",
+   "h2h": [
+    "Parma 1-1 Milan",
+    "Parma 0-1 Milan",
+    "Milan 3-1 Parma",
+    "Milan 2-2 Parma",
+    "Parma 1-3 Milan"
+   ]
+  }
+ ]
 }
