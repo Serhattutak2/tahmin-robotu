@@ -1,0 +1,27 @@
+name: Gecmis test
+on:
+  schedule:
+    - cron: "41 3 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/backtest.mjs", "lib/engine.mjs", ".github/workflows/backtest.yml"]
+permissions:
+  contents: write
+concurrency: { group: repo-write, cancel-in-progress: false }
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --test
+      - run: git pull --ff-only
+      - run: node scripts/backtest.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs config; git diff --cached --quiet || git commit -m "Gecmis test sonucu"
+          git pull --rebase; git push

@@ -1,0 +1,13 @@
+import test from "node:test"; import assert from "node:assert/strict";
+import { devig, decide, Elo, eloProbs, sameTeam, parseCsv, fdDate, americanToDecimal, settle, summarize } from "../lib/engine.mjs";
+import { espnEvents } from "../lib/sources.mjs";
+test("devig toplam 1", () => assert.ok(Math.abs(devig([2, 3.5, 4]).reduce((a, b) => a + b) - 1) < 1e-9));
+test("1,30 alti asla secilmez", () => { assert.equal(decide({ fair: [1.2, 6, 12], entry: [1.29, 8, 15].map((v, i) => i ? 1.01 : v) }, { minEdge: 0 , minOdds: 1.3 }), null); });
+test("adil orandan yuksek fiyat secilir", () => { const d = decide({ fair: [2, 3.6, 4.2], entry: [2.3, 3.4, 4], labels: ["MS 1", "MS X", "MS 2"] }, { minEdge: 0.03 }); assert.equal(d.label, "MS 1"); assert.ok(d.edge > 0.03); });
+test("avantaj yoksa secim yok", () => assert.equal(decide({ fair: [2, 3.6, 4.2], entry: [1.95, 3.4, 4] }, { minEdge: 0.01 }), null));
+test("Elo olasiliklari toplam 1 ve guclu takim onde", () => { const e = new Elo(); for (let i = 0; i < 12; i++) e.update("A", "B", 3, 0); const p = eloProbs(e.expected("A", "B")); assert.ok(Math.abs(p.reduce((a, b) => a + b) - 1) < 1e-9); assert.ok(p[0] > p[2]); assert.equal(e.games("A", "B"), 12); });
+test("takim eslestirme", () => { assert.ok(sameTeam("Manchester United", "Manchester United FC")); assert.ok(!sameTeam("Arsenal", "Chelsea")); });
+test("csv ve tarih", () => { assert.equal(parseCsv("﻿A,B\n1,2\n")[0].B, "2"); assert.equal(fdDate("03/11/26"), "2026-11-03"); assert.equal(fdDate("03/11/2026"), "2026-11-03"); });
+test("amerikan oran", () => { assert.equal(americanToDecimal("+150"), 2.5); assert.equal(americanToDecimal(-200), 1.5); assert.equal(americanToDecimal("EVEN"), 2); });
+test("sonuc ve ozet", () => { const w = settle({ sport: "football", index: 0, odds: 2 }, 2, 1), l = settle({ sport: "basketball", index: 0, odds: 1.5 }, 80, 90); assert.equal(w.profit, 1); assert.equal(l.status, "lost"); const s = summarize([{ ...w }, { ...l }, { status: "pending" }]); assert.equal(s.picks, 2); assert.equal(s.pending, 1); assert.equal(s.profit, 0); });
+test("ESPN olay ayristirma", () => { const ev = espnEvents({ leagues: [{ name: "NBA" }], events: [{ id: "9", date: "2026-11-03T00:00Z", competitions: [{ status: { type: { state: "pre", name: "STATUS_SCHEDULED" } }, odds: [{ provider: { name: "DraftKings" }, moneyline: { home: { close: { odds: "-150" } }, away: { close: { odds: "+130" } } } }], competitors: [{ homeAway: "home", score: "0", team: { id: 1, displayName: "A" } }, { homeAway: "away", score: "0", team: { id: 2, displayName: "B" } }] }] }] }, "basketball", "nba"); assert.equal(ev[0].odds.provider, "DraftKings"); assert.equal(ev[0].odds.away, 2.3); });

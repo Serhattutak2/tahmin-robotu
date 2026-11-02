@@ -1,0 +1,26 @@
+name: Tahminleri guncelle
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/run.mjs", "lib/**", ".github/workflows/update.yml"]
+permissions:
+  contents: write
+concurrency: { group: repo-write, cancel-in-progress: false }
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: git pull --ff-only
+      - run: node scripts/run.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs; git diff --cached --quiet || git commit -m "Veri guncellemesi"
+          git pull --rebase; git push
