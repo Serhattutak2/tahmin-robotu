@@ -1,11 +1,12 @@
 {
- "generatedAt": "2026-11-02T20:17:25.847Z",
+ "generatedAt": "2026-11-02T20:23:44.818Z",
  "strategy": {
-  "weight": 0.1,
-  "minEdge": 0.03,
+  "weight": 0.05,
+  "minEdge": 0.05,
+  "maxOdds": 8,
   "minOdds": 1.3,
-  "maxOdds": 5,
-  "source": "varsayilan"
+  "source": "backtest",
+  "generatedAt": "2026-11-02T20:18:56.064Z"
  },
  "picks": [],
  "stats": {
@@ -22,13 +23,13 @@
   }
  },
  "sources": {
-  "football-data sonuçlar": {
-   "ok": true,
-   "info": "17534 maç"
-  },
   "football-data oranlar (Pinnacle)": {
    "ok": true,
    "info": "196 maç"
+  },
+  "football-data sonuçlar": {
+   "ok": true,
+   "info": "25333 maç"
   },
   "ESPN": {
    "ok": false,
