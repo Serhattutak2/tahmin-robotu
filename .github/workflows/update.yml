@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["scripts/run.mjs", "lib/**", ".github/workflows/update.yml"]
+    paths: ["scripts/run.mjs", "lib/**", "config/engine.json", ".github/workflows/update.yml"]
 permissions:
   contents: write
 concurrency: { group: update, cancel-in-progress: false }

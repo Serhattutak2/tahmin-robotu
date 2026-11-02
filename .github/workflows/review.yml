@@ -1,11 +1,6 @@
 name: Dersleri guncelle
 on:
-  schedule:
-    - cron: "23 2 * * *"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ["scripts/review.mjs", ".github/workflows/review.yml"]
 permissions:
   contents: write
 concurrency: { group: review, cancel-in-progress: false }

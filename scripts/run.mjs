@@ -3,13 +3,15 @@ import fs from "node:fs";
 import { Elo, eloProbs, decide, devig, num, fdDate, sameTeam, settle, summarize } from "../lib/engine.mjs";
 import { walkLeague, oddsOf } from "../lib/ratings.mjs";
 import { matchNews } from "../lib/news.mjs";
-import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate } from "../lib/oddsapi.mjs";
+import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate, TOA_TO_FD, fdTeam, eventToRow } from "../lib/oddsapi.mjs";
+import { score } from "../lib/features.mjs";
 import { x12Features, ouFeatures, softmax } from "../lib/stack.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const ledger = read("docs/ledger.json", []);
-const now = Date.now(), HORIZON = 120 * 3600e3;
+const now = Date.now(), HORIZON = 48 * 3600e3;
+const ist = t => new Date(t + 3 * 3600e3).toISOString().slice(0, 10), todayIst = ist(now), tomorrowIst = ist(now + 864e5), inWindow = t => [todayIst, tomorrowIst].includes(ist(t));
 const ymd = t => new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
 const sources = {};
 const note = (n, ok, info) => { sources[n] = { ok, info }; };
@@ -19,24 +21,54 @@ function londonToIso(date, time) {
   const l = new Date(guess.toLocaleString("en-US", { timeZone: "Europe/London" })), u = new Date(guess.toLocaleString("en-US", { timeZone: "UTC" }));
   return new Date(guess.getTime() - (l - u)).toISOString();
 }
+// 0) The Odds API: ucretsiz kotayla ligleri sirayla yenile, oranlari 36 saate kadar kullan.
+const toaKey = process.env.ODDS_API_KEY, oddsCache = read("docs/oddscache.json", {}), scoreEvents = [];
+if (toaKey) {
+  try {
+    const sports = await listSports(toaKey), hour = new Date(now).getUTCHours();
+    let remaining = null, fetched = 0;
+    for (const k of chooseSports(sports, oddsCache, Object.keys(oddsCache).length >= 10 ? Number(process.env.ODDS_PER_RUN || 2) : 10, now)) {
+      const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++;
+      oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body };
+    }
+    const pendingKeys = [...new Set([...ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey), ...read("docs/shadow.json", []).filter(l => l.status === "pending" && l.sportKey?.startsWith("basketball") && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey)])];
+    if (hour < 3) for (const k of pendingKeys.slice(0, 2)) { const r = await fetchScores(k, toaKey); remaining = r.remaining; scoreEvents.push(...r.body); }
+    for (const k of Object.keys(oddsCache)) if (now - oddsCache[k].fetchedAt > 36 * 3600e3) delete oddsCache[k];
+    note("The Odds API", true, `${sports.length} aktif lig, bu çalışmada ${fetched} yenilendi, önbellekte ${Object.keys(oddsCache).length}${Number.isFinite(remaining) ? `, kalan kredi ${remaining}` : ""}`);
+  } catch (e) { note("The Odds API", false, e.message); }
+  fs.writeFileSync("docs/oddscache.json", JSON.stringify(oddsCache));
+} else note("The Odds API", false, "Anahtar eklenmedi");
+const usedToa = new Set();
 // 1) football-data: gecmis + Pinnacle oranli fikstur -> tam motor
 const codes = Object.keys(FD_LEAGUES), recent = FD_SEASONS.slice(-4);
 const fdFiles = await mapLimit(recent.flatMap(s => codes.map(c => ({ s, c }))), 6, async j => ({ ...j, rows: await fdSeason(j.s, j.c) }));
 const fdResults = [];
 let fixtures = [];
 try { fixtures = await fdFixtures(); note("football-data oranlar (Pinnacle)", true, `${fixtures.length} maç`); } catch (e) { note("football-data oranlar (Pinnacle)", false, e.message); }
-const model = read("config/model.json", null), calibration = read("config/calibration.json", {});
-const candidates = [];
+const model = read("config/model.json", null), calibration = read("config/calibration.json", {}), engine = read("config/engine.json", null);
+const zf = f => f.map((v, i) => Math.max(-5, Math.min(5, (v - engine.mean[i]) / engine.sd[i])));
+const candidates = []; let unmatched = 0;
 for (const c of codes) {
   const rows = fdFiles.filter(f => f?.rows && f.c === c).sort((x, y) => x.s.localeCompare(y.s)).flatMap(f => f.rows.map(r => ({ ...r, date: fdDate(r.Date) }))).filter(r => r.date && r.FTHG !== "" && r.FTHG !== undefined && Number.isFinite(+r.FTHG));
   fdResults.push(...rows);
-  const up = fixtures.filter(r => r.Div === c).map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => { if (!r.date) return false; const t = Date.parse(londonToIso(r.date, r.Time)); return t > now && t <= now + HORIZON; });
+  const up = fixtures.filter(r => r.Div === c).map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => { if (!r.date) return false; const t = Date.parse(londonToIso(r.date, r.Time)); return t > now && inWindow(t); });
+  const teams = [...new Set(rows.slice(-500).flatMap(r => [r.HomeTeam, r.AwayTeam]))], toaKeyName = Object.keys(TOA_TO_FD).find(k => TOA_TO_FD[k] === c);
+  for (const ev of oddsCache[toaKeyName]?.events || []) {
+    const t = Date.parse(ev.commence_time); if (t <= now || !inWindow(t)) continue;
+    const h = fdTeam(ev.home_team, teams, sameTeam), a = fdTeam(ev.away_team, teams, sameTeam);
+    if (!h || !a) { unmatched++; continue; }
+    const row = eventToRow(ev, h, a); if (!row) continue;
+    usedToa.add(ev.id);
+    const i = up.findIndex(u => u.HomeTeam === h && u.AwayTeam === a);
+    if (i >= 0) up[i] = { ...up[i], ...row, Time: up[i].Time }; else up.push(row);
+  }
   for (const rec of walkLeague(rows, up).filter(x => !x.done)) {
-    const r = rec.r, o = oddsOf(r), kickoff = londonToIso(r.date, r.Time);
-    const base = { id: `fd-${c}-${r.date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: FD_LEAGUES[c], fdDiv: c, date: r.date, kickoff, home: r.HomeTeam, away: r.AwayTeam, fair: o.fair, entry: o.entry, sharp: o.sharp, bookmaker: num(r.B365H) ? "bet365" : "piyasa ortalaması", engine: "tam", best: { x12: o.max, ou: [num(r["Max>2.5"]), num(r["Max<2.5"])] },
+    const r = rec.r, o = oddsOf(r), kickoff = r.toa ? r.toa.commence_time : londonToIso(r.date, r.Time);
+    const base = { id: `fd-${c}-${r.date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: FD_LEAGUES[c], fdDiv: c, date: r.date, kickoff, home: r.HomeTeam, away: r.AwayTeam, fair: o.fair, entry: o.entry, sharp: o.sharp, bookmaker: num(r.B365H) ? "bet365" : "piyasa ortalaması", engine: "tam", bookCount: r.bookCount || null, sportKey: r.toa?.sport_key || null, best: { x12: o.max, ou: [num(r["Max>2.5"]), num(r["Max<2.5"])] },
       dossier: { formH: rec.formH, formA: rec.formA, restH: Math.round(rec.restH), restA: Math.round(rec.restA), h2h: rec.h2h, games: rec.games, market: o.fair && devig(o.fair), elo: rec.elo, pi: rec.pi, dc: rec.dc?.x12 || null, xg: rec.dx?.x12 || null, goals: rec.dc ? [rec.dc.lh, rec.dc.la] : null } };
     if (model && o.fair) { const X = x12Features(rec, o.fair); if (X) { const raw = softmax(X, model.x12), g = calibration.gamma || 1, q = raw.map(v => v ** g), t = q.reduce((a, v) => a + v); base.probs = q.map(v => v / t); base.dossier.engine = base.probs; } }
     if (model && o.ouFair && o.ouEntry) { const X = ouFeatures(rec, o.ouFair); if (X) { base.ou = { probs: softmax(X, model.ou), entry: o.ouEntry, fair: o.ouFair }; base.dossier.over25 = base.ou.probs[0]; } }
+    if (engine && o.fair && rec.feats) { const m = devig(o.fair), x = zf(rec.feats); base.dossier.statsOnly = score(x, engine.pure); if (engine.residual && rec.games >= 10) { base.probs = score(engine.selectedIds.map(i => x[i]), engine.residual, m.map(v => Math.log(Math.max(v, 1e-4)))); base.dossier.engine = base.probs; } }
     candidates.push(base);
   }
 }
@@ -72,7 +104,7 @@ for (const b of okBoards) {
     espnAll.push(ev);
     if (ev.completed && Number.isFinite(ev.hs) && Number.isFinite(ev.as)) { e.update(ev.homeId, ev.awayId, ev.hs, ev.as); continue; }
     const t = Date.parse(ev.kickoff);
-    if (ev.state !== "pre" || t <= now || t > now + HORIZON) continue;
+    if (ev.state !== "pre" || t <= now || !inWindow(t)) continue;
     const dup = candidates.find(c => c.sport === ev.sport && Math.abs(Date.parse(c.kickoff) - t) < 3 * 3600e3 && sameTeam(c.home, ev.home) && sameTeam(c.away, ev.away));
     if (dup) continue;
     const o = ev.odds, odds = o ? (basket ? [o.home, o.away] : [o.home, o.draw, o.away]) : null;
@@ -80,29 +112,13 @@ for (const b of okBoards) {
       model: e.games(ev.homeId, ev.awayId) >= 10 ? eloProbs(e.expected(ev.homeId, ev.awayId), !basket) : null });
   }
 }
-// 2b) The Odds API: ucretsiz kotayla ligleri sirayla yenile, onceki oranlari 36 saate kadar kullan.
-const toaKey = process.env.ODDS_API_KEY, oddsCache = read("docs/oddscache.json", {}), scoreEvents = [];
-if (toaKey) {
-  try {
-    const sports = await listSports(toaKey), hour = new Date(now).getUTCHours();
-    let remaining = null, fetched = 0;
-    for (const k of chooseSports(sports, oddsCache, Number(process.env.ODDS_PER_RUN || 2), now)) {
-      const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++;
-      oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body };
-    }
-    const pendingKeys = [...new Set([...ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey), ...read("docs/shadow.json", []).filter(l => l.status === "pending" && l.sportKey?.startsWith("basketball") && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey)])];
-    if (hour < 3) for (const k of pendingKeys.slice(0, 2)) { const r = await fetchScores(k, toaKey); remaining = r.remaining; scoreEvents.push(...r.body); }
-    for (const k of Object.keys(oddsCache)) if (now - oddsCache[k].fetchedAt > 36 * 3600e3) delete oddsCache[k];
-    note("The Odds API", true, `${sports.length} aktif lig, bu çalışmada ${fetched} yenilendi, önbellekte ${Object.keys(oddsCache).length}${Number.isFinite(remaining) ? `, kalan kredi ${remaining}` : ""}`);
-  } catch (e) { note("The Odds API", false, e.message); }
-  for (const c of Object.values(oddsCache)) for (const ev of c.events) {
-    const t = Date.parse(ev.commence_time); if (t <= now || t > now + HORIZON) continue;
-    const row = eventToCandidate(ev, c.title);
-    const dup = candidates.find(x => x.sport === row.sport && Math.abs(Date.parse(x.kickoff) - t) < 3 * 3600e3 && sameTeam(x.home, row.home) && sameTeam(x.away, row.away));
-    if (!dup) candidates.push({ ...row, oddsAgeHours: Math.round((now - c.fetchedAt) / 3600e3) });
-  }
-  fs.writeFileSync("docs/oddscache.json", JSON.stringify(oddsCache));
-} else note("The Odds API", false, "Anahtar eklenmedi");
+// 2b) Motorla eslesmeyen Odds API maclari: piyasa ortalamasi
+for (const c of Object.values(oddsCache)) for (const ev of c.events) {
+  const t = Date.parse(ev.commence_time); if (t <= now || !inWindow(t) || usedToa.has(ev.id)) continue;
+  const row = eventToCandidate(ev, c.title);
+  const dup = candidates.find(x => x.sport === row.sport && Math.abs(Date.parse(x.kickoff) - t) < 3 * 3600e3 && sameTeam(x.home, row.home) && sameTeam(x.away, row.away));
+  if (!dup) candidates.push({ ...row, oddsAgeHours: Math.round((now - c.fetchedAt) / 3600e3) });
+}
 // 3) Kapsam sayimi: TheSportsDB gunluk mac sayisi
 const today = new Date(now).toISOString().slice(0, 10);
 const known = {};
@@ -116,7 +132,7 @@ for (const c of candidates) {
   withOdds++;
   if (c.engine === "piyasa" && c.bookCount < 5) { thin++; continue; } if (c.model || c.probs) modelled++;
   const full = c.engine === "tam";
-  const params = full && c.sharp ? cfg : c.engine === "piyasa" ? { ...cfg, minEdge: Math.max(cfg.minEdge, c.sharp ? 0.03 : 0.05), maxOdds: 5 } : { ...cfg, minEdge: cfg.minEdge + 0.03, weight: 0.1 };
+  const params = full ? (c.sharp ? cfg : { ...cfg, minEdge: Math.max(cfg.minEdge, 0.05), maxOdds: 5 }) : c.engine === "piyasa" ? { ...cfg, minEdge: Math.max(cfg.minEdge, c.sharp ? 0.03 : 0.05), maxOdds: 5 } : { ...cfg, minEdge: cfg.minEdge + 0.03, weight: 0.1 };
   const labels = c.sport === "basketball" ? [c.home, c.away] : ["MS 1", "MS X", "MS 2"];
   const options = [];
   const d = decide({ fair: c.fair, entry: c.entry, model: c.model, probs: c.probs || null, labels }, params);
@@ -131,6 +147,9 @@ for (const c of candidates) {
   picks.push({ sportKey: c.sportKey || null, engine: c.engine || "espn", bookCount: c.bookCount || null, oddsAgeHours: c.oddsAgeHours ?? null, medianOdds: c.medianOdds?.[b.index] ?? null, agreement: votes.length ? { support, total: votes.length } : null, id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, market: b.market, index: b.index, selection: b.label, odds: b.odds, probability: +b.probability.toFixed(4), edge: +b.edge.toFixed(4), minPlayableOdds: +b.minPlayableOdds.toFixed(2), bookmaker: bm, sharp: c.sharp, verified: full && c.sharp, fdDiv: c.fdDiv || null, date: c.date, bestOdds: (b.market === "ou25" ? c.best?.ou : c.best?.x12)?.[b.index] || null, dossier: c.dossier || null });
 }
 picks.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
+// Bugun ve yarin: her macin 1,30 ve ustu en olasi secenegi, oynamaya deger olmasa da.
+const pickIds = new Set(picks.map(p => p.id));
+const allMatches = candidates.filter(c => c.fair && c.entry && inWindow(Date.parse(c.kickoff))).map(c => { const p = c.probs || devig(c.fair), l = c.sport === "basketball" ? [c.home, c.away] : ["MS 1", "MS X", "MS 2"]; const opts = p.map((v, i) => ({ selection: l[i], probability: +v.toFixed(3), odds: c.entry[i] })).filter(o => o.odds >= 1.3).sort((a, b) => b.probability - a.probability); return { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), top: opts[0] || null, isPick: pickIds.has(c.id) }; }).sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Robotun kendi internet taramasi: en yakin secimler icin haberler.
 const research = {}; let newsOk = 0, newsErr = null;
 await mapLimit(picks.slice(0, 15), 3, async p => { try { research[p.id] = await matchNews(p.home, p.away); newsOk++; } catch (e) { newsErr = e.message; } });
@@ -170,5 +189,5 @@ let bank = 1000; const curve = settled.sort((a, b) => a.kickoff.localeCompare(b.
 const sAll = summarize(settled), mean = sAll.roi ?? 0, se = settled.length ? Math.sqrt(settled.reduce((a, l) => a + (l.profit - mean) ** 2, 0) / settled.length / settled.length) : 0, low = mean - 1.96 * se;
 const evidence = settled.length >= 500 && low > 0 ? "kanitli" : settled.length >= 100 && mean > 0 ? "umut" : "deneme";
 fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
-fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
+fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst }, allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
 console.log(JSON.stringify({ evaluated: candidates.length, withOdds, modelled, picks: picks.length, sources }, null, 1));

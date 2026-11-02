@@ -1,11 +1,6 @@
 name: Gecmis test
 on:
-  schedule:
-    - cron: "41 3 * * 1"
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ["scripts/backtest.mjs", "lib/engine.mjs", "lib/ratings.mjs", "lib/stack.mjs", ".github/workflows/backtest.yml"]
 permissions:
   contents: write
 concurrency: { group: backtest, cancel-in-progress: false }
