@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { Elo, eloProbs, decide, devig, num, fdDate, sameTeam, settle, summarize } from "../lib/engine.mjs";
 import { walkLeague, oddsOf } from "../lib/ratings.mjs";
 import { matchNews } from "../lib/news.mjs";
+import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate } from "../lib/oddsapi.mjs";
 import { x12Features, ouFeatures, softmax } from "../lib/stack.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
@@ -47,12 +48,14 @@ const leagues = [...ESPN_SOCCER.map(l => ({ s: "soccer", l })), ...ESPN_BASKET.m
 const ranges = []; for (let d = 330; d > 0; d -= 30) ranges.push(`${ymd(now - d * 86400e3)}-${ymd(now - Math.max(d - 29, 0) * 86400e3)}`);
 const live = `${ymd(now)}-${ymd(now + HORIZON)}`;
 const espnErrors = new Map();
+let espnBlocked = false;
 const boards = await mapLimit(leagues, 5, async j => {
+  if (espnBlocked) return { error: "blocked" };
   const events = new Map();
   let liveOk = false;
   for (const r of [...ranges, live]) {
     try { for (const ev of await espnBoard(j.s, j.l, r)) events.set(ev.id, ev); if (r === live) liveOk = true; }
-    catch (e) { espnErrors.set(e.message, (espnErrors.get(e.message) || 0) + 1); }
+    catch (e) { espnErrors.set(e.message, (espnErrors.get(e.message) || 0) + 1); if (/403/.test(e.message)) { espnBlocked = true; return { error: "blocked" }; } }
     if (!liveOk && r !== live && !events.size && espnErrors.size && ranges.indexOf(r) >= 2) break;
   }
   if (!liveOk) { try { for (const ev of await espnBoard(j.s, j.l, ymd(now))) events.set(ev.id, ev); liveOk = true; } catch (e) { espnErrors.set(e.message, (espnErrors.get(e.message) || 0) + 1); } }
@@ -77,6 +80,29 @@ for (const b of okBoards) {
       model: e.games(ev.homeId, ev.awayId) >= 10 ? eloProbs(e.expected(ev.homeId, ev.awayId), !basket) : null });
   }
 }
+// 2b) The Odds API: ucretsiz kotayla ligleri sirayla yenile, onceki oranlari 36 saate kadar kullan.
+const toaKey = process.env.ODDS_API_KEY, oddsCache = read("docs/oddscache.json", {}), scoreEvents = [];
+if (toaKey) {
+  try {
+    const sports = await listSports(toaKey), hour = new Date(now).getUTCHours();
+    let remaining = null, fetched = 0;
+    for (const k of chooseSports(sports, oddsCache, Number(process.env.ODDS_PER_RUN || 2), now)) {
+      const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++;
+      oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body };
+    }
+    const pendingKeys = [...new Set(ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey))];
+    if (hour < 3) for (const k of pendingKeys.slice(0, 2)) { const r = await fetchScores(k, toaKey); remaining = r.remaining; scoreEvents.push(...r.body); }
+    for (const k of Object.keys(oddsCache)) if (now - oddsCache[k].fetchedAt > 36 * 3600e3) delete oddsCache[k];
+    note("The Odds API", true, `${sports.length} aktif lig, bu çalışmada ${fetched} yenilendi, önbellekte ${Object.keys(oddsCache).length}${Number.isFinite(remaining) ? `, kalan kredi ${remaining}` : ""}`);
+  } catch (e) { note("The Odds API", false, e.message); }
+  for (const c of Object.values(oddsCache)) for (const ev of c.events) {
+    const t = Date.parse(ev.commence_time); if (t <= now || t > now + HORIZON) continue;
+    const row = eventToCandidate(ev, c.title);
+    const dup = candidates.find(x => x.sport === row.sport && Math.abs(Date.parse(x.kickoff) - t) < 3 * 3600e3 && sameTeam(x.home, row.home) && sameTeam(x.away, row.away));
+    if (!dup) candidates.push({ ...row, oddsAgeHours: Math.round((now - c.fetchedAt) / 3600e3) });
+  }
+  fs.writeFileSync("docs/oddscache.json", JSON.stringify(oddsCache));
+} else note("The Odds API", false, "Anahtar eklenmedi");
 // 3) Kapsam sayimi: TheSportsDB gunluk mac sayisi
 const today = new Date(now).toISOString().slice(0, 10);
 const known = {};
@@ -89,7 +115,7 @@ for (const c of candidates) {
   if (!c.fair) continue;
   withOdds++; if (c.model || c.probs) modelled++;
   const full = c.engine === "tam";
-  const params = full && c.sharp ? cfg : { ...cfg, minEdge: cfg.minEdge + 0.03, weight: 0.1 };
+  const params = full && c.sharp ? cfg : c.engine === "piyasa" ? { ...cfg, minEdge: Math.max(cfg.minEdge, c.sharp ? 0.03 : 0.05), maxOdds: 5 } : { ...cfg, minEdge: cfg.minEdge + 0.03, weight: 0.1 };
   const labels = c.sport === "basketball" ? [c.home, c.away] : ["MS 1", "MS X", "MS 2"];
   const options = [];
   const d = decide({ fair: c.fair, entry: c.entry, model: c.model, probs: c.probs || null, labels }, params);
@@ -100,7 +126,8 @@ for (const c of candidates) {
   const filt = filters.find(f => (f.key === "league" && f.value === c.league) || (f.key === "market" && f.value === (b.market === "ou25" ? "2,5 Alt/Üst" : "1X2")) || (f.key === "band" && f.value === (b.odds < 2 ? "1,30-2,00" : b.odds < 3 ? "2,00-3,00" : b.odds < 4.5 ? "3,00-4,50" : "4,50+")));
   if (filt) { filtered++; continue; }
   const dv = c.dossier, votes = b.market === "1x2" && dv ? [dv.elo, dv.pi, dv.dc, dv.xg].filter(Boolean) : [], support = votes.filter(m => m[b.index] > (dv.market?.[b.index] ?? 1)).length;
-  picks.push({ agreement: votes.length ? { support, total: votes.length } : null, id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, market: b.market, index: b.index, selection: b.label, odds: b.odds, probability: +b.probability.toFixed(4), edge: +b.edge.toFixed(4), minPlayableOdds: +b.minPlayableOdds.toFixed(2), bookmaker: c.bookmaker, sharp: c.sharp, verified: full && c.sharp, fdDiv: c.fdDiv || null, date: c.date, bestOdds: (b.market === "ou25" ? c.best?.ou : c.best?.x12)?.[b.index] || null, dossier: c.dossier || null });
+  const bm = c.entryBooks?.[b.index] || c.bookmaker;
+  picks.push({ sportKey: c.sportKey || null, engine: c.engine || "espn", bookCount: c.bookCount || null, oddsAgeHours: c.oddsAgeHours ?? null, medianOdds: c.medianOdds?.[b.index] ?? null, agreement: votes.length ? { support, total: votes.length } : null, id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, market: b.market, index: b.index, selection: b.label, odds: b.odds, probability: +b.probability.toFixed(4), edge: +b.edge.toFixed(4), minPlayableOdds: +b.minPlayableOdds.toFixed(2), bookmaker: bm, sharp: c.sharp, verified: full && c.sharp, fdDiv: c.fdDiv || null, date: c.date, bestOdds: (b.market === "ou25" ? c.best?.ou : c.best?.x12)?.[b.index] || null, dossier: c.dossier || null });
 }
 picks.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Robotun kendi internet taramasi: en yakin secimler icin haberler.
@@ -114,6 +141,8 @@ for (const l of ledger.filter(x => x.status === "pending" && Date.parse(x.kickof
   let hs, as;
   if (l.fdDiv) { const r = fdResults.find(x => x.date === l.date && x.Div === l.fdDiv && x.HomeTeam === l.home && x.AwayTeam === l.away); if (r) { hs = +r.FTHG; as = +r.FTAG; } }
   if (hs === undefined) { const ev = espnAll.find(x => (x.id === l.id || (x.sport === l.sport && Math.abs(Date.parse(x.kickoff) - Date.parse(l.kickoff)) < 3 * 3600e3 && sameTeam(x.home, l.home) && sameTeam(x.away, l.away))) && x.completed && Number.isFinite(x.hs)); if (ev) { hs = ev.hs; as = ev.as; } }
+  if (hs === undefined && l.sport === "football") { const r = fdResults.find(x => x.date === l.date && sameTeam(x.HomeTeam, l.home) && sameTeam(x.AwayTeam, l.away)); if (r) { hs = +r.FTHG; as = +r.FTAG; } }
+  if (hs === undefined) { const ev = scoreEvents.find(x => `toa-${x.id}` === l.id && x.completed && x.scores); if (ev) { hs = Number(ev.scores.find(q => q.name === ev.home_team)?.score); as = Number(ev.scores.find(q => q.name === ev.away_team)?.score); if (!Number.isFinite(hs) || !Number.isFinite(as)) hs = as = undefined; } }
   if (hs !== undefined) Object.assign(l, settle(l, hs, as));
   else if (now - Date.parse(l.kickoff) > 10 * 86400e3) Object.assign(l, { status: "void", profit: 0 });
 }

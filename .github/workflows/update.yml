@@ -19,6 +19,8 @@ jobs:
         with: { node-version: 22 }
       - run: git pull --ff-only
       - run: node scripts/run.mjs
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       - name: Kaydet
         run: |
           git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"

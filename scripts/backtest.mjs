@@ -59,6 +59,7 @@ const report = { generatedAt: new Date().toISOString(), filesLoaded: files.filte
   sharpBySeason: Object.fromEntries(FD_SEASONS.map(s => { const r = data.filter(d => d.season === s); return [s, { matches: r.length, sharp: r.filter(d => d.o.sharp).length }]; })),
   byOddsBand: Object.fromEntries([[1.3, 2], [2, 3], [3, 4.5], [4.5, 10]].map(([a, z]) => [`${a}-${z}`, sumr(bets(TEST, best).filter(b => b.odds >= a && b.odds < z))])),
   byMarket: { "1x2": sumr(bets(TEST, best).filter(b => b.market === "1x2")), "2,5": sumr(bets(TEST, best).filter(b => b.market === "ou")) },
+  consensusVsBest: Object.fromEntries([.02, .03, .05, .08].map(e => [e, (() => { const l = []; for (const d of data) { if (!TEST.includes(d.season) || !d.o.avg || !d.o.max) continue; const x = decide({ entry: d.o.max, fair: d.o.avg }, { minEdge: e, minOdds: 1.3, maxOdds: 5 }); if (x) l.push({ ...x, pr: x.index === d.y ? x.odds - 1 : -1, clv: d.o.close ? x.odds * devig(d.o.close)[x.index] - 1 : null }); } return sumr(l); })()])),
   weights: Object.fromEntries(FEATURE_NAMES.map((n, i) => [n, finalX[i]])), topValidation: ranked.slice(0, 5).map(x => ({ ...x.cfg, ...x.v })) };
 // Rastgele gecmis mac sinavi: motor maci oynanmadan once ne dedi, ne oldu?
 let seed = 20261102; const rnd = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
