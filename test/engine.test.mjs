@@ -18,3 +18,5 @@ test("gelecek veri sizmaz", () => { const rows = []; for (let i = 0; i < 80; i++
 test("yigin piyasadan baslar ve ogrenir", () => { const X = [[Math.log(.5), 0], [Math.log(.5), 1]], data = Array.from({ length: 200 }, () => ({ X, y: 1 })); const b = fit(data, 2, { iters: 200 }); assert.ok(b[1] > 0.5); assert.ok(softmax(X, b)[1] > .6); });
 test("rps", () => { assert.equal(rps([1, 0, 0], 0), 0); assert.equal(rps([0, 0, 1], 0), 1); });
 test("alt/ust sonucu", () => { assert.equal(settle({ market: "ou25", index: 0, odds: 2 }, 2, 1).status, "won"); assert.equal(settle({ market: "ou25", index: 0, odds: 2 }, 1, 1).status, "lost"); });
+import { parseRss, classify } from "../lib/news.mjs";
+test("haber ayristirma", () => { const x = parseRss(`<rss><item><title><![CDATA[Star injured &amp; out]]></title><link>https://a.b/c</link><pubDate>x</pubDate><source url="u">BBC</source></item><item><title>Match preview and prediction</title><link>javascript:x</link></item></rss>`); assert.equal(x.length, 1); assert.equal(x[0].title, "Star injured & out"); assert.equal(classify(x).injury, 1); });
