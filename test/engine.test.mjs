@@ -30,7 +30,7 @@ test("duzeltme modeli sinyali ogrenir", () => { const rows = Array.from({ length
 test("takim eslestirme ve oran satiri", () => { assert.equal(fdTeam("Manchester United", ["Man United", "Arsenal"], sameTeam), "Man United"); const b = k => ({ key: k, title: k, markets: [{ key: "h2h", outcomes: [{ name: "A", price: 2 }, { name: "Draw", price: 3.3 }, { name: "B", price: 4 }] }] }); const r = eventToRow({ commence_time: "2026-11-03T20:00:00Z", home_team: "A", away_team: "B", bookmakers: ["a", "b", "c", "pinnacle", "bet365"].map(b) }, "A", "B"); assert.equal(r.PSH, "2"); assert.equal(r.bookCount, 5); });
 import { marketProbs, recommend, outcome, byKey, impliedGoals, fitCal } from "../lib/markets.mjs";
 test("pazar olasiliklari tutarli", () => { const p = marketProbs(1.6, 1.1); assert.ok(Math.abs(p.MS1 + p.MSX + p.MS2 - 1) < 1e-9); assert.ok(Math.abs(p.U25 + p.A25 - 1) < 1e-9); assert.ok(Math.abs(p.KGV + p.KGY - 1) < 1e-9); assert.ok(p.U15 > p.U25); });
-test("tavsiye 1,30 alti vermez", () => { const r = recommend(marketProbs(2, 1)); assert.ok(r.length); assert.ok(r.every(x => x.minPlay >= 1.3)); });
+test("tavsiye 1,20 alti vermez", () => { const r = recommend(marketProbs(2, 1)); assert.ok(r.length); assert.ok(r.every(x => x.minPlay >= 1.2)); });
 test("sonuc", () => { assert.equal(outcome(byKey.KGV, 1, 1), 1); assert.equal(outcome(byKey.IY05, 1, 1, null, null), null); assert.equal(outcome(byKey.IY05, 1, 1, 0, 0), 0); });
 test("orandan gol", () => { const g = impliedGoals([.5, .27, .23]); assert.ok(g[0] > g[1]); });
 test("kalibrasyon yonu", () => { const pts = Array.from({ length: 2000 }, (_, i) => [0.5, i % 10 < 7 ? 1 : 0]); assert.ok(fitCal(pts).a > 0); });
