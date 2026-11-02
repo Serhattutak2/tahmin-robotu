@@ -1,6 +1,8 @@
 // Her calistirmada: kaynaklardan cek, her maci degerlendir, uygunlari docs/data.json'a yaz, sonuclari defterde kapat.
 import fs from "node:fs";
-import { Elo, eloProbs, decide, num, fdDate, sameTeam, settle, summarize } from "../lib/engine.mjs";
+import { Elo, eloProbs, decide, devig, num, fdDate, sameTeam, settle, summarize } from "../lib/engine.mjs";
+import { walkLeague, oddsOf } from "../lib/ratings.mjs";
+import { x12Features, ouFeatures, softmax } from "../lib/stack.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
@@ -15,31 +17,28 @@ function londonToIso(date, time) {
   const l = new Date(guess.toLocaleString("en-US", { timeZone: "Europe/London" })), u = new Date(guess.toLocaleString("en-US", { timeZone: "UTC" }));
   return new Date(guess.getTime() - (l - u)).toISOString();
 }
-// 1) football-data: gecmis (Elo, sonuc) + Pinnacle oranli fikstur
-const codes = Object.keys(FD_LEAGUES), recent = FD_SEASONS.slice(-3);
+// 1) football-data: gecmis + Pinnacle oranli fikstur -> tam motor
+const codes = Object.keys(FD_LEAGUES), recent = FD_SEASONS.slice(-4);
 const fdFiles = await mapLimit(recent.flatMap(s => codes.map(c => ({ s, c }))), 6, async j => ({ ...j, rows: await fdSeason(j.s, j.c) }));
-const fdElo = {}, fdResults = [];
-for (const f of fdFiles.filter(x => x?.rows).sort((a, b) => a.s.localeCompare(b.s))) {
-  const rows = f.rows.map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => r.date && r.FTHG !== "" && r.FTHG !== undefined).sort((a, b) => a.date.localeCompare(b.date));
-  const e = (fdElo[f.c] ||= new Elo());
-  for (const r of rows) { e.update(r.HomeTeam, r.AwayTeam, +r.FTHG, +r.FTAG); fdResults.push(r); }
-}
-note("football-data sonuçlar", fdResults.length > 0, `${fdResults.length} maç`);
+const fdResults = [];
 let fixtures = [];
 try { fixtures = await fdFixtures(); note("football-data oranlar (Pinnacle)", true, `${fixtures.length} maç`); } catch (e) { note("football-data oranlar (Pinnacle)", false, e.message); }
+const model = read("config/model.json", null);
 const candidates = [];
-for (const r of fixtures) {
-  if (!FD_LEAGUES[r.Div]) continue;
-  const date = fdDate(r.Date); if (!date) continue;
-  const kickoff = londonToIso(date, r.Time), t = Date.parse(kickoff);
-  if (t <= now || t > now + HORIZON) continue;
-  const psh = [num(r.PSH), num(r.PSD), num(r.PSA)], avg = [num(r.AvgH), num(r.AvgD), num(r.AvgA)], b365 = [num(r.B365H), num(r.B365D), num(r.B365A)];
-  const fair = psh.every(Number.isFinite) ? psh : avg, entry = b365.every(Number.isFinite) ? b365 : avg;
-  const e = fdElo[r.Div];
-  candidates.push({ id: `fd-${r.Div}-${date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: FD_LEAGUES[r.Div], fdDiv: r.Div, date, kickoff, home: r.HomeTeam, away: r.AwayTeam,
-    fair, entry, sharp: psh.every(Number.isFinite), bookmaker: b365.every(Number.isFinite) ? "bet365" : "piyasa ortalaması",
-    model: e && e.games(r.HomeTeam, r.AwayTeam) >= 10 ? eloProbs(e.expected(r.HomeTeam, r.AwayTeam)) : null });
+for (const c of codes) {
+  const rows = fdFiles.filter(f => f?.rows && f.c === c).sort((x, y) => x.s.localeCompare(y.s)).flatMap(f => f.rows.map(r => ({ ...r, date: fdDate(r.Date) }))).filter(r => r.date && r.FTHG !== "" && r.FTHG !== undefined && Number.isFinite(+r.FTHG));
+  fdResults.push(...rows);
+  const up = fixtures.filter(r => r.Div === c).map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => { if (!r.date) return false; const t = Date.parse(londonToIso(r.date, r.Time)); return t > now && t <= now + HORIZON; });
+  for (const rec of walkLeague(rows, up).filter(x => !x.done)) {
+    const r = rec.r, o = oddsOf(r), kickoff = londonToIso(r.date, r.Time);
+    const base = { id: `fd-${c}-${r.date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: FD_LEAGUES[c], fdDiv: c, date: r.date, kickoff, home: r.HomeTeam, away: r.AwayTeam, fair: o.fair, entry: o.entry, sharp: o.sharp, bookmaker: num(r.B365H) ? "bet365" : "piyasa ortalaması", engine: "tam",
+      dossier: { formH: rec.formH, formA: rec.formA, restH: Math.round(rec.restH), restA: Math.round(rec.restA), h2h: rec.h2h, games: rec.games, market: o.fair && devig(o.fair), elo: rec.elo, pi: rec.pi, dc: rec.dc?.x12 || null, xg: rec.dx?.x12 || null, goals: rec.dc ? [rec.dc.lh, rec.dc.la] : null } };
+    if (model && o.fair) { const X = x12Features(rec, o.fair); if (X) { base.probs = softmax(X, model.x12); base.dossier.engine = base.probs; } }
+    if (model && o.ouFair && o.ouEntry) { const X = ouFeatures(rec, o.ouFair); if (X) { base.ou = { probs: softmax(X, model.ou), entry: o.ouEntry, fair: o.ouFair }; base.dossier.over25 = base.ou.probs[0]; } }
+    candidates.push(base);
+  }
 }
+note("football-data sonuçlar", fdResults.length > 0, `${fdResults.length} maç`);
 // 2) ESPN: tum ligler + basketbol, oran ve Elo
 const start = ymd(now - 330 * 86400e3), end = ymd(now + HORIZON);
 const leagues = [...ESPN_SOCCER.map(l => ({ s: "soccer", l })), ...ESPN_BASKET.map(l => ({ s: "basketball", l }))];
@@ -67,20 +66,25 @@ const today = new Date(now).toISOString().slice(0, 10);
 const known = {};
 for (const [k, s] of [["football", "Soccer"], ["basketball", "Basketball"]]) { try { known[k] = await sportsDbCount(today, s); } catch { known[k] = null; } }
 note("TheSportsDB (maç sayımı)", known.football !== null, known.football === null ? "erişilemedi" : `bugün ${known.football} futbol, ${known.basketball ?? "?"} basketbol`);
-// 4) Karar. Tek kaynakli oranda fark yalnizca Elo'dan gelir, daha yuksek esik ister.
+// 4) Karar. Tam motor: bilesenler + piyasa. Tek kaynakta fark yalnizca Elo'dan gelir, daha yuksek esik ister.
 const picks = []; let withOdds = 0, modelled = 0;
 for (const c of candidates) {
   if (!c.fair) continue;
-  withOdds++; if (c.model) modelled++;
+  withOdds++; if (c.model || c.probs) modelled++;
+  const full = c.engine === "tam";
+  const params = full && c.sharp ? cfg : { ...cfg, minEdge: cfg.minEdge + 0.03, weight: 0.1 };
   const labels = c.sport === "basketball" ? [c.home, c.away] : ["MS 1", "MS X", "MS 2"];
-  const params = c.sharp ? cfg : { ...cfg, minEdge: cfg.minEdge + 0.03 };
-  const d = decide({ fair: c.fair, entry: c.entry, model: c.model, labels }, params);
-  if (!d) continue;
-  picks.push({ id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, index: d.index, selection: d.label, odds: d.odds, probability: +(d.probability).toFixed(4), edge: +d.edge.toFixed(4), minPlayableOdds: +d.minPlayableOdds.toFixed(2), bookmaker: c.bookmaker, sharp: c.sharp, verified: c.sharp && c.sport === "football", fdDiv: c.fdDiv || null, date: c.date });
+  const options = [];
+  const d = decide({ fair: c.fair, entry: c.entry, model: c.model, probs: c.probs || null, labels }, params);
+  if (d && (c.probs || c.model)) options.push({ ...d, market: "1x2" });
+  if (c.ou) { const o = decide({ entry: c.ou.entry, fair: c.ou.fair, probs: c.ou.probs, labels: ["2,5 Üst", "2,5 Alt"] }, params); if (o) options.push({ ...o, market: "ou25" }); }
+  const b = options.sort((x, y) => y.edge - x.edge)[0];
+  if (!b) continue;
+  picks.push({ id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, market: b.market, index: b.index, selection: b.label, odds: b.odds, probability: +b.probability.toFixed(4), edge: +b.edge.toFixed(4), minPlayableOdds: +b.minPlayableOdds.toFixed(2), bookmaker: c.bookmaker, sharp: c.sharp, verified: full && c.sharp, fdDiv: c.fdDiv || null, date: c.date, dossier: c.dossier || null });
 }
 picks.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // 5) Defter: ilk gorulen oran kilitlenir, sonucu kaynaklardan kapat
-for (const p of picks) if (!ledger.some(l => l.id === p.id)) ledger.push({ ...p, status: "pending", recordedAt: new Date(now).toISOString() });
+for (const p of picks) if (!ledger.some(l => l.id === p.id)) ledger.push({ ...p, dossier: undefined, status: "pending", recordedAt: new Date(now).toISOString() });
 for (const l of ledger.filter(x => x.status === "pending" && Date.parse(x.kickoff) < now)) {
   let hs, as;
   if (l.fdDiv) { const r = fdResults.find(x => x.date === l.date && x.Div === l.fdDiv && x.HomeTeam === l.home && x.AwayTeam === l.away); if (r) { hs = +r.FTHG; as = +r.FTAG; } }

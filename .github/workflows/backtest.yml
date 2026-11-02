@@ -5,14 +5,14 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["scripts/backtest.mjs", "lib/engine.mjs", ".github/workflows/backtest.yml"]
+    paths: ["scripts/backtest.mjs", "lib/**", ".github/workflows/backtest.yml"]
 permissions:
   contents: write
 concurrency: { group: repo-write, cancel-in-progress: false }
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
