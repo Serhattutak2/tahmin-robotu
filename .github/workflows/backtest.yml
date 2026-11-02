@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["scripts/backtest.mjs", "lib/**", ".github/workflows/backtest.yml"]
+    paths: ["scripts/backtest.mjs", "lib/engine.mjs", "lib/ratings.mjs", "lib/stack.mjs", ".github/workflows/backtest.yml"]
 permissions:
   contents: write
 concurrency: { group: repo-write, cancel-in-progress: false }

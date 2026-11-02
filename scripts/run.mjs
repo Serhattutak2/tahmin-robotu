@@ -38,13 +38,28 @@ for (const c of codes) {
     candidates.push(base);
   }
 }
+{ const ds = fixtures.map(r => fdDate(r.Date)).filter(Boolean).sort(); if (ds.length) sources["football-data oranlar (Pinnacle)"].info += ` (${ds[0]} – ${ds.at(-1)}), ${candidates.length} tanesi önümüzdeki 48 saatte`; }
 note("football-data sonuçlar", fdResults.length > 0, `${fdResults.length} maç`);
 // 2) ESPN: tum ligler + basketbol, oran ve Elo
-const start = ymd(now - 330 * 86400e3), end = ymd(now + HORIZON);
+// ESPN uzun tarih araligini reddedebilir: gecmisi 30 gunluk parcalarla, canli gunleri ayrica cek.
 const leagues = [...ESPN_SOCCER.map(l => ({ s: "soccer", l })), ...ESPN_BASKET.map(l => ({ s: "basketball", l }))];
-const boards = await mapLimit(leagues, 5, async j => ({ ...j, events: await espnBoard(j.s, j.l, `${start}-${end}`) }));
+const ranges = []; for (let d = 330; d > 0; d -= 30) ranges.push(`${ymd(now - d * 86400e3)}-${ymd(now - Math.max(d - 29, 0) * 86400e3)}`);
+const live = `${ymd(now)}-${ymd(now + HORIZON)}`;
+const espnErrors = new Map();
+const boards = await mapLimit(leagues, 5, async j => {
+  const events = new Map();
+  let liveOk = false;
+  for (const r of [...ranges, live]) {
+    try { for (const ev of await espnBoard(j.s, j.l, r)) events.set(ev.id, ev); if (r === live) liveOk = true; }
+    catch (e) { espnErrors.set(e.message, (espnErrors.get(e.message) || 0) + 1); }
+    if (!liveOk && r !== live && !events.size && espnErrors.size && ranges.indexOf(r) >= 2) break;
+  }
+  if (!liveOk) { try { for (const ev of await espnBoard(j.s, j.l, ymd(now))) events.set(ev.id, ev); liveOk = true; } catch (e) { espnErrors.set(e.message, (espnErrors.get(e.message) || 0) + 1); } }
+  return liveOk ? { ...j, events: [...events.values()] } : { error: "live" };
+});
 const okBoards = boards.filter(b => b?.events);
-note("ESPN", okBoards.length > 0, `${okBoards.length}/${leagues.length} lig`);
+const espnOdds = okBoards.reduce((a, b) => a + b.events.filter(e => e.odds).length, 0);
+note("ESPN", okBoards.length > 0, `${okBoards.length}/${leagues.length} lig, ${okBoards.reduce((a, b) => a + b.events.length, 0)} maç, ${espnOdds} oranlı${espnErrors.size ? ` · hata: ${[...espnErrors].slice(0, 2).map(([k, v]) => `${k} x${v}`).join(", ")}` : ""}`);
 const espnAll = [];
 for (const b of okBoards) {
   const basket = b.s === "basketball", e = new Elo(basket ? { k: 14, home: 70 } : {});
