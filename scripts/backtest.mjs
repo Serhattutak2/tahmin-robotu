@@ -56,6 +56,9 @@ const finalX = fit(data.map(d => ({ X: d.X, y: d.y })), 8), finalOu = fit(data.f
 const report = { generatedAt: new Date().toISOString(), filesLoaded: files.filter(f => f?.rows).length, filesTotal: jobs.length, usable: data.length, sharpShare: +(data.filter(d => d.o.sharp).length / (data.length || 1)).toFixed(3), validationSeasons: VALID, testSeasons: TEST, selected: best,
   scoresValidation: scores(VALID), scoresTest: scores(TEST), validation: sumr(bets(VALID, best)), test: sumr(bets(TEST, best)), testAvgOdds: sumr(bets(TEST, best, "avg")), testMaxOdds: sumr(bets(TEST, best, "max")),
   bySeason: Object.fromEntries(TEST.map(s => [s, sumr(bets([s], best))])), byLeague: Object.fromEntries(Object.entries(FD_LEAGUES).map(([c, n]) => [n, sumr(bets(TEST, best).filter(b => b.code === c))])),
+  sharpBySeason: Object.fromEntries(FD_SEASONS.map(s => { const r = data.filter(d => d.season === s); return [s, { matches: r.length, sharp: r.filter(d => d.o.sharp).length }]; })),
+  byOddsBand: Object.fromEntries([[1.3, 2], [2, 3], [3, 4.5], [4.5, 10]].map(([a, z]) => [`${a}-${z}`, sumr(bets(TEST, best).filter(b => b.odds >= a && b.odds < z))])),
+  byMarket: { "1x2": sumr(bets(TEST, best).filter(b => b.market === "1x2")), "2,5": sumr(bets(TEST, best).filter(b => b.market === "ou")) },
   weights: Object.fromEntries(FEATURE_NAMES.map((n, i) => [n, finalX[i]])), topValidation: ranked.slice(0, 5).map(x => ({ ...x.cfg, ...x.v })) };
 // Rastgele gecmis mac sinavi: motor maci oynanmadan once ne dedi, ne oldu?
 let seed = 20261102; const rnd = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
