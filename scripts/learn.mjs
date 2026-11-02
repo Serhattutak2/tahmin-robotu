@@ -32,8 +32,10 @@ const sum = l => { const r = l.filter(x => x.real !== null), pr = v => v.y ? v.o
 const tr = all.filter(d => d.date < d24), sel = all.filter(d => d.date >= d24 && d.date < d12), fin = all.filter(d => d.date >= d12), before = [...tr, ...sel];
 const calA = calFrom(tr), wA = fitMeta(tr, calA);
 const selPicks = sel.map(d => pick(d, calA, wA)).filter(Boolean);
-const grid = [.7, .72, .75, .78, .8, .82, .85, .87, .9].map(t => ({ t, s: sum(selPicks.filter(x => x.mp >= t)) })).filter(x => x.s.maç >= 300).sort((a, b) => (b.s.tahminiOranKar / b.s.maç) - (a.s.tahminiOranKar / a.s.maç));
-const T = grid[0]?.t ?? 0.8;
+const grid = [.7, .72, .75, .78, .8, .82, .85, .87, .9].map(t => ({ t, s: sum(selPicks.filter(x => x.mp >= t)) })).filter(x => x.s.maç >= 300).map(x => ({ ...x, r: x.s.tahminiOranKar / x.s.maç }));
+const bestR = Math.max(...grid.map(x => x.r));
+// Sonuc neredeyse aynıysa (fark 0,002 birimden az) daha secici esik tercih edilir.
+const T = grid.filter(x => x.r >= bestR - 0.002).sort((a, b) => b.t - a.t)[0]?.t ?? 0.8;
 const calB = calFrom(before), wB = fitMeta(before, calB);
 const finPicks = fin.map(d => { const c = pick(d, calB, wB); return c && { ...c, d }; }).filter(Boolean), finBase = fin.map(d => basePick(d, calB)).filter(Boolean);
 const chosen = finPicks.filter(x => x.mp >= T);
@@ -45,7 +47,7 @@ const est = chosen.filter(x => x.real !== null), oddsErr = est.length ? +(est.re
 const days = [...new Set(all.map(d => d.date))].slice(-2), pre = all.filter(d => d.date < days[0]), calC = calFrom(pre), wC = fitMeta(pre, calC);
 const lastRows = all.filter(d => days.includes(d.date)).map(d => { const c = pick(d, calC, wC); return c && c.mp >= T ? { date: d.date, league: d.league, match: `${d.home} – ${d.away}`, score: `${d.gh}-${d.ga}`, selection: c.label, oran: c.odd, gercekOran: c.real !== null, won: !!c.y, mp: +c.mp.toFixed(3), y: c.y, real: c.real, odd: c.odd } : null; }).filter(Boolean).sort((a, b) => b.mp - a.mp);
 const calF = calFrom(all), wF = fitMeta(all, calF);
-const report = { generatedAt: new Date(now).toISOString(), eşik: T, eşikDenemeleri: grid, sınav: { eskiKural: sum(finBase), yeniTümü: sum(finPicks), yeniSeçilen: sum(chosen) }, oranTahminHatası: oddsErr, dersler: { pazar: by(chosen, x => GROUP_NAMES[GROUP(x.key)]), lig: by(chosen, x => x.d.league), uyum: by(chosen, agree) }, son2: { days, özet: sum(lastRows), seçimler: lastRows } };
+const report = { generatedAt: new Date(now).toISOString(), öncekiCommit: "v2", eşik: T, eşikDenemeleri: grid, sınav: { eskiKural: sum(finBase), yeniTümü: sum(finPicks), yeniSeçilen: sum(chosen) }, oranTahminHatası: oddsErr, dersler: { pazar: by(chosen, x => GROUP_NAMES[GROUP(x.key)]), lig: by(chosen, x => x.d.league), uyum: by(chosen, agree) }, son2: { days, özet: sum(lastRows), seçimler: lastRows } };
 fs.writeFileSync("docs/learn.json", JSON.stringify(report, null, 1));
 fs.writeFileSync("config/meta.json", JSON.stringify({ generatedAt: report.generatedAt, threshold: T, weights: wF, cal: calF }));
 console.log(JSON.stringify({ ...report, son2: { ...report.son2, seçimler: lastRows.length } }));
