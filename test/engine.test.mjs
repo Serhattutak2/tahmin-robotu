@@ -34,3 +34,5 @@ test("tavsiye 1,20 alti vermez", () => { const r = recommend(marketProbs(2, 1));
 test("sonuc", () => { assert.equal(outcome(byKey.KGV, 1, 1), 1); assert.equal(outcome(byKey.IY05, 1, 1, null, null), null); assert.equal(outcome(byKey.IY05, 1, 1, 0, 0), 0); });
 test("orandan gol", () => { const g = impliedGoals([.5, .27, .23]); assert.ok(g[0] > g[1]); });
 test("kalibrasyon yonu", () => { const pts = Array.from({ length: 2000 }, (_, i) => [0.5, i % 10 < 7 ? 1 : 0]); assert.ok(fitCal(pts).a > 0); });
+import { metaX, META_DIM, estOdds, GROUP } from "../lib/meta.mjs";
+test("ders ozelligi ve oran tahmini", () => { const x = metaX("KGV", .6, .55, [1.5, 1.2], "E0"); assert.equal(x.length, META_DIM); assert.ok(x.every(Number.isFinite)); assert.equal(x[5 + GROUP("KGV")], 1); assert.ok(estOdds(.5) < 2); });
