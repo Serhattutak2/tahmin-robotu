@@ -1,0 +1,75 @@
+{
+ "generatedAt": "2026-11-02T20:41:32.565Z",
+ "from": "2026-10-03",
+ "to": "2026-11-02",
+ "trainedBefore": "2026-10-03",
+ "matches": 782,
+ "sharp": 0,
+ "strategy": {
+  "minEdge": 0.04,
+  "maxOdds": 10,
+  "minOdds": 1.3,
+  "source": "backtest",
+  "generatedAt": "2026-11-02T20:41:32.067Z"
+ },
+ "accuracy": {
+  "motor": 0.5767,
+  "piyasa": 0.5754
+ },
+ "rps": {
+  "motor": 0.2014,
+  "piyasa": 0.2023
+ },
+ "picks": {
+  "picks": 0
+ },
+ "widerEdge1pct": {
+  "picks": 5,
+  "hitRate": 0.4,
+  "avgOdds": 3.23,
+  "profit": 0.1,
+  "roi": 0.01,
+  "z": 0.02
+ },
+ "byLeague": {},
+ "byMarket": {},
+ "byBand": {},
+ "calibration": [
+  {
+   "aralik": "%0-20",
+   "n": 339,
+   "beklenen": 0.15,
+   "gercek": 0.121
+  },
+  {
+   "aralik": "%20-35",
+   "n": 1182,
+   "beklenen": 0.269,
+   "gercek": 0.238
+  },
+  {
+   "aralik": "%35-50",
+   "n": 477,
+   "beklenen": 0.417,
+   "gercek": 0.468
+  },
+  {
+   "aralik": "%50-65",
+   "n": 242,
+   "beklenen": 0.569,
+   "gercek": 0.645
+  },
+  {
+   "aralik": "%65-100",
+   "n": 106,
+   "beklenen": 0.727,
+   "gercek": 0.764
+  }
+ ],
+ "lessons": [
+  "Motor bu ay piyasadan biraz daha iyi tahmin etti (RPS 0.2014 / 0.2023).",
+  "Yalnızca 0 seçim var. Bir ay kesin sonuç için çok kısa."
+ ],
+ "filters": [],
+ "rows": []
+}
