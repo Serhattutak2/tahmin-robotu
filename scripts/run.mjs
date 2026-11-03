@@ -206,7 +206,8 @@ const byEvaluated = { football: candidates.filter(c => c.sport === "football").l
 const meta = read("config/meta.json", null), decision = read("config/decision.json", null), win = decision?.winner, cal = decision?.cal || null, tips = read("docs/tips.json", []);
 const dc3 = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null;
 const toks = n => String(n).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length >= 4 && !/^(club|football|united|city|real|sport)$/.test(w));
-const sameName = (a, b) => sameTeam(a, b) || toks(a).some(w => toks(b).includes(w));
+const acro = n => String(n).split(/\s+/).filter(Boolean).map(w => w[0]).join("").toLowerCase();
+const sameName = (a, b) => sameTeam(a, b) || toks(a).some(w => toks(b).includes(w)) || acro(a) === String(b).toLowerCase() || acro(b) === String(a).toLowerCase();
 let eloClubs = [], eloUsed = 0; try { eloClubs = await clubElo(todayIst); } catch { try { eloClubs = await clubElo(ist(now - 864e5)); } catch (e) { note("ClubElo", false, e.message); } }
 const bkCfg = read("config/basket.json", null);
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
