@@ -210,11 +210,12 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
   if (win && c.fair) { const market = devig(c.fair), math = marketProbs(goals[0], goals[1]), P = k => ({ MS1: 0, MSX: 1, MS2: 2 })[k]; const edge = win.edge, w = win.w, pure3 = win.src === "pure" ? c.dossier?.statsOnly : null, mathP = k => pure3 ? pure3[P(k)] : math[k], vals = ["MS1", "MSX", "MS2"].map(k => ({ k, p: w * mathP(k) + (1 - w) * market[P(k)], o: realOdd(k) })).filter(x => x.o >= 1.3 && x.o <= 6 && x.p * x.o - 1 >= edge).sort((a, b) => b.p * b.o - a.p * a.o); if (vals[0]) chosen = { key: vals[0].k, label: byKey[vals[0].k].label, minPlay: +((1 + edge) / vals[0].p).toFixed(2), odds: vals[0].o, value: true, book: c.entryBooks?.[P(vals[0].k)] || c.bookmaker || null }; }
   if (!chosen && meta && c.fair) {
     const mk = devig(c.fair), ig = impliedGoals(mk), mg = marketProbs(ig[0], ig[1]), mth = marketProbs(goals[0], goals[1]), allowed = MARKETS.filter(m => (c.fdDiv && !(c.fdDiv in EXTRA_LEAGUES)) || !m.half);
-    const opts = allowed.map(m => { const pm = mg[m.key], p = applyCal(mth[m.key], meta.cal[m.key]), est = estOdds(pm), real = realOdd(m.key), odd = real ?? est; if (odd < 1.2 || p < 0.6) return null; const code = c.fdDiv || "", z = c.feats && meta.mean ? c.feats.map((v, i) => Math.max(-4, Math.min(4, (v - meta.mean[i]) / meta.sd[i]))) : null, mp = score(metaX(m.key, p, pm, goals, code, z), meta.weights)[1]; return { key: m.key, label: m.label, mp, est, real, odd }; }).filter(Boolean).sort((a, b) => b.mp - a.mp);
+    const z = c.feats && meta.mean ? c.feats.map((v, i) => Math.max(-4, Math.min(4, (v - meta.mean[i]) / meta.sd[i]))) : null, code = c.fdDiv || "";
+    const opts = allowed.map(m => { const pm = mg[m.key], p = applyCal(mth[m.key], meta.cal[m.key]), est = estOdds(pm, m.key), real = realOdd(m.key), odd = real ?? est; if (odd < 1.2 || p < 0.6) return null; const mp = applyCal(score(metaX(m.key, p, pm, goals, code, z), meta.weights)[1], meta.metaCal); return { key: m.key, label: m.label, mp, est, real, odd, ev: mp * odd - 1 }; }).filter(Boolean).sort((a, b) => b.ev - a.ev);
     if (!opts.length) return null;
-    const b = opts[0], minPlay = +Math.max(1.2, 1.03 / b.mp).toFixed(2);
-    chosen = { safe: b.mp >= meta.threshold, key: b.key, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real && b.real >= minPlay ? b.real : null, value: !!(b.real && b.real >= minPlay), book: b.real && b.real >= minPlay ? c.bookmaker || null : null };
-    return { ...base, bet: chosen, alts: opts.filter(x => x.key !== b.key).slice(0, 2).map(x => ({ label: x.label, minPlay: +Math.max(1.2, 1.03 / x.mp).toFixed(2) })) };
+    const need = x => +Math.max(1.2, (1 + (meta.evThreshold || 0)) / x.mp).toFixed(2), b = opts[0], minPlay = need(b);
+    chosen = { safe: b.ev >= (meta.evThreshold ?? 0.05), key: b.key, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real ? +b.real.toFixed(2) : null, value: !!(b.real && b.real >= minPlay), book: b.real && b.real >= minPlay ? c.bookmaker || null : null };
+    return { ...base, bet: chosen, alts: opts.filter(x => x.key !== b.key).slice(0, 3).map(x => ({ label: x.label, minPlay: need(x) })) };
   }
   if (!chosen) { const b = list[0], o = realOdd(b.key); chosen = { safe: b.p >= 0.8, key: b.key, label: b.label, minPlay: b.minPlay, odds: o && o >= b.minPlay ? o : null, value: !!(o && o >= b.minPlay), book: o && o >= b.minPlay ? c.bookmaker || null : null }; }
   return { ...base, bet: chosen, alts: list.filter(x => x.key !== chosen.key).slice(0, 2).map(x => ({ label: x.label, minPlay: x.minPlay })) };
@@ -232,7 +233,7 @@ for (const t of tips.filter(x => x.status === "pending" && Date.parse(x.kickoff)
 }
 fs.writeFileSync("docs/tips.json", JSON.stringify(tips.slice(-20000)));
 const doneTips = tips.filter(t => (t.status === "won" || t.status === "lost") && t.safe), tipCard = { done: doneTips.length, won: doneTips.filter(t => t.won).length, pending: tips.filter(t => t.status === "pending" && t.safe).length, profit: +doneTips.reduce((a, t) => a + t.profit, 0).toFixed(1) };
-const dec = read("docs/decision.json", null), verdict = dec?.kazananSinav ? (dec.kazananSinav.guvenAlt > 0 ? "Son 12 ay testi olumlu, ama gerçek kayıt birikmeli." : "Son 12 ay testinde kâr kanıtlanmadı.") : "Geçmiş test henüz tamamlanmadı.";
+const lr = read("docs/learn.json", null), ls = lr?.sınav?.yeniSeçilen, verdict = ls ? `Son 12 ay sınavı: ${ls.maç} seçim, robotun oranlarıyla ${ls.tahminiOranKar} birim; gerçek oranı bilinen ${ls.gercekOranlıMaç} seçimde ${ls.gercekOranKar} birim.` : "Geçmiş test henüz tamamlanmadı.";
 // Her mac defteri: secilsin secilmesin tum tahminler sonuc gorulmeden kaydedilir, sonra puanlanir.
 const shadow = read("docs/shadow.json", []);
 for (const c of candidates) { if (!c.fair || shadow.some(x => x.id === c.id)) continue; const market = devig(c.fair); if (!market) continue; shadow.push({ id: c.id, sport: c.sport, league: c.league, sportKey: c.sportKey || null, kickoff: c.kickoff, date: c.date, home: c.home, away: c.away, motor: (c.probs || market).map(v => +v.toFixed(4)), market: market.map(v => +v.toFixed(4)), status: "pending" }); }

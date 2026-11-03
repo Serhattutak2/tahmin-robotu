@@ -26,35 +26,37 @@ for (const d of all) d.z = d.f.map((v, i) => Math.max(-4, Math.min(4, (v - mean[
 const calFrom = rows => Object.fromEntries(MARKETS.map(m => [m.key, fitCal(rows.slice(-30000).flatMap(d => { const y = outcome(m, d.gh, d.ga, d.hth, d.hta); return y === null ? [] : [[d.grid[m.key], y]]; }))]));
 // Bir mac icin aday pazarlar: robot oranini kendi hesaplar, 1,20 alti elenir.
 function cands(d, cal) {
-  return MARKETS.flatMap(m => { const y = outcome(m, d.gh, d.ga, d.hth, d.hta); if (y === null) return []; const pm = d.mgrid[m.key], p = applyCal(d.grid[m.key], cal[m.key]), est = estOdds(pm), real = d.real[m.key] ?? null, odd = real ?? est; if (odd < MIN || p < 0.6) return []; return [{ key: m.key, label: m.label, p, pm, est, real, odd, y }]; });
+  return MARKETS.flatMap(m => { const y = outcome(m, d.gh, d.ga, d.hth, d.hta); if (y === null) return []; const pm = d.mgrid[m.key], p = applyCal(d.grid[m.key], cal[m.key]), est = estOdds(pm, m.key), real = d.real[m.key] ?? null, odd = real ?? est; if (odd < MIN || p < 0.6) return []; return [{ key: m.key, label: m.label, p, pm, est, real, odd, y }]; });
 }
 function fitMeta(rows, cal) { const tr = rows.flatMap(d => cands(d, cal).map(c => ({ x: metaX(c.key, c.p, c.pm, d.goals, d.code, d.z), y: c.y ? 1 : 0, off: null }))); return fitLogit(tr, META_DIM, { classes: 2, iters: 140, lr: 0.3 }); }
-const metaP = (x, w) => score(x, w)[1];
-function pick(d, cal, w) { const l = cands(d, cal).map(c => ({ ...c, mp: metaP(metaX(c.key, c.p, c.pm, d.goals, d.code, d.z), w) })).sort((a, b) => b.mp - a.mp); return l[0] || null; }
+const metaP = (x, m) => applyCal(score(x, m.w)[1], m.c);
+// Ders modeli ve kalibrasyonu; yalniz verilen maclarla.
+function model(rows, cal) { const w = fitMeta(rows, cal), pairs = []; rows.forEach((d, i) => { if (i % 5) return; for (const c of cands(d, cal)) pairs.push([score(metaX(c.key, c.p, c.pm, d.goals, d.code, d.z), w)[1], c.y ? 1 : 0]); }); return { w, c: fitCal(pairs) }; }
+// Secim: en cok tutacak olan degil, en yuksek beklenen kar.
+function pick(d, cal, m) { const l = cands(d, cal).map(c => { const mp = metaP(metaX(c.key, c.p, c.pm, d.goals, d.code, d.z), m); return { ...c, mp, ev: mp * c.odd - 1 }; }).sort((a, b) => b.ev - a.ev); return l[0] || null; }
 function basePick(d, cal) { return cands(d, cal).sort((a, b) => b.p - a.p)[0] || null; }
+const byOdds = l => Object.fromEntries([[1.2, 1.5], [1.5, 2], [2, 3], [3, 99]].map(([a, z]) => [`${a}-${z}`, sum(l.filter(x => x.odd >= a && x.odd < z))]));
 const sum = l => { const r = l.filter(x => x.real !== null), pr = v => v.y ? v.odd - 1 : -1; return { maç: l.length, tutan: l.filter(x => x.y).length, başaBaşOran: l.filter(x => x.y).length ? +(l.length / l.filter(x => x.y).length).toFixed(3) : null, tahminiOranKar: +l.reduce((a, x) => a + pr(x), 0).toFixed(1), gercekOranlıMaç: r.length, gercekOranKar: +r.reduce((a, x) => a + pr(x), 0).toFixed(1) }; };
 const tr = all.filter(d => d.date < d24), sel = all.filter(d => d.date >= d24 && d.date < d12), fin = all.filter(d => d.date >= d12), before = [...tr, ...sel];
-const calA = calFrom(tr), wA = fitMeta(tr, calA);
+const calA = calFrom(tr), wA = model(tr, calA);
 const selPicks = sel.map(d => pick(d, calA, wA)).filter(Boolean);
-const TS = [.7, .71, .72, .73, .74, .745, .75, .755, .76, .765, .77, .78, .8, .82, .85];
-const hit = x => x.s.maç ? x.s.tutan / x.s.maç : 0;
-const grid = TS.map(t => ({ t, s: sum(selPicks.filter(x => x.mp >= t)) }));
-const usable = grid.filter(x => x.s.maç >= 100), reach = usable.filter(x => hit(x) >= 0.8).sort((a, b) => a.t - b.t);
-// Hedef: secim yilinda %80 ve ustu. Yoksa en yuksek isabetli esik.
-const T = reach[0]?.t ?? [...usable].sort((a, b) => hit(b) - hit(a))[0]?.t ?? 0.8;
-const calB = calFrom(before), wB = fitMeta(before, calB);
+const TS = [0, .005, .01, .02, .03, .04, .05, .07, .1, .15];
+const grid = TS.map(t => ({ t, s: sum(selPicks.filter(x => x.ev >= t)) }));
+// Hedef kar: secim yilinda seçim basina en yuksek kar, en az 150 secimle. Kazanma yuzdesi hedef degil.
+const usable = grid.filter(x => x.s.maç >= 150).sort((a, b) => b.s.tahminiOranKar / b.s.maç - a.s.tahminiOranKar / a.s.maç), T = usable[0]?.t ?? .05, selProfit = usable[0] ? usable[0].s.tahminiOranKar > 0 : false;
+const calB = calFrom(before), wB = model(before, calB);
 const finPicks = fin.map(d => { const c = pick(d, calB, wB); return c && { ...c, d }; }).filter(Boolean), finBase = fin.map(d => basePick(d, calB)).filter(Boolean);
-const chosen = finPicks.filter(x => x.mp >= T);
+const chosen = finPicks.filter(x => x.ev >= T);
 // Dersler: tutan/tutmayan karsilastirmasi
 const by = (l, f) => { const o = {}; for (const x of l) { const k = f(x); (o[k] ||= []).push(x); } return Object.fromEntries(Object.entries(o).map(([k, v]) => [k, sum(v)])); };
 const agree = x => { const g = x.p - x.pm; return g > 0.03 ? "Matematik piyasadan daha emin" : g < -0.03 ? "Piyasa matematikten daha emin" : "İkisi uyumlu"; };
 const est = chosen.filter(x => x.real !== null), oddsErr = est.length ? +(est.reduce((a, x) => a + Math.abs(x.est - x.real), 0) / est.length).toFixed(3) : null;
 // Gecen hafta: ders ve kalibrasyon yalniz o haftadan oncesiyle. Skor yalniz sonunda karsilastirilir.
-const lastDay = all.at(-1).date, weekStart = day(Date.parse(lastDay) - 6 * 864e5), pre = all.filter(d => d.date < weekStart), calC = calFrom(pre), wC = fitMeta(pre, calC);
-const weekRows = all.filter(d => d.date >= weekStart).map(d => { const c = pick(d, calC, wC); return c && c.mp >= T ? { date: d.date, league: d.league, match: `${d.home} – ${d.away}`, score: `${d.gh}-${d.ga}`, selection: c.label, oran: c.odd, gercekOran: c.real !== null, won: !!c.y, mp: +c.mp.toFixed(3), y: c.y, real: c.real, odd: c.odd } : null; }).filter(Boolean).sort((a, b) => b.mp - a.mp);
+const lastDay = all.at(-1).date, weekStart = day(Date.parse(lastDay) - 6 * 864e5), pre = all.filter(d => d.date < weekStart), calC = calFrom(pre), wC = model(pre, calC);
+const weekRows = all.filter(d => d.date >= weekStart).map(d => { const c = pick(d, calC, wC); return c && c.ev >= T ? { date: d.date, league: d.league, match: `${d.home} – ${d.away}`, score: `${d.gh}-${d.ga}`, selection: c.label, oran: c.odd, gercekOran: c.real !== null, won: !!c.y, mp: +c.mp.toFixed(3), ev: +c.ev.toFixed(3), y: c.y, real: c.real, odd: c.odd } : null; }).filter(Boolean).sort((a, b) => b.ev - a.ev);
 const addedLeagues = Object.fromEntries(Object.keys(EXTRA_LEAGUES).map(c => [EXTRA_LEAGUES[c], all.filter(d => d.code === c).length]));
-const calF = calFrom(all), wF = fitMeta(all, calF);
-const report = { generatedAt: new Date(now).toISOString(), hedef80SeçimYılındaTuttu: reach.length > 0, seçimYılı: { başlangıç: d24, bitiş: d12 }, sınavYılı: { başlangıç: d12 }, sınavEşikleri: TS.map(t => ({ t, ...sum(finPicks.filter(x => x.mp >= t)) })), eşik: T, eşikDenemeleri: grid, sınav: { eskiKural: sum(finBase), yeniTümü: sum(finPicks), yeniSeçilen: sum(chosen) }, oranTahminHatası: oddsErr, dersler: { pazar: by(chosen, x => GROUP_NAMES[GROUP(x.key)]), lig: by(chosen, x => x.d.league), uyum: by(chosen, agree) }, geçenHafta: { başlangıç: weekStart, bitiş: lastDay, incelenenMaç: all.filter(d => d.date >= weekStart).length, özet: sum(weekRows), seçimler: weekRows }, ekLigler: addedLeagues, toplamMaç: all.length };
+const calF = calFrom(all), wF = model(all, calF);
+const report = { generatedAt: new Date(now).toISOString(), seçimYılıKârlı: selProfit, seçimYılı: { başlangıç: d24, bitiş: d12 }, sınavYılı: { başlangıç: d12 }, sınavEşikleri: TS.map(t => ({ t, ...sum(finPicks.filter(x => x.ev >= t)) })), eşik: T, eşikDenemeleri: grid, sınav: { eskiKural: sum(finBase), yeniTümü: sum(finPicks), yeniSeçilen: sum(chosen) }, oranTahminHatası: oddsErr, dersler: { pazar: by(chosen, x => GROUP_NAMES[GROUP(x.key)]), lig: by(chosen, x => x.d.league), uyum: by(chosen, agree), oran: byOdds(chosen), enIyiPazarlar: Object.entries(by(chosen, x => x.label)).sort((a, b) => b[1].tahminiOranKar - a[1].tahminiOranKar).slice(0, 10), enKotuPazarlar: Object.entries(by(chosen, x => x.label)).sort((a, b) => a[1].tahminiOranKar - b[1].tahminiOranKar).slice(0, 10) }, geçenHafta: { başlangıç: weekStart, bitiş: lastDay, incelenenMaç: all.filter(d => d.date >= weekStart).length, özet: sum(weekRows), seçimler: weekRows }, ekLigler: addedLeagues, toplamMaç: all.length };
 fs.writeFileSync("docs/learn.json", JSON.stringify(report, null, 1));
-fs.writeFileSync("config/meta.json", JSON.stringify({ generatedAt: report.generatedAt, threshold: T, weights: wF, cal: calF, mean, sd }));
+fs.writeFileSync("config/meta.json", JSON.stringify({ generatedAt: report.generatedAt, evThreshold: T, profitable: selProfit, weights: wF.w, metaCal: wF.c, cal: calF, mean, sd }));
 console.log(JSON.stringify({ ...report, geçenHafta: { ...report.geçenHafta, seçimler: weekRows.length } }));
