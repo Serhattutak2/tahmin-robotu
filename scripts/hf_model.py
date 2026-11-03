@@ -19,6 +19,17 @@ df = fx.merge(st, on="id", how="left").join(fair, on="id").join(mx, on="id").joi
 for col in df.columns:
     if col not in ("date_utc",): df[col] = pd.to_numeric(df[col], errors="coerce").astype(float)
 df["date_utc"] = pd.to_datetime(df.date_utc); df = df.sort_values("date_utc").reset_index(drop=True)
+# Sizinti kontrolu: ayni mac iki kez kayitliysa ilki ikincisine sonucu sizdirir. Bir takim 2 gun icinde iki kez ayni rakiple oynayamaz.
+n0 = len(df); df["gun"] = df.date_utc.dt.floor("D")
+keep = []; seen = {}
+for i, r in enumerate(df[["h","a","gun"]].itertuples(index=False)):
+    k = (r.h, r.a); last = seen.get(k)
+    if last is not None and (r.gun - last).days <= 2: keep.append(False); continue
+    seen[k] = r.gun; keep.append(True)
+df = df[keep].reset_index(drop=True); DUP = n0 - len(df); print("cift kayit", DUP, flush=True)
+# Ayni takimin ayni gun birden cok maci da supheli: ikisi de cikarilir.
+cnt = pd.concat([df[["h","gun"]].rename(columns={"h":"t"}), df[["a","gun"]].rename(columns={"a":"t"})]).groupby(["t","gun"]).size()
+bad = set(cnt[cnt > 1].index); mask = [((h, g) not in bad and (a, g) not in bad) for h, a, g in zip(df.h, df.a, df.gun)]; SAME = len(df) - sum(mask); df = df[mask].reset_index(drop=True); print("ayni gun iki mac", SAME, flush=True)
 rate["id"]=pd.to_numeric(rate["id"]).astype(float); rate["t"]=pd.to_numeric(rate["t"]).astype(float); coach["id"]=pd.to_numeric(coach["id"]).astype(float); coach["t"]=pd.to_numeric(coach["t"]).astype(float)
 rt = rate.set_index(["id","t"]).r.to_dict() if len(rate) else {}; ch = coach.set_index(["id","t"]).coach.to_dict()
 # Kronolojik: mac oncesi takim durumu, mac sonrasi guncelleme.
@@ -82,7 +93,7 @@ for s in("r","s"):
             past=O[O.yr<Y]
             if len(past)<3000: continue
             best=max(((x,bets(past,s,e,x)[0]) for x in(.02,.03,.05,.08,.12,.2)),key=lambda t:(t[1].mean() if len(t[1])>=150 else -9))
-            v,oo,_,_=bets(O[O.yr==Y],s,e,best[0]);V.append(v);OO.append(oo);rows2.append(dict(tür={"r":"düzeltme","s":"istatistik"}[s],oran=e,yıl=int(Y),eşik=best[0],**st(v,oo)))
+            v,oo,_,_=bets(O[O.yr==Y],s,e,best[0]);V.append(v);OO.append(oo);rows2.append(dict(tür={"r":"düzeltme","s":"istatistik"}[s],kaynak=e,yıl=int(Y),eşik=best[0],**st(v,oo)))
         if V: wf[f"{ {'r':'düzeltme','s':'istatistik'}[s] }|{e}"]=st(np.concatenate(V),np.concatenate(OO))
-rep=dict(toplamMaç=int(len(df)),testMaç=int(len(O)),yıllar=res,ilerleyenKar=wf,yılKar=rows2,önem=sorted(imp.items(),key=lambda x:-x[1])[:20],veri=dict(xgMaç=int(df.home_xg.notna().sum()),oyuncuPuanı=int(len(rate))))
+rep=dict(toplamMaç=int(len(df)),testMaç=int(len(O)),yıllar=res,ilerleyenKar=wf,yılKar=rows2,önem=sorted(imp.items(),key=lambda x:-x[1])[:20],sızıntıKontrol=dict(çiftKayıt=int(DUP),aynıGün=int(SAME)),veri=dict(xgMaç=int(df.home_xg.notna().sum()),oyuncuPuanı=int(len(rate))))
 json.dump(rep,open("docs/hfmodel.json","w"),ensure_ascii=False,indent=1);print(json.dumps(rep["ilerleyenKar"],ensure_ascii=False))
