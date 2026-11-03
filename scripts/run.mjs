@@ -3,12 +3,13 @@ import fs from "node:fs";
 import { Elo, eloProbs, decide, devig, num, fdDate, sameTeam, settle, summarize } from "../lib/engine.mjs";
 import { walkLeague, oddsOf } from "../lib/ratings.mjs";
 import { matchNews } from "../lib/news.mjs";
-import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate, TOA_TO_FD, fdTeam, eventToRow, fetchEvents, creditCost, realTotals, basketOptions } from "../lib/oddsapi.mjs";
+import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate, TOA_TO_FD, fdTeam, eventToRow, TOA_EXTRA, fetchEvents, creditCost, realTotals, basketOptions } from "../lib/oddsapi.mjs";
 import { score } from "../lib/features.mjs";
 import { MARKETS, byKey, marketProbs, impliedGoals, recommend, outcome, applyCal } from "../lib/markets.mjs";
 import { metaX, estOdds } from "../lib/meta.mjs";
 import { x12Features, ouFeatures, softmax } from "../lib/stack.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
+import { EXTRA_LEAGUES, ALL_LEAGUES, extraRows, clubElo } from "../lib/sources.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const ledger = read("docs/ledger.json", []);
@@ -48,7 +49,10 @@ if (toaKey) {
 } else note("The Odds API", false, "Anahtar eklenmedi");
 const usedToa = new Set();
 // 1) football-data: gecmis + Pinnacle oranli fikstur -> tam motor
-const codes = Object.keys(FD_LEAGUES), recent = FD_SEASONS.slice(-4);
+const extraData = Object.fromEntries((await mapLimit(Object.keys(EXTRA_LEAGUES), 4, async c => [c, await extraRows(c)])).filter(Array.isArray));
+note("football-data ek ligler", Object.keys(extraData).length > 0, `${Object.keys(extraData).length}/${Object.keys(EXTRA_LEAGUES).length} lig`);
+const fourYears = new Date(now - 4 * 365 * 864e5).toISOString().slice(0, 10);
+const codes = Object.keys(ALL_LEAGUES), recent = FD_SEASONS.slice(-4);
 const fdFiles = await mapLimit(recent.flatMap(s => codes.map(c => ({ s, c }))), 6, async j => ({ ...j, rows: await fdSeason(j.s, j.c) }));
 const fdResults = [];
 let fixtures = [];
@@ -57,10 +61,11 @@ const model = read("config/model.json", null), calibration = read("config/calibr
 const zf = f => f.map((v, i) => Math.max(-5, Math.min(5, (v - engine.mean[i]) / engine.sd[i])));
 const candidates = []; let unmatched = 0;
 for (const c of codes) {
-  const rows = fdFiles.filter(f => f?.rows && f.c === c).sort((x, y) => x.s.localeCompare(y.s)).flatMap(f => f.rows.map(r => ({ ...r, date: fdDate(r.Date) }))).filter(r => r.date && r.FTHG !== "" && r.FTHG !== undefined && Number.isFinite(+r.FTHG));
+  const srcRows = c in EXTRA_LEAGUES ? (extraData[c] || []).map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => r.date >= fourYears).sort((x, y) => x.date.localeCompare(y.date)) : fdFiles.filter(f => f?.rows && f.c === c).sort((x, y) => x.s.localeCompare(y.s)).flatMap(f => f.rows.map(r => ({ ...r, date: fdDate(r.Date) })));
+  const rows = srcRows.filter(r => r.date && r.FTHG !== "" && r.FTHG !== undefined && Number.isFinite(+r.FTHG));
   fdResults.push(...rows);
   const up = fixtures.filter(r => r.Div === c).map(r => ({ ...r, date: fdDate(r.Date) })).filter(r => { if (!r.date) return false; const t = Date.parse(londonToIso(r.date, r.Time)); return t > now && inWindow(t); });
-  const teams = [...new Set(rows.slice(-500).flatMap(r => [r.HomeTeam, r.AwayTeam]))], toaKeyName = Object.keys(TOA_TO_FD).find(k => TOA_TO_FD[k] === c);
+  const teams = [...new Set(rows.slice(-500).flatMap(r => [r.HomeTeam, r.AwayTeam]))], toaKeyName = Object.keys({ ...TOA_TO_FD, ...TOA_EXTRA }).find(k => ({ ...TOA_TO_FD, ...TOA_EXTRA })[k] === c);
   for (const ev of oddsCache[toaKeyName]?.events || []) {
     const t = Date.parse(ev.commence_time); if (t <= now || !inWindow(t)) continue;
     const h = fdTeam(ev.home_team, teams, sameTeam), a = fdTeam(ev.away_team, teams, sameTeam);
@@ -72,7 +77,7 @@ for (const c of codes) {
   }
   for (const rec of walkLeague(rows, up).filter(x => !x.done)) {
     const r = rec.r, o = oddsOf(r), kickoff = r.toa ? r.toa.commence_time : londonToIso(r.date, r.Time);
-    const base = { rawEvent: r.toa || null, realTotals: r.realTotals || null, feats: rec.feats, id: `fd-${c}-${r.date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: FD_LEAGUES[c], fdDiv: c, date: r.date, kickoff, home: r.HomeTeam, away: r.AwayTeam, fair: o.fair, entry: o.entry, sharp: o.sharp, bookmaker: num(r.B365H) ? "bet365" : "piyasa ortalaması", engine: "tam", bookCount: r.bookCount || null, sportKey: r.toa?.sport_key || null, best: { x12: o.max, ou: [num(r["Max>2.5"]), num(r["Max<2.5"])] },
+    const base = { rawEvent: r.toa || null, realTotals: r.realTotals || null, feats: rec.feats, id: `fd-${c}-${r.date}-${r.HomeTeam}-${r.AwayTeam}`.replace(/\s+/g, "_"), sport: "football", league: ALL_LEAGUES[c], fdDiv: c, date: r.date, kickoff, home: r.HomeTeam, away: r.AwayTeam, fair: o.fair, entry: o.entry, sharp: o.sharp, bookmaker: num(r.B365H) ? "bet365" : "piyasa ortalaması", engine: "tam", bookCount: r.bookCount || null, sportKey: r.toa?.sport_key || null, best: { x12: o.max, ou: [num(r["Max>2.5"]), num(r["Max<2.5"])] },
       dossier: { formH: rec.formH, formA: rec.formA, restH: Math.round(rec.restH), restA: Math.round(rec.restA), h2h: rec.h2h, games: rec.games, market: o.fair && devig(o.fair), elo: rec.elo, pi: rec.pi, dc: rec.dc?.x12 || null, xg: rec.dx?.x12 || null, goals: rec.dc ? [rec.dc.lh, rec.dc.la] : null } };
     if (model && o.fair) { const X = x12Features(rec, o.fair); if (X) { const raw = softmax(X, model.x12), g = calibration.gamma || 1, q = raw.map(v => v ** g), t = q.reduce((a, v) => a + v); base.probs = q.map(v => v / t); base.dossier.engine = base.probs; } }
     if (model && o.ouFair && o.ouEntry) { const X = ouFeatures(rec, o.ouFair); if (X) { base.ou = { probs: softmax(X, model.ou), entry: o.ouEntry, fair: o.ouFair }; base.dossier.over25 = base.ou.probs[0]; } }
@@ -179,6 +184,7 @@ const byEvaluated = { football: candidates.filter(c => c.sport === "football").l
 // Tek cumlelik tavsiye: matematik once. Kazanan ayara gore oran degerliyse o oran, degilse pazarin en az orani.
 const meta = read("config/meta.json", null), decision = read("config/decision.json", null), win = decision?.winner, cal = decision?.cal || null, tips = read("docs/tips.json", []);
 const dc3 = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null;
+let eloClubs = [], eloUsed = 0; try { eloClubs = await clubElo(todayIst); } catch (e) { note("ClubElo", false, e.message); }
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
   const base = { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
   if (c.sport === "basketball") {
@@ -191,7 +197,9 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     const b = opts[0], minPlay = +Math.max(1.2, 1.03 / b.p).toFixed(2);
     return { ...base, bet: { key: b.key, kind: b.kind, side: b.side, line: b.line, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real && b.real >= minPlay ? +b.real.toFixed(2) : null, value: false, unverified: true, safe: false }, alts: opts.slice(1, 3).map(x => ({ label: x.label, minPlay: +Math.max(1.2, 1.03 / x.p).toFixed(2) })) };
   }
-  const goals = c.dossier?.goals || (c.fair ? impliedGoals(devig(c.fair)) : null);
+  let eloGoals = null;
+  if (!c.fdDiv && eloClubs.length && c.fair) { const h = eloClubs.find(x => sameTeam(x.club, c.home)), a = eloClubs.find(x => sameTeam(x.club, c.away)); if (h && a) { const E = 1 / (1 + 10 ** (-(h.elo + 65 - a.elo) / 400)), g = impliedGoals(eloProbs(E)), m = impliedGoals(devig(c.fair)); eloGoals = [(g[0] + m[0]) / 2, (g[1] + m[1]) / 2]; eloUsed++; } }
+  const goals = c.dossier?.goals || eloGoals || (c.fair ? impliedGoals(devig(c.fair)) : null);
   if (!goals) return null;
   const list = recommend(marketProbs(goals[0], goals[1]), cal, { exclude: c.fdDiv ? [] : MARKETS.filter(m => m.half).map(m => m.key) });
   if (!list.length) return null;
@@ -199,7 +207,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
   let chosen = null;
   if (win && c.fair) { const market = devig(c.fair), math = marketProbs(goals[0], goals[1]), P = k => ({ MS1: 0, MSX: 1, MS2: 2 })[k]; const edge = win.edge, w = win.w, pure3 = win.src === "pure" ? c.dossier?.statsOnly : null, mathP = k => pure3 ? pure3[P(k)] : math[k], vals = ["MS1", "MSX", "MS2"].map(k => ({ k, p: w * mathP(k) + (1 - w) * market[P(k)], o: realOdd(k) })).filter(x => x.o >= 1.3 && x.o <= 6 && x.p * x.o - 1 >= edge).sort((a, b) => b.p * b.o - a.p * a.o); if (vals[0]) chosen = { key: vals[0].k, label: byKey[vals[0].k].label, minPlay: +((1 + edge) / vals[0].p).toFixed(2), odds: vals[0].o, value: true, book: c.entryBooks?.[P(vals[0].k)] || c.bookmaker || null }; }
   if (!chosen && meta && c.fair) {
-    const mk = devig(c.fair), ig = impliedGoals(mk), mg = marketProbs(ig[0], ig[1]), mth = marketProbs(goals[0], goals[1]), allowed = MARKETS.filter(m => c.fdDiv || !m.half);
+    const mk = devig(c.fair), ig = impliedGoals(mk), mg = marketProbs(ig[0], ig[1]), mth = marketProbs(goals[0], goals[1]), allowed = MARKETS.filter(m => (c.fdDiv && !(c.fdDiv in EXTRA_LEAGUES)) || !m.half);
     const opts = allowed.map(m => { const pm = mg[m.key], p = applyCal(mth[m.key], meta.cal[m.key]), est = estOdds(pm), real = realOdd(m.key), odd = real ?? est; if (odd < 1.2 || p < 0.6) return null; const code = c.fdDiv || "", z = c.feats && meta.mean ? c.feats.map((v, i) => Math.max(-4, Math.min(4, (v - meta.mean[i]) / meta.sd[i]))) : null, mp = score(metaX(m.key, p, pm, goals, code, z), meta.weights)[1]; return { key: m.key, label: m.label, mp, est, real, odd }; }).filter(Boolean).sort((a, b) => b.mp - a.mp);
     if (!opts.length) return null;
     const b = opts[0], minPlay = +Math.max(1.2, 1.03 / b.mp).toFixed(2);
@@ -209,6 +217,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
   if (!chosen) { const b = list[0], o = realOdd(b.key); chosen = { safe: b.p >= 0.8, key: b.key, label: b.label, minPlay: b.minPlay, odds: o && o >= b.minPlay ? o : null, value: !!(o && o >= b.minPlay), book: o && o >= b.minPlay ? c.bookmaker || null : null }; }
   return { ...base, bet: chosen, alts: list.filter(x => x.key !== chosen.key).slice(0, 2).map(x => ({ label: x.label, minPlay: x.minPlay })) };
 }).filter(Boolean).sort((a, b) => a.kickoff.localeCompare(b.kickoff));
+if (eloClubs.length) note("ClubElo", true, `${eloClubs.length} kulüp, ${eloUsed} maçta kullanıldı`);
 for (const m of matches) if (!tips.some(t => t.id === m.id)) tips.push({ id: m.id, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: m.bet.key, kind: m.bet.kind || null, side: m.bet.side || null, line: m.bet.line ?? null, unverified: !!m.bet.unverified, label: m.bet.label, minPlay: m.bet.minPlay, odds: m.bet.odds, estOdds: m.bet.estOdds ?? null, safe: !!m.bet.safe, status: "pending" });
 for (const t of tips.filter(x => x.status === "pending" && Date.parse(x.kickoff) < now)) {
   let hs, as, hh = null, ha = null;
