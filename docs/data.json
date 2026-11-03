@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T05:42:59.682Z",
+ "generatedAt": "2026-11-03T05:47:33.753Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -8,6 +8,34 @@
   "generatedAt": "2026-11-02T20:56:54.929Z"
  },
  "picks": [
+  {
+   "sportKey": "soccer_spain_copa_del_rey",
+   "engine": "piyasa",
+   "bookCount": 8,
+   "oddsAgeHours": 0,
+   "medianOdds": 3.56,
+   "agreement": null,
+   "id": "toa-30fb0f22bc84eeebca5c6cc448681212",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:00:00Z",
+   "home": "SD Amorebieta",
+   "away": "UD Logroñés",
+   "market": "1x2",
+   "index": 0,
+   "selection": "MS 1",
+   "odds": 4,
+   "probability": 0.2645,
+   "edge": 0.058,
+   "minPlayableOdds": 3.93,
+   "bookmaker": "Codere (IT)",
+   "sharp": true,
+   "verified": false,
+   "fdDiv": null,
+   "date": "2026-11-04",
+   "bestOdds": null,
+   "dossier": null
+  },
   {
    "sportKey": "soccer_uefa_champs_league",
    "engine": "piyasa",
@@ -55,9 +83,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.4,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -65,12 +93,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.41
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.49
     }
    ]
   },
@@ -87,9 +115,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.41,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -97,12 +125,76 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.46
     },
     {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.46
+    }
+   ]
+  },
+  {
+   "id": "toa-0f9d7f44240788cb669e5b0c5e046b87",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "Anaitasuna",
+   "away": "Alavés",
+   "dayKey": "2026-11-03",
+   "date": "2026-11-03",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "HD1",
+    "label": "Deplasman 2+ farkla kazanır",
+    "minPlay": 1.41,
+    "estOdds": 1.26,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Karşılıklı gol yok",
+     "minPlay": 1.41
+    },
+    {
+     "label": "2,5 Üst",
+     "minPlay": 1.51
+    }
+   ]
+  },
+  {
+   "id": "toa-f7363863fa63e9c319bfde5390986826",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "CD Pamplona",
+   "away": "SD Eibar",
+   "dayKey": "2026-11-03",
+   "date": "2026-11-03",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "MS2",
+    "label": "Deplasman kazanır (MS 2)",
+    "minPlay": 1.45,
+    "estOdds": null,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
      "label": "3,5 Alt",
-     "minPlay": null
+     "minPlay": 1.49
+    },
+    {
+     "label": "Deplasman 2+ gol atar",
+     "minPlay": 1.51
     }
    ]
   },
@@ -119,22 +211,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.39,
+    "estOdds": 1.26,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "1,5 Üst",
+     "minPlay": 1.41
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.41
     }
    ]
   },
@@ -151,22 +243,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "EV05",
+    "label": "Ev sahibi gol atar",
+    "minPlay": 1.37,
+    "estOdds": 1.2,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "1,5 Üst",
+     "minPlay": 1.37
     },
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.42
     }
    ]
   },
@@ -183,22 +275,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.38,
+    "estOdds": 1.23,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.39
     },
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.41
     }
    ]
   },
@@ -215,22 +307,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.38,
+    "estOdds": 1.21,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.39
     },
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.42
     }
    ]
   },
@@ -247,22 +339,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.39,
+    "estOdds": 1.25,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "1,5 Üst",
+     "minPlay": 1.42
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.43
     }
    ]
   },
@@ -279,9 +371,9 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.4,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -289,12 +381,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.43
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "İlk yarı 0,5 Üst",
+     "minPlay": 1.43
     }
    ]
   },
@@ -311,9 +403,9 @@
    "sportKey": "soccer_england_league1",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.4,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -321,12 +413,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "İlk yarı 0,5 Üst",
+     "minPlay": 1.42
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.44
     }
    ]
   },
@@ -343,22 +435,22 @@
    "sportKey": "soccer_england_league1",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.38,
+    "estOdds": 1.21,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.4
     },
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.42
     }
    ]
   },
@@ -375,22 +467,22 @@
    "sportKey": "soccer_england_league2",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.38,
+    "estOdds": 1.23,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.47
     },
     {
-     "label": "2,5 Alt",
-     "minPlay": null
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.48
     }
    ]
   },
@@ -407,9 +499,9 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.41,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -417,12 +509,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.44
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.47
     }
    ]
   },
@@ -439,10 +531,10 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.38,
+    "estOdds": 1.21,
     "odds": null,
     "value": false,
     "book": null
@@ -450,11 +542,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.42
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.43
     }
    ]
   },
@@ -471,22 +563,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.36,
+    "estOdds": 1.2,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.38
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.41
     }
    ]
   },
@@ -503,10 +595,10 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "DEP05",
+    "label": "Deplasman gol atar",
+    "minPlay": 1.41,
+    "estOdds": 1.21,
     "odds": null,
     "value": false,
     "book": null
@@ -514,11 +606,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.41
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.52
     }
    ]
   },
@@ -537,7 +629,7 @@
     "safe": false,
     "key": "MS1",
     "label": "Ev sahibi kazanır (MS 1)",
-    "minPlay": null,
+    "minPlay": 1.41,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -545,12 +637,12 @@
    },
    "alts": [
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.44
     },
     {
-     "label": "Ev sahibi 2+ gol atar",
-     "minPlay": null
+     "label": "3,5 Alt",
+     "minPlay": 1.56
     }
    ]
   },
@@ -567,10 +659,10 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "EV05",
+    "label": "Ev sahibi gol atar",
+    "minPlay": 1.39,
+    "estOdds": 1.23,
     "odds": null,
     "value": false,
     "book": null
@@ -578,11 +670,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.42
     },
     {
      "label": "3,5 Alt",
-     "minPlay": null
+     "minPlay": 1.53
     }
    ]
   },
@@ -599,9 +691,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.39,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -609,12 +701,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.4
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.49
     }
    ]
   },
@@ -631,9 +723,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.39,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -641,12 +733,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.44
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.44
     }
    ]
   },
@@ -662,10 +754,10 @@
    "fdDiv": null,
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
-    "safe": false,
-    "key": "MS1",
-    "label": "Ev sahibi kazanır (MS 1)",
-    "minPlay": null,
+    "safe": true,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.34,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -673,12 +765,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi kazanır (MS 1)",
+     "minPlay": 1.5
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.51
     }
    ]
   },
@@ -695,9 +787,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "MS2",
-    "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.36,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -705,12 +797,12 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.37
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.48
     }
    ]
   },
@@ -727,22 +819,22 @@
    "sportKey": "soccer_brazil_campeonato",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "DEP05",
+    "label": "Deplasman gol atar",
+    "minPlay": 1.4,
+    "estOdds": 1.2,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "1,5 Üst",
+     "minPlay": 1.4
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.43
     }
    ]
   },
@@ -759,10 +851,10 @@
    "sportKey": "soccer_brazil_campeonato",
    "bet": {
     "safe": false,
-    "key": "MS1",
-    "label": "Ev sahibi kazanır (MS 1)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.38,
+    "estOdds": 1.23,
     "odds": null,
     "value": false,
     "book": null
@@ -770,11 +862,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.39
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "3,5 Alt",
+     "minPlay": 1.45
     }
    ]
   },
@@ -791,22 +883,22 @@
    "sportKey": "soccer_uefa_europa_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "EV05",
+    "label": "Ev sahibi gol atar",
+    "minPlay": 1.37,
+    "estOdds": 1.2,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "1,5 Üst",
+     "minPlay": 1.38
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.43
     }
    ]
   },
@@ -825,7 +917,7 @@
     "safe": false,
     "key": "MS2",
     "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "minPlay": 1.4,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -833,12 +925,12 @@
    },
    "alts": [
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Deplasman 2+ gol atar",
+     "minPlay": 1.46
     },
     {
-     "label": "Deplasman 2+ gol atar",
-     "minPlay": null
+     "label": "3,5 Alt",
+     "minPlay": 1.52
     }
    ]
   },
@@ -854,10 +946,10 @@
    "fdDiv": null,
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
-    "safe": false,
-    "key": "MS2",
-    "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "safe": true,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.35,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -865,12 +957,76 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.37
     },
     {
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.51
+    }
+   ]
+  },
+  {
+   "id": "toa-618cada68f129deb888e940c08f2ad03",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T18:00:00Z",
+   "home": "Club Portugalete",
+   "away": "Real Unión",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.39,
+    "estOdds": 1.21,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.46
+    },
+    {
+     "label": "1,5 Üst",
+     "minPlay": 1.46
+    }
+   ]
+  },
+  {
+   "id": "toa-30fb0f22bc84eeebca5c6cc448681212",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:00:00Z",
+   "home": "SD Amorebieta",
+   "away": "UD Logroñés",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "DEP05",
+    "label": "Deplasman gol atar",
+    "minPlay": 1.41,
+    "estOdds": 1.21,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "1,5 Üst",
+     "minPlay": 1.42
+    },
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.43
     }
    ]
   },
@@ -887,9 +1043,73 @@
    "sportKey": "soccer_belgium_first_div",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.4,
+    "estOdds": 1.24,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.42
+    },
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.43
+    }
+   ]
+  },
+  {
+   "id": "toa-263cf8047a03a899710bb23418867e2c",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "Reus FC Reddis",
+   "away": "Barakaldo",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.39,
+    "estOdds": 1.23,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.42
+    },
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.44
+    }
+   ]
+  },
+  {
+   "id": "toa-68672b2db7eabe554f9508a9c5fc85e9",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "CD Minera",
+   "away": "FC Cartagena",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.47,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -897,12 +1117,44 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.48
     },
     {
      "label": "1,5 Üst",
-     "minPlay": null
+     "minPlay": 1.48
+    }
+   ]
+  },
+  {
+   "id": "toa-cfefc66ba990b8107408898bf0076d2d",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "Utebo FC",
+   "away": "Sabadell FC",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.39,
+    "estOdds": null,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "1,5 Üst",
+     "minPlay": 1.39
+    },
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.44
     }
    ]
   },
@@ -919,9 +1171,9 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "MS2",
-    "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.38,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -929,12 +1181,12 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.39
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "İlk yarı 0,5 Üst",
+     "minPlay": 1.39
     }
    ]
   },
@@ -951,9 +1203,9 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.38,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -961,12 +1213,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.41
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "İlk yarı 0,5 Üst",
+     "minPlay": 1.41
     }
    ]
   },
@@ -983,9 +1235,41 @@
    "sportKey": "soccer_england_league1",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "EV05",
+    "label": "Ev sahibi gol atar",
+    "minPlay": 1.37,
+    "estOdds": 1.23,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.39
+    },
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.4
+    }
+   ]
+  },
+  {
+   "id": "toa-e92d95db3ef7acd5e5ee145f8b189695",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:45:00Z",
+   "home": "CD Puertollano",
+   "away": "Albacete",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.38,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -993,12 +1277,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "3,5 Alt",
+     "minPlay": 1.49
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.51
     }
    ]
   },
@@ -1015,22 +1299,22 @@
    "sportKey": "soccer_efl_champ",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.4,
+    "estOdds": 1.24,
     "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.4
     },
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.43
     }
    ]
   },
@@ -1049,7 +1333,7 @@
     "safe": false,
     "key": "MS2",
     "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "minPlay": 1.42,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1057,12 +1341,12 @@
    },
    "alts": [
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Deplasman 2+ gol atar",
+     "minPlay": 1.48
     },
     {
-     "label": "Deplasman 2+ gol atar",
-     "minPlay": null
+     "label": "3,5 Alt",
+     "minPlay": 1.5
     }
    ]
   },
@@ -1081,7 +1365,7 @@
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "minPlay": 1.38,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1090,11 +1374,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.39
     },
     {
      "label": "3,5 Alt",
-     "minPlay": null
+     "minPlay": 1.5
     }
    ]
   },
@@ -1111,9 +1395,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.39,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1121,12 +1405,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Deplasman gol atar",
+     "minPlay": 1.41
     },
     {
-     "label": "2,5 Üst",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.47
     }
    ]
   },
@@ -1143,10 +1427,10 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": null,
-    "estOdds": null,
+    "key": "EV05",
+    "label": "Ev sahibi gol atar",
+    "minPlay": 1.39,
+    "estOdds": 1.23,
     "odds": null,
     "value": false,
     "book": null
@@ -1154,11 +1438,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.41
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": null
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.53
     }
    ]
   },
@@ -1174,10 +1458,10 @@
    "fdDiv": null,
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
-    "safe": false,
-    "key": "MS2",
-    "label": "Deplasman kazanır (MS 2)",
-    "minPlay": null,
+    "safe": true,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.35,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1185,12 +1469,12 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": null
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.36
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.49
     }
    ]
   },
@@ -1207,9 +1491,9 @@
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
     "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": null,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.41,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1217,12 +1501,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.43
     },
     {
      "label": "3,5 Alt",
-     "minPlay": null
+     "minPlay": 1.49
     }
    ]
   },
@@ -1238,10 +1522,10 @@
    "fdDiv": null,
    "sportKey": "soccer_uefa_champs_league",
    "bet": {
-    "safe": false,
-    "key": "MS1",
-    "label": "Ev sahibi kazanır (MS 1)",
-    "minPlay": null,
+    "safe": true,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.35,
     "estOdds": null,
     "odds": null,
     "value": false,
@@ -1249,12 +1533,44 @@
    },
    "alts": [
     {
+     "label": "3,5 Alt",
+     "minPlay": 1.53
+    },
+    {
+     "label": "Ev sahibi kazanır (MS 1)",
+     "minPlay": 1.53
+    }
+   ]
+  },
+  {
+   "id": "toa-440a14e8da169679a7645073e87ef1e2",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T20:00:00Z",
+   "home": "Badajoz",
+   "away": "Tenerife",
+   "dayKey": "2026-11-04",
+   "date": "2026-11-04",
+   "fdDiv": null,
+   "sportKey": "soccer_spain_copa_del_rey",
+   "bet": {
+    "safe": false,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "minPlay": 1.39,
+    "estOdds": 1.23,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": null
+     "minPlay": 1.4
     },
     {
      "label": "3,5 Alt",
-     "minPlay": null
+     "minPlay": 1.45
     }
    ]
   }
@@ -1299,6 +1615,32 @@
     "odds": 1.99
    },
    "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-0f9d7f44240788cb669e5b0c5e046b87",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "Anaitasuna",
+   "away": "Alavés",
+   "dayKey": "2026-11-03",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-f7363863fa63e9c319bfde5390986826",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "CD Pamplona",
+   "away": "SD Eibar",
+   "dayKey": "2026-11-03",
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -1720,6 +2062,43 @@
    "isPick": false
   },
   {
+   "id": "toa-618cada68f129deb888e940c08f2ad03",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T18:00:00Z",
+   "home": "Club Portugalete",
+   "away": "Real Unión",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.401,
+    "odds": 2.25
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-30fb0f22bc84eeebca5c6cc448681212",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:00:00Z",
+   "home": "SD Amorebieta",
+   "away": "UD Logroñés",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.456,
+    "odds": 1.89
+   },
+   "lowOdds": false,
+   "pick": {
+    "selection": "MS 1",
+    "odds": 4
+   },
+   "isPick": true
+  },
+  {
    "id": "fd-B1-2026-11-04-Kortrijk-Mechelen",
    "sport": "football",
    "league": "Belçika Pro League",
@@ -1731,6 +2110,57 @@
     "selection": "MS 2",
     "probability": 0.363,
     "odds": 2.5
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-263cf8047a03a899710bb23418867e2c",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "Reus FC Reddis",
+   "away": "Barakaldo",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.466,
+    "odds": 1.92
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-68672b2db7eabe554f9508a9c5fc85e9",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "CD Minera",
+   "away": "FC Cartagena",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.391,
+    "odds": 2.23
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-cfefc66ba990b8107408898bf0076d2d",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:30:00Z",
+   "home": "Utebo FC",
+   "away": "Sabadell FC",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.603,
+    "odds": 1.49
    },
    "lowOdds": false,
    "pick": null,
@@ -1799,6 +2229,23 @@
     "selection": "Real Madrid",
     "probability": 0.525,
     "odds": 1.75
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "toa-e92d95db3ef7acd5e5ee145f8b189695",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T19:45:00Z",
+   "home": "CD Puertollano",
+   "away": "Albacete",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.587,
+    "odds": 1.56
    },
    "lowOdds": false,
    "pick": null,
@@ -1938,17 +2385,34 @@
    "lowOdds": false,
    "pick": null,
    "isPick": false
+  },
+  {
+   "id": "toa-440a14e8da169679a7645073e87ef1e2",
+   "sport": "football",
+   "league": "Copa del Rey",
+   "kickoff": "2026-11-04T20:00:00Z",
+   "home": "Badajoz",
+   "away": "Tenerife",
+   "dayKey": "2026-11-04",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.568,
+    "odds": 1.55
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
   }
  ],
  "unmatched": 1,
  "stats": {
-  "evaluated": 50,
-  "withOdds": 40,
-  "modelled": 39,
+  "evaluated": 59,
+  "withOdds": 49,
+  "modelled": 47,
   "filtered": 0,
-  "thin": 1,
+  "thin": 2,
   "byEvaluated": {
-   "football": 38,
+   "football": 47,
    "basketball": 12
   },
   "knownToday": {
@@ -1959,7 +2423,7 @@
  "sources": {
   "The Odds API": {
    "ok": true,
-   "info": "54 aktif lig, bugün-yarın maçı olan 9, bu çalışmada 0 yenilendi, önbellekte 30, kalan kredi 468"
+   "info": "54 aktif lig, bugün-yarın maçı olan 9, bu çalışmada 1 yenilendi, önbellekte 31, kalan kredi 467"
   },
   "football-data oranlar (Pinnacle)": {
    "ok": true,
@@ -1979,11 +2443,11 @@
   },
   "Haber taraması": {
    "ok": true,
-   "info": "1/1 seçim"
+   "info": "2/2 seçim"
   }
  },
  "everyMatch": {
-  "pending": 132,
+  "pending": 141,
   "done": 0,
   "motor": null,
   "piyasa": null,
@@ -1999,7 +2463,7 @@
  "ledger": {
   "all": {
    "picks": 0,
-   "pending": 6,
+   "pending": 7,
    "won": 0,
    "profit": 0,
    "roi": null,
