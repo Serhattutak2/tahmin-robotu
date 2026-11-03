@@ -32,7 +32,7 @@ const RULES = { "Kâr, tüm pazarlar": { real: false, by: "ev" }, "Kâr, yalnız
 const picks = Object.fromEntries(Object.keys(RULES).map(k => [k, []]));
 const thresholds = rule => rule.by === "ev" ? [.01, .02, .03, .05, .07, .1] : [.7, .72, .74, .76, .78, .8, .82, .85];
 for (const [qi, q] of quarters.slice(0, maxQ).entries()) {
-  const next = quarters[qi + 1] || day(now + 864e5), pre = all.filter(d => d.date < q), cur = all.filter(d => d.date >= q && d.date < next); if (pre.length < 3000 || !cur.length) continue;
+  const next = quarters[qi + 1] || day(now + 864e5), pre = all.filter(d => d.date < q), cur = all.filter(d => d.date >= q && d.date < next); if (pre.length < Number(process.env.WF_MINPRE || 3000) || !cur.length) continue;
   const cal = calFrom(pre), m = fitModel(pre, cal), entry = { çeyrek: q, maç: cur.length, kural: {} };
   for (const [name, rule] of Object.entries(RULES)) {
     const hist = oos.filter(x => x.rule === name), banned = new Set();

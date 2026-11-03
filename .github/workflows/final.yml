@@ -23,7 +23,7 @@ jobs:
       - name: Kaydet
         run: |
           git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
-          git add -f data/pmhist.json docs/pmtest.json docs/basket.json docs/walk5.json config/pmrule.json config/basket.json config/final.json; git diff --cached --quiet || git commit -m "Son karar sonucu"
+          for f in data/pmhist.json docs/pmtest.json docs/basket.json docs/walk5.json config/pmrule.json config/basket.json config/final.json; do [ -f "$f" ] && git add -f "$f"; done; git diff --cached --quiet || git commit -m "Son karar sonucu"
           for i in 1 2 3; do git pull --rebase && git push && break; sleep 10; done
       - run: gh workflow run update.yml -R "$GITHUB_REPOSITORY"
         env:
