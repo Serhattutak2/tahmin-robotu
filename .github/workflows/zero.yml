@@ -1,0 +1,24 @@
+name: Fiyat disiplini
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/zero.mjs", ".github/workflows/zero.yml"]
+permissions:
+  contents: write
+  actions: write
+concurrency: { group: zero, cancel-in-progress: false }
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/zero.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs/zero.json; git diff --cached --quiet || git commit -m "Fiyat disiplini sonucu"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 10; done
