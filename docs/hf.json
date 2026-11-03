@@ -1,0 +1,1054 @@
+{
+"fixtures": {
+"rows": 673966,
+"cols": [
+[
+"id",
+"BIGINT"
+],
+[
+"api_football_id",
+"BIGINT"
+],
+[
+"date_utc",
+"TIMESTAMP"
+],
+[
+"league_id",
+"BIGINT"
+],
+[
+"home_team_id",
+"BIGINT"
+],
+[
+"away_team_id",
+"BIGINT"
+],
+[
+"goals_home",
+"INTEGER"
+],
+[
+"goals_away",
+"INTEGER"
+],
+[
+"status",
+"VARCHAR"
+],
+[
+"referee_name",
+"VARCHAR"
+],
+[
+"referee_api_id",
+"BIGINT"
+],
+[
+"created_at",
+"TIMESTAMP"
+],
+[
+"updated_at",
+"TIMESTAMP"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+],
+[
+"merged_rows",
+"BIGINT"
+],
+[
+"merged_football_data",
+"BOOLEAN"
+],
+[
+"status_norm",
+"VARCHAR"
+],
+[
+"is_played",
+"BOOLEAN"
+],
+[
+"calendar_year",
+"INTEGER"
+],
+[
+"btts",
+"BOOLEAN"
+]
+],
+"sample": [
+{
+"id": "97582",
+"api_football_id": "1027981",
+"date_utc": "2023-06-13 00:30:00",
+"league_id": "46",
+"home_team_id": "995",
+"away_team_id": "994",
+"goals_home": "0",
+"goals_away": "0",
+"status": "FT",
+"referee_name": "C. Betancur",
+"referee_api_id": NaN,
+"created_at": "2026-02-27 00:01:51.060209",
+"updated_at": "2026-03-07 22:19:00.700196",
+"in_csv": "True",
+"in_pq": "True",
+"merged_rows": "0",
+"merged_football_data": "False",
+"status_norm": "FT",
+"is_played": "True",
+"calendar_year": "2023",
+"btts": "False"
+},
+{
+"id": "97583",
+"api_football_id": "1027982",
+"date_utc": "2023-06-11 00:30:00",
+"league_id": "46",
+"home_team_id": "980",
+"away_team_id": "989",
+"goals_home": "3",
+"goals_away": "0",
+"status": "FT",
+"referee_name": "L. Delgado",
+"referee_api_id": NaN,
+"created_at": "2026-02-27 00:01:51.060209",
+"updated_at": "2026-03-07 22:19:06.453328",
+"in_csv": "True",
+"in_pq": "True",
+"merged_rows": "0",
+"merged_football_data": "False",
+"status_norm": "FT",
+"is_played": "True",
+"calendar_year": "2023",
+"btts": "False"
+}
+]
+},
+"match_stats": {
+"rows": 283834,
+"cols": [
+[
+"fixture_id",
+"BIGINT"
+],
+[
+"home_shots_total",
+"INTEGER"
+],
+[
+"away_shots_total",
+"INTEGER"
+],
+[
+"home_shots_on_goal",
+"INTEGER"
+],
+[
+"away_shots_on_goal",
+"INTEGER"
+],
+[
+"home_shots_inside_box",
+"INTEGER"
+],
+[
+"away_shots_inside_box",
+"INTEGER"
+],
+[
+"home_shots_outside_box",
+"INTEGER"
+],
+[
+"away_shots_outside_box",
+"INTEGER"
+],
+[
+"home_blocked_shots",
+"INTEGER"
+],
+[
+"away_blocked_shots",
+"INTEGER"
+],
+[
+"home_penalties",
+"INTEGER"
+],
+[
+"away_penalties",
+"INTEGER"
+],
+[
+"home_corners",
+"INTEGER"
+],
+[
+"away_corners",
+"INTEGER"
+],
+[
+"home_yellow_cards",
+"INTEGER"
+],
+[
+"away_yellow_cards",
+"INTEGER"
+],
+[
+"home_red_cards",
+"INTEGER"
+],
+[
+"away_red_cards",
+"INTEGER"
+],
+[
+"home_xg",
+"DOUBLE"
+],
+[
+"away_xg",
+"DOUBLE"
+],
+[
+"home_possession",
+"INTEGER"
+],
+[
+"away_possession",
+"INTEGER"
+],
+[
+"home_fouls",
+"INTEGER"
+],
+[
+"away_fouls",
+"INTEGER"
+],
+[
+"home_offsides",
+"INTEGER"
+],
+[
+"away_offsides",
+"INTEGER"
+],
+[
+"home_pass_accuracy",
+"INTEGER"
+],
+[
+"away_pass_accuracy",
+"INTEGER"
+],
+[
+"home_goals_ht",
+"INTEGER"
+],
+[
+"away_goals_ht",
+"INTEGER"
+],
+[
+"home_xg_ht",
+"DOUBLE"
+],
+[
+"away_xg_ht",
+"DOUBLE"
+],
+[
+"stats_fetched_at",
+"TIMESTAMP"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+],
+[
+"xg_covered",
+"BOOLEAN"
+],
+[
+"xg_nulled",
+"BOOLEAN"
+],
+[
+"known_at",
+"TIMESTAMP"
+]
+],
+"sample": [
+{
+"fixture_id": "287142",
+"home_shots_total": "10",
+"away_shots_total": "5",
+"home_shots_on_goal": "6",
+"away_shots_on_goal": "3",
+"home_shots_inside_box": "0",
+"away_shots_inside_box": "0",
+"home_shots_outside_box": "0",
+"away_shots_outside_box": "0",
+"home_blocked_shots": "0",
+"away_blocked_shots": "0",
+"home_penalties": "1",
+"away_penalties": "0",
+"home_corners": "12",
+"away_corners": "3",
+"home_yellow_cards": "5",
+"away_yellow_cards": "1",
+"home_red_cards": "1",
+"away_red_cards": "0",
+"home_xg": NaN,
+"away_xg": NaN,
+"home_possession": NaN,
+"away_possession": NaN,
+"home_fouls": NaN,
+"away_fouls": NaN,
+"home_offsides": NaN,
+"away_offsides": NaN,
+"home_pass_accuracy": NaN,
+"away_pass_accuracy": NaN,
+"home_goals_ht": "0",
+"away_goals_ht": "0",
+"home_xg_ht": NaN,
+"away_xg_ht": NaN,
+"stats_fetched_at": NaN,
+"in_csv": "True",
+"in_pq": "True",
+"xg_covered": "False",
+"xg_nulled": "True",
+"known_at": "2017-08-21 19:45:00"
+},
+{
+"fixture_id": "287156",
+"home_shots_total": "10",
+"away_shots_total": "12",
+"home_shots_on_goal": "4",
+"away_shots_on_goal": "4",
+"home_shots_inside_box": "0",
+"away_shots_inside_box": "0",
+"home_shots_outside_box": "0",
+"away_shots_outside_box": "0",
+"home_blocked_shots": "0",
+"away_blocked_shots": "0",
+"home_penalties": "0",
+"away_penalties": "1",
+"home_corners": "5",
+"away_corners": "1",
+"home_yellow_cards": "2",
+"away_yellow_cards": "3",
+"home_red_cards": "0",
+"away_red_cards": "0",
+"home_xg": NaN,
+"away_xg": NaN,
+"home_possession": NaN,
+"away_possession": NaN,
+"home_fouls": NaN,
+"away_fouls": NaN,
+"home_offsides": NaN,
+"away_offsides": NaN,
+"home_pass_accuracy": NaN,
+"away_pass_accuracy": NaN,
+"home_goals_ht": "1",
+"away_goals_ht": "1",
+"home_xg_ht": NaN,
+"away_xg_ht": NaN,
+"stats_fetched_at": NaN,
+"in_csv": "True",
+"in_pq": "True",
+"xg_covered": "False",
+"xg_nulled": "True",
+"known_at": "2017-09-11 19:15:00"
+}
+]
+},
+"odds": {
+"rows": 213983,
+"cols": [
+[
+"fixture_id",
+"BIGINT"
+],
+[
+"home_win",
+"DOUBLE"
+],
+[
+"draw",
+"DOUBLE"
+],
+[
+"away_win",
+"DOUBLE"
+],
+[
+"bookmaker",
+"VARCHAR"
+],
+[
+"source",
+"VARCHAR"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+],
+[
+"known_at",
+"TIMESTAMP"
+]
+],
+"sample": [
+{
+"fixture_id": "209707",
+"home_win": "1.3",
+"draw": "5.75",
+"away_win": "9.0",
+"bookmaker": "Bet365",
+"source": "CSV",
+"in_csv": "False",
+"in_pq": "True",
+"known_at": "2020-12-13 19:45:00"
+},
+{
+"fixture_id": "217882",
+"home_win": "1.59",
+"draw": "4.89",
+"away_win": "5.24",
+"bookmaker": "Pinnacle",
+"source": "API-Football-closing",
+"in_csv": "True",
+"in_pq": "True",
+"known_at": "2020-12-13 20:00:00"
+}
+]
+},
+"league_catalogue": {
+"rows": 1235,
+"cols": [
+[
+"af_league_id",
+"BIGINT"
+],
+[
+"af_name",
+"VARCHAR"
+],
+[
+"af_country",
+"VARCHAR"
+],
+[
+"af_type",
+"VARCHAR"
+],
+[
+"af_has_stats",
+"BOOLEAN"
+],
+[
+"min_season",
+"BIGINT"
+],
+[
+"max_season",
+"BIGINT"
+],
+[
+"in_dataset",
+"BOOLEAN"
+],
+[
+"dataset_league_id",
+"DOUBLE"
+],
+[
+"in_cloudbet",
+"BOOLEAN"
+],
+[
+"cloudbet_key",
+"VARCHAR"
+],
+[
+"cloudbet_name",
+"VARCHAR"
+],
+[
+"present_years",
+"DOUBLE"
+],
+[
+"avail_years",
+"BIGINT"
+],
+[
+"history_status",
+"VARCHAR"
+]
+],
+"sample": [
+{
+"af_league_id": "4",
+"af_name": "Euro Championship",
+"af_country": "World",
+"af_type": "Cup",
+"af_has_stats": "True",
+"min_season": "2008",
+"max_season": "2024",
+"in_dataset": "True",
+"dataset_league_id": "79.0",
+"in_cloudbet": "False",
+"cloudbet_key": NaN,
+"cloudbet_name": NaN,
+"present_years": "7.0",
+"avail_years": "17",
+"history_status": "partial"
+},
+{
+"af_league_id": "21",
+"af_name": "Confederations Cup",
+"af_country": "World",
+"af_type": "Cup",
+"af_has_stats": "True",
+"min_season": "2009",
+"max_season": "2017",
+"in_dataset": "False",
+"dataset_league_id": NaN,
+"in_cloudbet": "False",
+"cloudbet_key": NaN,
+"cloudbet_name": NaN,
+"present_years": NaN,
+"avail_years": "9",
+"history_status": "not_in_dataset"
+}
+]
+},
+"leagues": {
+"rows": 271,
+"cols": [
+[
+"id",
+"BIGINT"
+],
+[
+"name",
+"VARCHAR"
+],
+[
+"country",
+"VARCHAR"
+],
+[
+"fd_code",
+"VARCHAR"
+],
+[
+"api_football_id",
+"BIGINT"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+]
+],
+"sample": [
+{
+"id": "1",
+"name": "Premier League",
+"country": "England",
+"fd_code": "E0",
+"api_football_id": "39",
+"in_csv": "True",
+"in_pq": "True"
+},
+{
+"id": "2",
+"name": "Championship",
+"country": "England",
+"fd_code": "E1",
+"api_football_id": "40",
+"in_csv": "True",
+"in_pq": "True"
+}
+]
+},
+"fixture_lineups": {
+"rows": 565370,
+"cols": [
+[
+"fixture_id",
+"BIGINT"
+],
+[
+"team_id",
+"BIGINT"
+],
+[
+"team_name",
+"VARCHAR"
+],
+[
+"coach_name",
+"VARCHAR"
+],
+[
+"coach_api_id",
+"BIGINT"
+],
+[
+"formation",
+"VARCHAR"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+]
+],
+"sample": [
+{
+"fixture_id": "176940",
+"team_id": "52",
+"team_name": "Charlton",
+"coach_name": "K. Robinson",
+"coach_api_id": "616",
+"formation": NaN,
+"in_csv": "False",
+"in_pq": "True"
+},
+{
+"fixture_id": "176953",
+"team_id": "71",
+"team_name": "Milton Keynes Dons",
+"coach_name": "R. Barker",
+"coach_api_id": "9453",
+"formation": NaN,
+"in_csv": "False",
+"in_pq": "True"
+}
+]
+},
+"fixture_players_stats_flat": {
+"rows": 4903099,
+"cols": [
+[
+"fixture_player_id",
+"BIGINT"
+],
+[
+"fixture_id",
+"BIGINT"
+],
+[
+"player_id",
+"BIGINT"
+],
+[
+"cards_red",
+"BIGINT"
+],
+[
+"cards_yellow",
+"BIGINT"
+],
+[
+"dribbles_attempts",
+"DOUBLE"
+],
+[
+"dribbles_past",
+"DOUBLE"
+],
+[
+"dribbles_success",
+"DOUBLE"
+],
+[
+"duels_total",
+"DOUBLE"
+],
+[
+"duels_won",
+"DOUBLE"
+],
+[
+"fouls_committed",
+"DOUBLE"
+],
+[
+"fouls_drawn",
+"DOUBLE"
+],
+[
+"games_captain",
+"BOOLEAN"
+],
+[
+"games_minutes",
+"DOUBLE"
+],
+[
+"games_number",
+"DOUBLE"
+],
+[
+"games_position",
+"VARCHAR"
+],
+[
+"games_rating",
+"VARCHAR"
+],
+[
+"games_substitute",
+"BOOLEAN"
+],
+[
+"goals_assists",
+"DOUBLE"
+],
+[
+"goals_conceded",
+"DOUBLE"
+],
+[
+"goals_saves",
+"DOUBLE"
+],
+[
+"goals_total",
+"DOUBLE"
+],
+[
+"offsides",
+"DOUBLE"
+],
+[
+"passes_accuracy",
+"VARCHAR"
+],
+[
+"passes_key",
+"DOUBLE"
+],
+[
+"passes_total",
+"DOUBLE"
+],
+[
+"penalty_commited",
+"DOUBLE"
+],
+[
+"penalty_missed",
+"BIGINT"
+],
+[
+"penalty_saved",
+"DOUBLE"
+],
+[
+"penalty_scored",
+"BIGINT"
+],
+[
+"penalty_won",
+"DOUBLE"
+],
+[
+"shots_on",
+"DOUBLE"
+],
+[
+"shots_total",
+"DOUBLE"
+],
+[
+"tackles_blocks",
+"DOUBLE"
+],
+[
+"tackles_interceptions",
+"DOUBLE"
+],
+[
+"tackles_total",
+"DOUBLE"
+]
+],
+"sample": [
+{
+"fixture_player_id": "994846",
+"fixture_id": "195490",
+"player_id": "35850",
+"cards_red": "0",
+"cards_yellow": "0",
+"dribbles_attempts": NaN,
+"dribbles_past": NaN,
+"dribbles_success": NaN,
+"duels_total": "6.0",
+"duels_won": "3.0",
+"fouls_committed": "1.0",
+"fouls_drawn": "3.0",
+"games_captain": "False",
+"games_minutes": "45.0",
+"games_number": "20.0",
+"games_position": "M",
+"games_rating": "6.5",
+"games_substitute": "True",
+"goals_assists": NaN,
+"goals_conceded": "0.0",
+"goals_saves": NaN,
+"goals_total": NaN,
+"offsides": NaN,
+"passes_accuracy": "7",
+"passes_key": "1.0",
+"passes_total": "17.0",
+"penalty_commited": NaN,
+"penalty_missed": "0",
+"penalty_saved": NaN,
+"penalty_scored": "0",
+"penalty_won": NaN,
+"shots_on": NaN,
+"shots_total": "1.0",
+"tackles_blocks": NaN,
+"tackles_interceptions": NaN,
+"tackles_total": NaN
+},
+{
+"fixture_player_id": "994847",
+"fixture_id": "195490",
+"player_id": "34733",
+"cards_red": "0",
+"cards_yellow": "0",
+"dribbles_attempts": NaN,
+"dribbles_past": NaN,
+"dribbles_success": NaN,
+"duels_total": "1.0",
+"duels_won": "1.0",
+"fouls_committed": NaN,
+"fouls_drawn": NaN,
+"games_captain": "False",
+"games_minutes": "22.0",
+"games_number": "13.0",
+"games_position": "F",
+"games_rating": "6.3",
+"games_substitute": "True",
+"goals_assists": NaN,
+"goals_conceded": "0.0",
+"goals_saves": NaN,
+"goals_total": NaN,
+"offsides": NaN,
+"passes_accuracy": "1",
+"passes_key": NaN,
+"passes_total": "7.0",
+"penalty_commited": NaN,
+"penalty_missed": "0",
+"penalty_saved": NaN,
+"penalty_scored": "0",
+"penalty_won": NaN,
+"shots_on": NaN,
+"shots_total": NaN,
+"tackles_blocks": NaN,
+"tackles_interceptions": NaN,
+"tackles_total": NaN
+}
+]
+},
+"xg_training": {
+"rows": 257492,
+"cols": [
+[
+"fixture_id",
+"BIGINT"
+],
+[
+"league_id",
+"BIGINT"
+],
+[
+"date_utc",
+"TIMESTAMP"
+],
+[
+"calendar_year",
+"INTEGER"
+],
+[
+"side",
+"VARCHAR"
+],
+[
+"is_home",
+"BOOLEAN"
+],
+[
+"shots_total",
+"INTEGER"
+],
+[
+"shots_on_goal",
+"INTEGER"
+],
+[
+"shots_inside_box",
+"INTEGER"
+],
+[
+"shots_outside_box",
+"INTEGER"
+],
+[
+"blocked_shots",
+"INTEGER"
+],
+[
+"corners",
+"INTEGER"
+],
+[
+"possession",
+"INTEGER"
+],
+[
+"pass_accuracy",
+"INTEGER"
+],
+[
+"xg",
+"DOUBLE"
+]
+],
+"sample": [
+{
+"fixture_id": "280874",
+"league_id": "29",
+"date_utc": "2021-04-12 17:00:00",
+"calendar_year": "2021",
+"side": "home",
+"is_home": "True",
+"shots_total": "19",
+"shots_on_goal": "8",
+"shots_inside_box": "8",
+"shots_outside_box": "11",
+"blocked_shots": "3",
+"corners": "4",
+"possession": "44",
+"pass_accuracy": "80",
+"xg": "1.31"
+},
+{
+"fixture_id": "280876",
+"league_id": "29",
+"date_utc": "2021-04-11 15:30:00",
+"calendar_year": "2021",
+"side": "home",
+"is_home": "True",
+"shots_total": "11",
+"shots_on_goal": "5",
+"shots_inside_box": "7",
+"shots_outside_box": "4",
+"blocked_shots": "1",
+"corners": "6",
+"possession": "51",
+"pass_accuracy": "73",
+"xg": "0.95"
+}
+]
+},
+"teams": {
+"rows": 11104,
+"cols": [
+[
+"id",
+"BIGINT"
+],
+[
+"name",
+"VARCHAR"
+],
+[
+"api_football_id",
+"BIGINT"
+],
+[
+"fd_name",
+"VARCHAR"
+],
+[
+"rating_mu",
+"DOUBLE"
+],
+[
+"rating_sigma",
+"DOUBLE"
+],
+[
+"in_csv",
+"BOOLEAN"
+],
+[
+"in_pq",
+"BOOLEAN"
+]
+],
+"sample": [
+{
+"id": "1718",
+"name": "El Paso Locomotive",
+"api_football_id": "3993",
+"fd_name": NaN,
+"rating_mu": "1537.7977122311465",
+"rating_sigma": "3.4411352772824784",
+"in_csv": "True",
+"in_pq": "True"
+},
+{
+"id": "1730",
+"name": "Sacramento Republic",
+"api_football_id": "4015",
+"fd_name": NaN,
+"rating_mu": "1543.6310423222444",
+"rating_sigma": "3.444250139919834",
+"in_csv": "True",
+"in_pq": "True"
+}
+]
+},
+"fixturesRange": [
+"2008-06-07 16:00:00",
+"2027-06-06 15:00:00",
+"12695"
+]
+}
