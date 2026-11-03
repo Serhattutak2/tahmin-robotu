@@ -237,7 +237,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     if (!opts.length) return null;
     const need = x => +Math.max(1.2, (1 + (meta.evThreshold || 0)) / x.mp).toFixed(2), b = opts[0], minPlay = need(b);
     const hitBest = [...opts].sort((x, y) => y.mp - x.mp)[0], hitOk = hitBest.mp >= (meta.threshold80 ?? .82), hitNeed = +Math.max(1.2, 1.03 / hitBest.mp).toFixed(2);
-    const second = hitOk ? { rule: "isabet", safe: true, key: hitBest.key, label: hitBest.label, minPlay: hitNeed, estOdds: hitBest.real ? null : hitBest.est, odds: hitBest.real ? +hitBest.real.toFixed(2) : null } : null;
+    const second = hitOk ? { conf: +hitBest.mp.toFixed(4), rule: "isabet", safe: true, key: hitBest.key, label: hitBest.label, minPlay: hitNeed, estOdds: hitBest.real ? null : hitBest.est, odds: hitBest.real ? +hitBest.real.toFixed(2) : null } : null;
     chosen = { rule: "kar", second, safe: b.ev >= (meta.evThreshold ?? 0.05), key: b.key, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real ? +b.real.toFixed(2) : null, value: !!(b.real && b.real >= minPlay), book: b.real && b.real >= minPlay ? c.bookmaker || null : null };
     return { ...base, bet: chosen, alts: opts.filter(x => x.key !== b.key).slice(0, 3).map(x => ({ label: x.label, minPlay: need(x) })) };
   }
