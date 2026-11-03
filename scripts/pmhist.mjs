@@ -30,8 +30,8 @@ await mapLimit(list, 4, async e => {
   const ms = e.markets || [];
   if (e.sport === "football") {
     const three = ms.filter(m => m.sportsMarketType === "moneyline"); if (three.length !== 3) return;
-    for (const m of three) { const tok = J(m.clobTokenIds)[0], settled = J(m.outcomePrices).map(Number)[0], gi = String(m.groupItemTitle || ""), k = /^draw/i.test(gi) ? "d" : gi.includes(g.a) || g.a.includes(gi) ? "a" : "b"; if (!tok) return; g[k] = await price(tok, end); g[`${k}Won`] = settled === 1 ? 1 : settled === 0 ? 0 : null; }
-    if (!(g.a > 0 && g.b > 0 && g.d > 0)) { empty++; return; }
+    for (const m of three) { const tok = J(m.clobTokenIds)[0], settled = J(m.outcomePrices).map(Number)[0], gi = String(m.groupItemTitle || ""), k = /^draw/i.test(gi) ? "pd" : gi.includes(g.a) || g.a.includes(gi) ? "pa" : "pb"; if (!tok) return; g[k] = await price(tok, end); g[`${k}Won`] = settled === 1 ? 1 : settled === 0 ? 0 : null; }
+    if (!(g.pa > 0 && g.pb > 0 && g.pd > 0)) { empty++; return; }
     games.push(g); return;
   }
   const ml = ms.find(m => m.sportsMarketType === "moneyline"); if (!ml) return;
@@ -55,7 +55,7 @@ const tri = (r, k) => { const v = [num(r[`${k}H`]), num(r[`${k}D`]), num(r[`${k}
 const fb = [];
 for (const g of games.filter(x => x.sport === "football")) {
   const d = Date.parse(g.end), r = fd.find(x => Math.abs(Date.parse(x.date) - d) < 2 * 864e5 && ((sameTeam(x.HomeTeam, g.a) && sameTeam(x.AwayTeam, g.b)) || (sameTeam(x.HomeTeam, g.b) && sameTeam(x.AwayTeam, g.a)))); if (!r) continue;
-  const homeA = sameTeam(r.HomeTeam, g.a), raw = [homeA ? g.a : g.b, g.d, homeA ? g.b : g.a];
+  const homeA = sameTeam(r.HomeTeam, g.a), raw = [homeA ? g.pa : g.pb, g.pd, homeA ? g.pb : g.pa];
   const s = raw[0] + raw[1] + raw[2], pm = raw.map(v => v / s), hs = +r.FTHG, as = +r.FTAG;
   fb.push({ end: g.end, pm, y: hs > as ? 0 : hs === as ? 1 : 2, b365: tri(r, "B365C"), avg: tri(r, "AvgC"), max: tri(r, "MaxC"), market: tri(r, "AvgC") && devig(tri(r, "AvgC")) });
 }
