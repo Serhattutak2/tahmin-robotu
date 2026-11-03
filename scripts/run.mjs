@@ -178,7 +178,7 @@ const byEvaluated = { football: candidates.filter(c => c.sport === "football").l
 const meta = read("config/meta.json", null), decision = read("config/decision.json", null), win = decision?.winner, cal = decision?.cal || null, tips = read("docs/tips.json", []);
 const dc3 = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null;
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
-  const base = { rawEvent: r.toa || null, realTotals: r.realTotals || null, feats: rec.feats, id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
+  const base = { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
   if (c.sport === "basketball") {
     if (!c.fair) return null;
     const p = c.probs || devig(c.fair), i = p[0] >= p[1] ? 0 : 1, name = i ? c.away : c.home, sideEst = +(1 / (p[i] * 1.06)).toFixed(2), real = c.medianOdds?.[i], opts = [];
