@@ -1,0 +1,13 @@
+import fs from "node:fs";
+const j = async u => { const r = await fetch(u, { headers: { "User-Agent": "tahmin-robotu/1.0" }, signal: AbortSignal.timeout(40000) }); return { status: r.status, body: await r.json().catch(() => null) }; };
+const G = "https://gamma-api.polymarket.com", out = {};
+const slim = e => e && ({ id: e.id, slug: e.slug, title: e.title, startDate: e.startDate, endDate: e.endDate, closed: e.closed, volume: e.volume, liquidity: e.liquidity, tags: (e.tags || []).map(t => t.slug), gameId: e.gameId, markets: (e.markets || []).slice(0, 40).map(m => ({ q: m.question, type: m.sportsMarketType, line: m.line, outcomes: m.outcomes, prices: m.outcomePrices, liq: m.liquidityNum, vol: m.volumeNum, closed: m.closed, group: m.groupItemTitle })) });
+const pages = async (tag, closed, n = 3, order = "") => { let a = []; for (let i = 0; i < n; i++) { const r = await j(`${G}/events?tag_slug=${tag}&closed=${closed}&limit=100&offset=${i * 100}${order}`); if (!Array.isArray(r.body) || !r.body.length) break; a = a.concat(r.body); } return a; };
+const isGame = e => /\d{4}-\d{2}-\d{2}$/.test(e.slug || "");
+for (const tag of ["nba", "euroleague", "basketball", "soccer", "epl", "ucl", "la-liga", "turkey", "super-lig", "bundesliga", "serie-a", "ligue-1"]) {
+  try { const live = await pages(tag, "false", 3), games = live.filter(isGame); out[`${tag}_live`] = { count: live.length, games: games.length, slugs: games.slice(0, 12).map(e => e.slug), sample: slim(games[0]) };
+    const old = await pages(tag, "true", 2, "&order=endDate&ascending=false"), og = old.filter(isGame); out[`${tag}_closed`] = { count: old.length, games: og.length, first: og[0]?.slug, last: og.at(-1)?.slug, sample: tag === "nba" || tag === "epl" ? slim(og[0]) : undefined }; } catch (x) { out[tag] = String(x); }
+}
+try { const k = await j("https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=5"); out.kalshi = k.body?.markets?.slice(0, 2).map(m => ({ t: m.ticker, title: m.title, yes: m.yes_ask_dollars ?? m.yes_ask, no: m.no_ask_dollars ?? m.no_ask, close: m.close_time })); } catch (x) { out.kalshi = String(x); }
+try { const e = await j("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/competitions/E/seasons/E2025/games"); const g = e.body?.data?.[0]; out.euroleague = { n: e.body?.data?.length, keys: Object.keys(g || {}), date: g?.date || g?.utcDate, local: g?.local && { name: g.local.club?.name, score: g.local.score }, road: g?.road && { name: g.road.club?.name, score: g.road.score }, played: g?.played }; } catch (x) { out.euroleague = String(x); }
+fs.writeFileSync("docs/explore.json", JSON.stringify(out, null, 1));
