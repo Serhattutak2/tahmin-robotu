@@ -31,7 +31,9 @@ if (toaKey) {
     const sports = await listSports(toaKey), hour = new Date(now).getUTCHours();
     let remaining = null, fetched = 0;
     // Mac listesi ucretsiz: yalniz bugun-yarin maci olan liglere kredi harca.
-    const evLists = await mapLimit(sports, 5, async x => ({ key: x.key, n: (await fetchEvents(x.key, toaKey)).filter(e => { const t = Date.parse(e.commence_time); return t > now && inWindow(t); }).length }));
+    const pause = ms => new Promise(r => setTimeout(r, ms));
+    const evLists = await mapLimit(sports, 1, async x => (await pause(700), { key: x.key, n: (await fetchEvents(x.key, toaKey)).filter(e => { const t = Date.parse(e.commence_time); return t > now && inWindow(t); }).length }));
+    await pause(1500);
     const active = evLists.filter(e => e?.n > 0).map(e => e.key);
     const d = new Date(now), monthEnd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)), daysLeft = Math.max(1, (monthEnd - d) / 864e5);
     const probe = await fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${toaKey}`); const rh = probe.headers.get("x-requests-remaining"); remaining = rh === null ? NaN : Number(rh);
@@ -39,7 +41,7 @@ if (toaKey) {
     // Gunluk hak: bazi calismalar 3 kredilik basketbol/one cikan ligleri yeniler, digerleri 1 kredilik ligleri.
     let budget = allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
     const due = chooseSports(active.map(k => ({ key: k })), oddsCache, active.length, now);
-    for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
+    for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; await pause(1500); const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
     const pendingKeys = [...new Set([...ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey), ...read("docs/tips.json", []).filter(l => l.status === "pending" && l.sportKey && !TOA_TO_FD[l.sportKey] && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey)])];
     if (hour >= 6 && hour < 9) for (const k of pendingKeys.slice(0, 2)) { const r = await fetchScores(k, toaKey); remaining = r.remaining; scoreEvents.push(...r.body); }
     for (const k of Object.keys(oddsCache)) if (now - oddsCache[k].fetchedAt > 36 * 3600e3) delete oddsCache[k];
@@ -184,7 +186,7 @@ const byEvaluated = { football: candidates.filter(c => c.sport === "football").l
 // Tek cumlelik tavsiye: matematik once. Kazanan ayara gore oran degerliyse o oran, degilse pazarin en az orani.
 const meta = read("config/meta.json", null), decision = read("config/decision.json", null), win = decision?.winner, cal = decision?.cal || null, tips = read("docs/tips.json", []);
 const dc3 = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null;
-let eloClubs = [], eloUsed = 0; try { eloClubs = await clubElo(todayIst); } catch (e) { note("ClubElo", false, e.message); }
+let eloClubs = [], eloUsed = 0; try { eloClubs = await clubElo(todayIst); } catch { try { eloClubs = await clubElo(ist(now - 864e5)); } catch (e) { note("ClubElo", false, e.message); } }
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
   const base = { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
   if (c.sport === "basketball") {
