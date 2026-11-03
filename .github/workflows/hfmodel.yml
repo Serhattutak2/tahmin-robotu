@@ -1,0 +1,25 @@
+name: Tek motor testi
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/hf_model.py", ".github/workflows/hfmodel.yml"]
+permissions:
+  contents: write
+  actions: write
+concurrency: { group: hfmodel, cancel-in-progress: false }
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install duckdb pandas lightgbm numpy
+      - run: python scripts/hf_model.py
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs/hfmodel.json; git diff --cached --quiet || git commit -m "Tek motor testi sonucu"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 10; done
