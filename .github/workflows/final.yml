@@ -1,9 +1,6 @@
 name: Son karar
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ["scripts/walk5.mjs", ".github/workflows/final.yml"]
 permissions:
   contents: write
   actions: write
