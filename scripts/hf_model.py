@@ -5,7 +5,7 @@ B = "https://huggingface.co/datasets/eatpizzanot/soccer-dataset/resolve/main/"
 c = duckdb.connect(); c.execute("INSTALL httpfs; LOAD httpfs; SET threads=4;")
 P = lambda t: f"read_parquet('{B}{t}.parquet')"
 fx = c.execute(f"SELECT id, date_utc, league_id, home_team_id h, away_team_id a, goals_home gh, goals_away ga FROM {P('fixtures')} WHERE is_played AND goals_home IS NOT NULL AND date_utc >= '2016-07-01'").fetchdf()
-st = c.execute(f"SELECT fixture_id id, home_xg, away_xg, home_shots_total hs, away_shots_total \"as\", home_shots_on_goal hst, away_shots_on_goal ast, home_corners hc, away_corners ac, home_possession hp, away_possession ap, home_pass_accuracy hpa, away_pass_accuracy apa, home_red_cards hr, away_red_cards ar FROM {P('match_stats')}").fetchdf()
+st = c.execute(f"SELECT fixture_id id, home_xg, away_xg, home_shots_total hs, away_shots_total aws, home_shots_on_goal hst, away_shots_on_goal ast, home_corners hc, away_corners ac, home_possession hp, away_possession ap, home_pass_accuracy hpa, away_pass_accuracy apa, home_red_cards hr, away_red_cards ar FROM {P('match_stats')}").fetchdf()
 od = c.execute(f"SELECT fixture_id id, lower(bookmaker) b, home_win o1, draw ox, away_win o2 FROM {P('odds')} WHERE home_win>1 AND draw>1 AND away_win>1").fetchdf()
 coach = c.execute(f"SELECT fixture_id id, team_id t, any_value(coach_name) coach FROM {P('fixture_lineups')} GROUP BY 1,2").fetchdf()
 try:
@@ -16,7 +16,10 @@ print(len(fx), len(st), len(od), len(coach), len(rate), flush=True)
 fair = od.groupby("id")[["o1","ox","o2"]].mean().add_prefix("avg_"); mx = od.groupby("id")[["o1","ox","o2"]].max().add_prefix("max_"); n = od.groupby("id").size().rename("nb")
 b365 = od[od.b.str.contains("365", na=False)].groupby("id")[["o1","ox","o2"]].first().add_prefix("b_")
 df = fx.merge(st, on="id", how="left").join(fair, on="id").join(mx, on="id").join(n, on="id").join(b365, on="id")
+for col in df.columns:
+    if col not in ("date_utc",): df[col] = pd.to_numeric(df[col], errors="coerce").astype(float)
 df["date_utc"] = pd.to_datetime(df.date_utc); df = df.sort_values("date_utc").reset_index(drop=True)
+rate["id"]=pd.to_numeric(rate["id"]).astype(float); rate["t"]=pd.to_numeric(rate["t"]).astype(float); coach["id"]=pd.to_numeric(coach["id"]).astype(float); coach["t"]=pd.to_numeric(coach["t"]).astype(float)
 rt = rate.set_index(["id","t"]).r.to_dict() if len(rate) else {}; ch = coach.set_index(["id","t"]).coach.to_dict()
 # Kronolojik: mac oncesi takim durumu, mac sonrasi guncelleme.
 A = .12
@@ -25,7 +28,7 @@ class T:
     def __init__(s): s.elo=1500.;s.n=0;s.gf=1.3;s.ga=1.3;s.xf=1.3;s.xa=1.3;s.sf=12.;s.sa=12.;s.sotf=4.;s.sota=4.;s.cf=5.;s.pos=50.;s.pas=78.;s.rat=6.8;s.last=None;s.coach=None;s.cg=0;s.vh=1.3;s.va=1.1;s.pts=[]
 teams = {}; rows = []; lg = {}
 def ema(o,k,v):
-    if v is not None and not (isinstance(v,float) and np.isnan(v)): setattr(o,k,getattr(o,k)*(1-A)+float(v)*A)
+    if v is not None and not pd.isna(v): setattr(o,k,getattr(o,k)*(1-A)+float(v)*A)
 for r in df.itertuples(index=False):
     H=teams.setdefault(r.h,T()); W=teams.setdefault(r.a,T()); L=lg.setdefault(r.league_id,{"g":2.7,"h":.44,"d":.26})
     d=r.date_utc; ch_h=ch.get((r.id,r.h)); ch_a=ch.get((r.id,r.a))
@@ -33,14 +36,14 @@ for r in df.itertuples(index=False):
     ppg=lambda t:(sum(t.pts[-5:])/max(len(t.pts[-5:]),1))
     rows.append((H.elo-W.elo,min(H.n,W.n),H.gf,H.ga,W.gf,W.ga,H.xf,H.xa,W.xf,W.xa,H.sf,H.sa,W.sf,W.sa,H.sotf,H.sota,W.sotf,W.sota,H.cf,W.cf,H.pos,W.pos,H.pas,W.pas,H.rat,W.rat,rest(H),rest(W),ppg(H),ppg(W),H.vh,W.va,min(H.cg,30),min(W.cg,30),L["g"],L["h"],L["d"]))
     gh,ga=float(r.gh),float(r.ga); E=1/(1+10**(-(H.elo+60-W.elo)/400)); res=1 if gh>ga else .5 if gh==ga else 0; k=20*(np.log(abs(gh-ga)+1) or 1); H.elo+=k*(res-E); W.elo-=k*(res-E)
-    for o,f,g,x,xa,s,sa,so,soa,co,po,pa,tid,cn in ((H,gh,ga,r.home_xg,r.away_xg,r.hs,r.as_ if hasattr(r,"as_") else None,r.hst,r.ast,r.hc,r.hp,r.hpa,r.h,ch_h),(W,ga,gh,r.away_xg,r.home_xg,None,r.hs,r.ast,r.hst,r.ac,r.ap,r.apa,r.a,ch_a)):
-        ema(o,"gf",f);ema(o,"ga",g);ema(o,"xf",x if x==x and x is not None else None);ema(o,"xa",xa if xa==xa and xa is not None else None);ema(o,"sotf",so);ema(o,"sota",soa);ema(o,"cf",co);ema(o,"pos",po);ema(o,"pas",pa)
+    for o,f,g,x,xa,sh,sa,so,soa,co,po,pa,tid,cn in ((H,gh,ga,r.home_xg,r.away_xg,r.hs,r.aws,r.hst,r.ast,r.hc,r.hp,r.hpa,r.h,ch_h),(W,ga,gh,r.away_xg,r.home_xg,r.aws,r.hs,r.ast,r.hst,r.ac,r.ap,r.apa,r.a,ch_a)):
+        ema(o,"gf",f);ema(o,"ga",g);ema(o,"xf",x);ema(o,"xa",xa);ema(o,"sf",sh);ema(o,"sa",sa);ema(o,"sotf",so);ema(o,"sota",soa);ema(o,"cf",co);ema(o,"pos",po);ema(o,"pas",pa)
         ra=rt.get((r.id,tid)); ema(o,"rat",ra); o.n+=1;o.last=d;o.pts.append(3 if f>g else 1 if f==g else 0);o.pts=o.pts[-5:]
         if cn and cn==o.coach:o.cg+=1
         elif cn:o.coach=cn;o.cg=0
     H.vh=H.vh*.9+gh*.1;W.va=W.va*.9+ga*.1;L["g"]=L["g"]*.995+(gh+ga)*.005;L["h"]=L["h"]*.995+(gh>ga)*.005;L["d"]=L["d"]*.995+(gh==ga)*.005
 NAMES=["elo_fark","az_mac","ev_gol","ev_yenilen","dep_gol","dep_yenilen","ev_xg","ev_xg_yenilen","dep_xg","dep_xg_yenilen","ev_sut","ev_sut_yenilen","dep_sut","dep_sut_yenilen","ev_isabet","ev_isabet_yenilen","dep_isabet","dep_isabet_yenilen","ev_korner","dep_korner","ev_top","dep_top","ev_pas","dep_pas","ev_oyuncu_puani","dep_oyuncu_puani","ev_dinlenme","dep_dinlenme","ev_form","dep_form","ev_saha_gol","dep_saha_gol","ev_hoca_mac","dep_hoca_mac","lig_gol","lig_ev","lig_ber"]
-X=pd.DataFrame(rows,columns=NAMES); X["lig"]=df.league_id.astype("category").cat.codes
+X=pd.DataFrame(rows,columns=NAMES); X["lig"]=df.league_id.astype("category").cat.codes.astype(int)
 y=np.where(df.gh>df.ga,0,np.where(df.gh==df.ga,1,2)); yr=df.date_utc.dt.year.values
 ok=(X.az_mac>=8).values&df.avg_o1.notna().values
 mk=np.c_[1/df.avg_o1,1/df.avg_ox,1/df.avg_o2]; mk=mk/np.nansum(mk,axis=1,keepdims=True)
