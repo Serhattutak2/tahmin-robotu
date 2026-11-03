@@ -33,7 +33,7 @@ if (toaKey) {
     const evLists = await mapLimit(sports, 5, async x => ({ key: x.key, n: (await fetchEvents(x.key, toaKey)).filter(e => { const t = Date.parse(e.commence_time); return t > now && inWindow(t); }).length }));
     const active = evLists.filter(e => e?.n > 0).map(e => e.key);
     const d = new Date(now), monthEnd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)), daysLeft = Math.max(1, (monthEnd - d) / 864e5);
-    const probe = await fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${toaKey}`); remaining = Number(probe.headers.get("x-requests-remaining"));
+    const probe = await fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${toaKey}`); const rh = probe.headers.get("x-requests-remaining"); remaining = rh === null ? NaN : Number(rh);
     const allowance = (Number.isFinite(remaining) ? remaining : 300) / daysLeft;
     // Gunluk hak: bazi calismalar 3 kredilik basketbol/one cikan ligleri yeniler, digerleri 1 kredilik ligleri.
     let budget = allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
