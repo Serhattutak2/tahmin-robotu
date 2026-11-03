@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T06:06:48.842Z",
+ "generatedAt": "2026-11-03T06:08:09.750Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -131,6 +131,38 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.46
+    }
+   ]
+  },
+  {
+   "id": "fd-SWE-2026-11-03-Sirius-Halmstad",
+   "sport": "football",
+   "league": "İsveç Allsvenskan",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "Sirius",
+   "away": "Halmstad",
+   "dayKey": "2026-11-03",
+   "date": "2026-11-03",
+   "fdDiv": "SWE",
+   "sportKey": "soccer_sweden_allsvenskan",
+   "bet": {
+    "safe": false,
+    "key": "MS1",
+    "label": "Ev sahibi kazanır (MS 1)",
+    "minPlay": 1.42,
+    "estOdds": null,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.45
+    },
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.53
     }
    ]
   },
@@ -1619,6 +1651,19 @@
    "isPick": false
   },
   {
+   "id": "fd-SWE-2026-11-03-Sirius-Halmstad",
+   "sport": "football",
+   "league": "İsveç Allsvenskan",
+   "kickoff": "2026-11-03T18:00:00Z",
+   "home": "Sirius",
+   "away": "Halmstad",
+   "dayKey": "2026-11-03",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "toa-0f9d7f44240788cb669e5b0c5e046b87",
    "sport": "football",
    "league": "Copa del Rey",
@@ -2406,13 +2451,13 @@
  ],
  "unmatched": 1,
  "stats": {
-  "evaluated": 59,
-  "withOdds": 49,
-  "modelled": 47,
+  "evaluated": 60,
+  "withOdds": 50,
+  "modelled": 48,
   "filtered": 0,
   "thin": 2,
   "byEvaluated": {
-   "football": 47,
+   "football": 48,
    "basketball": 12
   },
   "knownToday": {
@@ -2422,8 +2467,8 @@
  },
  "sources": {
   "The Odds API": {
-   "ok": false,
-   "info": "The Odds API HTTP 429"
+   "ok": true,
+   "info": "54 aktif lig, bugün-yarın maçı olan 12, bu çalışmada 1 yenilendi, önbellekte 32, kalan kredi 458"
   },
   "football-data ek ligler": {
    "ok": true,
@@ -2431,7 +2476,7 @@
   },
   "football-data oranlar (Pinnacle)": {
    "ok": true,
-   "info": "196 maç (2026-10-30 – 2026-11-02), 18 tanesi önümüzdeki 5 günde"
+   "info": "196 maç (2026-10-30 – 2026-11-02), 19 tanesi önümüzdeki 5 günde"
   },
   "football-data sonuçlar": {
    "ok": true,
@@ -2455,11 +2500,11 @@
   }
  },
  "everyMatch": {
-  "pending": 124,
-  "done": 19,
-  "motor": 0.4075,
-  "piyasa": 0.4075,
-  "isabetMotor": 0.6842
+  "pending": 65,
+  "done": 79,
+  "motor": 0.3668,
+  "piyasa": 0.3668,
+  "isabetMotor": 0.6835
  },
  "evidence": "deneme",
  "bank": {
