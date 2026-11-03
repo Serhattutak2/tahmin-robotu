@@ -1,9 +1,6 @@
 name: Fiyat analizi
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ["scripts/pmhist.mjs", ".github/workflows/pmhist.yml"]
 permissions:
   contents: write
   actions: write
