@@ -7,7 +7,7 @@ import { fitLogit, score, standardize } from "../lib/features.mjs";
 import { MARKETS, marketProbs, impliedGoals, fitCal, applyCal, outcome } from "../lib/markets.mjs";
 import { metaX, META_DIM, estOdds } from "../lib/meta.mjs";
 import { FD_SEASONS, ALL_LEAGUES, EXTRA_LEAGUES, fdSeason, extraRows, mapLimit } from "../lib/sources.mjs";
-const now = process.env.REVIEW_NOW ? Date.parse(process.env.REVIEW_NOW) : Date.now(), day = t => new Date(t).toISOString().slice(0, 10), start = day(now - 3 * 365.25 * 864e5), MIN = 1.2, FIVE = 5 * 365.25 * 864e5;
+const now = process.env.REVIEW_NOW ? Date.parse(process.env.REVIEW_NOW) : Date.now(), day = t => new Date(t).toISOString().slice(0, 10), start = "2022-01-01", MIN = 1.2, FIVE = 5 * 365.25 * 864e5;
 const fdCodes = Object.keys(ALL_LEAGUES).filter(c => !(c in EXTRA_LEAGUES));
 const files = await mapLimit(FD_SEASONS.flatMap(s => fdCodes.map(c => ({ s, c }))), 6, async j => ({ ...j, rows: await fdSeason(j.s, j.c) })), extras = await mapLimit(Object.keys(EXTRA_LEAGUES), 4, async c => ({ c, rows: await extraRows(c) }));
 const dcOdd = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null, all = [];
