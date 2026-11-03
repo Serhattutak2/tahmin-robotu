@@ -34,7 +34,9 @@ if (toaKey) {
     const active = evLists.filter(e => e?.n > 0).map(e => e.key);
     const d = new Date(now), monthEnd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)), daysLeft = Math.max(1, (monthEnd - d) / 864e5);
     const probe = await fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${toaKey}`); remaining = Number(probe.headers.get("x-requests-remaining"));
-    let budget = Math.max(1, Math.floor((Number.isFinite(remaining) ? remaining : 300) / daysLeft / 8));
+    const allowance = (Number.isFinite(remaining) ? remaining : 300) / daysLeft;
+    // Gunluk hak: bazi calismalar 3 kredilik basketbol/one cikan ligleri yeniler, digerleri 1 kredilik ligleri.
+    let budget = allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
     const due = chooseSports(active.map(k => ({ key: k })), oddsCache, active.length, now);
     for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
     const pendingKeys = [...new Set([...ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey), ...read("docs/tips.json", []).filter(l => l.status === "pending" && l.sportKey && !TOA_TO_FD[l.sportKey] && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey)])];
