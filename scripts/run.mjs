@@ -164,7 +164,7 @@ note("TheSportsDB (maç sayımı)", known.football !== null, known.football === 
 const filters = read("config/filters.json", []); let filtered = 0, thin = 0;
 const picks = []; let withOdds = 0, modelled = 0;
 for (const c of candidates) {
-  if (!c.fair) continue;
+  if (!c.fair || !Array.isArray(c.entry) || !Array.isArray(c.fair)) continue;
   withOdds++;
   if (c.engine === "piyasa" && c.bookCount < 5) { thin++; continue; } if (c.model || c.probs) modelled++;
   const full = c.engine === "tam";
