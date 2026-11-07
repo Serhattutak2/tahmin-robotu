@@ -24,7 +24,8 @@ for (const [when, c] of Object.entries(T)) for (const book of ["bet365", "enYük
   }
   const st = l => { if (!l.length) return { seçim: 0 }; const pr = l.reduce((a, x) => a + x.v, 0), roi = pr / l.length, se = Math.sqrt(l.reduce((a, x) => a + (x.v - roi) ** 2, 0) / l.length / l.length); return { seçim: l.length, tutan: l.filter(x => x.y).length, ortOran: +(l.reduce((a, x) => a + x.o, 0) / l.length).toFixed(2), kar: +pr.toFixed(1), getiri100: +(roi * 100).toFixed(1), alt100: +((roi - 1.96 * se) * 100).toFixed(1), üst100: +((roi + 1.96 * se) * 100).toFixed(1) }; };
   const grp = (l, f) => Object.fromEntries(Object.entries(Object.groupBy(l, f)).sort().map(([k, v]) => [k, st(v)]));
-  res[`${when}|${book}`] = { hepsi: st(bets), yıl: grp(bets, x => x.date.slice(0, 4)), pazar: grp(bets, x => x.m), oranBandı: grp(bets, x => x.o < 1.6 ? "1,30-1,60" : x.o < 2.2 ? "1,60-2,20" : x.o < 3.2 ? "2,20-3,20" : "3,20-5") };
+  const six = new Date(Date.now() - 182 * 864e5).toISOString().slice(0, 10), b6 = bets.filter(x => x.date >= six);
+  res[`${when}|${book}`] = { son6Ay: st(b6), son6AyPazar: grp(b6, x => x.m), son6AyAy: grp(b6, x => x.date.slice(0, 7)), hepsi: st(bets), yıl: grp(bets, x => x.date.slice(0, 4)), pazar: grp(bets, x => x.m), oranBandı: grp(bets, x => x.o < 1.6 ? "1,30-1,60" : x.o < 2.2 ? "1,60-2,20" : x.o < 3.2 ? "2,20-3,20" : "3,20-5") };
 }
 fs.writeFileSync("docs/x1test.json", JSON.stringify({ generatedAt: new Date().toISOString(), başlangıç: start, sonuç: res }, null, 1));
 for (const [k, v] of Object.entries(res)) console.log(k, JSON.stringify(v.hepsi), JSON.stringify(v.yıl));
