@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T19:45:24.852Z",
+ "generatedAt": "2026-11-07T19:47:17.448Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -382,7 +382,9 @@
     "book": "en yüksek oran",
     "rule": "fiyat",
     "b365ok": true,
-    "strong": true
+    "strong": true,
+    "first": 2.8,
+    "move": "sabit"
    },
    "legs": [
     {
@@ -2142,7 +2144,7 @@
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.6,
-    "odds": 1.39,
+    "odds": 1.43,
     "estOdds": null,
     "value": false,
     "book": "piyasa ortalaması"
@@ -2157,27 +2159,12 @@
      "minPlay": 2.73
     }
    ],
-   "price": {
-    "ev": 0.049965174129353196,
-    "p": 0.3632,
-    "key": "MS2",
-    "label": "MS 2",
-    "odds": 2.95,
-    "minPlay": 2.81,
-    "b365": null,
-    "book": "en yüksek oran",
-    "rule": "fiyat",
-    "b365ok": false,
-    "strong": false,
-    "first": 2.95,
-    "move": "sabit"
-   },
    "legs": [
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6368,
-     "odds": 1.39,
+     "odds": 1.43,
      "minPlay": 1.6
     }
    ]
@@ -3282,8 +3269,8 @@
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.9,
-    "odds": 1.7,
+    "minPlay": 1.93,
+    "odds": 1.73,
     "estOdds": null,
     "value": false,
     "book": "piyasa ortalaması"
@@ -3291,20 +3278,20 @@
    "alts": [
     {
      "label": "MS 2",
-     "minPlay": 2.2
+     "minPlay": 2.17
     },
     {
      "label": "MS 1",
-     "minPlay": 3.62
+     "minPlay": 3.66
     }
    ],
    "legs": [
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.537,
-     "odds": 1.7,
-     "minPlay": 1.9
+     "mp": 0.5299,
+     "odds": 1.73,
+     "minPlay": 1.93
     }
    ]
   },
@@ -4064,7 +4051,7 @@
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.46,
+    "minPlay": 1.45,
     "odds": 1.32,
     "estOdds": null,
     "value": false,
@@ -4084,9 +4071,9 @@
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.6978,
+     "mp": 0.704,
      "odds": 1.32,
-     "minPlay": 1.46
+     "minPlay": 1.45
     }
    ]
   },
@@ -7811,6 +7798,39 @@
    ]
   },
   {
+   "id": "pm-mar1-rcz-wst-2026-11-08",
+   "sport": "football",
+   "league": "Morocco Botola Pro",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "RCA Zemamra",
+   "away": "Wydad Sportif Témara",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.44,
+    "odds": 1.41,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.48
+    },
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.7
+    }
+   ]
+  },
+  {
    "id": "pm-nor-ham-sar-2026-11-08",
    "sport": "football",
    "league": "Norway Eliteserien",
@@ -7873,39 +7893,6 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 2.17
-    }
-   ]
-  },
-  {
-   "id": "pm-mar1-rcz-wst-2026-11-08",
-   "sport": "football",
-   "league": "Morocco Botola Pro",
-   "kickoff": "2026-11-08T16:00:00Z",
-   "home": "RCA Zemamra",
-   "away": "Wydad Sportif Témara",
-   "dayKey": "2026-11-08",
-   "date": "2026-11-08",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.44,
-    "odds": 1.41,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.48
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.7
     }
    ]
   },
@@ -8405,39 +8392,6 @@
    ]
   },
   {
-   "id": "pm-den-mid-sjs-2026-11-08",
-   "sport": "football",
-   "league": "Denmark Superliga",
-   "kickoff": "2026-11-08T17:00:00Z",
-   "home": "FC Midtjylland",
-   "away": "Sønderjyske Fodbold",
-   "dayKey": "2026-11-08",
-   "date": "2026-11-08",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "key": "MS1",
-    "label": "MS 1",
-    "minPlay": 1.36,
-    "odds": 1.33,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 4.12
-    },
-    {
-     "label": "MS X",
-     "minPlay": 6.97
-    }
-   ]
-  },
-  {
    "id": "pm-cze1-fvp-asp-2026-11-08",
    "sport": "football",
    "league": "Czechia Chance Liga",
@@ -8467,6 +8421,39 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.66
+    }
+   ]
+  },
+  {
+   "id": "pm-den-mid-sjs-2026-11-08",
+   "sport": "football",
+   "league": "Denmark Superliga",
+   "kickoff": "2026-11-08T17:00:00Z",
+   "home": "FC Midtjylland",
+   "away": "Sønderjyske Fodbold",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "key": "MS1",
+    "label": "MS 1",
+    "minPlay": 1.36,
+    "odds": 1.33,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 4.12
+    },
+    {
+     "label": "MS X",
+     "minPlay": 6.97
     }
    ]
   },
@@ -10006,7 +9993,7 @@
    "id": "2026-11-08#olasi1",
    "type": "olasi",
    "dayKey": "2026-11-08",
-   "createdAt": "2026-11-07T19:45:24.852Z",
+   "createdAt": "2026-11-07T19:47:17.448Z",
    "status": "pending",
    "odds": 2,
    "conf": 0.4601,
@@ -10043,31 +10030,7 @@
    "id": "2026-11-08#deger1",
    "type": "deger",
    "dayKey": "2026-11-08",
-   "createdAt": "2026-11-07T19:45:24.852Z",
-   "status": "pending",
-   "odds": 2.95,
-   "conf": 0.3632,
-   "legs": [
-    {
-     "matchId": "fd-MEX-2026-11-07-Atlas-Pachuca",
-     "home": "Atlas",
-     "away": "Pachuca",
-     "league": "Meksika Liga MX",
-     "kickoff": "2026-11-07T23:00:00Z",
-     "date": "2026-11-07",
-     "fdDiv": "MEX",
-     "key": "MS2",
-     "label": "MS 2",
-     "odds": 2.95,
-     "minPlay": 2.81
-    }
-   ]
-  },
-  {
-   "id": "2026-11-08#deger2",
-   "type": "deger",
-   "dayKey": "2026-11-08",
-   "createdAt": "2026-11-07T19:45:24.852Z",
+   "createdAt": "2026-11-07T19:47:17.448Z",
    "status": "pending",
    "odds": 3.46,
    "conf": 0.3062,
@@ -10101,10 +10064,10 @@
    ]
   },
   {
-   "id": "2026-11-08#deger3",
+   "id": "2026-11-08#deger2",
    "type": "deger",
    "dayKey": "2026-11-08",
-   "createdAt": "2026-11-07T19:45:24.852Z",
+   "createdAt": "2026-11-07T19:47:17.448Z",
    "status": "pending",
    "odds": 3.15,
    "conf": 0.3333,
@@ -10121,6 +10084,30 @@
      "label": "MS 2",
      "odds": 3.15,
      "minPlay": 3.06
+    }
+   ]
+  },
+  {
+   "id": "2026-11-08#deger3",
+   "type": "deger",
+   "dayKey": "2026-11-08",
+   "createdAt": "2026-11-07T19:47:17.448Z",
+   "status": "pending",
+   "odds": 2.8,
+   "conf": 0.3668,
+   "legs": [
+    {
+     "matchId": "fd-USA-2026-11-08-Houston_Dynamo-St._Louis_City",
+     "home": "Houston Dynamo",
+     "away": "St. Louis City",
+     "league": "ABD MLS",
+     "kickoff": "2026-11-08T00:00:00Z",
+     "date": "2026-11-08",
+     "fdDiv": "USA",
+     "key": "MS2",
+     "label": "MS 2",
+     "odds": 2.8,
+     "minPlay": 2.78
     }
    ]
   }
@@ -14746,9 +14733,9 @@
    "away": "Pachuca",
    "dayKey": "2026-11-08",
    "top": {
-    "selection": "MS 1",
-    "probability": 0.385,
-    "odds": 2.33
+    "selection": "MS 2",
+    "probability": 0.369,
+    "odds": 2.64
    },
    "lowOdds": false,
    "pick": null,
@@ -15336,8 +15323,8 @@
    "dayKey": "2026-11-08",
    "top": {
     "selection": "MS 2",
-    "probability": 0.481,
-    "odds": 2.02
+    "probability": 0.489,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -15353,7 +15340,7 @@
    "dayKey": "2026-11-08",
    "top": {
     "selection": "MS 1",
-    "probability": 0.596,
+    "probability": 0.598,
     "odds": 1.61
    },
    "lowOdds": false,
@@ -15767,8 +15754,8 @@
    "dayKey": "2026-11-08",
    "top": {
     "selection": "MS 2",
-    "probability": 0.455,
-    "odds": 2.1
+    "probability": 0.454,
+    "odds": 2.13
    },
    "lowOdds": false,
    "pick": null,
@@ -15894,6 +15881,23 @@
    "isPick": false
   },
   {
+   "id": "pm-jap-zel-san-2026-11-08",
+   "sport": "football",
+   "league": "Japan J League",
+   "kickoff": "2026-11-08T05:00:00Z",
+   "home": "FC Machida Zelvia",
+   "away": "Sanfrecce Hiroshima",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.4,
+    "odds": 2.5
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-ja2-jub-sho-2026-11-08",
    "sport": "football",
    "league": "Japan J2 League",
@@ -15922,23 +15926,6 @@
     "selection": "MS 2",
     "probability": 0.487,
     "odds": 2.05
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-jap-zel-san-2026-11-08",
-   "sport": "football",
-   "league": "Japan J League",
-   "kickoff": "2026-11-08T05:00:00Z",
-   "home": "FC Machida Zelvia",
-   "away": "Sanfrecce Hiroshima",
-   "dayKey": "2026-11-08",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.4,
-    "odds": 2.5
    },
    "lowOdds": false,
    "pick": null,
@@ -17557,6 +17544,23 @@
    "isPick": false
   },
   {
+   "id": "pm-mar1-rcz-wst-2026-11-08",
+   "sport": "football",
+   "league": "Morocco Botola Pro",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "RCA Zemamra",
+   "away": "Wydad Sportif Témara",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.399,
+    "odds": 2.51
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-nor-ham-sar-2026-11-08",
    "sport": "football",
    "league": "Norway Eliteserien",
@@ -17600,23 +17604,6 @@
    "dayKey": "2026-11-08",
    "top": null,
    "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-mar1-rcz-wst-2026-11-08",
-   "sport": "football",
-   "league": "Morocco Botola Pro",
-   "kickoff": "2026-11-08T16:00:00Z",
-   "home": "RCA Zemamra",
-   "away": "Wydad Sportif Témara",
-   "dayKey": "2026-11-08",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.399,
-    "odds": 2.51
-   },
-   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -17821,23 +17808,6 @@
    "isPick": false
   },
   {
-   "id": "pm-den-mid-sjs-2026-11-08",
-   "sport": "football",
-   "league": "Denmark Superliga",
-   "kickoff": "2026-11-08T17:00:00Z",
-   "home": "FC Midtjylland",
-   "away": "Sønderjyske Fodbold",
-   "dayKey": "2026-11-08",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.753,
-    "odds": 1.33
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cze1-fvp-asp-2026-11-08",
    "sport": "football",
    "league": "Czechia Chance Liga",
@@ -17849,6 +17819,23 @@
     "selection": "MS 2",
     "probability": 0.385,
     "odds": 2.6
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-den-mid-sjs-2026-11-08",
+   "sport": "football",
+   "league": "Denmark Superliga",
+   "kickoff": "2026-11-08T17:00:00Z",
+   "home": "FC Midtjylland",
+   "away": "Sønderjyske Fodbold",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.753,
+    "odds": 1.33
    },
    "lowOdds": false,
    "pick": null,
@@ -18409,7 +18396,7 @@
  "sources": {
   "The Odds API": {
    "ok": true,
-   "info": "53 aktif lig, bugün-yarın maçı olan 38, bu çalışmada 2 yenilendi, önbellekte 26, kalan kredi 291"
+   "info": "53 aktif lig, bugün-yarın maçı olan 38, bu çalışmada 1 yenilendi, önbellekte 26, kalan kredi 290"
   },
   "football-data ek ligler": {
    "ok": true,
