@@ -214,6 +214,16 @@ const sameName = (a, b) => sameTeam(a, b) || toks(a).some(w => toks(b).includes(
 let eloClubs = [], eloUsed = 0; try { eloClubs = await clubElo(todayIst); } catch { try { eloClubs = await clubElo(ist(now - 864e5)); } catch (e) { note("ClubElo", false, e.message); } }
 const bkCfg = read("config/basket.json", null);
 const legMap = new Map();
+function marketPick(c, base) {
+  const mk = c.fair && devig(c.fair); if (!mk) return null;
+  const ou = c.ou?.fair && devig(c.ou.fair), L = c.low || c.entry, LO = c.ouLow || c.ou?.entry;
+  const opts = [["MS1", "MS 1", mk[0], L?.[0]], ["MSX", "MS X", mk[1], L?.[1]], ["MS2", "MS 2", mk[2], L?.[2]], ["1X", "Ev sahibi kaybetmez (1X)", mk[0] + mk[1], dc3(L, 0, 1)], ["X2", "Deplasman kaybetmez (X2)", mk[1] + mk[2], dc3(L, 1, 2)], ["12", "Beraberlik olmaz (12)", mk[0] + mk[2], dc3(L, 0, 2)], ...(ou ? [["U25", "2,5 Üst", ou[0], LO?.[0]], ["A25", "2,5 Alt", ou[1], LO?.[1]]] : [])]
+    .map(([key, label, p, o]) => ({ key, label, p, odds: Number.isFinite(o) ? +o.toFixed(2) : null, minPlay: +Math.max(1.3, 1 / p / 0.98).toFixed(2) }))
+    .filter(x => x.odds && x.odds >= 1.3).sort((a, b) => b.p - a.p);
+  if (!opts.length) return null;
+  const b = opts[0];
+  return { ...base, bet: { rule: "piyasa", safe: false, key: b.key, label: b.label, minPlay: b.minPlay, odds: b.odds, estOdds: null, value: b.odds >= b.minPlay, book: c.bookmaker || null }, alts: opts.slice(1, 3).map(x => ({ label: x.label, minPlay: x.minPlay })) };
+}
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
   const base = { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
   if (c.sport === "basketball") {
@@ -226,6 +236,9 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     const b = opts[0], need = x => +Math.max(1.2, 1.03 / x.p).toFixed(2);
     return { ...base, bet: { key: b.key, pmId: b.pmId, pmIdx: b.pmIdx, kind: b.kind, line: b.line, label: b.label, minPlay: need(b), odds: b.odd, unverified: true, rule: "test" }, alts: opts.slice(1, 4).map(x => ({ label: x.label, minPlay: need(x) })) };
   }
+  // Futbol: 3 yillik testte bahiscilerin ortak orani motorun kendi hesabindan daha isabetli cikti (docs/test3.json).
+  // Bu yuzden tahmin piyasanin adil olasiligindan; "en az" siniri adil fiyattir.
+  if (c.sport === "football") return marketPick(c, base);
   let eloGoals = null;
   if (!c.fdDiv && eloClubs.length && c.fair) { const h = eloClubs.find(x => sameTeam(x.club, c.home)), a = eloClubs.find(x => sameTeam(x.club, c.away)); if (h && a) { const E = 1 / (1 + 10 ** (-(h.elo + 65 - a.elo) / 400)), g = impliedGoals(eloProbs(E)), m = impliedGoals(devig(c.fair)); eloGoals = [(g[0] + m[0]) / 2, (g[1] + m[1]) / 2]; eloUsed++; } }
   const goals = c.dossier?.goals || eloGoals || (c.fair ? impliedGoals(devig(c.fair)) : null);
@@ -315,8 +328,8 @@ const coupons = read("docs/coupons.json", []);
 for (const d of [todayIst, tomorrowIst]) {
   const old = coupons.filter(x => x.dayKey === d), locked = old.some(x => x.legs.some(l => Date.parse(l.kickoff) <= now));
   if (locked) continue;
+  // Kuponlar 3 yillik testte her yil zarar etti; yeni kupon uretilmez, eskiler silinir.
   for (const x of old) coupons.splice(coupons.indexOf(x), 1);
-  couponsOf(matches.filter(m => m.dayKey === d)).forEach((x, i) => coupons.push({ id: `${d}#${i + 1}`, dayKey: d, createdAt: new Date(now).toISOString(), status: "pending", ...x }));
 }
 for (const cp of coupons.filter(x => x.status === "pending")) {
   for (const l of cp.legs.filter(l => l.status !== "won" && l.status !== "lost" && Date.parse(l.kickoff) < now)) {
