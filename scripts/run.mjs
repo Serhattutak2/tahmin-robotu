@@ -401,5 +401,18 @@ let bank = 1000; const curve = settled.sort((a, b) => a.kickoff.localeCompare(b.
 const sAll = summarize(settled), mean = sAll.roi ?? 0, se = settled.length ? Math.sqrt(settled.reduce((a, l) => a + (l.profit - mean) ** 2, 0) / settled.length / settled.length) : 0, low = mean - 1.96 * se;
 const evidence = settled.length >= 500 && low > 0 ? "kanitli" : settled.length >= 100 && mean > 0 ? "umut" : "deneme";
 fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
-fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst }, x1: x1List, matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
+fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst }, x1: x1List, kârTablosu: buildProfit(tipCard, couponCard), matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
 console.log(JSON.stringify({ evaluated: candidates.length, withOdds, modelled, picks: picks.length, sources }, null, 1));
+
+// Gunluk sayfadaki kar tablosu: test sonuclari (son 3 yil, son 6 ay) ve sitede gerceklesen.
+function buildProfit(tc, cc) {
+  const t3 = read("docs/test3.json", {}), x1 = read("docs/x1test.json", {}).sonuç || {}, six = t3.son6Ay || {};
+  const S = x => x && x.seçim ? { n: x.seçim, won: x.tutan, profit: x.kar } : null, L = x => x ? { n: x.done ?? 0, won: x.won ?? 0, profit: x.profit ?? 0 } : null;
+  return [
+    { ad: "Değer avı", not: "tek bir bahis sitesinin oranıyla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1) },
+    { ad: "Motorun seçimleri", not: "en yüksek oranla", t3: S(t3.motorunSeçimleri?.enYüksekOran), t6: S(six.motorunSeçimleri?.enYüksek), canlı: L(tc.fiyat) },
+    { ad: "Motorun seçimleri", not: "bet365 oranıyla", t3: S(t3.motorunSeçimleri?.bet365), t6: S(six.motorunSeçimleri?.bet365), canlı: tc.clvFiyat ? { n: tc.clvFiyat.b365Done, won: null, profit: tc.clvFiyat.b365Profit } : null },
+    { ad: "En olası kupon", not: "bet365 oranıyla", t3: S(t3.kuponEnOlası?.bet365), t6: S(six.kuponEnOlası?.bet365), canlı: L(cc?.olasi) },
+    { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger) },
+  ];
+}
