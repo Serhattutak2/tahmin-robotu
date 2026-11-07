@@ -1,0 +1,22 @@
+name: Deger avi 3 yil testi
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/x1test.mjs", ".github/workflows/x1test.yml"]
+permissions: { contents: write }
+concurrency: { group: x1test, cancel-in-progress: false }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --max-old-space-size=6000 scripts/x1test.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "actions@github.com"
+          git add docs/x1test.json; git diff --cached --quiet || git commit -m "Deger avi test sonucu"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
