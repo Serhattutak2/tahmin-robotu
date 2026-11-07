@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-07T08:11:14.742Z",
+ "generatedAt": "2026-11-07T08:18:03.676Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -12,7 +12,7 @@
    "sportKey": "soccer_brazil_serie_b",
    "engine": "piyasa",
    "bookCount": 16,
-   "oddsAgeHours": 10,
+   "oddsAgeHours": 11,
    "medianOdds": 3.32,
    "agreement": null,
    "id": "toa-9db2b3a5875c4c346ed038fd7a96d98c",
@@ -40,7 +40,7 @@
    "sportKey": "soccer_brazil_serie_b",
    "engine": "piyasa",
    "bookCount": 15,
-   "oddsAgeHours": 10,
+   "oddsAgeHours": 11,
    "medianOdds": 3.2,
    "agreement": null,
    "id": "toa-e6cd4f60d455d26b22be262f1b0ef661",
@@ -159,8 +159,8 @@
      "minPlay": 1.55
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.4
+     "label": "Deplasman gol atar",
+     "minPlay": 1.53
     }
    ]
   },
@@ -177,17 +177,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7461,
-     "rule": "isabet",
-     "safe": true,
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A25",
     "label": "2,5 Alt",
@@ -212,18 +202,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7461,
-     "odds": 1.21
-    },
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7313,
-     "odds": 1.26
-    },
     {
      "key": "A25",
      "label": "2,5 Alt",
@@ -271,8 +249,8 @@
      "minPlay": 1.66
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "label": "Karşılıklı gol var",
+     "minPlay": 1.65
     }
    ]
   },
@@ -303,14 +281,6 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.5
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
-     "label": "Deplasman gol atar",
-     "minPlay": 1.51
     }
    ]
   },
@@ -339,16 +309,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4
-    },
-    {
      "label": "3,5 Alt",
      "minPlay": 1.53
     },
     {
      "label": "Deplasman en fazla 2 gol atar",
      "minPlay": 1.57
+    },
+    {
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.58
     }
    ]
   },
@@ -385,8 +355,8 @@
      "minPlay": 1.5
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.39
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.65
     }
    ]
   },
@@ -403,17 +373,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7243,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -433,17 +393,11 @@
      "minPlay": 1.57
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.45
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.57
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7243,
-     "odds": 1.26
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -509,17 +463,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7334,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -554,12 +498,6 @@
    },
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7334,
-     "odds": 1.24
-    },
-    {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6957,
@@ -586,17 +524,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7335,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -621,12 +549,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7335,
-     "odds": 1.27
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -716,17 +638,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7272,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -742,21 +654,15 @@
      "minPlay": 1.49
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.47
-    },
-    {
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.59
+    },
+    {
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.53
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7272,
-     "odds": 1.28
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -808,8 +714,8 @@
      "minPlay": 1.54
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.5
     }
    ],
    "legs": [
@@ -878,17 +784,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7306,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "KGV",
     "label": "Karşılıklı gol var",
@@ -913,12 +809,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7306,
-     "odds": 1.27
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -978,17 +868,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7271,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -1011,20 +891,6 @@
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.52
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7271,
-     "odds": 1.22
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.6791,
-     "odds": 1.29
-    }
    ]
   },
   {
@@ -1040,22 +906,12 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7269,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY05",
     "label": "İlk yarı 0,5 Üst",
-    "minPlay": 1.55,
-    "estOdds": 1.39,
+    "minPlay": 1.56,
+    "estOdds": 1.4,
     "odds": null,
     "value": false,
     "book": null
@@ -1063,28 +919,22 @@
    "alts": [
     {
      "label": "1,5 Üst",
-     "minPlay": 1.47
+     "minPlay": 1.48
     },
     {
      "label": "Deplasman gol atar",
      "minPlay": 1.57
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.5
+     "label": "İlk yarı X2",
+     "minPlay": 1.54
     }
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7269,
-     "odds": 1.28
-    },
-    {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7137,
+     "mp": 0.7079,
      "odds": 1.32
     }
    ]
@@ -1118,11 +968,11 @@
      "minPlay": 1.47
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.67
     },
     {
-     "label": "1X ve 1,5 Üst",
+     "label": "12 ve 1,5 Üst",
      "minPlay": 1.67
     }
    ]
@@ -1194,12 +1044,12 @@
      "minPlay": 1.59
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.56
+    },
+    {
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.62
     }
    ]
   },
@@ -1228,16 +1078,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.45
-    },
-    {
      "label": "1X ve 1,5 Üst",
      "minPlay": 1.68
+    },
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.57
     }
    ]
   },
@@ -1384,12 +1230,12 @@
      "minPlay": 1.43
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.41
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.59
+    },
+    {
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.63
     }
    ]
   },
@@ -1406,17 +1252,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7366,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "MS2",
     "label": "Deplasman kazanır (MS 2)",
@@ -1451,12 +1287,6 @@
    },
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7366,
-     "odds": 1.27
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.6721,
@@ -1489,17 +1319,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7366,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "DEP05",
     "label": "Deplasman gol atar",
@@ -1522,14 +1342,6 @@
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.53
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7366,
-     "odds": 1.28
-    }
    ]
   },
   {
@@ -1545,17 +1357,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7289,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -1575,23 +1377,11 @@
      "minPlay": 1.61
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.47
+     "label": "İlk yarı X2",
+     "minPlay": 1.61
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7289,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.712,
-     "odds": 1.26
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -1613,17 +1403,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7392,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -1646,14 +1426,6 @@
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.52
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7392,
-     "odds": 1.21
-    }
    ]
   },
   {
@@ -1669,17 +1441,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7255,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY05",
     "label": "İlk yarı 0,5 Üst",
@@ -1695,26 +1457,12 @@
      "minPlay": 1.47
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.45
-    },
-    {
      "label": "İlk yarı X2",
      "minPlay": 1.58
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7255,
-     "odds": 1.28
     },
     {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7034,
-     "odds": 1.27
+     "label": "Deplasman gol atar",
+     "minPlay": 1.56
     }
    ]
   },
@@ -1825,10 +1573,6 @@
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.49
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
     }
    ]
   },
@@ -1857,16 +1601,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
-    },
-    {
      "label": "3,5 Alt",
      "minPlay": 1.49
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.43
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.53
+    },
+    {
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.61
     }
    ]
   },
@@ -2007,12 +1751,6 @@
      "label": "Deplasman kazanır (MS 2)",
      "mp": 0.6974,
      "odds": 1.31
-    },
-    {
-     "key": "U25",
-     "label": "2,5 Üst",
-     "mp": 0.6579,
-     "odds": 1.2
     }
    ]
   },
@@ -2029,17 +1767,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.742,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -2059,17 +1787,11 @@
      "minPlay": 1.57
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.56
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.742,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -2121,12 +1843,6 @@
      "label": "Ev sahibi kazanır (MS 1)",
      "mp": 0.6898,
      "odds": 1.45
-    },
-    {
-     "key": "U25",
-     "label": "2,5 Üst",
-     "mp": 0.6774,
-     "odds": 1.25
     }
    ]
   },
@@ -2143,17 +1859,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7582,
-     "rule": "isabet",
-     "safe": true,
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.36,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IYX2",
     "label": "İlk yarı X2",
@@ -2173,22 +1879,8 @@
      "minPlay": 1.51
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
-    }
-   ],
-   "legs": [
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7582,
-     "odds": 1.2
-    },
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7441,
-     "odds": 1.25
+     "label": "3,5 Alt",
+     "minPlay": 1.47
     }
    ]
   },
@@ -2205,17 +1897,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7515,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "KGV",
     "label": "Karşılıklı gol var",
@@ -2241,12 +1923,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7515,
-     "odds": 1.21
-    },
-    {
      "key": "U25",
      "label": "2,5 Üst",
      "mp": 0.5942,
@@ -2267,17 +1943,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7474,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -2302,12 +1968,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7474,
-     "odds": 1.22
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -2335,22 +1995,12 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7342,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "EV05",
     "label": "Ev sahibi gol atar",
-    "minPlay": 1.55,
-    "estOdds": 1.39,
+    "minPlay": 1.57,
+    "estOdds": 1.42,
     "odds": null,
     "value": false,
     "book": null
@@ -2358,29 +2008,15 @@
    "alts": [
     {
      "label": "İlk yarı 1X",
-     "minPlay": 1.59
+     "minPlay": 1.6
     },
     {
      "label": "İlk yarı 0,5 Üst",
-     "minPlay": 1.52
+     "minPlay": 1.53
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7342,
-     "odds": 1.25
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7142,
-     "odds": 1.24
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.58
     }
    ]
   },
@@ -2511,17 +2147,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7396,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -2547,18 +2173,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7396,
-     "odds": 1.24
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7286,
-     "odds": 1.22
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.5891,
@@ -2579,17 +2193,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7377,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -2615,18 +2219,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7377,
-     "odds": 1.22
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.709,
-     "odds": 1.28
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.5842,
@@ -2647,17 +2239,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7296,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -2682,12 +2264,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7296,
-     "odds": 1.26
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -2731,21 +2307,15 @@
      "minPlay": 1.55
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.47
-    },
-    {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.52
+    },
+    {
+     "label": "İlk yarı 1X",
+     "minPlay": 1.55
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.719,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -2773,17 +2343,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.723,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -2803,17 +2363,11 @@
      "minPlay": 1.53
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.44
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.62
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.723,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -2847,25 +2401,19 @@
    },
    "alts": [
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.45
-    },
-    {
      "label": "3,5 Alt",
      "minPlay": 1.52
     },
     {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.49
+     "label": "İlk yarı 1X",
+     "minPlay": 1.54
+    },
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.65
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7159,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -2931,17 +2479,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7341,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -2966,12 +2504,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7341,
-     "odds": 1.22
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -3037,17 +2569,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7255,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.23,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -3069,20 +2591,6 @@
     {
      "label": "İlk yarı X2",
      "minPlay": 1.58
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7255,
-     "odds": 1.23
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.6875,
-     "odds": 1.29
     }
    ]
   },
@@ -3191,17 +2699,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7333,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -3226,12 +2724,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7333,
-     "odds": 1.22
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -3275,14 +2767,6 @@
     {
      "label": "İlk yarı X2",
      "minPlay": 1.6
-    }
-   ],
-   "legs": [
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.6937,
-     "odds": 1.28
     }
    ]
   },
@@ -3337,17 +2821,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7394,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -3372,12 +2846,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7394,
-     "odds": 1.2
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -3437,17 +2905,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7362,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.23,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -3472,12 +2930,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7362,
-     "odds": 1.23
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -3505,17 +2957,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.721,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -3531,21 +2973,15 @@
      "minPlay": 1.54
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.48
-    },
-    {
      "label": "3,5 Alt",
      "minPlay": 1.5
+    },
+    {
+     "label": "İlk yarı 1X",
+     "minPlay": 1.55
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.721,
-     "odds": 1.26
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -3611,17 +3047,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.734,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -3646,18 +3072,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.734,
-     "odds": 1.26
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7266,
-     "odds": 1.28
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -3735,10 +3149,6 @@
     {
      "label": "Ev sahibi 2+ farkla kazanır",
      "minPlay": 1.53
-    },
-    {
-     "label": "Karşılıklı gol yok",
-     "minPlay": 1.45
     }
    ]
   },
@@ -3771,12 +3181,8 @@
      "minPlay": 1.55
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.48
+     "label": "Deplasman gol atar",
+     "minPlay": 1.55
     }
    ]
   },
@@ -3806,15 +3212,11 @@
    "alts": [
     {
      "label": "3,5 Alt",
-     "minPlay": 1.55
+     "minPlay": 1.58
     },
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.55
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.51
     }
    ]
   },
@@ -3843,16 +3245,8 @@
    },
    "alts": [
     {
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.43
-    },
-    {
      "label": "MS 1 ve 1,5 Üst",
      "minPlay": 1.56
-    },
-    {
-     "label": "Ev sahibi 2+ gol atar",
-     "minPlay": 1.49
     }
    ]
   },
@@ -3880,14 +3274,6 @@
     "book": null
    },
    "alts": [
-    {
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.39
-    },
-    {
-     "label": "Ev sahibi 2+ gol atar",
-     "minPlay": 1.49
-    },
     {
      "label": "MS 1 ve 1,5 Üst",
      "minPlay": 1.53
@@ -3919,16 +3305,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.4
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.61
+    },
+    {
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.63
+    },
+    {
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.53
     }
    ]
   },
@@ -3965,8 +3351,8 @@
      "minPlay": 1.52
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
+     "label": "Deplasman gol atar",
+     "minPlay": 1.57
     }
    ]
   },
@@ -3995,16 +3381,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.54
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.46
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.66
     }
    ]
   },
@@ -4033,16 +3415,16 @@
    },
    "alts": [
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.41
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42
-    },
-    {
      "label": "Ev sahibi en fazla 2 gol atar",
      "minPlay": 1.57
+    },
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.56
+    },
+    {
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.64
     }
    ]
   },
@@ -4079,8 +3461,8 @@
      "minPlay": 1.66
     },
     {
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.45
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.55
     }
    ]
   },
@@ -4115,10 +3497,6 @@
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.44
-    },
-    {
-     "label": "Deplasman gol atar",
-     "minPlay": 1.51
     }
    ]
   },
@@ -4191,10 +3569,6 @@
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.44
-    },
-    {
-     "label": "Ev sahibi en fazla 2 gol atar",
-     "minPlay": 1.5
     }
    ]
   },
@@ -4307,8 +3681,8 @@
      "minPlay": 1.54
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.47
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.68
     }
    ]
   },
@@ -4337,16 +3711,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.5
     },
     {
      "label": "X2 ve 1,5 Üst",
      "minPlay": 1.66
+    },
+    {
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.65
     }
    ]
   },
@@ -4451,16 +3825,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.64
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.39
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.53
+    },
+    {
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.62
     }
    ]
   },
@@ -4573,8 +3947,8 @@
      "minPlay": 1.55
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.36
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.57
     }
    ]
   },
@@ -4683,12 +4057,12 @@
      "minPlay": 1.56
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.43
-    },
-    {
      "label": "1X ve 1,5 Üst",
      "minPlay": 1.67
+    },
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.59
     }
    ]
   },
@@ -4763,8 +4137,8 @@
      "minPlay": 1.66
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.58
     }
    ]
   },
@@ -4801,18 +4175,18 @@
      "minPlay": 1.62
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.62
     }
    ]
   },
   {
-   "id": "pm-nor-kbk-vif-2026-11-07",
+   "id": "toa-615fc58d9980422a8fea00e339e13949",
    "sport": "football",
-   "league": "Norway Eliteserien",
+   "league": "Eliteserien - Norway",
    "kickoff": "2026-11-07T15:00:00Z",
    "home": "Kristiansund BK",
-   "away": "Vålerenga Fotball",
+   "away": "Vålerenga",
    "dayKey": "2026-11-07",
    "date": "2026-11-07",
    "fdDiv": null,
@@ -4821,64 +4195,26 @@
     "rule": "kar",
     "second": null,
     "safe": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.71,
-    "estOdds": null,
-    "odds": 1.68,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.7,
+    "estOdds": 1.63,
+    "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.71
+    },
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.61
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": 1.7
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    }
-   ]
-  },
-  {
-   "id": "pm-elc-qpr-lin-2026-11-07",
-   "sport": "football",
-   "league": "EFL Championship",
-   "kickoff": "2026-11-07T15:00:00Z",
-   "home": "Queens Park Rangers FC",
-   "away": "Lincoln City FC",
-   "dayKey": "2026-11-07",
-   "date": "2026-11-07",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "rule": "kar",
-    "second": null,
-    "safe": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.43,
-    "estOdds": null,
-    "odds": 1.31,
-    "value": false,
-    "book": null
-   },
-   "alts": [
-    {
-     "label": "Deplasman gol atar",
-     "minPlay": 1.66
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.52
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.38
+     "label": "Karşılıklı gol var",
+     "minPlay": 1.62
     }
    ]
   },
@@ -4917,6 +4253,44 @@
     {
      "label": "12 ve 1,5 Üst",
      "minPlay": 1.67
+    }
+   ]
+  },
+  {
+   "id": "pm-elc-qpr-lin-2026-11-07",
+   "sport": "football",
+   "league": "EFL Championship",
+   "kickoff": "2026-11-07T15:00:00Z",
+   "home": "Queens Park Rangers FC",
+   "away": "Lincoln City FC",
+   "dayKey": "2026-11-07",
+   "date": "2026-11-07",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.43,
+    "estOdds": null,
+    "odds": 1.31,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.66
+    },
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.52
+    },
+    {
+     "label": "1X ve 1,5 Üst",
+     "minPlay": 1.63
     }
    ]
   },
@@ -5017,21 +4391,15 @@
      "minPlay": 1.55
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.47
-    },
-    {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.49
+    },
+    {
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.5
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7197,
-     "odds": 1.28
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -5097,17 +4465,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7337,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -5123,21 +4481,15 @@
      "minPlay": 1.65
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
-    },
-    {
      "label": "İlk yarı X2",
      "minPlay": 1.63
+    },
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.5
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7337,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -5185,12 +4537,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7152,
-     "odds": 1.29
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.6785,
@@ -5222,10 +4568,6 @@
     "book": null
    },
    "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.51
@@ -5295,17 +4637,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7391,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -5325,22 +4657,8 @@
      "minPlay": 1.61
     },
     {
-     "label": "İlk yarı 0,5 Üst",
-     "minPlay": 1.49
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7391,
-     "odds": 1.22
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7159,
-     "odds": 1.27
+     "label": "Deplasman gol atar",
+     "minPlay": 1.52
     }
    ]
   },
@@ -5357,17 +4675,7 @@
    "sportKey": "soccer_austria_bundesliga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7262,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "U25",
     "label": "2,5 Üst",
@@ -5392,12 +4700,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7262,
-     "odds": 1.26
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -5527,12 +4829,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7199,
-     "odds": 1.27
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.6322,
@@ -5557,7 +4853,7 @@
     "safe": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.47,
+    "minPlay": 1.46,
     "estOdds": null,
     "odds": 1.36,
     "value": false,
@@ -5566,15 +4862,15 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.51
-    },
-    {
-     "label": "3,5 Alt",
      "minPlay": 1.52
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
+     "label": "3,5 Alt",
+     "minPlay": 1.55
+    },
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.53
     }
    ]
   },
@@ -5591,17 +4887,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.766,
-     "rule": "isabet",
-     "safe": true,
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.34,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -5633,21 +4919,7 @@
     "minPlay": 1.81,
     "book": "bet365",
     "rule": "fiyat"
-   },
-   "legs": [
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.766,
-     "odds": 1.2
-    },
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7444,
-     "odds": 1.29
-    }
-   ]
+   }
   },
   {
    "id": "fd-DNK-2026-11-07-Odense-Viborg",
@@ -5662,17 +4934,7 @@
    "sportKey": "soccer_denmark_superliga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7405,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -5690,19 +4952,9 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.63
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7405,
-     "odds": 1.24
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -5714,6 +4966,44 @@
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6469,
      "odds": 1.54
+    }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-07-Rosenborg-Start",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-07T17:00:00Z",
+   "home": "Rosenborg",
+   "away": "Start",
+   "dayKey": "2026-11-07",
+   "date": "2026-11-07",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.57,
+    "estOdds": 1.51,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "2,5 Üst",
+     "minPlay": 1.67
+    },
+    {
+     "label": "MS 1 ve 1,5 Üst",
+     "minPlay": 1.58
+    },
+    {
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.51
     }
    ]
   },
@@ -5752,44 +5042,6 @@
     {
      "label": "Deplasman gol atar",
      "minPlay": 1.59
-    }
-   ]
-  },
-  {
-   "id": "pm-nor-rbk-ik-2026-11-07",
-   "sport": "football",
-   "league": "Norway Eliteserien",
-   "kickoff": "2026-11-07T17:00:00Z",
-   "home": "Rosenborg BK",
-   "away": "IK Start",
-   "dayKey": "2026-11-07",
-   "date": "2026-11-07",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "rule": "kar",
-    "second": null,
-    "safe": false,
-    "key": "A35",
-    "label": "3,5 Alt",
-    "minPlay": 1.61,
-    "estOdds": 1.54,
-    "odds": null,
-    "value": false,
-    "book": null
-   },
-   "alts": [
-    {
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.44
-    },
-    {
-     "label": "MS 1 ve 1,5 Üst",
-     "minPlay": 1.57
-    },
-    {
-     "label": "Ev sahibi 2+ gol atar",
-     "minPlay": 1.51
     }
    ]
   },
@@ -5921,17 +5173,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7295,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -5956,12 +5198,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7295,
-     "odds": 1.24
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -5989,17 +5225,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7457,
-     "rule": "isabet",
-     "safe": true,
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "EV15",
     "label": "Ev sahibi 2+ gol atar",
@@ -6024,12 +5250,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7457,
-     "odds": 1.2
-    },
     {
      "key": "U25",
      "label": "2,5 Üst",
@@ -6099,12 +5319,6 @@
      "odds": 1.3
     },
     {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7159,
-     "odds": 1.28
-    },
-    {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6115,
@@ -6163,17 +5377,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7302,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -6198,18 +5402,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7302,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7268,
-     "odds": 1.24
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -6269,17 +5461,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7426,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.23,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -6301,14 +5483,6 @@
     {
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.64
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7426,
-     "odds": 1.23
     }
    ]
   },
@@ -6337,16 +5511,12 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.44
-    },
-    {
      "label": "1X ve 1,5 Üst",
      "minPlay": 1.66
+    },
+    {
+     "label": "Deplasman gol atar",
+     "minPlay": 1.57
     }
    ]
   },
@@ -6375,16 +5545,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.54
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.45
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.67
+    },
+    {
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.64
     }
    ]
   },
@@ -6421,8 +5591,8 @@
      "minPlay": 1.54
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.41
+     "label": "X2 ve 1,5 Üst",
+     "minPlay": 1.64
     }
    ]
   },
@@ -6457,10 +5627,6 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.49
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
     }
    ]
   },
@@ -6477,17 +5643,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7288,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6512,12 +5668,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7288,
-     "odds": 1.27
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -6545,17 +5695,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7347,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6580,12 +5720,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7347,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -6613,17 +5747,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7656,
-     "rule": "isabet",
-     "safe": true,
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.35,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -6646,20 +5770,6 @@
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.63
     }
-   ],
-   "legs": [
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7656,
-     "odds": 1.21
-    },
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7522,
-     "odds": 1.24
-    }
    ]
   },
   {
@@ -6675,17 +5785,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7419,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.23,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -6707,14 +5807,6 @@
     {
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.51
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7419,
-     "odds": 1.23
     }
    ]
   },
@@ -6901,10 +5993,6 @@
      "minPlay": 1.55
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.4
-    },
-    {
      "label": "1X ve 3,5 Alt",
      "minPlay": 1.65
     }
@@ -7027,8 +6115,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Kent State Golden Flashes kazanır",
-    "minPlay": 1.58,
-    "odds": 1.54,
+    "minPlay": 1.61,
+    "odds": 1.56,
     "unverified": true,
     "rule": "test"
    },
@@ -7051,8 +6139,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Ball State Cardinals kazanır",
-    "minPlay": 1.48,
-    "odds": 1.44,
+    "minPlay": 1.44,
+    "odds": 1.4,
     "unverified": true,
     "rule": "test"
    },
@@ -7071,17 +6159,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7411,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -7101,16 +6179,8 @@
      "minPlay": 1.51
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7411,
-     "odds": 1.22
+     "label": "3,5 Alt",
+     "minPlay": 1.47
     }
    ]
   },
@@ -7177,21 +6247,15 @@
      "minPlay": 1.57
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": 1.48
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.59
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.48
+     "label": "İlk yarı 1X",
+     "minPlay": 1.58
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.711,
-     "odds": 1.22
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -7275,12 +6339,8 @@
      "minPlay": 1.53
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.48
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.58
     }
    ]
   },
@@ -7313,12 +6373,12 @@
      "minPlay": 1.71
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
      "label": "2,5 Üst",
      "minPlay": 1.63
+    },
+    {
+     "label": "Karşılıklı gol var",
+     "minPlay": 1.61
     }
    ]
   },
@@ -7340,8 +6400,8 @@
     "kind": "spread",
     "line": 2.5,
     "label": "VCU Rams +2,5 handikap",
-    "minPlay": 1.65,
-    "odds": 1.6,
+    "minPlay": 1.63,
+    "odds": 1.59,
     "unverified": true,
     "rule": "test"
    },
@@ -7352,11 +6412,11 @@
     },
     {
      "label": "VCU Rams kazanır",
-     "minPlay": 1.87
+     "minPlay": 1.89
     },
     {
-     "label": "Memphis Tigers +2,5 handikap",
-     "minPlay": 1.98
+     "label": "VCU Rams -1,5 handikap",
+     "minPlay": 2
     }
    ]
   },
@@ -7545,8 +6605,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "South Alabama Jaguars kazanır",
-    "minPlay": 2.04,
-    "odds": 1.98,
+    "minPlay": 2.02,
+    "odds": 1.96,
     "unverified": true,
     "rule": "test"
    },
@@ -7583,10 +6643,6 @@
     {
      "label": "1,5 Üst",
      "minPlay": 1.48
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.44
     }
    ]
   },
@@ -7603,17 +6659,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7307,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -7638,12 +6684,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7307,
-     "odds": 1.2
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -7677,17 +6717,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7394,
-     "rule": "isabet",
-     "safe": true,
-     "key": "MS1",
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.29,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "DEP05",
     "label": "Deplasman gol atar",
@@ -7710,14 +6740,6 @@
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.68
     }
-   ],
-   "legs": [
-    {
-     "key": "MS1",
-     "label": "Ev sahibi kazanır (MS 1)",
-     "mp": 0.7394,
-     "odds": 1.29
-    }
    ]
   },
   {
@@ -7733,17 +6755,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7423,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -7769,18 +6781,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7423,
-     "odds": 1.2
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7334,
-     "odds": 1.21
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.5603,
@@ -7801,17 +6801,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7221,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -7836,12 +6826,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7221,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -7945,17 +6929,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.738,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -7975,17 +6949,11 @@
      "minPlay": 1.72
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "label": "İlk yarı 1X",
+     "minPlay": 1.53
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.738,
-     "odds": 1.24
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -8117,8 +7085,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Brown Bears kazanır",
-    "minPlay": 1.84,
-    "odds": 1.79,
+    "minPlay": 1.93,
+    "odds": 1.87,
     "unverified": true,
     "rule": "test"
    },
@@ -8219,8 +7187,8 @@
      "minPlay": 1.64
     },
     {
-     "label": "İlk yarı 0,5 Üst",
-     "minPlay": 1.42
+     "label": "MS 1 ve 1,5 Üst",
+     "minPlay": 1.51
     }
    ],
    "legs": [
@@ -8265,8 +7233,8 @@
      "minPlay": 1.62
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.43
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.57
     }
    ],
    "legs": [
@@ -8331,26 +7299,18 @@
     "rule": "kar",
     "second": null,
     "safe": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.45,
-    "estOdds": null,
-    "odds": 1.29,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.51,
+    "estOdds": 1.34,
+    "odds": null,
     "value": false,
     "book": null
    },
    "alts": [
     {
-     "label": "3,5 Alt",
-     "minPlay": 1.51
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.62
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.43
     }
    ]
   },
@@ -8381,10 +7341,6 @@
     {
      "label": "1,5 Üst",
      "minPlay": 1.58
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.45
     },
     {
      "label": "1X ve 3,5 Alt",
@@ -8483,22 +7439,22 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Rhode Island Rams kazanır",
-    "minPlay": 1.48,
-    "odds": 1.44,
+    "minPlay": 1.45,
+    "odds": 1.41,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 145,5 Üst",
-     "minPlay": 2
-    },
-    {
      "label": "Toplam sayı 146,5 Alt",
-     "minPlay": 2
+     "minPlay": 1.98
     },
     {
      "label": "Monmouth Hawks +6,5 handikap",
+     "minPlay": 2.02
+    },
+    {
+     "label": "Toplam sayı 145,5 Üst",
      "minPlay": 2.02
     }
    ]
@@ -8521,8 +7477,8 @@
     "kind": "spread",
     "line": -17.5,
     "label": "Saint Joseph's Hawks -17,5 handikap",
-    "minPlay": 1.94,
-    "odds": 1.89,
+    "minPlay": 1.96,
+    "odds": 1.9,
     "unverified": true,
     "rule": "test"
    },
@@ -8584,8 +7540,8 @@
     "kind": "spread",
     "line": -11.5,
     "label": "UC Santa Barbara Gauchos -11,5 handikap",
-    "minPlay": 1.93,
-    "odds": 1.87,
+    "minPlay": 1.91,
+    "odds": 1.85,
     "unverified": true,
     "rule": "test"
    },
@@ -8614,8 +7570,8 @@
     "kind": "spread",
     "line": -23.5,
     "label": "Utah State Aggies -23,5 handikap",
-    "minPlay": 1.73,
-    "odds": 1.68,
+    "minPlay": 1.7,
+    "odds": 1.65,
     "unverified": true,
     "rule": "test"
    },
@@ -8661,10 +7617,6 @@
     {
      "label": "Deplasman gol atar",
      "minPlay": 1.67
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.4
     },
     {
      "label": "3,5 Alt",
@@ -8736,6 +7688,10 @@
    "alts": [
     {
      "label": "Miami (OH) RedHawks -20,5 handikap",
+     "minPlay": 2
+    },
+    {
+     "label": "Toplam sayı 159,5 Alt",
      "minPlay": 2.04
     }
    ]
@@ -8763,12 +7719,7 @@
     "unverified": true,
     "rule": "test"
    },
-   "alts": [
-    {
-     "label": "Toplam sayı 153,5 Alt",
-     "minPlay": 2.04
-    }
-   ]
+   "alts": []
   },
   {
    "id": "pm-cbb-tmrt-iupui-2026-11-07",
@@ -8803,8 +7754,8 @@
      "minPlay": 1.89
     },
     {
-     "label": "Toplam sayı 161,5 Alt",
-     "minPlay": 1.91
+     "label": "IU Indy Jaguars +2,5 handikap",
+     "minPlay": 2
     }
    ]
   },
@@ -8820,18 +7771,22 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6771063_1",
-    "pmId": "6771063",
+    "key": "PM_6775347_1",
+    "pmId": "6775347",
     "pmIdx": 1,
     "kind": "spread",
-    "line": 6.5,
-    "label": "SIUE Cougars +6,5 handikap",
-    "minPlay": 1.47,
-    "odds": 1.43,
+    "line": 5.5,
+    "label": "SIUE Cougars +5,5 handikap",
+    "minPlay": 1.45,
+    "odds": 1.41,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "SIUE Cougars +6,5 handikap",
+     "minPlay": 1.46
+    },
     {
      "label": "Lipscomb Bisons kazanır",
      "minPlay": 1.49
@@ -8839,10 +7794,6 @@
     {
      "label": "Toplam sayı 144,5 Alt",
      "minPlay": 1.93
-    },
-    {
-     "label": "Lipscomb Bisons -5,5 handikap",
-     "minPlay": 1.98
     }
    ]
   },
@@ -8938,8 +7889,8 @@
     "kind": "spread",
     "line": -24.5,
     "label": "Gonzaga Bulldogs -24,5 handikap",
-    "minPlay": 1.78,
-    "odds": 1.72,
+    "minPlay": 1.76,
+    "odds": 1.71,
     "unverified": true,
     "rule": "test"
    },
@@ -9004,7 +7955,20 @@
     "unverified": true,
     "rule": "test"
    },
-   "alts": []
+   "alts": [
+    {
+     "label": "Western Carolina Catamounts -1,5 handikap",
+     "minPlay": 1.96
+    },
+    {
+     "label": "UNC Asheville Bulldogs +2,5 handikap",
+     "minPlay": 2.04
+    },
+    {
+     "label": "Toplam sayı 149,5 Alt",
+     "minPlay": 2.04
+    }
+   ]
   },
   {
    "id": "pm-cbb-pvam-utrgv-2026-11-07",
@@ -9031,7 +7995,7 @@
    "alts": [
     {
      "label": "Prairie View A&M Panthers +8,5 handikap",
-     "minPlay": 2.02
+     "minPlay": 2.04
     },
     {
      "label": "Toplam sayı 149,5 Üst",
@@ -9052,17 +8016,7 @@
    "sportKey": "soccer_mexico_ligamx",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7304,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -9080,19 +8034,9 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.57
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7304,
-     "odds": 1.26
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -9176,10 +8120,6 @@
     {
      "label": "1,5 Üst",
      "minPlay": 1.57
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.49
     }
    ]
   },
@@ -9517,8 +8457,8 @@
     "kind": "total",
     "line": 150.5,
     "label": "Toplam sayı 150,5 Alt",
-    "minPlay": 1.96,
-    "odds": 1.9,
+    "minPlay": 1.94,
+    "odds": 1.89,
     "unverified": true,
     "rule": "test"
    },
@@ -9587,11 +8527,11 @@
    },
    "alts": [
     {
-     "label": "Hawks +5,5 handikap",
-     "minPlay": 1.25
+     "label": "Nets +18,5 handikap",
+     "minPlay": 1.24
     },
     {
-     "label": "Nets +18,5 handikap",
+     "label": "Hawks +5,5 handikap",
      "minPlay": 1.25
     },
     {
@@ -9618,8 +8558,8 @@
     "kind": "spread",
     "line": 1.5,
     "label": "Maryland Terrapins +1,5 handikap",
-    "minPlay": 1.72,
-    "odds": 1.67,
+    "minPlay": 1.69,
+    "odds": 1.64,
     "unverified": true,
     "rule": "test"
    },
@@ -9633,7 +8573,7 @@
      "minPlay": 1.84
     },
     {
-     "label": "Georgetown Hoyas +3,5 handikap",
+     "label": "Toplam sayı 147,5 Alt",
      "minPlay": 1.93
     }
    ]
@@ -9656,8 +8596,8 @@
     "kind": "total",
     "line": 146.5,
     "label": "Toplam sayı 146,5 Üst",
-    "minPlay": 1.49,
-    "odds": 1.45,
+    "minPlay": 1.5,
+    "odds": 1.46,
     "unverified": true,
     "rule": "test"
    },
@@ -9705,10 +8645,6 @@
      "minPlay": 1.52
     },
     {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.49
-    },
-    {
      "label": "1X ve 3,5 Alt",
      "minPlay": 1.6
     }
@@ -9735,17 +8671,7 @@
    "sportKey": "soccer_mexico_ligamx",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7394,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9763,25 +8689,9 @@
     {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.5
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7394,
-     "odds": 1.25
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7056,
-     "odds": 1.28
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -9847,22 +8757,22 @@
     "line": 18.5,
     "label": "Knicks +18,5 handikap",
     "minPlay": 1.26,
-    "odds": 1.23,
+    "odds": 1.22,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 208,5 Üst",
-     "minPlay": 1.27
-    },
-    {
      "label": "Toplam sayı 240,5 Alt",
-     "minPlay": 1.27
+     "minPlay": 1.26
     },
     {
      "label": "Knicks +16,5 handikap",
-     "minPlay": 1.27
+     "minPlay": 1.26
+    },
+    {
+     "label": "Knicks +20,5 handikap",
+     "minPlay": 1.26
     }
    ]
   },
@@ -9984,7 +8894,12 @@
     "unverified": true,
     "rule": "test"
    },
-   "alts": []
+   "alts": [
+    {
+     "label": "Little Rock Trojans -5,5 handikap",
+     "minPlay": 2.04
+    }
+   ]
   },
   {
    "id": "pm-cbb-usi-evans-2026-11-07",
@@ -10010,11 +8925,11 @@
    },
    "alts": [
     {
-     "label": "Southern Indiana Screaming Eagles +10,5 handikap",
-     "minPlay": 1.89
+     "label": "Toplam sayı 144,5 Üst",
+     "minPlay": 1.87
     },
     {
-     "label": "Toplam sayı 144,5 Üst",
+     "label": "Southern Indiana Screaming Eagles +10,5 handikap",
      "minPlay": 1.91
     },
     {
@@ -10128,7 +9043,7 @@
    "alts": [
     {
      "label": "Toplam sayı 239,5 Alt",
-     "minPlay": 1.25
+     "minPlay": 1.26
     },
     {
      "label": "Suns +18,5 handikap",
@@ -10136,7 +9051,7 @@
     },
     {
      "label": "Toplam sayı 241,5 Alt",
-     "minPlay": 1.26
+     "minPlay": 1.27
     }
    ]
   },
@@ -10226,16 +9141,16 @@
    },
    "alts": [
     {
-     "label": "Trail Blazers +31,5 handikap",
-     "minPlay": 1.26
-    },
-    {
      "label": "Spurs +8,5 handikap",
      "minPlay": 1.28
     },
     {
      "label": "Spurs +6,5 handikap",
      "minPlay": 1.29
+    },
+    {
+     "label": "Trail Blazers +31,5 handikap",
+     "minPlay": 1.3
     }
    ]
   },
@@ -10393,17 +9308,7 @@
    "sportKey": "soccer_mexico_ligamx",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.735,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -10419,21 +9324,11 @@
      "minPlay": 1.56
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.49
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.56
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.735,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -10557,8 +9452,8 @@
      "minPlay": 1.52
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
+     "label": "Deplasman gol atar",
+     "minPlay": 1.55
     }
    ]
   },
@@ -10625,16 +9520,8 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.49
-    },
-    {
-     "label": "Ev sahibi en fazla 2 gol atar",
-     "minPlay": 1.5
     }
    ]
   },
@@ -10651,17 +9538,7 @@
    "sportKey": "soccer_japan_j_league",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7308,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -10677,21 +9554,11 @@
      "minPlay": 1.54
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.52
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7308,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -10731,10 +9598,6 @@
     {
      "label": "3,5 Alt",
      "minPlay": 1.56
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.47
     }
    ]
   },
@@ -10769,18 +9632,6 @@
     {
      "label": "1X ve 3,5 Alt",
      "minPlay": 1.74
-    },
-    {
-     "label": "Ev sahibi kazanır (MS 1)",
-     "minPlay": 1.49
-    }
-   ],
-   "legs": [
-    {
-     "key": "MS1",
-     "label": "Ev sahibi kazanır (MS 1)",
-     "mp": 0.7182,
-     "odds": 1.28
     }
    ]
   },
@@ -10999,10 +9850,6 @@
     {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.53
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
     }
    ]
   },
@@ -11145,16 +9992,16 @@
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4
-    },
-    {
      "label": "Deplasman en fazla 2 gol atar",
      "minPlay": 1.61
     },
     {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.53
+    },
+    {
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.61
     }
    ]
   },
@@ -11171,17 +10018,7 @@
    "sportKey": "soccer_japan_j_league",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7271,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XU15",
     "label": "1X ve 1,5 Üst",
@@ -11199,24 +10036,6 @@
     {
      "label": "Deplasman gol atar",
      "minPlay": 1.6
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.47
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7271,
-     "odds": 1.27
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7215,
-     "odds": 1.26
     }
    ]
   },
@@ -11233,17 +10052,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7351,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IYX2",
     "label": "İlk yarı X2",
@@ -11266,14 +10075,6 @@
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.63
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7351,
-     "odds": 1.2
-    }
    ]
   },
   {
@@ -11289,17 +10090,7 @@
    "sportKey": "soccer_denmark_superliga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7467,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11317,18 +10108,6 @@
     {
      "label": "Deplasman gol atar",
      "minPlay": 1.6
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.4
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7467,
-     "odds": 1.21
     }
    ]
   },
@@ -11345,17 +10124,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7407,
-     "rule": "isabet",
-     "safe": true,
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11378,14 +10147,6 @@
      "label": "Ev sahibi gol atar",
      "minPlay": 1.52
     }
-   ],
-   "legs": [
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7407,
-     "odds": 1.21
-    }
    ]
   },
   {
@@ -11401,17 +10162,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7362,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11427,21 +10178,15 @@
      "minPlay": 1.55
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
-    {
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.49
+    },
+    {
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.62
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7362,
-     "odds": 1.28
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -11501,17 +10246,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7454,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11534,20 +10269,6 @@
      "label": "Deplasman gol atar",
      "minPlay": 1.54
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7454,
-     "odds": 1.21
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7341,
-     "odds": 1.21
-    }
    ]
   },
   {
@@ -11563,17 +10284,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7449,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11599,12 +10310,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7449,
-     "odds": 1.21
-    },
-    {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.7084,
@@ -11625,17 +10330,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.727,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -11660,12 +10355,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.727,
-     "odds": 1.24
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -11755,12 +10444,12 @@
      "minPlay": 1.58
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
-    {
      "label": "Karşılıklı gol var",
      "minPlay": 1.65
+    },
+    {
+     "label": "12 ve 1,5 Üst",
+     "minPlay": 1.67
     }
    ]
   },
@@ -11777,17 +10466,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7452,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -11812,12 +10491,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7452,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -11929,17 +10602,7 @@
    "sportKey": "soccer_finland_veikkausliiga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7492,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -11957,25 +10620,9 @@
     {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.54
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7492,
-     "odds": 1.22
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7409,
-     "odds": 1.21
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -12007,20 +10654,7 @@
     "value": false,
     "book": null
    },
-   "alts": [
-    {
-     "label": "Ev sahibi 2+ gol atar",
-     "minPlay": 1.46
-    },
-    {
-     "label": "MS 1 ve 1,5 Üst",
-     "minPlay": 1.49
-    },
-    {
-     "label": "12 ve 1,5 Üst",
-     "minPlay": 1.47
-    }
-   ]
+   "alts": []
   },
   {
    "id": "toa-b1fe8e09da73b05f802374b2bf5a3bd1",
@@ -12049,10 +10683,6 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.51
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
     },
     {
      "label": "12 ve 1,5 Üst",
@@ -12085,14 +10715,6 @@
    },
    "alts": [
     {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.46
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
-    {
      "label": "Deplasman gol atar",
      "minPlay": 1.57
     }
@@ -12111,17 +10733,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7446,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.23,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -12141,17 +10753,11 @@
      "minPlay": 1.56
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
+     "label": "İlk yarı X2",
+     "minPlay": 1.58
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7446,
-     "odds": 1.23
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -12173,17 +10779,7 @@
    "sportKey": "soccer_austria_bundesliga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.735,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -12201,19 +10797,9 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.61
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.735,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -12261,6 +10847,44 @@
    ]
   },
   {
+   "id": "toa-7c7cdf1a0fee0a3434d8f648392c8e65",
+   "sport": "football",
+   "league": "Eliteserien - Norway",
+   "kickoff": "2026-11-08T13:30:00Z",
+   "home": "Tromso",
+   "away": "Bodø/Glimt",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": null,
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.6,
+    "estOdds": 1.51,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Deplasman en fazla 2 gol atar",
+     "minPlay": 1.68
+    },
+    {
+     "label": "Deplasman kazanır (MS 2)",
+     "minPlay": 1.53
+    },
+    {
+     "label": "Deplasman 2+ gol atar",
+     "minPlay": 1.57
+    }
+   ]
+  },
+  {
    "id": "fd-I1-2026-11-08-Genoa-Milan",
    "sport": "football",
    "league": "Serie A",
@@ -12273,17 +10897,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7337,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "EV05",
     "label": "Ev sahibi gol atar",
@@ -12303,16 +10917,8 @@
      "minPlay": 1.54
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.46
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7337,
-     "odds": 1.28
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.56
     }
    ]
   },
@@ -12329,17 +10935,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7382,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "MS2",
     "label": "Deplasman kazanır (MS 2)",
@@ -12364,12 +10960,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7382,
-     "odds": 1.25
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -12403,17 +10993,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7269,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY05",
     "label": "İlk yarı 0,5 Üst",
@@ -12425,25 +11005,19 @@
    },
    "alts": [
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.45
-    },
-    {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.5
     },
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.47
+    },
+    {
+     "label": "İlk yarı 1X",
+     "minPlay": 1.52
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7269,
-     "odds": 1.27
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -12465,17 +11039,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7379,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -12495,17 +11059,11 @@
      "minPlay": 1.64
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.52
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7379,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -12533,17 +11091,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7456,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -12566,20 +11114,6 @@
      "label": "İlk yarı 12",
      "minPlay": 1.72
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7456,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7441,
-     "odds": 1.26
-    }
    ]
   },
   {
@@ -12595,17 +11129,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7569,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.36,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "A35",
     "label": "3,5 Alt",
@@ -12628,14 +11152,6 @@
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.63
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7569,
-     "odds": 1.2
-    }
    ]
   },
   {
@@ -12651,17 +11167,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7316,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.27,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "KGV",
     "label": "Karşılıklı gol var",
@@ -12687,18 +11193,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7316,
-     "odds": 1.27
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7281,
-     "odds": 1.26
-    },
-    {
      "key": "U25",
      "label": "2,5 Üst",
      "mp": 0.5662,
@@ -12719,17 +11213,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7274,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -12749,22 +11233,8 @@
      "minPlay": 1.51
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.47
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7274,
-     "odds": 1.26
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7124,
-     "odds": 1.25
+     "label": "İlk yarı 0,5 Üst",
+     "minPlay": 1.53
     }
    ]
   },
@@ -12801,8 +11271,8 @@
      "minPlay": 1.5
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.44
+     "label": "Deplasman gol atar",
+     "minPlay": 1.55
     }
    ]
   },
@@ -12831,14 +11301,6 @@
    },
    "alts": [
     {
-     "label": "Deplasman kazanır (MS 2)",
-     "minPlay": 1.4
-    },
-    {
-     "label": "Deplasman 2+ gol atar",
-     "minPlay": 1.49
-    },
-    {
      "label": "MS 2 ve 1,5 Üst",
      "minPlay": 1.54
     }
@@ -12857,17 +11319,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7505,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -12892,18 +11344,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7505,
-     "odds": 1.22
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7311,
-     "odds": 1.23
-    },
     {
      "key": "U25",
      "label": "2,5 Üst",
@@ -13047,17 +11487,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7275,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -13079,20 +11509,6 @@
     {
      "label": "3,5 Alt",
      "minPlay": 1.49
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7275,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.722,
-     "odds": 1.22
     }
    ]
   },
@@ -13159,12 +11575,12 @@
      "minPlay": 1.66
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4
-    },
-    {
      "label": "Ev sahibi gol atar",
      "minPlay": 1.55
+    },
+    {
+     "label": "Deplasman en fazla 2 gol atar",
+     "minPlay": 1.63
     }
    ]
   },
@@ -13197,12 +11613,12 @@
      "minPlay": 1.47
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
-    },
-    {
      "label": "Karşılıklı gol var",
      "minPlay": 1.62
+    },
+    {
+     "label": "2,5 Üst",
+     "minPlay": 1.59
     }
    ]
   },
@@ -13219,17 +11635,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7593,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.36,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IYX2",
     "label": "İlk yarı X2",
@@ -13252,14 +11658,6 @@
      "label": "Deplasman gol atar",
      "minPlay": 1.6
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7593,
-     "odds": 1.21
-    }
    ]
   },
   {
@@ -13275,17 +11673,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7397,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XU15",
     "label": "1X ve 1,5 Üst",
@@ -13308,20 +11696,6 @@
      "label": "12 ve 1,5 Üst",
      "minPlay": 1.73
     }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7397,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7186,
-     "odds": 1.26
-    }
    ]
   },
   {
@@ -13337,17 +11711,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7289,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": true,
     "key": "U25",
     "label": "2,5 Üst",
@@ -13372,18 +11736,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7289,
-     "odds": 1.26
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7136,
-     "odds": 1.26
-    },
     {
      "key": "U25",
      "label": "2,5 Üst",
@@ -13435,12 +11787,6 @@
      "label": "Beraberlik olmaz (12)",
      "mp": 0.7158,
      "odds": 1.33
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7137,
-     "odds": 1.28
     },
     {
      "key": "A25",
@@ -13735,12 +12081,6 @@
      "label": "Deplasman kazanır (MS 2)",
      "mp": 0.6814,
      "odds": 1.36
-    },
-    {
-     "key": "U25",
-     "label": "2,5 Üst",
-     "mp": 0.644,
-     "odds": 1.25
     }
    ]
   },
@@ -13777,16 +12117,8 @@
      "minPlay": 1.56
     },
     {
-     "label": "İlk yarı 0,5 Üst",
-     "minPlay": 1.42
-    }
-   ],
-   "legs": [
-    {
-     "key": "U25",
-     "label": "2,5 Üst",
-     "mp": 0.6572,
-     "odds": 1.25
+     "label": "MS 1 ve 1,5 Üst",
+     "minPlay": 1.5
     }
    ]
   },
@@ -13803,17 +12135,7 @@
    "sportKey": "soccer_austria_bundesliga",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7375,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -13831,19 +12153,9 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.59
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.45
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7375,
-     "odds": 1.2
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -13855,6 +12167,166 @@
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6153,
      "odds": 1.64
+    }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Lillestrom-Aalesund",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Lillestrom",
+   "away": "Aalesund",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "EV15",
+    "label": "Ev sahibi 2+ gol atar",
+    "minPlay": 1.69,
+    "estOdds": 1.56,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "Karşılıklı gol var",
+     "minPlay": 1.62
+    },
+    {
+     "label": "2,5 Üst",
+     "minPlay": 1.61
+    },
+    {
+     "label": "Ev sahibi en fazla 2 gol atar",
+     "minPlay": 1.55
+    }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-08-HamKam-Sarpsborg_08",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "HamKam",
+   "away": "Sarpsborg 08",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.71,
+    "estOdds": null,
+    "odds": 1.63,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.6
+    }
+   ],
+   "legs": [
+    {
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "mp": 0.6241,
+     "odds": 1.63
+    }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Viking-KFUM_Oslo",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Viking",
+   "away": "KFUM Oslo",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "minPlay": 1.57,
+    "estOdds": 1.54,
+    "odds": null,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "2,5 Üst",
+     "minPlay": 1.63
+    },
+    {
+     "label": "MS 1 ve 1,5 Üst",
+     "minPlay": 1.54
+    },
+    {
+     "label": "Ev sahibi 2+ gol atar",
+     "minPlay": 1.49
+    }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Sandefjord-Molde",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Sandefjord",
+   "away": "Molde",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.94,
+    "estOdds": null,
+    "odds": 2,
+    "value": true,
+    "book": "piyasa ortalaması"
+   },
+   "alts": [
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.68
+    },
+    {
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.51
+    },
+    {
+     "label": "Deplasman en fazla 2 gol atar",
+     "minPlay": 1.61
+    }
+   ],
+   "legs": [
+    {
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "mp": 0.5507,
+     "odds": 2
     }
    ]
   },
@@ -13871,17 +12343,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7277,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XA35",
     "label": "1X ve 3,5 Alt",
@@ -13897,21 +12359,15 @@
      "minPlay": 1.52
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.44
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.58
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.47
+     "label": "İlk yarı X2",
+     "minPlay": 1.53
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7277,
-     "odds": 1.26
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -13933,17 +12389,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7442,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.26,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -13959,26 +12405,12 @@
      "minPlay": 1.61
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
      "label": "İlk yarı 1,5 Alt",
      "minPlay": 1.66
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7442,
-     "odds": 1.26
     },
     {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.707,
-     "odds": 1.29
+     "label": "Ev sahibi gol atar",
+     "minPlay": 1.49
     }
    ]
   },
@@ -13995,17 +12427,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7286,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -14030,12 +12452,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7286,
-     "odds": 1.28
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -14115,17 +12531,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7598,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.36,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -14145,22 +12551,8 @@
      "minPlay": 1.55
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7598,
-     "odds": 1.22
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7578,
-     "odds": 1.2
+     "label": "İlk yarı 12",
+     "minPlay": 1.68
     }
    ]
   },
@@ -14215,17 +12607,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7235,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IYX2",
     "label": "İlk yarı X2",
@@ -14241,26 +12623,12 @@
      "minPlay": 1.55
     },
     {
-     "label": "3,5 Alt",
-     "minPlay": 1.47
+     "label": "Deplasman gol atar",
+     "minPlay": 1.61
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7235,
-     "odds": 1.25
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7191,
-     "odds": 1.25
+     "label": "İlk yarı 1,5 Alt",
+     "minPlay": 1.58
     }
    ]
   },
@@ -14277,17 +12645,7 @@
    "sportKey": "soccer_epl",
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7409,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -14303,21 +12661,15 @@
      "minPlay": 1.66
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
      "label": "İlk yarı X2",
      "minPlay": 1.6
+    },
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.53
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7409,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -14357,10 +12709,6 @@
     {
      "label": "3,5 Alt",
      "minPlay": 1.56
-    },
-    {
-     "label": "Deplasman gol atar",
-     "minPlay": 1.51
     }
    ]
   },
@@ -14377,17 +12725,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7461,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.2,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -14409,20 +12747,6 @@
     {
      "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.47
-    }
-   ],
-   "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7461,
-     "odds": 1.2
-    },
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7287,
-     "odds": 1.27
     }
    ]
   },
@@ -14503,10 +12827,6 @@
     {
      "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.55
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.49
     }
    ]
   },
@@ -14523,17 +12843,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7492,
-     "rule": "isabet",
-     "safe": true,
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.37,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IYX2",
     "label": "İlk yarı X2",
@@ -14546,29 +12856,15 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.53
+     "minPlay": 1.44
     },
     {
      "label": "1X ve 1,5 Üst",
-     "minPlay": 1.67
-    }
-   ],
-   "legs": [
-    {
-     "key": "1X",
-     "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7492,
-     "odds": 1.21
+     "minPlay": 1.68
     },
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7476,
-     "odds": 1.27
+     "label": "3,5 Alt",
+     "minPlay": 1.5
     }
    ]
   },
@@ -14623,17 +12919,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7354,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.25,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "1XU15",
     "label": "1X ve 1,5 Üst",
@@ -14649,21 +12935,15 @@
      "minPlay": 1.48
     },
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
-    {
      "label": "İlk yarı 0,5 Üst",
      "minPlay": 1.5
+    },
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.52
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7354,
-     "odds": 1.25
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -14710,12 +12990,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7183,
-     "odds": 1.29
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -14783,17 +13057,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7484,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "X2A35",
     "label": "X2 ve 3,5 Alt",
@@ -14818,12 +13082,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7484,
-     "odds": 1.21
-    },
     {
      "key": "MS2",
      "label": "Deplasman kazanır (MS 2)",
@@ -14935,14 +13193,6 @@
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.46
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.45
-    },
-    {
-     "label": "3,5 Alt",
-     "minPlay": 1.47
     }
    ]
   },
@@ -14959,17 +13209,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7442,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -14992,13 +13232,53 @@
      "label": "1X ve 1,5 Üst",
      "minPlay": 1.67
     }
+   ]
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Fredrikstad-Brann",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T18:15:00Z",
+   "home": "Fredrikstad",
+   "away": "Brann",
+   "dayKey": "2026-11-08",
+   "date": "2026-11-08",
+   "fdDiv": "NOR",
+   "sportKey": "soccer_norway_eliteserien",
+   "bet": {
+    "rule": "kar",
+    "second": null,
+    "safe": false,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.64,
+    "estOdds": null,
+    "odds": 1.51,
+    "value": false,
+    "book": null
+   },
+   "alts": [
+    {
+     "label": "3,5 Alt",
+     "minPlay": 1.61
+    },
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.65
+    }
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7442,
-     "odds": 1.21
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "mp": 0.6526,
+     "odds": 1.51
+    },
+    {
+     "key": "X2",
+     "label": "Deplasman kaybetmez (X2)",
+     "mp": 0.6486,
+     "odds": 1.44
     }
    ]
   },
@@ -15061,17 +13341,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7245,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.42,
-     "estOdds": null,
-     "odds": 1.29,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY12",
     "label": "İlk yarı 12",
@@ -15087,21 +13357,15 @@
      "minPlay": 1.55
     },
     {
-     "label": "1,5 Üst",
-     "minPlay": 1.46
-    },
-    {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.48
+    },
+    {
+     "label": "İlk yarı 1X",
+     "minPlay": 1.51
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7245,
-     "odds": 1.29
-    },
     {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
@@ -15141,10 +13405,6 @@
     {
      "label": "Beraberlik olmaz (12)",
      "minPlay": 1.45
-    },
-    {
-     "label": "Ev sahibi gol atar",
-     "minPlay": 1.46
     }
    ]
   },
@@ -15161,17 +13421,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7366,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4,
-     "estOdds": null,
-     "odds": 1.24,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -15196,12 +13446,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7366,
-     "odds": 1.24
-    },
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
@@ -15287,14 +13531,6 @@
     {
      "label": "3,5 Alt",
      "minPlay": 1.51
-    },
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
-    },
-    {
-     "label": "1,5 Üst",
-     "minPlay": 1.42
     }
    ]
   },
@@ -15311,17 +13547,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7314,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41,
-     "estOdds": null,
-     "odds": 1.28,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "IY1X",
     "label": "İlk yarı 1X",
@@ -15347,12 +13573,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7314,
-     "odds": 1.28
-    },
-    {
      "key": "X2",
      "label": "Deplasman kaybetmez (X2)",
      "mp": 0.6953,
@@ -15373,17 +13593,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7444,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38,
-     "estOdds": null,
-     "odds": 1.22,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -15409,12 +13619,6 @@
    ],
    "legs": [
     {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7444,
-     "odds": 1.22
-    },
-    {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
      "mp": 0.6864,
@@ -15435,17 +13639,7 @@
    "sportKey": null,
    "bet": {
     "rule": "kar",
-    "second": {
-     "conf": 0.7521,
-     "rule": "isabet",
-     "safe": true,
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37,
-     "estOdds": null,
-     "odds": 1.21,
-     "book": "gerçek oran"
-    },
+    "second": null,
     "safe": false,
     "key": "A35",
     "label": "3,5 Alt",
@@ -15470,18 +13664,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "mp": 0.7521,
-     "odds": 1.21
-    },
-    {
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "mp": 0.7249,
-     "odds": 1.27
-    },
     {
      "key": "U25",
      "label": "2,5 Üst",
@@ -15528,12 +13710,6 @@
     }
    ],
    "legs": [
-    {
-     "key": "MS2",
-     "label": "Deplasman kazanır (MS 2)",
-     "mp": 0.7192,
-     "odds": 1.22
-    },
     {
      "key": "U25",
      "label": "2,5 Üst",
@@ -15655,7 +13831,7 @@
   "kar": {
    "done": 4,
    "won": 1,
-   "pending": 30,
+   "pending": 31,
    "profit": -2
   },
   "isabet": {
@@ -15686,145 +13862,143 @@
  "couponCard": {
   "done": 0,
   "won": 0,
-  "pending": 3,
+  "pending": 4,
   "profit": 0
  },
  "coupons": [
   {
    "id": "2026-11-07#1",
    "dayKey": "2026-11-07",
-   "createdAt": "2026-11-07T08:11:14.742Z",
+   "createdAt": "2026-11-07T08:18:03.676Z",
    "status": "pending",
-   "odds": 2.01,
-   "conf": 0.4214,
+   "odds": 2.15,
+   "conf": 0.4799,
    "legs": [
     {
-     "matchId": "fd-F1-2026-11-07-Auxerre-Paris_FC",
-     "home": "Auxerre",
-     "away": "Paris FC",
-     "league": "Ligue 1",
-     "kickoff": "2026-11-07T18:00:00.000Z",
+     "matchId": "fd-D2-2026-11-07-Osnabruck-Kaiserslautern",
+     "home": "Osnabruck",
+     "away": "Kaiserslautern",
+     "league": "2. Bundesliga",
+     "kickoff": "2026-11-07T12:00:00.000Z",
      "date": "2026-11-07",
-     "fdDiv": "F1",
-     "key": "X2",
-     "label": "Deplasman kaybetmez (X2)",
-     "odds": 1.21
+     "fdDiv": "D2",
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "odds": 1.48
     },
     {
-     "matchId": "fd-I1-2026-11-07-Parma-Bologna",
-     "home": "Parma",
-     "away": "Bologna",
-     "league": "Serie A",
-     "kickoff": "2026-11-07T17:00:00.000Z",
+     "matchId": "fd-D1-2026-11-07-RB_Leipzig-Augsburg",
+     "home": "RB Leipzig",
+     "away": "Augsburg",
+     "league": "Bundesliga",
+     "kickoff": "2026-11-07T14:30:00.000Z",
      "date": "2026-11-07",
-     "fdDiv": "I1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.29
-    },
-    {
-     "matchId": "fd-I1-2026-11-07-Roma-Sassuolo",
-     "home": "Roma",
-     "away": "Sassuolo",
-     "league": "Serie A",
-     "kickoff": "2026-11-07T19:45:00.000Z",
-     "date": "2026-11-07",
-     "fdDiv": "I1",
+     "fdDiv": "D1",
      "key": "MS1",
      "label": "Ev sahibi kazanır (MS 1)",
-     "odds": 1.29
+     "odds": 1.45
     }
    ]
   },
   {
    "id": "2026-11-07#2",
    "dayKey": "2026-11-07",
-   "createdAt": "2026-11-07T08:11:14.742Z",
+   "createdAt": "2026-11-07T08:18:03.676Z",
    "status": "pending",
    "odds": 2,
-   "conf": 0.4067,
+   "conf": 0.4565,
    "legs": [
     {
-     "matchId": "fd-E1-2026-11-07-Birmingham-Swansea",
-     "home": "Birmingham",
-     "away": "Swansea",
+     "matchId": "fd-E1-2026-11-07-Bristol_City-Norwich",
+     "home": "Bristol City",
+     "away": "Norwich",
      "league": "Championship",
-     "kickoff": "2026-11-07T15:00:00.000Z",
+     "kickoff": "2026-11-07T12:30:00.000Z",
      "date": "2026-11-07",
      "fdDiv": "E1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.25
+     "key": "X2",
+     "label": "Deplasman kaybetmez (X2)",
+     "odds": 1.41
     },
     {
-     "matchId": "fd-D1-2026-11-07-Paderborn-Ein_Frankfurt",
-     "home": "Paderborn",
-     "away": "Ein Frankfurt",
-     "league": "Bundesliga",
-     "kickoff": "2026-11-07T14:30:00.000Z",
+     "matchId": "fd-SC0-2026-11-07-Aberdeen-Hibernian",
+     "home": "Aberdeen",
+     "away": "Hibernian",
+     "league": "İskoçya Premiership",
+     "kickoff": "2026-11-07T17:45:00.000Z",
      "date": "2026-11-07",
-     "fdDiv": "D1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.25
+     "fdDiv": "SC0",
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "odds": 1.42
+    }
+   ]
+  },
+  {
+   "id": "2026-11-07#3",
+   "dayKey": "2026-11-07",
+   "createdAt": "2026-11-07T08:18:03.676Z",
+   "status": "pending",
+   "odds": 2.02,
+   "conf": 0.4558,
+   "legs": [
+    {
+     "matchId": "fd-SP1-2026-11-07-Malaga-Santander",
+     "home": "Malaga",
+     "away": "Santander",
+     "league": "La Liga",
+     "kickoff": "2026-11-07T13:00:00.000Z",
+     "date": "2026-11-07",
+     "fdDiv": "SP1",
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "odds": 1.41
     },
     {
-     "matchId": "fd-I1-2026-11-07-Torino-Lecce",
-     "home": "Torino",
-     "away": "Lecce",
+     "matchId": "fd-I1-2026-11-07-Cagliari-Frosinone",
+     "home": "Cagliari",
+     "away": "Frosinone",
      "league": "Serie A",
      "kickoff": "2026-11-07T14:00:00.000Z",
      "date": "2026-11-07",
      "fdDiv": "I1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.28
+     "key": "X2",
+     "label": "Deplasman kaybetmez (X2)",
+     "odds": 1.43
     }
    ]
   },
   {
    "id": "2026-11-08#1",
    "dayKey": "2026-11-08",
-   "createdAt": "2026-11-07T08:11:14.742Z",
+   "createdAt": "2026-11-07T08:18:03.676Z",
    "status": "pending",
-   "odds": 2,
-   "conf": 0.4148,
+   "odds": 2.04,
+   "conf": 0.4577,
    "legs": [
     {
-     "matchId": "fd-SP1-2026-11-08-Celta-Levante",
-     "home": "Celta",
-     "away": "Levante",
-     "league": "La Liga",
-     "kickoff": "2026-11-08T17:30:00.000Z",
+     "matchId": "fd-N1-2026-11-08-Twente-Ajax",
+     "home": "Twente",
+     "away": "Ajax",
+     "league": "Eredivisie",
+     "kickoff": "2026-11-08T13:30:00.000Z",
      "date": "2026-11-08",
-     "fdDiv": "SP1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.27
+     "fdDiv": "N1",
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "odds": 1.41
     },
     {
-     "matchId": "fd-E0-2026-11-08-Brighton-Brentford",
-     "home": "Brighton",
-     "away": "Brentford",
-     "league": "Premier League",
-     "kickoff": "2026-11-08T14:00:00Z",
+     "matchId": "fd-N1-2026-11-08-Utrecht-Nijmegen",
+     "home": "Utrecht",
+     "away": "Nijmegen",
+     "league": "Eredivisie",
+     "kickoff": "2026-11-08T19:00:00.000Z",
      "date": "2026-11-08",
-     "fdDiv": "E0",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.25
-    },
-    {
-     "matchId": "fd-F1-2026-11-08-Angers-Nice",
-     "home": "Angers",
-     "away": "Nice",
-     "league": "Ligue 1",
-     "kickoff": "2026-11-08T16:15:00.000Z",
-     "date": "2026-11-08",
-     "fdDiv": "F1",
-     "key": "12",
-     "label": "Beraberlik olmaz (12)",
-     "odds": 1.26
+     "fdDiv": "N1",
+     "key": "1X",
+     "label": "Ev sahibi kaybetmez (1X)",
+     "odds": 1.45
     }
    ]
   }
@@ -17167,92 +15341,102 @@
    {
     "id": "2026-11-07#1",
     "dayKey": "2026-11-07",
-    "createdAt": "2026-11-07T08:11:14.742Z",
+    "createdAt": "2026-11-07T08:18:03.676Z",
     "status": "pending",
-    "odds": 2.01,
-    "conf": 0.4214,
+    "odds": 2.15,
+    "conf": 0.4799,
     "legs": [
      {
-      "matchId": "fd-F1-2026-11-07-Auxerre-Paris_FC",
-      "home": "Auxerre",
-      "away": "Paris FC",
-      "league": "Ligue 1",
-      "kickoff": "2026-11-07T18:00:00.000Z",
+      "matchId": "fd-D2-2026-11-07-Osnabruck-Kaiserslautern",
+      "home": "Osnabruck",
+      "away": "Kaiserslautern",
+      "league": "2. Bundesliga",
+      "kickoff": "2026-11-07T12:00:00.000Z",
       "date": "2026-11-07",
-      "fdDiv": "F1",
-      "key": "X2",
-      "label": "Deplasman kaybetmez (X2)",
-      "odds": 1.21
+      "fdDiv": "D2",
+      "key": "1X",
+      "label": "Ev sahibi kaybetmez (1X)",
+      "odds": 1.48
      },
      {
-      "matchId": "fd-I1-2026-11-07-Parma-Bologna",
-      "home": "Parma",
-      "away": "Bologna",
-      "league": "Serie A",
-      "kickoff": "2026-11-07T17:00:00.000Z",
+      "matchId": "fd-D1-2026-11-07-RB_Leipzig-Augsburg",
+      "home": "RB Leipzig",
+      "away": "Augsburg",
+      "league": "Bundesliga",
+      "kickoff": "2026-11-07T14:30:00.000Z",
       "date": "2026-11-07",
-      "fdDiv": "I1",
-      "key": "12",
-      "label": "Beraberlik olmaz (12)",
-      "odds": 1.29
-     },
-     {
-      "matchId": "fd-I1-2026-11-07-Roma-Sassuolo",
-      "home": "Roma",
-      "away": "Sassuolo",
-      "league": "Serie A",
-      "kickoff": "2026-11-07T19:45:00.000Z",
-      "date": "2026-11-07",
-      "fdDiv": "I1",
+      "fdDiv": "D1",
       "key": "MS1",
       "label": "Ev sahibi kazanır (MS 1)",
-      "odds": 1.29
+      "odds": 1.45
      }
     ]
    },
    {
     "id": "2026-11-07#2",
     "dayKey": "2026-11-07",
-    "createdAt": "2026-11-07T08:11:14.742Z",
+    "createdAt": "2026-11-07T08:18:03.676Z",
     "status": "pending",
     "odds": 2,
-    "conf": 0.4067,
+    "conf": 0.4565,
     "legs": [
      {
-      "matchId": "fd-E1-2026-11-07-Birmingham-Swansea",
-      "home": "Birmingham",
-      "away": "Swansea",
+      "matchId": "fd-E1-2026-11-07-Bristol_City-Norwich",
+      "home": "Bristol City",
+      "away": "Norwich",
       "league": "Championship",
-      "kickoff": "2026-11-07T15:00:00.000Z",
+      "kickoff": "2026-11-07T12:30:00.000Z",
       "date": "2026-11-07",
       "fdDiv": "E1",
-      "key": "12",
-      "label": "Beraberlik olmaz (12)",
-      "odds": 1.25
+      "key": "X2",
+      "label": "Deplasman kaybetmez (X2)",
+      "odds": 1.41
      },
      {
-      "matchId": "fd-D1-2026-11-07-Paderborn-Ein_Frankfurt",
-      "home": "Paderborn",
-      "away": "Ein Frankfurt",
-      "league": "Bundesliga",
-      "kickoff": "2026-11-07T14:30:00.000Z",
+      "matchId": "fd-SC0-2026-11-07-Aberdeen-Hibernian",
+      "home": "Aberdeen",
+      "away": "Hibernian",
+      "league": "İskoçya Premiership",
+      "kickoff": "2026-11-07T17:45:00.000Z",
       "date": "2026-11-07",
-      "fdDiv": "D1",
-      "key": "12",
-      "label": "Beraberlik olmaz (12)",
-      "odds": 1.25
+      "fdDiv": "SC0",
+      "key": "1X",
+      "label": "Ev sahibi kaybetmez (1X)",
+      "odds": 1.42
+     }
+    ]
+   },
+   {
+    "id": "2026-11-07#3",
+    "dayKey": "2026-11-07",
+    "createdAt": "2026-11-07T08:18:03.676Z",
+    "status": "pending",
+    "odds": 2.02,
+    "conf": 0.4558,
+    "legs": [
+     {
+      "matchId": "fd-SP1-2026-11-07-Malaga-Santander",
+      "home": "Malaga",
+      "away": "Santander",
+      "league": "La Liga",
+      "kickoff": "2026-11-07T13:00:00.000Z",
+      "date": "2026-11-07",
+      "fdDiv": "SP1",
+      "key": "1X",
+      "label": "Ev sahibi kaybetmez (1X)",
+      "odds": 1.41
      },
      {
-      "matchId": "fd-I1-2026-11-07-Torino-Lecce",
-      "home": "Torino",
-      "away": "Lecce",
+      "matchId": "fd-I1-2026-11-07-Cagliari-Frosinone",
+      "home": "Cagliari",
+      "away": "Frosinone",
       "league": "Serie A",
       "kickoff": "2026-11-07T14:00:00.000Z",
       "date": "2026-11-07",
       "fdDiv": "I1",
-      "key": "12",
-      "label": "Beraberlik olmaz (12)",
-      "odds": 1.28
+      "key": "X2",
+      "label": "Deplasman kaybetmez (X2)",
+      "odds": 1.43
      }
     ]
    }
@@ -17777,7 +15961,7 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "MS 2",
-    "probability": 0.577,
+    "probability": 0.579,
     "odds": 1.73
    },
    "lowOdds": false,
@@ -18917,7 +17101,7 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "MS 2",
-    "probability": 0.445,
+    "probability": 0.447,
     "odds": 2.09
    },
    "lowOdds": false,
@@ -18977,7 +17161,7 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "MS 1",
-    "probability": 0.473,
+    "probability": 0.467,
     "odds": 1.94
    },
    "lowOdds": false,
@@ -19385,17 +17569,17 @@
    "isPick": false
   },
   {
-   "id": "pm-nor-kbk-vif-2026-11-07",
+   "id": "pm-enl-gat-tam-2026-10-23",
    "sport": "football",
-   "league": "Norway Eliteserien",
+   "league": "National League",
    "kickoff": "2026-11-07T15:00:00Z",
-   "home": "Kristiansund BK",
-   "away": "Vålerenga Fotball",
+   "home": "Gateshead FC",
+   "away": "Tamworth FC",
    "dayKey": "2026-11-07",
    "top": {
-    "selection": "MS 1",
-    "probability": 0.405,
-    "odds": 2.47
+    "selection": "MS 2",
+    "probability": 0.478,
+    "odds": 2.09
    },
    "lowOdds": false,
    "pick": null,
@@ -19413,23 +17597,6 @@
     "selection": "MS 1",
     "probability": 0.582,
     "odds": 1.72
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-enl-gat-tam-2026-10-23",
-   "sport": "football",
-   "league": "National League",
-   "kickoff": "2026-11-07T15:00:00Z",
-   "home": "Gateshead FC",
-   "away": "Tamworth FC",
-   "dayKey": "2026-11-07",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.478,
-    "odds": 2.09
    },
    "lowOdds": false,
    "pick": null,
@@ -19649,8 +17816,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "MS 1",
-    "probability": 0.45,
-    "odds": 2.22
+    "probability": 0.448,
+    "odds": 2.23
    },
    "lowOdds": false,
    "pick": null,
@@ -19691,6 +17858,19 @@
    "isPick": false
   },
   {
+   "id": "fd-NOR-2026-11-07-Rosenborg-Start",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-07T17:00:00Z",
+   "home": "Rosenborg",
+   "away": "Start",
+   "dayKey": "2026-11-07",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cze1-zbr-fbo-2026-11-07",
    "sport": "football",
    "league": "Czechia Chance Liga",
@@ -19702,23 +17882,6 @@
     "selection": "MS 1",
     "probability": 0.475,
     "odds": 2.11
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-nor-rbk-ik-2026-11-07",
-   "sport": "football",
-   "league": "Norway Eliteserien",
-   "kickoff": "2026-11-07T17:00:00Z",
-   "home": "Rosenborg BK",
-   "away": "IK Start",
-   "dayKey": "2026-11-07",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.771,
-    "odds": 1.3
    },
    "lowOdds": false,
    "pick": null,
@@ -20190,8 +18353,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "Kent State Golden Flashes",
-    "probability": 0.65,
-    "odds": 1.54
+    "probability": 0.64,
+    "odds": 1.56
    },
    "lowOdds": false,
    "pick": null,
@@ -20224,8 +18387,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "Ball State Cardinals (W)",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.715,
+    "odds": 1.4
    },
    "lowOdds": false,
    "pick": null,
@@ -20359,8 +18522,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "VCU Rams",
-    "probability": 0.55,
-    "odds": 1.82
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -20534,8 +18697,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "South Alabama Jaguars (W)",
-    "probability": 0.505,
-    "odds": 1.98
+    "probability": 0.51,
+    "odds": 1.96
    },
    "lowOdds": false,
    "pick": null,
@@ -20726,8 +18889,8 @@
    "dayKey": "2026-11-07",
    "top": {
     "selection": "Brown Bears (W)",
-    "probability": 0.56,
-    "odds": 1.79
+    "probability": 0.535,
+    "odds": 1.87
    },
    "lowOdds": false,
    "pick": null,
@@ -20931,8 +19094,8 @@
    "dayKey": "2026-11-08",
    "top": {
     "selection": "Rhode Island Rams",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.71,
+    "odds": 1.41
    },
    "lowOdds": false,
    "pick": null,
@@ -22514,6 +20677,23 @@
    "isPick": false
   },
   {
+   "id": "toa-7c7cdf1a0fee0a3434d8f648392c8e65",
+   "sport": "football",
+   "league": "Eliteserien - Norway",
+   "kickoff": "2026-11-08T13:30:00Z",
+   "home": "Tromso",
+   "away": "Bodø/Glimt",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.707,
+    "odds": 1.35
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "fd-I1-2026-11-08-Genoa-Milan",
    "sport": "football",
    "league": "Serie A",
@@ -23029,6 +21209,70 @@
    "isPick": false
   },
   {
+   "id": "fd-NOR-2026-11-08-Lillestrom-Aalesund",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Lillestrom",
+   "away": "Aalesund",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.543,
+    "odds": 1.78
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "fd-NOR-2026-11-08-HamKam-Sarpsborg_08",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "HamKam",
+   "away": "Sarpsborg 08",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.446,
+    "odds": 2.14
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Viking-KFUM_Oslo",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Viking",
+   "away": "KFUM Oslo",
+   "dayKey": "2026-11-08",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "fd-NOR-2026-11-08-Sandefjord-Molde",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T16:00:00Z",
+   "home": "Sandefjord",
+   "away": "Molde",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.577,
+    "odds": 1.72
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "fd-I2-2026-11-08-Carrarese-Sampdoria",
    "sport": "football",
    "league": "Serie B",
@@ -23395,6 +21639,23 @@
    "isPick": false
   },
   {
+   "id": "fd-NOR-2026-11-08-Fredrikstad-Brann",
+   "sport": "football",
+   "league": "Norveç Eliteserien",
+   "kickoff": "2026-11-08T18:15:00Z",
+   "home": "Fredrikstad",
+   "away": "Brann",
+   "dayKey": "2026-11-08",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.385,
+    "odds": 2.39
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "fd-D1-2026-11-08-Hoffenheim-Schalke_04",
    "sport": "football",
    "league": "Bundesliga",
@@ -23625,15 +21886,15 @@
    "isPick": false
   }
  ],
- "unmatched": 10,
+ "unmatched": 11,
  "stats": {
-  "evaluated": 362,
-  "withOdds": 362,
-  "modelled": 269,
+  "evaluated": 368,
+  "withOdds": 367,
+  "modelled": 274,
   "filtered": 0,
   "thin": 0,
   "byEvaluated": {
-   "football": 277,
+   "football": 283,
    "basketball": 85
   },
   "knownToday": {
@@ -23644,7 +21905,7 @@
  "sources": {
   "The Odds API": {
    "ok": true,
-   "info": "54 aktif lig, bugün-yarın maçı olan 41, bu çalışmada 1 yenilendi, önbellekte 17, kalan kredi 366"
+   "info": "54 aktif lig, bugün-yarın maçı olan 41, bu çalışmada 1 yenilendi, önbellekte 18, kalan kredi 348"
   },
   "football-data ek ligler": {
    "ok": true,
@@ -23652,7 +21913,7 @@
   },
   "football-data oranlar (Pinnacle)": {
    "ok": true,
-   "info": "160 maç (2026-11-06 – 2026-11-09), 165 tanesi önümüzdeki 5 günde"
+   "info": "160 maç (2026-11-06 – 2026-11-09), 171 tanesi önümüzdeki 5 günde"
   },
   "football-data sonuçlar": {
    "ok": true,
@@ -23664,7 +21925,7 @@
   },
   "Polymarket": {
    "ok": true,
-   "info": "218 maç, 81 tanesi eşleşti, 116 tanesi yeni eklendi"
+   "info": "218 maç, 83 tanesi eşleşti, 114 tanesi yeni eklendi"
   },
   "TheSportsDB (maç sayımı)": {
    "ok": true,
@@ -23680,7 +21941,7 @@
   }
  },
  "everyMatch": {
-  "pending": 944,
+  "pending": 952,
   "done": 179,
   "motor": 0.4606,
   "piyasa": 0.4613,
