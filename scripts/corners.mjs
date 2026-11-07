@@ -2,7 +2,8 @@
 // Cizgi olasiliklari (ornek: korner 9,5 ust) secim doneminde ayarlanir, sinav doneminde (2024/25-bugun) isabet olculur.
 // Not: bu pazarlarin eski oranlari kaynakta yok; kar test edilemez, yalnizca tahmin isabeti olculur.
 import fs from "node:fs";
-import { fdDate, num } from "../lib/engine.mjs";
+import { fdDate } from "../lib/engine.mjs";
+const num = v => v === "" || v === undefined || v === null ? NaN : Number(v);
 import { FD_LEAGUES, FD_SEASONS, fdSeason, mapLimit } from "../lib/sources.mjs";
 const codes = Object.keys(FD_LEAGUES), seasons = FD_SEASONS.filter(s => s >= "2122"), A = 0.12, LA = 0.02;
 const files = await mapLimit(seasons.flatMap(s => codes.map(c => ({ s, c }))), 6, async j => ({ ...j, rows: await fdSeason(j.s, j.c) }));
