@@ -34,7 +34,7 @@ if (toaKey) {
     let remaining = null, fetched = 0;
     // Mac listesi ucretsiz: yalniz bugun-yarin maci olan liglere kredi harca.
     const pause = ms => new Promise(r => setTimeout(r, ms));
-    const evLists = await mapLimit(sports, 1, async x => (await pause(700), { key: x.key, n: (await fetchEvents(x.key, toaKey)).filter(e => { const t = Date.parse(e.commence_time); return t > now && inWindow(t); }).length }));
+    const evLists = await mapLimit(sports, 1, async x => { await pause(700); const evs = await fetchEvents(x.key, toaKey); return { key: x.key, n: evs.filter(e => { const t = Date.parse(e.commence_time); return t > now && inWindow(t); }).length, soon: evs.filter(e => { const t = Date.parse(e.commence_time) - now; return t > 3600e3 && t < 5 * 3600e3; }).length }; });
     await pause(1500);
     const active = evLists.filter(e => e?.n > 0).map(e => e.key);
     const d = new Date(now), monthEnd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1)), daysLeft = Math.max(1, (monthEnd - d) / 864e5);
@@ -44,6 +44,11 @@ if (toaKey) {
     let budget = allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
     const due = chooseSports(active.map(k => ({ key: k })), oddsCache, active.length, now);
     for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; await pause(1500); const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
+    // Maca 1-5 saat kala oran (arastirmaya gore en cok deger burada): kredi yetiyorsa, en cok maci yaklasan futbol ligini yalniz mac sonucu pazariyla (1 kredi) yenile; eski Alt/Ust kalir.
+    if (allowance >= 12) { const near = evLists.filter(e => e?.soon > 0 && e.key.startsWith("soccer") && now - (oddsCache[e.key]?.fetchedAt || 0) > 90 * 60e3).sort((a, b) => b.soon - a.soon)[0];
+      if (near) { await pause(1500); const r = await fetchOdds(near.key, toaKey, "h2h"); remaining = r.remaining; fetched++; const old = oddsCache[near.key]?.events || [];
+        for (const e of r.body) { const o = old.find(x => x.id === e.id); if (o) for (const b of e.bookmakers) { const ob = o.bookmakers.find(x => x.key === b.key); for (const m of ob?.markets || []) if (!b.markets.some(x => x.key === m.key)) b.markets.push(m); } }
+        oddsCache[near.key] = { fetchedAt: now, title: sports.find(x => x.key === near.key)?.title || near.key, events: r.body, near: true }; } }
     const pendingKeys = [...new Set([...ledger.filter(l => l.status === "pending" && l.sportKey && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey), ...read("docs/tips.json", []).filter(l => l.status === "pending" && l.sportKey && !TOA_TO_FD[l.sportKey] && Date.parse(l.kickoff) + 4 * 3600e3 < now).map(l => l.sportKey)])];
     if (hour >= 6 && hour < 9) for (const k of pendingKeys.slice(0, 4)) { const r = await fetchScores(k, toaKey); remaining = r.remaining; scoreEvents.push(...r.body); }
     for (const k of Object.keys(oddsCache)) if (now - oddsCache[k].fetchedAt > 36 * 3600e3) delete oddsCache[k];
@@ -290,7 +295,7 @@ const priceMatches = matches.filter(m => m.price);
 for (let i = matches.length - 1; i >= 0; i--) { const m = matches[i], j = matches.findIndex((x, k) => k !== i && x.sport === m.sport && Math.abs(Date.parse(x.kickoff) - Date.parse(m.kickoff)) < 3 * 3600e3 && sameName(x.home, m.home) && sameName(x.away, m.away)); if (j >= 0 && (!m.fdDiv || matches[j].fdDiv)) matches.splice(i, 1); }
 for (const m of matches) { const list = []; if (m.bet.rule === "test") list.push([m.bet, "test"]); else if (m.bet.rule === "basket") list.push([m.bet, "basket"]); else { if (m.bet.safe) list.push([m.bet, "kar"]); if (m.bet.second) list.push([m.bet.second, "isabet"]); } if (m.price) list.push([m.price, "fiyat"]); for (const [bet, rule] of list) if (!tips.some(t => t.id === `${m.id}#${rule}`)) tips.push(tipFrom(m, bet, rule)); }
 
-// Melbet / 1xBet deger avi (Kaunitz ve ark. 2017 yontemi): 1xBet orani, ~25 sitenin ortak adil fiyatinin ve Pinnacle'in ustundeyse.
+// Deger avi (Kaunitz ve ark. 2017 yontemi): 1xBet orani, ~25 sitenin ortak adil fiyatinin ve Pinnacle'in ustundeyse.
 // Melbet ile 1xBet ayni gruptan, oranlari cok yakin. Gecmis 1xBet orani olmadigi icin ileriye donuk kapanis farkiyla olculur.
 const x1Probs = (e, mk) => { const want = mk === "h2h" ? [e.home_team, "Draw", e.away_team] : ["Over", "Under"];
   const take = b => { const m = b.markets?.find(q => q.key === mk); if (!m) return null; const o = want.map(nm => m.outcomes.find(q => q.name === nm && (mk === "h2h" || q.point === 2.5))?.price); return o.every(x => x > 1) ? o : null; };
