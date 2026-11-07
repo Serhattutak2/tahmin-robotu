@@ -229,7 +229,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
   if (!c.fdDiv && eloClubs.length && c.fair) { const h = eloClubs.find(x => sameTeam(x.club, c.home)), a = eloClubs.find(x => sameTeam(x.club, c.away)); if (h && a) { const E = 1 / (1 + 10 ** (-(h.elo + 65 - a.elo) / 400)), g = impliedGoals(eloProbs(E)), m = impliedGoals(devig(c.fair)); eloGoals = [(g[0] + m[0]) / 2, (g[1] + m[1]) / 2]; eloUsed++; } }
   const goals = c.dossier?.goals || eloGoals || (c.fair ? impliedGoals(devig(c.fair)) : null);
   if (!goals) return null;
-  const list = recommend(marketProbs(goals[0], goals[1]), cal, { exclude: c.fdDiv ? [] : MARKETS.filter(m => m.half).map(m => m.key) });
+  const list = recommend(marketProbs(goals[0], goals[1]), cal, { minOdds: 1.3, exclude: c.fdDiv ? [] : MARKETS.filter(m => m.half).map(m => m.key) });
   if (!list.length) return null;
   const e = c.entry, realOdd = k => ({ MS1: e?.[0], MSX: e?.[1], MS2: e?.[2], "1X": dc3(e, 0, 1), X2: dc3(e, 1, 2), 12: dc3(e, 0, 2), U25: c.ou?.entry?.[0], A25: c.ou?.entry?.[1], ...(c.realTotals || {}) })[k] || null;
   let chosen = null;
@@ -238,13 +238,13 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     const mk = devig(c.fair), ig = impliedGoals(mk), mg = marketProbs(ig[0], ig[1]), mth = marketProbs(goals[0], goals[1]), allowed = MARKETS.filter(m => (c.fdDiv && !(c.fdDiv in EXTRA_LEAGUES)) || !m.half);
     const z = c.feats && meta.mean ? c.feats.map((v, i) => Math.max(-4, Math.min(4, (v - meta.mean[i]) / meta.sd[i]))) : null, code = c.fdDiv || "";
     const L = c.low, lowOdd = k => ({ MS1: L?.[0], MSX: L?.[1], MS2: L?.[2], "1X": dc3(L, 0, 1), X2: dc3(L, 1, 2), 12: dc3(L, 0, 2), U25: c.ouLow?.[0], A25: c.ouLow?.[1] })[k] || null;
-    const opts = allowed.map(m => { const pm = mg[m.key], p = applyCal(mth[m.key], meta.cal[m.key]), est = estOdds(pm, m.key), real = realOdd(m.key), odd = real ?? est; if (odd < 1.2 || p < 0.6) return null; const mp = applyCal(score(metaX(m.key, p, pm, goals, code, z), meta.weights)[1], meta.metaCal); return { key: m.key, label: m.label, mp, est, real, low: lowOdd(m.key), odd, ev: mp * odd - 1 }; }).filter(Boolean).sort((a, b) => b.ev - a.ev);
+    const opts = allowed.map(m => { const pm = mg[m.key], p = applyCal(mth[m.key], meta.cal[m.key]), est = estOdds(pm, m.key), real = realOdd(m.key), odd = real ?? est; if (odd < 1.3 || (real && real < 1.3) || p < 0.6) return null; const mp = applyCal(score(metaX(m.key, p, pm, goals, code, z), meta.weights)[1], meta.metaCal); return { key: m.key, label: m.label, mp, est, real, low: lowOdd(m.key), odd, ev: mp * odd - 1 }; }).filter(Boolean).sort((a, b) => b.ev - a.ev);
     if (!opts.length) return null;
     // Kupon ayaklari: yalniz gecmisi bilinen liglerde ve gercek orani olan secenekler.
-    const realOpts = c.fdDiv ? opts.filter(x => x.low >= 1.2).sort((x, y) => y.mp - x.mp) : [];
+    const realOpts = c.fdDiv ? opts.filter(x => x.low >= 1.3).sort((x, y) => y.mp - x.mp) : [];
     legMap.set(c.id, realOpts.slice(0, 4).map(x => ({ key: x.key, label: x.label, mp: +x.mp.toFixed(4), odds: +x.low.toFixed(2) })));
-    const need = x => +Math.max(1.2, (1 + (meta.evThreshold || 0)) / x.mp).toFixed(2), b = opts[0], minPlay = need(b);
-    const hitBest = realOpts[0], hitOk = !!hitBest && hitBest.mp >= 0.72, hitNeed = hitOk ? +Math.max(1.2, 1.03 / hitBest.mp).toFixed(2) : null;
+    const need = x => +Math.max(1.3, (1 + (meta.evThreshold || 0)) / x.mp).toFixed(2), b = opts[0], minPlay = need(b);
+    const hitBest = realOpts[0], hitOk = !!hitBest && hitBest.mp >= 0.72, hitNeed = hitOk ? +Math.max(1.3, 1.03 / hitBest.mp).toFixed(2) : null;
     const second = hitOk ? { conf: +hitBest.mp.toFixed(4), rule: "isabet", safe: true, key: hitBest.key, label: hitBest.label, minPlay: hitNeed, estOdds: null, odds: +hitBest.low.toFixed(2), book: "gerçek oran" } : null;
     chosen = { rule: "kar", second, safe: b.ev >= (meta.evThreshold ?? 0.05), key: b.key, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real ? +b.real.toFixed(2) : null, value: !!(b.real && b.real >= minPlay), book: b.real && b.real >= minPlay ? c.bookmaker || null : null };
     return { ...base, bet: chosen, alts: opts.filter(x => x.key !== b.key).slice(0, 3).map(x => ({ label: x.label, minPlay: need(x) })) };
@@ -255,7 +255,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
 if (eloClubs.length) note("ClubElo", true, `${eloClubs.length} kulüp, ${eloUsed} maçta kullanıldı`);
 const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, safe: true, status: "pending" });
 // Fiyat disiplini: adil fiyat piyasadan; oyna yalniz gercek oran sinirin ustundeyse. Test: docs/zero.json.
-const priceRule = c => { if (c.sport !== "football" || !c.fair || !c.entry) return null; const fair = devig(c.fair); if (!fair) return null; const labels = ["MS 1", "MS X", "MS 2"], best = c.best?.x12 || (c.entryBooks ? c.entry : null), b365 = c.bookmaker === "bet365" ? c.entry : null; let top = null; fair.forEach((p, i) => { for (const [o, cut, edge, src] of [[best?.[i], .96, .05, c.entryBooks?.[i] || "en yüksek oran"], [b365?.[i], 1, .02, "bet365"]]) { if (!Number.isFinite(o)) continue; const price = o * cut; if (price < 1.2 || price > 3.2) continue; const ev = p * price - 1; if (ev >= edge && (!top || ev > top.ev)) top = { ev, key: ["MS1", "MSX", "MS2"][i], label: labels[i], odds: +o.toFixed(2), minPlay: +Math.max(1.2, (1 + edge) / p / cut).toFixed(2), book: src, rule: "fiyat" }; } }); return top; };
+const priceRule = c => { if (c.sport !== "football" || !c.fair || !c.entry) return null; const fair = devig(c.fair); if (!fair) return null; const labels = ["MS 1", "MS X", "MS 2"], best = c.best?.x12 || (c.entryBooks ? c.entry : null), b365 = c.bookmaker === "bet365" ? c.entry : null; let top = null; fair.forEach((p, i) => { for (const [o, cut, edge, src] of [[best?.[i], .96, .05, c.entryBooks?.[i] || "en yüksek oran"], [b365?.[i], 1, .02, "bet365"]]) { if (!Number.isFinite(o)) continue; const price = o * cut; if (price < 1.3 || o < 1.3 || price > 3.2) continue; const ev = p * price - 1; if (ev >= edge && (!top || ev > top.ev)) top = { ev, key: ["MS1", "MSX", "MS2"][i], label: labels[i], odds: +o.toFixed(2), minPlay: +Math.max(1.3, (1 + edge) / p / cut).toFixed(2), book: src, rule: "fiyat" }; } }); return top; };
 for (const m of matches) { const c = candidates.find(x => x.id === m.id); const f = c && priceRule(c); if (f) m.price = f; }
 const priceMatches = matches.filter(m => m.price);
 // Ayni mac farkli kaynaktan iki kez gelirse tam motorlu olan kalir.
