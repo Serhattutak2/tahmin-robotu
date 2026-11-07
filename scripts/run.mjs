@@ -244,7 +244,7 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     const realOpts = c.fdDiv ? opts.filter(x => x.low >= 1.2).sort((x, y) => y.mp - x.mp) : [];
     legMap.set(c.id, realOpts.slice(0, 4).map(x => ({ key: x.key, label: x.label, mp: +x.mp.toFixed(4), odds: +x.low.toFixed(2) })));
     const need = x => +Math.max(1.2, (1 + (meta.evThreshold || 0)) / x.mp).toFixed(2), b = opts[0], minPlay = need(b);
-    const hitBest = realOpts[0], hitOk = !!hitBest && hitBest.mp >= (meta.threshold80 ?? .82), hitNeed = hitOk ? +Math.max(1.2, 1.03 / hitBest.mp).toFixed(2) : null;
+    const hitBest = realOpts[0], hitOk = !!hitBest && hitBest.mp >= 0.72, hitNeed = hitOk ? +Math.max(1.2, 1.03 / hitBest.mp).toFixed(2) : null;
     const second = hitOk ? { conf: +hitBest.mp.toFixed(4), rule: "isabet", safe: true, key: hitBest.key, label: hitBest.label, minPlay: hitNeed, estOdds: null, odds: +hitBest.low.toFixed(2), book: "gerçek oran" } : null;
     chosen = { rule: "kar", second, safe: b.ev >= (meta.evThreshold ?? 0.05), key: b.key, label: b.label, minPlay, estOdds: b.real ? null : b.est, odds: b.real ? +b.real.toFixed(2) : null, value: !!(b.real && b.real >= minPlay), book: b.real && b.real >= minPlay ? c.bookmaker || null : null };
     return { ...base, bet: chosen, alts: opts.filter(x => x.key !== b.key).slice(0, 3).map(x => ({ label: x.label, minPlay: need(x) })) };
@@ -281,7 +281,7 @@ const couponsOf = list => {
     const P = pool.filter(x => !used.has(x.m.id)); let best = null;
     const tryIt = legs => { if (new Set(legs.map(x => x.m.id)).size < legs.length) return; const odds = legs.reduce((a, x) => a * x.l.odds, 1); if (odds < 2) return; const p = legs.reduce((a, x) => a * x.l.mp, 1); if (!best || p > best.p) best = { legs, odds, p }; };
     for (let i = 0; i < P.length; i++) { tryIt([P[i]]); for (let j = i + 1; j < P.length; j++) { tryIt([P[i], P[j]]); for (let k = j + 1; k < P.length; k++) tryIt([P[i], P[j], P[k]]); } }
-    if (!best || best.p < 0.45) break;
+    if (!best || best.p < 0.4) break;
     best.legs.forEach(x => used.add(x.m.id));
     out.push({ odds: +best.odds.toFixed(2), conf: +best.p.toFixed(4), legs: best.legs.map(({ m, l }) => ({ matchId: m.id, home: m.home, away: m.away, league: m.league, kickoff: m.kickoff, date: m.date, fdDiv: m.fdDiv, key: l.key, label: l.label, odds: l.odds })) });
   }
