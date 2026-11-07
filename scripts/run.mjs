@@ -222,6 +222,7 @@ function marketPick(c, base) {
     .filter(x => x.odds && x.odds >= 1.3).sort((a, b) => b.p - a.p);
   if (!opts.length) return null;
   const b = opts[0];
+  if (c.fdDiv) legMap.set(c.id, [{ key: b.key, label: b.label, mp: +b.p.toFixed(4), odds: b.odds, minPlay: b.minPlay }]);
   return { ...base, bet: { rule: "piyasa", safe: false, key: b.key, label: b.label, minPlay: b.minPlay, odds: b.odds, estOdds: null, value: b.odds >= b.minPlay, book: c.bookmaker || null }, alts: opts.slice(1, 3).map(x => ({ label: x.label, minPlay: x.minPlay })) };
 }
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
@@ -279,7 +280,7 @@ const priceRule = c => { if (c.sport !== "football" || !c.fair) return null; con
   const b365 = c.bookmaker === "bet365" ? c.entry : null, b365ou = c.bookmaker === "bet365" ? c.ou?.entry : null;
   fair.forEach((p, i) => cand.push({ p, o: c.best?.x12?.[i], b: b365?.[i], key: ["MS1", "MSX", "MS2"][i], label: ["MS 1", "MS X", "MS 2"][i] }));
   if (ouFair) ouFair.forEach((p, i) => cand.push({ p, o: c.best?.ou?.[i], b: b365ou?.[i], key: ["U25", "A25"][i], label: ["2,5 Üst", "2,5 Alt"][i] }));
-  let top = null; for (const x of cand) { if (!Number.isFinite(x.o) || x.o < 1.3) continue; const price = x.o * cut; if (price < 1.3 || price > 3.2) continue; const ev = x.p * price - 1; if (ev >= 0 && (!top || ev > top.ev)) top = { ev, key: x.key, label: x.label, odds: +x.o.toFixed(2), minPlay: +Math.max(1.3, 1 / x.p / cut).toFixed(2), b365: Number.isFinite(x.b) ? +x.b.toFixed(2) : null, book: "en yüksek oran", rule: "fiyat" }; if (top) top.b365ok = !!(top.b365 && top.b365 >= top.minPlay); }
+  let top = null; for (const x of cand) { if (!Number.isFinite(x.o) || x.o < 1.3) continue; const price = x.o * cut; if (price < 1.3 || price > 3.2) continue; const ev = x.p * price - 1; if (ev >= 0 && (!top || ev > top.ev)) top = { ev, p: +x.p.toFixed(4), key: x.key, label: x.label, odds: +x.o.toFixed(2), minPlay: +Math.max(1.3, 1 / x.p / cut).toFixed(2), b365: Number.isFinite(x.b) ? +x.b.toFixed(2) : null, book: "en yüksek oran", rule: "fiyat" }; if (top) top.b365ok = !!(top.b365 && top.b365 >= top.minPlay); }
   return top; };
 for (const m of matches) { const c = candidates.find(x => x.id === m.id); const f = c && priceRule(c); if (f) m.price = f; }
 // Oran hareketi: ilk kayittaki orana gore piyasa bu tarafa mi geliyor? (oran dustuyse piyasa da ayni tarafi goruyor)
@@ -312,24 +313,28 @@ for (const t of tips.filter(x => !x.pmId && x.status === "pending" && Date.parse
 fs.writeFileSync("docs/tips.json", JSON.stringify(tips.slice(-20000)));
 // 2'yi gecen kuponlar: farkli maclardan en fazla 3 ayak, gercek oranlarla. Ilk ayak baslayinca kupon kilitlenir.
 for (const m of matches) if (m.sport === "football" && legMap.get(m.id)?.length) m.legs = legMap.get(m.id);
-const couponsOf = list => {
-  const pool = list.filter(m => m.legs && Date.parse(m.kickoff) > now).flatMap(m => m.legs.map(l => ({ m, l }))).sort((a, b) => b.l.mp - a.l.mp).slice(0, 30), out = [], used = new Set();
+// Kuponlar (docs/test3.json, son 3 yil): "en olası" kupon bet365 oranıyla sifira yakin; "deger" kuponu en yuksek oranla artida, bet365 ile ekside.
+const couponsOf = (pool0, maxN, need, score) => {
+  const pool = pool0.filter(x => Date.parse(x.m.kickoff) > now).sort((a, b) => b.l.mp - a.l.mp).slice(0, 30), out = [], used = new Set();
   for (let n = 0; n < 3; n++) {
     const P = pool.filter(x => !used.has(x.m.id)); let best = null;
-    const tryIt = legs => { if (new Set(legs.map(x => x.m.id)).size < legs.length) return; const odds = legs.reduce((a, x) => a * x.l.odds, 1); if (odds < 2) return; const p = legs.reduce((a, x) => a * x.l.mp, 1); if (!best || p > best.p) best = { legs, odds, p }; };
-    for (let i = 0; i < P.length; i++) { tryIt([P[i]]); for (let j = i + 1; j < P.length; j++) { tryIt([P[i], P[j]]); for (let k = j + 1; k < P.length; k++) tryIt([P[i], P[j], P[k]]); } }
-    if (!best || best.p < 0.4) break;
+    const tryIt = legs => { if (new Set(legs.map(x => x.m.id)).size < legs.length) return; const odds = legs.reduce((a, x) => a * x.l.odds, 1); if (odds < 2) return; const p = legs.reduce((a, x) => a * x.l.mp, 1); if (p < need) return; const sc = score(p, odds); if (!best || sc > best.sc) best = { legs, odds, p, sc }; };
+    for (let i = 0; i < P.length; i++) { tryIt([P[i]]); for (let j = i + 1; j < P.length; j++) { tryIt([P[i], P[j]]); if (maxN > 2) for (let k = j + 1; k < P.length; k++) tryIt([P[i], P[j], P[k]]); } }
+    if (!best) break;
     best.legs.forEach(x => used.add(x.m.id));
-    out.push({ odds: +best.odds.toFixed(2), conf: +best.p.toFixed(4), legs: best.legs.map(({ m, l }) => ({ matchId: m.id, home: m.home, away: m.away, league: m.league, kickoff: m.kickoff, date: m.date, fdDiv: m.fdDiv, key: l.key, label: l.label, odds: l.odds })) });
+    out.push({ odds: +best.odds.toFixed(2), conf: +best.p.toFixed(4), legs: best.legs.map(({ m, l }) => ({ matchId: m.id, home: m.home, away: m.away, league: m.league, kickoff: m.kickoff, date: m.date, fdDiv: m.fdDiv, key: l.key, label: l.label, odds: l.odds, minPlay: l.minPlay ?? null })) });
   }
   return out;
 };
 const coupons = read("docs/coupons.json", []);
-for (const d of [todayIst, tomorrowIst]) {
-  const old = coupons.filter(x => x.dayKey === d), locked = old.some(x => x.legs.some(l => Date.parse(l.kickoff) <= now));
+const fb = d => matches.filter(m => m.sport === "football" && m.dayKey === d);
+const KINDS = { olasi: { maxN: 3, need: 0.4, score: p => p, pool: d => fb(d).filter(m => m.fdDiv && m.legs?.length).map(m => ({ m, l: m.legs[0] })) },
+  deger: { maxN: 2, need: 0.25, score: (p, o) => p * o, pool: d => fb(d).filter(m => m.price?.p).map(m => ({ m, l: { key: m.price.key, label: m.price.label, mp: m.price.p, odds: m.price.odds, minPlay: m.price.minPlay } })) } };
+for (const d of [todayIst, tomorrowIst]) for (const [type, K] of Object.entries(KINDS)) {
+  const old = coupons.filter(x => x.dayKey === d && x.type === type), locked = old.some(x => x.legs.some(l => Date.parse(l.kickoff) <= now));
   if (locked) continue;
-  // Kuponlar 3 yillik testte her yil zarar etti; yeni kupon uretilmez, eskiler silinir.
   for (const x of old) coupons.splice(coupons.indexOf(x), 1);
+  couponsOf(K.pool(d), K.maxN, K.need, K.score).forEach((x, i) => coupons.push({ id: `${d}#${type}${i + 1}`, type, dayKey: d, createdAt: new Date(now).toISOString(), status: "pending", ...x }));
 }
 for (const cp of coupons.filter(x => x.status === "pending")) {
   for (const l of cp.legs.filter(l => l.status !== "won" && l.status !== "lost" && Date.parse(l.kickoff) < now)) {
@@ -345,7 +350,7 @@ fs.writeFileSync("docs/coupons.json", JSON.stringify(coupons.slice(-2000)));
 // Son 3 gun + bugun baslamis maclar: verilen tahminler silinmez, sonucuyla gosterilir.
 const pastDays = [3, 2, 1].map(n => ist(now - n * 864e5)), pastSet = new Set([...pastDays, todayIst]);
 const past = { days: pastDays, tips: tips.filter(t => t.sport === "football" && (t.rule === "isabet" || t.rule === "fiyat") && pastSet.has(ist(Date.parse(t.kickoff))) && Date.parse(t.kickoff) <= now).map(t => ({ dayKey: ist(Date.parse(t.kickoff)), rule: t.rule, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, odds: t.odds, minPlay: t.minPlay, status: t.status, score: t.score || "" })).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), coupons: coupons.filter(x => pastSet.has(x.dayKey)) };
-const cpDone = coupons.filter(x => x.status === "won" || x.status === "lost"), couponCard = { done: cpDone.length, won: cpDone.filter(x => x.status === "won").length, pending: coupons.filter(x => x.status === "pending").length, profit: +cpDone.reduce((a, x) => a + x.profit, 0).toFixed(1) };
+const cpCard = t => { const l = coupons.filter(x => x.type === t), dn = l.filter(x => x.status === "won" || x.status === "lost"); return { done: dn.length, won: dn.filter(x => x.status === "won").length, pending: l.filter(x => x.status === "pending").length, profit: +dn.reduce((a, x) => a + x.profit, 0).toFixed(1) }; }, couponCard = { olasi: cpCard("olasi"), deger: cpCard("deger") };
 const doneTips = tips.filter(t => (t.status === "won" || t.status === "lost") && t.safe), cardOf = r => { const d = doneTips.filter(t => t.rule === r); return { done: d.length, won: d.filter(t => t.won).length, pending: tips.filter(t => t.status === "pending" && t.rule === r).length, profit: +d.reduce((a, t) => a + t.profit, 0).toFixed(1) }; }, clvOf = r => { const l = tips.filter(t => t.rule === r && Number.isFinite(t.clv)), lb = l.filter(t => Number.isFinite(t.clvB365)), lp = tips.filter(t => t.rule === r && Number.isFinite(t.profitB365)); return { n: l.length, best100: l.length ? +(l.reduce((a, t) => a + t.clv, 0) / l.length * 100).toFixed(1) : null, b365_100: lb.length ? +(lb.reduce((a, t) => a + t.clvB365, 0) / lb.length * 100).toFixed(1) : null, b365Profit: +lp.reduce((a, t) => a + t.profitB365, 0).toFixed(1), b365Done: lp.length }; }, tipCard = { clvFiyat: clvOf("fiyat"), clvIsabet: clvOf("isabet"), kar: cardOf("kar"), isabet: cardOf("isabet"), test: cardOf("test"), basket: cardOf("basket"), fiyat: cardOf("fiyat") };
 const verdict = "Geçmiş testlerde motor çok tutturdu ama kâr kanıtlanmadı; beklenti en iyi ihtimalle sıfıra yakın. Oran sınırını geçmeyen maçı oynama, küçük ve sabit birimle kal.";
 // Her mac defteri: secilsin secilmesin tum tahminler sonuc gorulmeden kaydedilir, sonra puanlanir.
