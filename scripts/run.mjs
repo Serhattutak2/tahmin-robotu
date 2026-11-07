@@ -255,7 +255,13 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
 if (eloClubs.length) note("ClubElo", true, `${eloClubs.length} kulüp, ${eloUsed} maçta kullanıldı`);
 const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, safe: true, status: "pending" });
 // Fiyat disiplini: adil fiyat piyasadan; oyna yalniz gercek oran sinirin ustundeyse. Test: docs/zero.json.
-const priceRule = c => { if (c.sport !== "football" || !c.fair || !c.entry) return null; const fair = devig(c.fair); if (!fair) return null; const labels = ["MS 1", "MS X", "MS 2"], best = c.best?.x12 || (c.entryBooks ? c.entry : null), b365 = c.bookmaker === "bet365" ? c.entry : null; let top = null; fair.forEach((p, i) => { for (const [o, cut, edge, src] of [[best?.[i], .96, .05, c.entryBooks?.[i] || "en yüksek oran"], [b365?.[i], 1, .02, "bet365"]]) { if (!Number.isFinite(o)) continue; const price = o * cut; if (price < 1.3 || o < 1.3 || price > 3.2) continue; const ev = p * price - 1; if (ev >= edge && (!top || ev > top.ev)) top = { ev, key: ["MS1", "MSX", "MS2"][i], label: labels[i], odds: +o.toFixed(2), minPlay: +Math.max(1.3, (1 + edge) / p / cut).toFixed(2), book: src, rule: "fiyat" }; } }); return top; };
+const priceRule = c => { if (c.sport !== "football" || !c.fair) return null; const fair = devig(c.fair); if (!fair) return null;
+  // Test (docs/zero2.json): en yuksek oranin %98'i, piyasanin adil fiyatinin ustundeyse; MS ve 2,5 Alt/Ust, oran 1,30-3,20.
+  const ouFair = c.ou?.fair && devig(c.ou.fair), cut = 0.98, cand = [];
+  fair.forEach((p, i) => cand.push({ p, o: c.best?.x12?.[i], key: ["MS1", "MSX", "MS2"][i], label: ["MS 1", "MS X", "MS 2"][i] }));
+  if (ouFair) ouFair.forEach((p, i) => cand.push({ p, o: c.best?.ou?.[i], key: ["U25", "A25"][i], label: ["2,5 Üst", "2,5 Alt"][i] }));
+  let top = null; for (const x of cand) { if (!Number.isFinite(x.o) || x.o < 1.3) continue; const price = x.o * cut; if (price < 1.3 || price > 3.2) continue; const ev = x.p * price - 1; if (ev >= 0 && (!top || ev > top.ev)) top = { ev, key: x.key, label: x.label, odds: +x.o.toFixed(2), minPlay: +Math.max(1.3, 1 / x.p / cut).toFixed(2), book: "en yüksek oran", rule: "fiyat" }; }
+  return top; };
 for (const m of matches) { const c = candidates.find(x => x.id === m.id); const f = c && priceRule(c); if (f) m.price = f; }
 const priceMatches = matches.filter(m => m.price);
 // Ayni mac farkli kaynaktan iki kez gelirse tam motorlu olan kalir.
