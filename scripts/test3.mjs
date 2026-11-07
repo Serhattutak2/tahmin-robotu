@@ -38,7 +38,7 @@ const low = (a, b) => a && b ? a.map((v, i) => Number.isFinite(v) && Number.isFi
 const dict = (x, ou) => ({ MS1: x?.[0], MSX: x?.[1], MS2: x?.[2], "1X": dcOdd(x, 0, 1), X2: dcOdd(x, 1, 2), 12: dcOdd(x, 0, 2), U25: ou?.[0], A25: ou?.[1] });
 const closeP = d => { const p = d.ox.close && devig(d.ox.close), q = d.ox.ouClose && devig(d.ox.ouClose); return { MS1: p?.[0], MSX: p?.[1], MS2: p?.[2], "1X": p && p[0] + p[1], X2: p && p[1] + p[2], 12: p && p[0] + p[2], U25: q?.[0], A25: q?.[1] }; };
 const year = s => s.slice(0, 4), quarters = []; for (let t = Date.parse(start); t < now; t += 91 * 864e5) quarters.push(day(t));
-const A = [], B = [], Cday = new Map(), acc = [];
+const A = [], B = [], Cday = new Map(), acc = [], M = [];
 for (const [i, q] of quarters.entries()) {
   const nx = quarters[i + 1] || day(now + 864e5), pre = all.filter(d => d.date < q), cur = all.filter(d => d.date >= q && d.date < nx); if (pre.length < 3000 || !cur.length) continue;
   const cal = calFrom(pre), m = fit(pre, cal);
@@ -47,6 +47,11 @@ for (const [i, q] of quarters.entries()) {
     // Motorun mac sonucu tahmini ve piyasanin favorisi
     const res = d.gh > d.ga ? 0 : d.gh === d.ga ? 1 : 2, pr = [applyCal(d.grid.MS1, cal.MS1), applyCal(d.grid.MSX, cal.MSX), applyCal(d.grid.MS2, cal.MS2)];
     acc.push({ y: year(d.date), eng: pr.indexOf(Math.max(...pr)) === res, mkt: d.mk.indexOf(Math.max(...d.mk)) === res });
+    // Yeni motor: piyasanin en olasi sonucu (oran >= 1,30)
+    { const mkp = d.mk, ouq = d.ox.ouFair && devig(d.ox.ouFair), tot = d.gh + d.ga, id = d.date + d.home + d.away;
+      const o = [["MS1", "MS 1", mkp[0], res === 0], ["MSX", "MS X", mkp[1], res === 1], ["MS2", "MS 2", mkp[2], res === 2], ["1X", "1X", mkp[0] + mkp[1], res !== 2], ["X2", "X2", mkp[1] + mkp[2], res !== 0], ["12", "12", mkp[0] + mkp[2], res !== 1], ...(ouq ? [["U25", "2,5 Üst", ouq[0], tot > 2.5], ["A25", "2,5 Alt", ouq[1], tot < 2.5]] : [])]
+        .map(([key, label, p, y]) => ({ key, label, p, y, o: L[key], b: b365[key] })).filter(x => x.o >= 1.3).sort((a, b) => b.p - a.p);
+      if (o[0]) M.push({ date: d.date, id, code: d.code, ...o[0], clv: cp[o[0].key] && o[0].b ? o[0].b * cp[o[0].key] - 1 : null }); }
     // A: En guvendigim (gercek dusuk oran >= 1,30, mp >= 0,72)
     const opts = cands(d, cal).filter(c => L[c.key] >= 1.3).map(c => ({ ...c, mp: applyCal(score(metaX(c.key, c.p, c.pm, d.goals, d.code, d.z), m.w)[1], m.c), o: L[c.key], b: b365[c.key] })).sort((a, b) => b.mp - a.mp);
     if (opts[0] && opts[0].mp >= 0.72) { const x = opts[0]; A.push({ date: d.date, code: d.code, label: x.label, y: x.y, o: x.o, b: x.b, mp: x.mp, clv: cp[x.key] && x.b ? x.b * cp[x.key] - 1 : null }); }
@@ -57,7 +62,7 @@ for (const [i, q] of quarters.entries()) {
     if (fair) fair.forEach((p, k) => cand.push({ key: ["MS1", "MSX", "MS2"][k], label: ["MS 1", "MS X", "MS 2"][k], p, mx: d.ox.max?.[k], b: d.ox.entry?.[k], y: res === k }));
     if (ouf) ouf.forEach((p, k) => cand.push({ key: ["U25", "A25"][k], label: ["2,5 Üst", "2,5 Alt"][k], p, mx: d.mx[k], b: d.ox.ouEntry?.[k], y: (d.gh + d.ga > 2.5) === !k }));
     let top = null; for (const x of cand) { if (!Number.isFinite(x.mx) || x.mx < 1.3) continue; const price = x.mx * 0.98; if (price < 1.3 || price > 3.2) continue; const ev = x.p * price - 1; if (ev >= 0 && (!top || ev > top.ev)) top = { ...x, ev, min: Math.max(1.3, 1 / x.p / 0.98) }; }
-    if (top) B.push({ date: d.date, code: d.code, label: top.label, y: top.y, mx: top.mx, b: top.b, min: top.min, bok: Number.isFinite(top.b) && top.b >= top.min, clv: cp[top.key] && top.b ? top.b * cp[top.key] - 1 : null });
+    if (top) B.push({ id: d.date + d.home + d.away, p: top.p, date: d.date, code: d.code, label: top.label, y: top.y, mx: top.mx, b: top.b, min: top.min, bok: Number.isFinite(top.b) && top.b >= top.min, clv: cp[top.key] && top.b ? top.b * cp[top.key] - 1 : null });
   }
 }
 // C: gunluk kupon (2'yi gecen, en fazla 3 ayak, tutma ihtimali >= 0,40)
@@ -66,6 +71,14 @@ for (const [dt, legs0] of Cday) { const pool = legs0.sort((a, b) => b.mp - a.mp)
   for (let n = 0; n < 3; n++) { const P = pool.filter(x => !used.has(x.id)); let best = null; const t = l => { if (new Set(l.map(x => x.id)).size < l.length) return; const o = l.reduce((a, x) => a * x.o, 1); if (o < 2) return; const p = l.reduce((a, x) => a * x.mp, 1); if (!best || p > best.p) best = { l, o, p }; };
     for (let i = 0; i < P.length; i++) { t([P[i]]); for (let j = i + 1; j < P.length; j++) { t([P[i], P[j]]); for (let k = j + 1; k < P.length; k++) t([P[i], P[j], P[k]]); } }
     if (!best || best.p < 0.4) break; best.l.forEach(x => used.add(x.id)); C.push({ date: dt, y: best.l.every(x => x.y), o: best.o }); } }
+// Yeni kuponlar: K1 en olasi sonuclardan, K2 motorun secimlerinden (deger olan maclardan)
+const K1 = [], K2 = [];
+const build = (legs, pr, need, maxN, score) => { const pool = legs.slice().sort((a, b) => pr(b) - pr(a)).slice(0, 30), used = new Set(), out = [];
+  for (let n = 0; n < 3; n++) { const P = pool.filter(x => !used.has(x.id)); let best = null; const t = l => { if (new Set(l.map(x => x.id)).size < l.length) return; const o = l.reduce((a, x) => a * x.o, 1); if (o < 2) return; const p = l.reduce((a, x) => a * pr(x), 1), sc = score(p, o); if (p < need) return; if (!best || sc > best.sc) best = { l, o, p, sc }; };
+    for (let i = 0; i < P.length; i++) { t([P[i]]); for (let j = i + 1; j < P.length; j++) { t([P[i], P[j]]); if (maxN > 2) for (let k = j + 1; k < P.length; k++) t([P[i], P[j], P[k]]); } }
+    if (!best) break; best.l.forEach(x => used.add(x.id)); out.push(best); } return out; };
+for (const [dt, l] of Object.entries(Object.groupBy(M, x => x.date))) for (const c of build(l, x => x.p, 0.4, 3, p => p)) K1.push({ date: dt, y: c.l.every(x => x.y), o: c.o, b: c.l.every(x => x.b > 1) ? c.l.reduce((a, x) => a * x.b, 1) : null });
+for (const [dt, l] of Object.entries(Object.groupBy(B, x => x.date))) for (const c of build(l.map(x => ({ ...x, o: x.mx })), x => x.p, 0.25, 2, (p, o) => p * o)) K2.push({ date: dt, y: c.l.every(x => x.y), o: c.o, b: c.l.every(x => x.b > 1) ? c.l.reduce((a, x) => a * x.b, 1) : null });
 const st = (l, odd) => { l = l.filter(x => Number.isFinite(odd(x)) && odd(x) > 1); if (!l.length) return { seçim: 0 }; const v = l.map(x => x.y ? odd(x) - 1 : -1), pr = v.reduce((a, b) => a + b, 0), roi = pr / l.length, se = Math.sqrt(v.reduce((a, b) => a + (b - roi) ** 2, 0) / l.length / l.length); return { seçim: l.length, tutan: l.filter(x => x.y).length, ortalamaOran: +(l.reduce((a, x) => a + odd(x), 0) / l.length).toFixed(2), kar: +pr.toFixed(1), getiri100: +(roi * 100).toFixed(1), alt100: +((roi - 1.96 * se) * 100).toFixed(1), üst100: +((roi + 1.96 * se) * 100).toFixed(1) }; };
 const clv = l => { const c = l.filter(x => Number.isFinite(x.clv)); return c.length ? +(c.reduce((a, x) => a + x.clv, 0) / c.length * 100).toFixed(1) : null; };
 const byYear = (l, f) => Object.fromEntries(Object.entries(Object.groupBy(l, x => year(x.date))).sort().map(([y, v]) => [y, f(v)]));
@@ -75,6 +88,9 @@ const out = { generatedAt: new Date().toISOString(), başlangıç: start, maç: 
   isabet: byYear(acc.map(x => ({ ...x, date: x.y })), v => ({ maç: v.length, motor: v.filter(x => x.eng).length, piyasa: v.filter(x => x.mkt).length })),
   enGüvendiğim: { gerçekOran: st(A, x => x.o), bet365: st(A, x => x.b), kapanış100_bet365: clv(A), yıl: byYear(A, v => st(v, x => x.b)), pazar: byLabel(A, x => x.b) },
   motorunSeçimleri: { enYüksekOran: st(B, x => x.mx), bet365: st(B, x => x.b), bet365SınırıGeçen: st(B.filter(x => x.bok), x => x.b), kapanış100_bet365: clv(B), yıl: byYear(B, v => ({ enYüksek: st(v, x => x.mx), bet365: st(v, x => x.b), bet365Geçen: st(v.filter(x => x.bok), x => x.b) })), pazar: byLabel(B, x => x.mx), lig: byLeague(B, x => x.mx) },
-  kupon: { hepsi: st(C, x => x.o), yıl: byYear(C, v => st(v, x => x.o)) } };
+  kupon: { hepsi: st(C, x => x.o), yıl: byYear(C, v => st(v, x => x.o)) },
+  yeniMotor: { gerçekOran: st(M, x => x.o), bet365: st(M, x => x.b), kapanış100_bet365: clv(M), yıl: byYear(M, v => st(v, x => x.b)), pazar: byLabel(M, x => x.b) },
+  kuponEnOlası: { gerçekOran: st(K1, x => x.o), bet365: st(K1, x => x.b), yıl: byYear(K1, v => st(v, x => x.b)) },
+  kuponDeğer: { enYüksekOran: st(K2, x => x.o), bet365: st(K2, x => x.b), yıl: byYear(K2, v => ({ enYüksek: st(v, x => x.o), bet365: st(v, x => x.b) })) } };
 fs.writeFileSync("docs/test3.json", JSON.stringify(out, null, 1));
 console.log(JSON.stringify({ ...out, motorunSeçimleri: { ...out.motorunSeçimleri, lig: out.motorunSeçimleri.lig.slice(0, 5).concat(out.motorunSeçimleri.lig.slice(-5)) } }));
