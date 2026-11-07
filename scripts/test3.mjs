@@ -84,7 +84,9 @@ const clv = l => { const c = l.filter(x => Number.isFinite(x.clv)); return c.len
 const byYear = (l, f) => Object.fromEntries(Object.entries(Object.groupBy(l, x => year(x.date))).sort().map(([y, v]) => [y, f(v)]));
 const byLabel = (l, odd) => Object.entries(Object.groupBy(l, x => x.label)).map(([k, v]) => ({ pazar: k, ...st(v, odd) })).sort((a, b) => b.seçim - a.seçim);
 const byLeague = (l, odd) => Object.entries(Object.groupBy(l, x => x.code)).map(([k, v]) => ({ lig: ALL_LEAGUES[k], ...st(v, odd) })).filter(x => x.seçim >= 40).sort((a, b) => b.getiri100 - a.getiri100);
+const six = day(now - 182 * 864e5), s6 = l => l.filter(x => x.date >= six);
 const out = { generatedAt: new Date().toISOString(), başlangıç: start, maç: acc.length,
+  son6Ay: { motorunSeçimleri: { enYüksek: st(s6(B), x => x.mx), bet365: st(s6(B), x => x.b) }, kuponEnOlası: { bet365: st(s6(K1), x => x.b) }, kuponDeğer: { enYüksek: st(s6(K2), x => x.o), bet365: st(s6(K2), x => x.b) }, yeniMotor: { bet365: st(s6(M), x => x.b) } },
   isabet: byYear(acc.map(x => ({ ...x, date: x.y })), v => ({ maç: v.length, motor: v.filter(x => x.eng).length, piyasa: v.filter(x => x.mkt).length })),
   enGüvendiğim: { gerçekOran: st(A, x => x.o), bet365: st(A, x => x.b), kapanış100_bet365: clv(A), yıl: byYear(A, v => st(v, x => x.b)), pazar: byLabel(A, x => x.b) },
   motorunSeçimleri: { enYüksekOran: st(B, x => x.mx), bet365: st(B, x => x.b), bet365SınırıGeçen: st(B.filter(x => x.bok), x => x.b), kapanış100_bet365: clv(B), yıl: byYear(B, v => ({ enYüksek: st(v, x => x.mx), bet365: st(v, x => x.b), bet365Geçen: st(v.filter(x => x.bok), x => x.b) })), pazar: byLabel(B, x => x.mx), lig: byLeague(B, x => x.mx) },
