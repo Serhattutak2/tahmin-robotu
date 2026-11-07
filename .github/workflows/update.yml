@@ -21,6 +21,7 @@ jobs:
       - run: node scripts/run.mjs
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
       - name: Kaydet
         run: |
           git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
