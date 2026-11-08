@@ -411,7 +411,6 @@ function buildProfit(tc, cc) {
   return [
     { ad: "Değer avı", not: "tek bir bahis sitesinin oranıyla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1) },
     { ad: "Motorun seçimleri", not: "en yüksek oranla", t3: S(t3.motorunSeçimleri?.enYüksekOran), t6: S(six.motorunSeçimleri?.enYüksek), canlı: L(tc.fiyat) },
-    { ad: "Motorun seçimleri", not: "bet365 oranıyla", t3: S(t3.motorunSeçimleri?.bet365), t6: S(six.motorunSeçimleri?.bet365), canlı: tc.clvFiyat ? { n: tc.clvFiyat.b365Done, won: null, profit: tc.clvFiyat.b365Profit } : null },
     { ad: "En olası kupon", not: "bet365 oranıyla", t3: S(t3.kuponEnOlası?.bet365), t6: S(six.kuponEnOlası?.bet365), canlı: L(cc?.olasi) },
     { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger) },
   ];
