@@ -322,14 +322,13 @@ for (const t of tips.filter(t => t.rule === "x1" && Date.parse(t.kickoff) > now)
 // Basketbol erken alt/ust (NBA). docs/basket3.json: acilis cizgisinde motor en az 0,60 eminse son 3 sezonun ucunde de artida,
 // cizgi kapanisa kadar 2'ye 1 bizim tarafa gitti. Mevcut basketbol bolumune dokunmaz; ayri liste ve ayri karne.
 const bkou = [];
-{ const nm = "NBA sonuçları (ESPN skor servisi)";
-  try { // Sezon basindan bugune her gunun sonuclari; gecmis gunler kaydedilir, son 3 gun her calismada yenilenir.
-    const cache = read("docs/nbaresults.json", {}), ymd = t => new Date(t).toISOString().slice(0, 10).replace(/-/g, ""); let calls = 0;
-    for (let t = Date.parse("2026-10-15"); t <= now; t += 864e5) { const k = ymd(t); if (cache[k] && now - t > 3 * 864e5) continue; if (calls >= 40) break;
-      try { const j = JSON.parse(await getText(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${k}`, 1)); calls++;
-        cache[k] = (j.events || []).filter(e => e.status?.type?.completed).map(e => { const c = e.competitions?.[0]?.competitors || [], H = c.find(x => x.homeAway === "home"), A = c.find(x => x.homeAway === "away"); return H && A ? { day: String(e.date).slice(0, 10), h: H.team?.displayName, a: A.team?.displayName, hs: +H.score, as: +A.score } : null; }).filter(Boolean); } catch {} }
+{ const nm = "NBA sonuçları (TheSportsDB)";
+  try { // Ucretsiz anahtarla sezon listesi ve son biten maclar; her calismada birikir, docs/nbaresults.json'da saklanir.
+    const cache = read("docs/nbaresults.json", {}); let calls = 0;
+    for (const u of ["https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4387&s=2026-2027", "https://www.thesportsdb.com/api/v1/json/123/eventspastleague.php?id=4387"]) {
+      try { const j = JSON.parse(await getText(u, 1)); calls++; for (const e of j.events || []) { const hs = Number(e.intHomeScore), as = Number(e.intAwayScore); if (e.idEvent && hs + as > 100) cache[e.idEvent] = { day: e.dateEvent, h: e.strHomeTeam, a: e.strAwayTeam, hs, as }; } } catch {} }
     fs.writeFileSync("docs/nbaresults.json", JSON.stringify(cache));
-    const done = Object.values(cache).flat().filter(g => g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
+const done = Object.values(cache).filter(g => g && g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
     const M = new PointsModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.06 });
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
     const teamOf = n => Object.keys(M.t).find(k => sameTeam(k, n)) || Object.keys(M.t).find(k => k.split(" ").at(-1).toLowerCase() === String(n).split(" ").at(-1).toLowerCase());
