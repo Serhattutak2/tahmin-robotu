@@ -1,0 +1,12 @@
+name: NBA kaynak denemesi
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/nbaprobe.yml"]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for u in "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-11-05&l=4387" "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-11-05&s=Basketball" "https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4387&s=2026-2027"; do
+            echo "== $u"; curl -s -m 20 "$u" -o /tmp/o; python3 -c "import json;d=json.load(open('/tmp/o'));e=d.get('events') or [];print(len(e),[ (x.get('strEvent'),x.get('intHomeScore'),x.get('dateEvent')) for x in e[:3]], e[-1].get('dateEvent') if e else None)"; done
