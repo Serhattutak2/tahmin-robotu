@@ -322,9 +322,14 @@ for (const t of tips.filter(t => t.rule === "x1" && Date.parse(t.kickoff) > now)
 // Basketbol erken alt/ust (NBA). docs/basket3.json: acilis cizgisinde motor en az 0,60 eminse son 3 sezonun ucunde de artida,
 // cizgi kapanisa kadar 2'ye 1 bizim tarafa gitti. Mevcut basketbol bolumune dokunmaz; ayri liste ve ayri karne.
 const bkou = [];
-{ const nm = "NBA maç takvimi (cdn.nba.com)";
-  try { const j = JSON.parse(await getText("https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json", 2)), gs = (j.leagueSchedule?.gameDates || []).flatMap(d => d.games || []);
-    const done = gs.filter(g => g.gameStatus === 3 && g.homeTeam?.score + g.awayTeam?.score > 100).map(g => ({ day: String(g.gameDateTimeUTC).slice(0, 10), h: `${g.homeTeam.teamCity} ${g.homeTeam.teamName}`, a: `${g.awayTeam.teamCity} ${g.awayTeam.teamName}`, hs: g.homeTeam.score, as: g.awayTeam.score })).sort((a, b) => a.day.localeCompare(b.day));
+{ const nm = "NBA sonuçları (ESPN skor servisi)";
+  try { // Sezon basindan bugune her gunun sonuclari; gecmis gunler kaydedilir, son 3 gun her calismada yenilenir.
+    const cache = read("docs/nbaresults.json", {}), ymd = t => new Date(t).toISOString().slice(0, 10).replace(/-/g, ""); let calls = 0;
+    for (let t = Date.parse("2026-10-15"); t <= now; t += 864e5) { const k = ymd(t); if (cache[k] && now - t > 3 * 864e5) continue; if (calls >= 40) break;
+      try { const j = JSON.parse(await getText(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${k}`, 1)); calls++;
+        cache[k] = (j.events || []).filter(e => e.status?.type?.completed).map(e => { const c = e.competitions?.[0]?.competitors || [], H = c.find(x => x.homeAway === "home"), A = c.find(x => x.homeAway === "away"); return H && A ? { day: String(e.date).slice(0, 10), h: H.team?.displayName, a: A.team?.displayName, hs: +H.score, as: +A.score } : null; }).filter(Boolean); } catch {} }
+    fs.writeFileSync("docs/nbaresults.json", JSON.stringify(cache));
+    const done = Object.values(cache).flat().filter(g => g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
     const M = new PointsModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.06 });
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
     const teamOf = n => Object.keys(M.t).find(k => sameTeam(k, n)) || Object.keys(M.t).find(k => k.split(" ").at(-1).toLowerCase() === String(n).split(" ").at(-1).toLowerCase());
@@ -337,7 +342,7 @@ const bkou = [];
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
     for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85 }, "bkou"));
-    note(nm, true, `${done.length} biten maç, ${bkou.length} erken alt/üst seçimi`);
+    note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
 for (const t of tips.filter(x => x.pmId && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 40)) { try { const m = await fetchMarket(t.pmId), pr = JSON.parse(m.outcomePrices || "[]").map(Number); if (m.closed && (pr[t.pmIdx] === 1 || pr[t.pmIdx] === 0)) { const w = pr[t.pmIdx] === 1, paid = t.odds || t.minPlay; Object.assign(t, { status: w ? "won" : "lost", won: w, score: "", profit: +(w ? paid - 1 : -1).toFixed(2) }); } } catch {} }
 for (const t of tips.filter(x => !x.pmId && x.status === "pending" && Date.parse(x.kickoff) < now)) {
