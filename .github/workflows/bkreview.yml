@@ -1,0 +1,19 @@
+name: Basketbol robotu gecmis gun
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/bkreview.mjs", ".github/workflows/bkreview.yml"]
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/bkreview.mjs
+      - run: |
+          git config user.name "tahmin-robotu"; git config user.email "actions@github.com"
+          git add docs/bkreview.json; git diff --cached --quiet || git commit -m "Basketbol gecmis gun degerlendirmesi"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
