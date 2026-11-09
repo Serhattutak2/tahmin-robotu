@@ -450,9 +450,9 @@ function buildProfitRows(tc, cc) {
   const S = x => x && x.seçim ? { n: x.seçim, won: x.tutan, profit: x.kar } : null, L = x => x ? { n: x.done ?? 0, won: x.won ?? 0, profit: x.profit ?? 0 } : null;
   return [
     { ad: "Handikap değer avı", not: "bet365 oranıyla; test 2024–bugün", t3: (() => { const b = read("docs/fixneg.json", {}).tekli?.["yalnız bet365 | Handikap"]?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t6: null, canlı: L(liveOf("ah")), rule: "ah" },
-    { ad: "Değer avı", not: "tek bir bahis sitesinin oranıyla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1), rule: "x1" },
+    { ad: "Değer avı (maç sonucu)", not: "1xBet oranı, 1,30–2,50; test eski kuralla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1), rule: "x1" },
     { ad: "Motorun seçimleri", not: "en yüksek oranla", t3: S(t3.motorunSeçimleri?.enYüksekOran), t6: S(six.motorunSeçimleri?.enYüksek), canlı: L(tc.fiyat), rule: "fiyat" },
-    { ad: "Basketbol erken alt/üst", not: "NBA, standart bahis oranıyla (1,91)", t3: (() => { const b = read("docs/basket5.json", {}).birleşik?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t6: null, canlı: L(liveOf("bkou")), rule: "bkou" },
+    { ad: "Basketbol erken alt/üst (test aşamasında)", not: "3 yıl: 2019–22 arşivi · 6 ay: son 1 yıl Polymarket", t6: (() => { const b = read("docs/bkyear.json", {}).robot; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t3: (() => { const b = read("docs/basket5.json", {}).birleşik?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), canlı: L(liveOf("bkou")), rule: "bkou" },
     { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger), coupon: "deger" },
   ];
 }
