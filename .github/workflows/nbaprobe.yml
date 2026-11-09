@@ -8,5 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for u in "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-11-05&l=4387" "https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-11-05&s=Basketball" "https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4387&s=2026-2027"; do
-            echo "== $u"; curl -s -m 20 "$u" -o /tmp/o; python3 -c "import json;d=json.load(open('/tmp/o'));e=d.get('events') or [];print(len(e),[ (x.get('strEvent'),x.get('intHomeScore'),x.get('dateEvent')) for x in e[:3]], e[-1].get('dateEvent') if e else None)"; done
+          curl -s -m 30 "https://gamma-api.polymarket.com/events?tag_slug=nba&closed=true&limit=100&order=endDate&ascending=false" -o /tmp/o
+          python3 -c "
+          import json;d=json.load(open('/tmp/o'));print(len(d))
+          g=[e for e in d if e.get('slug','').startswith('nba-')]
+          print(len(g)); 
+          for e in g[:5]: print(e.get('slug'), e.get('score'), e.get('ended'), e.get('endDate'), [k for k in e.keys() if 'score' in k.lower() or 'period' in k.lower()])
+          print(min((e.get('endDate') or '') for e in g) if g else None)"
