@@ -13,16 +13,17 @@ for (let off = 0; off < 20000; off += 100) {
   if (!list.length || String(list.at(-1).endDate || "") < "2025-09-01") break;
 }
 const G = [...games.values()].filter(g => g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
-const seasonOf = d => d >= "2026-08-01" ? 2026 : 2025, bets = [], all = [];
+const seasonOf = d => d >= "2026-08-01" ? 2026 : 2025, bets = [], all = [], LR = Number(process.env.LR || 0.2);
 let M = null, cur = null, seasonGames = [];
 for (const g of G) {
-  const s = seasonOf(g.day); if (s !== cur) { cur = s; M = new BModel({ lr: 0.2, home: 2, mean: 112 }); seasonGames = []; }
+  const s = seasonOf(g.day); if (s !== cur) { cur = s; M = new BModel({ lr: LR, home: 2, mean: 112 }); seasonGames = []; }
   if (seasonGames.length >= 20) M.mean = seasonGames.reduce((x, y) => x + y.hs + y.as, 0) / seasonGames.length / 2;
   const p = M.predict(g.h, g.a, g.day), tot = g.hs + g.as;
   if (g.day >= FROM && p.games >= 10 && Number.isFinite(g.line) && g.line > 150 && tot !== g.line) { const q = bOver(p, g.line), c = Math.max(q, 1 - q), r = { day: g.day, maç: g.title, beklenen: +p.total.toFixed(1), çizgi: g.line, yön: q >= .5 ? "Üst" : "Alt", eminlik: +c.toFixed(3), toplam: tot, y: (tot > g.line) === (q >= .5) }; all.push(r); if (c >= 0.7) bets.push(r); }
   M.update(g.h, g.a, g.hs, g.as, g.day); seasonGames.push(g);
 }
 const st = l => { if (!l.length) return { seçim: 0 }; const v = l.map(b => b.y ? .91 : -1), pr = v.reduce((a, b) => a + b, 0), roi = pr / l.length, se = Math.sqrt(v.reduce((a, b) => a + (b - roi) ** 2, 0) / l.length / l.length); return { seçim: l.length, tutan: l.filter(b => b.y).length, kar: +pr.toFixed(1), getiri100: +(roi * 100).toFixed(1), alt100: +((roi - 1.96 * se) * 100).toFixed(1), üst100: +((roi + 1.96 * se) * 100).toFixed(1) }; };
-const out = { generatedAt: new Date().toISOString(), başlangıç: FROM, sorgu: calls, toplananMaç: G.length, çizgiliMaç: all.length, robot: st(bets), eşikler: Object.fromEntries([0.55, 0.6, 0.65, 0.7, 0.75].map(t => [t, st(all.filter(r => r.eminlik >= t))])), ay: Object.fromEntries(Object.entries(Object.groupBy(bets, r => r.day.slice(0, 7))).sort().map(([k, v]) => [k, st(v)])), sonSeçimler: bets.slice(-25) };
-fs.writeFileSync("docs/bkyear.json", JSON.stringify(out, null, 1));
+const fade = t => st(all.filter(r => r.eminlik >= t).map(r => ({ ...r, y: !r.y })));
+const out = { generatedAt: new Date().toISOString(), hız: LR, tersYön: Object.fromEntries([0.6, 0.65, 0.7].map(t => [t, fade(t)])), başlangıç: FROM, sorgu: calls, toplananMaç: G.length, çizgiliMaç: all.length, robot: st(bets), eşikler: Object.fromEntries([0.55, 0.6, 0.65, 0.7, 0.75].map(t => [t, st(all.filter(r => r.eminlik >= t))])), ay: Object.fromEntries(Object.entries(Object.groupBy(bets, r => r.day.slice(0, 7))).sort().map(([k, v]) => [k, st(v)])), sonSeçimler: bets.slice(-25) };
+fs.writeFileSync(process.env.LR ? "docs/bkyear_lr" + LR + ".json" : "docs/bkyear.json", JSON.stringify(out, null, 1));
 console.log(JSON.stringify({ ...out, sonSeçimler: undefined }));
