@@ -1,0 +1,22 @@
+name: Eksi bolum onarim testi
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/fixneg.mjs", ".github/workflows/fixneg.yml"]
+permissions: { contents: write }
+concurrency: { group: fixneg, cancel-in-progress: false }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --max-old-space-size=6000 scripts/fixneg.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "actions@github.com"
+          git add docs/fixneg.json; git diff --cached --quiet || git commit -m "Eksi bolum onarim sonucu"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
