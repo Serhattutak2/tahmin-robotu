@@ -8,6 +8,7 @@ import { fetchGames, basketLines, threeWay, fetchMarket } from "../lib/polymarke
 import { listSports, fetchOdds, fetchScores, chooseSports, eventToCandidate, TOA_TO_FD, fdTeam, eventToRow, TOA_EXTRA, fetchEvents, creditCost, realTotals, basketOptions } from "../lib/oddsapi.mjs";
 import { score } from "../lib/features.mjs";
 import { PointsModel, pOver } from "../lib/basket.mjs";
+import { BModel, bOver } from "../lib/basket2.mjs";
 import { MARKETS, byKey, marketProbs, impliedGoals, recommend, outcome, applyCal } from "../lib/markets.mjs";
 import { metaX, estOdds } from "../lib/meta.mjs";
 import { x12Features, ouFeatures, softmax } from "../lib/stack.mjs";
@@ -319,7 +320,7 @@ x1List.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 for (const x of x1List) if (!tips.some(t => t.id === `${x.id}#x1`)) tips.push({ ...tipFrom({ ...x, fdDiv: null }, { key: x.key, label: x.label, minPlay: x.minPlay, odds: x.odds }, "x1"), p0: x.p });
 // Kapanis farki: mac baslayana kadar her calismada son adil olasilik saklanir.
 for (const t of tips.filter(t => t.rule === "x1" && Date.parse(t.kickoff) > now)) { const mk = /^(U25|A25)$/.test(t.key) ? "totals" : "h2h", r = x1Seen.get(`${t.id.split("#")[0]}|${mk}`); if (!r) continue; const i = X1KEYS[mk].findIndex(k => k[0] === t.key); t.lastFair = +r.p[i].toFixed(4); t.lastX1 = r.xo[i]; t.lastAt = new Date(now).toISOString(); }
-// Basketbol robotu, erken alt/ust (NBA). docs/basket4.json: hizli uyum (0,2) ve en az 0,65 eminlik; secim doneminde +95, gorulmemis 3 sezonda +61 birim. Onceki: docs/basket3.json, acilis cizgisinde motor en az 0,60 eminse son 3 sezonun ucunde de artida,
+// Basketbol robotu, erken alt/ust (NBA). docs/basket5.json: hizli uyum (0,2), en az 0,70 eminlik, takim basina en az 10 mac; sezona sifirdan baslayan robotla secim doneminde +77, gorulmemis 3 sezonda +71 birim. Onceki: docs/basket4.json (0,65). Onceki: docs/basket3.json, acilis cizgisinde motor en az 0,60 eminse son 3 sezonun ucunde de artida,
 // cizgi kapanisa kadar 2'ye 1 bizim tarafa gitti. Mevcut basketbol bolumune dokunmaz; ayri liste ve ayri karne.
 const bkou = [];
 { const nm = "NBA sonuçları (Polymarket kapanmış maçlar)";
@@ -333,14 +334,14 @@ const bkou = [];
     }
     fs.writeFileSync("docs/nbaresults.json", JSON.stringify(cache));
 const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Object.entries(cache).filter(([k, g]) => k.startsWith("nba-") && g && g.hs + g.as > 100).map(([, g]) => ({ ...g, h: nick(g.h), a: nick(g.a) })).sort((a, b) => a.day.localeCompare(b.day));
-    const M = new PointsModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.2 });
+    const M = new BModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.2 });
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
     const teamOf = n => M.t[nick(n)] ? nick(n) : null;
     for (const c of candidates.filter(c => c.pmGame && /^nba/.test(c.pmGame.slug || "") && Date.parse(c.kickoff) > now && inWindow(Date.parse(c.kickoff)))) {
       const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); if (!H || !A) continue;
       const tl = (g.lines || []).filter(l => l.type === "totals" && l.prices?.length === 2 && Number.isFinite(+l.line)).sort((x, y) => Math.abs(x.prices[0] - .5) - Math.abs(y.prices[0] - .5))[0]; if (!tl) continue;
-      const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 8) continue;
-      const po = pOver(p, +tl.line), oi = Math.max(0, tl.names.findIndex(n => /over/i.test(n))), up = po >= 0.5, i = up ? oi : 1 - oi, q = Math.max(po, 1 - po); if (q < 0.65) continue;
+      const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) continue;
+      const po = bOver(p, +tl.line), oi = Math.max(0, tl.names.findIndex(n => /over/i.test(n))), up = po >= 0.5, i = up ? oi : 1 - oi, q = Math.max(po, 1 - po); if (q < 0.70) continue;
       bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `PM_${tl.id}_${i}`, pmId: tl.id, pmIdx: i, label: `Toplam sayı ${String(tl.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: +tl.line, exp: +p.total.toFixed(1), pmOdds: +(1 / tl.prices[i]).toFixed(2), minPlay: 1.85 });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
@@ -443,7 +444,7 @@ function buildProfitRows(tc, cc) {
   return [
     { ad: "Değer avı", not: "tek bir bahis sitesinin oranıyla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1), rule: "x1" },
     { ad: "Motorun seçimleri", not: "en yüksek oranla", t3: S(t3.motorunSeçimleri?.enYüksekOran), t6: S(six.motorunSeçimleri?.enYüksek), canlı: L(tc.fiyat), rule: "fiyat" },
-    { ad: "Basketbol erken alt/üst", not: "NBA, standart bahis oranıyla (1,91)", t3: (() => { const b = read("docs/basket4.json", {}).kurallar?.["Erken alt/üst, ayarlı motor"]?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t6: null, canlı: L(liveOf("bkou")), rule: "bkou" },
+    { ad: "Basketbol erken alt/üst", not: "NBA, standart bahis oranıyla (1,91)", t3: (() => { const b = read("docs/basket5.json", {}).birleşik?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t6: null, canlı: L(liveOf("bkou")), rule: "bkou" },
     { ad: "En olası kupon", not: "bet365 oranıyla", t3: S(t3.kuponEnOlası?.bet365), t6: S(six.kuponEnOlası?.bet365), canlı: L(cc?.olasi), coupon: "olasi" },
     { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger), coupon: "deger" },
   ];
