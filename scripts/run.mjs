@@ -393,8 +393,8 @@ const couponsOf = (pool0, maxN, need, score) => {
 };
 const coupons = read("docs/coupons.json", []);
 const fb = d => matches.filter(m => m.sport === "football" && m.dayKey === d);
-const KINDS = { olasi: { maxN: 3, need: 0.4, score: p => p, pool: d => fb(d).filter(m => m.fdDiv && m.legs?.length).map(m => ({ m, l: m.legs[0] })) },
-  deger: { maxN: 2, need: 0.25, score: (p, o) => p * o, pool: d => fb(d).filter(m => m.price?.p).map(m => ({ m, l: { key: m.price.key, label: m.price.label, mp: m.price.p, odds: m.price.odds, minPlay: m.price.minPlay } })) } };
+// "En olasi kupon" kaldirildi: 3 yillik testte -20 birim, onarim testinde de (docs/fixneg.json) ekside.
+const KINDS = { deger: { maxN: 2, need: 0.25, score: (p, o) => p * o, pool: d => fb(d).filter(m => m.price?.p).map(m => ({ m, l: { key: m.price.key, label: m.price.label, mp: m.price.p, odds: m.price.odds, minPlay: m.price.minPlay } })) } };
 for (const d of [todayIst, tomorrowIst]) for (const [type, K] of Object.entries(KINDS)) {
   const old = coupons.filter(x => x.dayKey === d && x.type === type), locked = old.some(x => x.legs.some(l => Date.parse(l.kickoff) <= now));
   if (locked) continue;
@@ -453,7 +453,6 @@ function buildProfitRows(tc, cc) {
     { ad: "Değer avı", not: "tek bir bahis sitesinin oranıyla", t3: S(x1["önce|bet365"]?.hepsi), t6: S(x1["önce|bet365"]?.son6Ay), canlı: L(tc.x1), rule: "x1" },
     { ad: "Motorun seçimleri", not: "en yüksek oranla", t3: S(t3.motorunSeçimleri?.enYüksekOran), t6: S(six.motorunSeçimleri?.enYüksek), canlı: L(tc.fiyat), rule: "fiyat" },
     { ad: "Basketbol erken alt/üst", not: "NBA, standart bahis oranıyla (1,91)", t3: (() => { const b = read("docs/basket5.json", {}).birleşik?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t6: null, canlı: L(liveOf("bkou")), rule: "bkou" },
-    { ad: "En olası kupon", not: "bet365 oranıyla", t3: S(t3.kuponEnOlası?.bet365), t6: S(six.kuponEnOlası?.bet365), canlı: L(cc?.olasi), coupon: "olasi" },
     { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger), coupon: "deger" },
   ];
 }
