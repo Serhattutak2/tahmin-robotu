@@ -332,10 +332,10 @@ const bkou = [];
       if (!list.length || String(list.at(-1).endDate || "") < "2026-10-15") break;
     }
     fs.writeFileSync("docs/nbaresults.json", JSON.stringify(cache));
-const done = Object.values(cache).filter(g => g && g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
+const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Object.entries(cache).filter(([k, g]) => k.startsWith("nba-") && g && g.hs + g.as > 100).map(([, g]) => ({ ...g, h: nick(g.h), a: nick(g.a) })).sort((a, b) => a.day.localeCompare(b.day));
     const M = new PointsModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.06 });
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
-    const teamOf = n => Object.keys(M.t).find(k => sameTeam(k, n)) || Object.keys(M.t).find(k => k.split(" ").at(-1).toLowerCase() === String(n).split(" ").at(-1).toLowerCase());
+    const teamOf = n => M.t[nick(n)] ? nick(n) : null;
     for (const c of candidates.filter(c => c.pmGame && /^nba/.test(c.pmGame.slug || "") && Date.parse(c.kickoff) > now && inWindow(Date.parse(c.kickoff)))) {
       const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); if (!H || !A) continue;
       const tl = (g.lines || []).filter(l => l.type === "totals" && l.prices?.length === 2 && Number.isFinite(+l.line)).sort((x, y) => Math.abs(x.prices[0] - .5) - Math.abs(y.prices[0] - .5))[0]; if (!tl) continue;
