@@ -322,11 +322,15 @@ for (const t of tips.filter(t => t.rule === "x1" && Date.parse(t.kickoff) > now)
 // Basketbol erken alt/ust (NBA). docs/basket3.json: acilis cizgisinde motor en az 0,60 eminse son 3 sezonun ucunde de artida,
 // cizgi kapanisa kadar 2'ye 1 bizim tarafa gitti. Mevcut basketbol bolumune dokunmaz; ayri liste ve ayri karne.
 const bkou = [];
-{ const nm = "NBA sonuçları (TheSportsDB)";
-  try { // Ucretsiz anahtarla sezon listesi ve son biten maclar; her calismada birikir, docs/nbaresults.json'da saklanir.
-    const cache = read("docs/nbaresults.json", {}); let calls = 0;
-    for (const u of ["https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4387&s=2026-2027", "https://www.thesportsdb.com/api/v1/json/123/eventspastleague.php?id=4387"]) {
-      try { const j = JSON.parse(await getText(u, 1)); calls++; for (const e of j.events || []) { const hs = Number(e.intHomeScore), as = Number(e.intAwayScore); if (e.idEvent && hs + as > 100) cache[e.idEvent] = { day: e.dateEvent, h: e.strHomeTeam, a: e.strAwayTeam, hs, as }; } } catch {} }
+{ const nm = "NBA sonuçları (Polymarket kapanmış maçlar)";
+  try { // Kapanmis NBA mac etkinliklerinde skor var ("Heat vs. Kings", "114-108"). Ilk calismada sezon basina kadar, sonra yalniz son sayfalar.
+    const cache = read("docs/nbaresults.json", {}), full = Object.keys(cache).length < 50; let calls = 0;
+    for (let off = 0; off < (full ? 1500 : 200); off += 100) {
+      let list = []; try { list = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?tag_slug=nba&closed=true&limit=100&offset=${off}&order=endDate&ascending=false`, 1)); calls++; } catch { break; }
+      for (const e of list) { const m = /^nba-[a-z]+-[a-z]+-(\d{4}-\d{2}-\d{2})$/.exec(e.slug || ""), sc = /^(\d+)-(\d+)$/.exec(String(e.score || "")), [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i);
+        if (m && sc && a && b && e.ended !== false) cache[e.slug] = { day: m[1], h: a.trim(), a: b.trim(), hs: +sc[1], as: +sc[2] }; }
+      if (!list.length || String(list.at(-1).endDate || "") < "2026-10-15") break;
+    }
     fs.writeFileSync("docs/nbaresults.json", JSON.stringify(cache));
 const done = Object.values(cache).filter(g => g && g.hs + g.as > 100).sort((a, b) => a.day.localeCompare(b.day));
     const M = new PointsModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.06 });
