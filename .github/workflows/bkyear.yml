@@ -1,0 +1,20 @@
+name: Basketbol robotu son 1 yil
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/bkyear.mjs", ".github/workflows/bkyear.yml"]
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/bkyear.mjs
+      - run: |
+          git config user.name "tahmin-robotu"; git config user.email "actions@github.com"
+          git add docs/bkyear.json; git diff --cached --quiet || git commit -m "Basketbol son 1 yil testi"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
