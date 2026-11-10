@@ -18,8 +18,8 @@ import { EXTRA_LEAGUES, ALL_LEAGUES, extraRows, clubElo } from "../lib/sources.m
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const ledger = read("docs/ledger.json", []);
-const now = Date.now(), HORIZON = 48 * 3600e3;
-const ist = t => new Date(t + 3 * 3600e3).toISOString().slice(0, 10), todayIst = ist(now), tomorrowIst = ist(now + 864e5), inWindow = t => [todayIst, tomorrowIst].includes(ist(t));
+const now = Date.now(), HORIZON = 72 * 3600e3;
+const ist = t => new Date(t + 3 * 3600e3).toISOString().slice(0, 10), todayIst = ist(now), tomorrowIst = ist(now + 864e5), afterIst = ist(now + 2 * 864e5), inWindow = t => [todayIst, tomorrowIst, afterIst].includes(ist(t));
 const ymd = t => new Date(t).toISOString().slice(0, 10).replace(/-/g, "");
 const sources = {};
 const note = (n, ok, info) => { sources[n] = { ok, info }; };
@@ -318,7 +318,7 @@ const X1KEYS = { h2h: [["MS1", "MS 1"], ["MSX", "MS X"], ["MS2", "MS 2"]], total
 for (const v of Object.values(oddsCache)) for (const e of v.events || []) {
   if (!/^soccer/.test(e.sport_key || "")) continue; const t0 = Date.parse(e.commence_time), dk = ist(t0);
   for (const mk of ["h2h", "totals"]) { const r = x1Probs(e, mk); if (!r) continue; x1Seen.set(`toa-${e.id}|${mk}`, r);
-    if (t0 <= now || (dk !== todayIst && dk !== tomorrowIst)) continue;
+    if (t0 <= now || (dk !== todayIst && dk !== tomorrowIst && dk !== afterIst)) continue;
     r.xo.forEach((o, i) => { const ev = o * r.p[i] - 1, evc = o * r.cons[i] - 1, evp = r.pp ? o * r.pp[i] - 1 : 0; if (o < 1.3 || o > 2.5 || ev < 0.02 || evc < 0 || evp < 0) return; // ders: 1X2'de yuksek oranlar sistematik kaybettirir (Hegarty & Whelan 2025; docs/fixneg.json)
       const [key, label] = X1KEYS[mk][i], old = x1List.find(x => x.id === `toa-${e.id}`); if (old && old.ev >= ev) return; if (old) x1List.splice(x1List.indexOf(old), 1);
       x1List.push({ id: `toa-${e.id}`, sport: "football", sportKey: e.sport_key, league: v.title || e.sport_title, home: e.home_team, away: e.away_team, kickoff: e.commence_time, date: new Date(t0).toISOString().slice(0, 10), dayKey: dk, key, label, odds: o, p: +r.p[i].toFixed(4), ev: +ev.toFixed(4), minPlay: +Math.max(1.3, 1.02 / r.p[i]).toFixed(2), books: r.n, pinnacle: !!r.pp }); }); }
@@ -396,7 +396,7 @@ const coupons = read("docs/coupons.json", []);
 const fb = d => matches.filter(m => m.sport === "football" && m.dayKey === d);
 // "En olasi kupon" kaldirildi: 3 yillik testte -20 birim, onarim testinde de (docs/fixneg.json) ekside.
 const KINDS = { deger: { maxN: 2, need: 0.25, score: (p, o) => p * o, pool: d => fb(d).filter(m => m.price?.p).map(m => ({ m, l: { key: m.price.key, label: m.price.label, mp: m.price.p, odds: m.price.odds, minPlay: m.price.minPlay } })) } };
-for (const d of [todayIst, tomorrowIst]) for (const [type, K] of Object.entries(KINDS)) {
+for (const d of [todayIst, tomorrowIst, afterIst]) for (const [type, K] of Object.entries(KINDS)) {
   const old = coupons.filter(x => x.dayKey === d && x.type === type), locked = old.some(x => x.legs.some(l => Date.parse(l.kickoff) <= now));
   if (locked) continue;
   for (const x of old) coupons.splice(coupons.indexOf(x), 1);
@@ -440,7 +440,7 @@ let bank = 1000; const curve = settled.sort((a, b) => a.kickoff.localeCompare(b.
 const sAll = summarize(settled), mean = sAll.roi ?? 0, se = settled.length ? Math.sqrt(settled.reduce((a, l) => a + (l.profit - mean) ** 2, 0) / settled.length / settled.length) : 0, low = mean - 1.96 * se;
 const evidence = settled.length >= 500 && low > 0 ? "kanitli" : settled.length >= 100 && mean > 0 ? "umut" : "deneme";
 fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
-fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst }, x1: x1List, bkou, kârTablosu: buildProfit(tipCard, couponCard), matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
+fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst, after: afterIst }, x1: x1List, bkou, kârTablosu: buildProfit(tipCard, couponCard), matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst || x.dayKey === afterIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
 console.log(JSON.stringify({ evaluated: candidates.length, withOdds, modelled, picks: picks.length, sources }, null, 1));
 
 // Gunluk sayfadaki kar tablosu: test sonuclari (son 3 yil, son 6 ay) ve sitede gerceklesen.
