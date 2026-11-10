@@ -230,14 +230,15 @@ function marketPick(c, base) {
   const ou = c.ou?.fair && devig(c.ou.fair), L = c.low || c.entry, LO = c.ouLow || c.ou?.entry;
   const opts = [["MS1", "MS 1", mk[0], L?.[0]], ["MSX", "MS X", mk[1], L?.[1]], ["MS2", "MS 2", mk[2], L?.[2]], ["1X", "Ev sahibi kaybetmez (1X)", mk[0] + mk[1], dc3(L, 0, 1)], ["X2", "Deplasman kaybetmez (X2)", mk[1] + mk[2], dc3(L, 1, 2)], ["12", "Beraberlik olmaz (12)", mk[0] + mk[2], dc3(L, 0, 2)], ...(ou ? [["U25", "2,5 Üst", ou[0], LO?.[0]], ["A25", "2,5 Alt", ou[1], LO?.[1]]] : [])]
     .map(([key, label, p, o]) => ({ key, label, p, odds: Number.isFinite(o) ? +o.toFixed(2) : null, minPlay: +Math.max(1.3, 1 / p / 0.98).toFixed(2) }))
-    .filter(x => x.odds && x.odds >= 1.3).sort((a, b) => b.p - a.p);
+    .filter(x => x.odds).sort((a, b) => b.p - a.p);
   if (!opts.length) return null;
+  // Duzeltme: en olasi secenegin orani 1,30'un altindaysa dusuk ihtimalli bir secenege kayilmaz; tahmin "oran dusuk" olarak isaretlenir.
   const b = opts[0];
-  if (c.fdDiv) legMap.set(c.id, [{ key: b.key, label: b.label, mp: +b.p.toFixed(4), odds: b.odds, minPlay: b.minPlay }]);
+  if (c.fdDiv && b.odds >= 1.3) legMap.set(c.id, [{ key: b.key, label: b.label, mp: +b.p.toFixed(4), odds: b.odds, minPlay: b.minPlay }]);
   // Handikap degeri (docs/fixneg.json): bet365 handikap orani adil fiyatin en az %2 ustunde, oran 1,30-3,20. Sinav: 127 bahiste +15 birim.
   let ah = null; const A = c.ah, pa = A?.fair && devig(A.fair);
   if (pa && A.b365) [0, 1].forEach(i => { const o = A.b365[i]; if (!(o >= 1.3 && o <= 3.2)) return; const ev = pa[i] * o - 1; if (ev >= 0.02 && (!ah || ev > ah.ev)) { const line = i ? -A.line : A.line; ah = { rule: "ah", kind: "ah", side: i, line, key: `AH_${i}_${line}`, label: `${i ? c.away : c.home} ${line > 0 ? "+" : ""}${String(line).replace(".", ",")} handikap`, odds: +o.toFixed(2), b365: +o.toFixed(2), maxOdds: A.max?.[i] ? +A.max[i].toFixed(2) : null, minPlay: +Math.max(1.3, 1.02 / pa[i]).toFixed(2), ev: +ev.toFixed(3) }; } });
-  return { ...base, ah, bet: { rule: "piyasa", safe: false, key: b.key, label: b.label, minPlay: b.minPlay, odds: b.odds, estOdds: null, value: b.odds >= b.minPlay, book: c.bookmaker || null }, alts: opts.slice(1, 3).map(x => ({ label: x.label, minPlay: x.minPlay })) };
+  return { ...base, ah, bet: { rule: "piyasa", safe: false, p: +b.p.toFixed(4), lowOdds: b.odds < 1.3, key: b.key, label: b.label, minPlay: b.minPlay, odds: b.odds, estOdds: null, value: b.odds >= b.minPlay, book: c.bookmaker || null }, alts: opts.slice(1, 3).map(x => ({ label: x.label, minPlay: x.minPlay })) };
 }
 const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.parse(c.kickoff) > now).map(c => {
   const base = { id: c.id, sport: c.sport, league: c.league, kickoff: c.kickoff, home: c.home, away: c.away, dayKey: ist(Date.parse(c.kickoff)), date: c.date, fdDiv: c.fdDiv || null, sportKey: c.sportKey || null };
