@@ -1,0 +1,13 @@
+name: Polymarket futbol denemesi
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/pmprobe.yml"]
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          FROM=$(date -u +%Y-%m-%dT%H:%M:%SZ); TO=$(date -u -d "+60 hours" +%Y-%m-%dT%H:%M:%SZ)
+          for t in soccer football games fifa-friendlies friendlies international-friendlies uefa-nations-league nations-league world-cup-qualifiers concacaf afc caf conmebol copa-del-rey fa-cup carabao-cup mls liga-mx brazil argentina eredivisie primeira-liga championship saudi-pro-league; do
+            n=$(curl -s -m 30 "https://gamma-api.polymarket.com/events?tag_slug=$t&closed=false&limit=100&end_date_min=$FROM&end_date_max=$TO" | python3 -c "import json,sys,re;d=json.load(sys.stdin);g=[e for e in d if re.search(r'\d{4}-\d{2}-\d{2}$',e.get('slug',''))];print(len(d),len(g),[e['slug'] for e in g[:4]])" 2>&1); echo "$t: $n"; done
