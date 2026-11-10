@@ -332,7 +332,7 @@ const bkou = [];
 { const nm = "NBA sonuçları (Polymarket kapanmış maçlar)";
   try { // Kapanmis NBA mac etkinliklerinde skor var ("Heat vs. Kings", "114-108"). Ilk calismada sezon basina kadar, sonra yalniz son sayfalar.
     const cache = read("docs/nbaresults.json", {}), full = Object.keys(cache).length < 50; let calls = 0;
-    for (let off = 0; off < (full ? 1500 : 200); off += 100) {
+    for (let off = 0; off < (full ? 1500 : 600); off += 100) {
       let list = []; try { list = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?tag_slug=nba&closed=true&limit=100&offset=${off}&order=endDate&ascending=false`, 1)); calls++; } catch { break; }
       for (const e of list) { const m = /^nba-[a-z]+-[a-z]+-(\d{4}-\d{2}-\d{2})$/.exec(e.slug || ""), sc = /^(\d+)-(\d+)$/.exec(String(e.score || "")), [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i);
         if (m && sc && a && b && e.ended !== false) cache[e.slug] = { day: m[1], h: a.trim(), a: b.trim(), hs: +sc[1], as: +sc[2] }; }
