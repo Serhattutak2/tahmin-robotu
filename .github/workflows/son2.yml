@@ -1,0 +1,22 @@
+name: Son iki sezon sinavi
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/son2.mjs", ".github/workflows/son2.yml"]
+permissions: { contents: write }
+concurrency: { group: son2, cancel-in-progress: false }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node --max-old-space-size=6000 scripts/son2.mjs
+      - name: Kaydet
+        run: |
+          git config user.name "tahmin-robotu"; git config user.email "actions@github.com"
+          git add docs/son2.json; git diff --cached --quiet || git commit -m "Son iki sezon sinavi sonucu"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
