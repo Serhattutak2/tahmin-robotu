@@ -44,7 +44,9 @@ if (toaKey) {
     const probe = await fetch(`https://api.the-odds-api.com/v4/sports?apiKey=${toaKey}`); const rh = probe.headers.get("x-requests-remaining"); remaining = rh === null ? NaN : Number(rh);
     const allowance = (Number.isFinite(remaining) ? remaining : 300) / daysLeft;
     // Gunluk hak: bazi calismalar 3 kredilik basketbol/one cikan ligleri yeniler, digerleri 1 kredilik ligleri.
-    let budget = allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
+    // Guncelleme 2 saatte bire cikti; ucretli olmayan ama sinirli oran servisi yine gunde 8 calismada kullanilir (kredi bitmesin).
+    const toaHour = hour % 4 === 0 || hour % 6 === 0;
+    let budget = !toaHour || allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
     const due = chooseSports(active.map(k => ({ key: k })), oddsCache, active.length, now);
     for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; await pause(1500); const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
     // Maca 1-5 saat kala oran (arastirmaya gore en cok deger burada): kredi yetiyorsa, en cok maci yaklasan futbol ligini yalniz mac sonucu pazariyla (1 kredi) yenile; eski Alt/Ust kalir.
@@ -440,7 +442,7 @@ let bank = 1000; const curve = settled.sort((a, b) => a.kickoff.localeCompare(b.
 const sAll = summarize(settled), mean = sAll.roi ?? 0, se = settled.length ? Math.sqrt(settled.reduce((a, l) => a + (l.profit - mean) ** 2, 0) / settled.length / settled.length) : 0, low = mean - 1.96 * se;
 const evidence = settled.length >= 500 && low > 0 ? "kanitli" : settled.length >= 100 && mean > 0 ? "umut" : "deneme";
 fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
-fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst, after: afterIst }, x1: x1List, bkou, kârTablosu: buildProfit(tipCard, couponCard), matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst || x.dayKey === afterIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
+fs.writeFileSync("docs/data.json", JSON.stringify({ generatedAt: new Date(now).toISOString(), strategy: cfg, picks, days: { today: todayIst, tomorrow: tomorrowIst, after: afterIst }, x1: x1List, bkou, kurallar: ruleStatus(), kârTablosu: buildProfit(tipCard, couponCard), matches, tipCard, couponCard, coupons: coupons.filter(x => x.dayKey === todayIst || x.dayKey === tomorrowIst || x.dayKey === afterIst), past, verdict, tipRecent: doneTips.slice(-15).reverse(), allMatches, unmatched, stats: { evaluated: candidates.length, withOdds, modelled, filtered, thin, byEvaluated, knownToday: known }, sources, everyMatch, evidence, bank: { start: 1000, stake: 10, value: +bank.toFixed(0), curve: curve.slice(-200) }, ledger: { all: pct(0, () => true), verified: pct(0, l => l.verified), recent: ledger.filter(l => l.status === "won" || l.status === "lost").slice(-15).reverse() } }, null, 1));
 console.log(JSON.stringify({ evaluated: candidates.length, withOdds, modelled, picks: picks.length, sources }, null, 1));
 
 // Gunluk sayfadaki kar tablosu: test sonuclari (son 3 yil, son 6 ay) ve sitede gerceklesen.
@@ -456,4 +458,18 @@ function buildProfitRows(tc, cc) {
     { ad: "Basketbol erken alt/üst (test aşamasında)", not: "3 yıl: 2019–22 arşivi · 6 ay: son 1 yıl Polymarket", t6: (() => { const b = read("docs/bkyear.json", {}).robot; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), t3: (() => { const b = read("docs/basket5.json", {}).birleşik?.sınav; return b?.seçim ? { n: b.seçim, won: b.tutan, profit: b.kar } : null; })(), canlı: L(liveOf("bkou")), rule: "bkou" },
     { ad: "Değer kuponu", not: "en yüksek oranla", t3: S(t3.kuponDeğer?.enYüksekOran), t6: S(six.kuponDeğer?.enYüksek), canlı: L(cc?.deger), coupon: "deger" },
   ];
+}
+
+// Kendini denetleme: her kuralin canli karnesi. En az 60 sonuclanmis bahiste zarardaysa kural otomatik kapanir,
+// tekrar artiya donerse (son 60 bahis artida) yeniden acilir. Site yalniz acik kurallari gosterir.
+function ruleStatus() {
+  const grp = { fiyat: t => t.rule === "fiyat", ah: t => t.rule === "ah", x1: t => t.rule === "x1", bkou: t => t.rule === "bkou",
+    "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total" };
+  const inBand = t => { const o = t.odds || t.minPlay; return o >= 1.7 && o <= 2.5; }, out = {};
+  for (const [k, f] of Object.entries(grp)) {
+    const l = tips.filter(t => f(t) && (t.status === "won" || t.status === "lost") && inBand(t)).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), sum = x => +x.reduce((a, t) => a + (t.profit || 0), 0).toFixed(1);
+    const last = l.slice(-60), kar = sum(l), son = sum(last), açık = l.length < 60 ? true : son >= 0;
+    out[k] = { n: l.length, tutan: l.filter(t => t.status === "won").length, kar, son60: son, açık, neden: l.length < 60 ? "yeterli bahis yok, açık" : açık ? "son 60 bahis artıda" : "son 60 bahis ekside, kapatıldı" };
+  }
+  return out;
 }
