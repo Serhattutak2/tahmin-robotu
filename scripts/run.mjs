@@ -45,7 +45,7 @@ if (toaKey) {
     const allowance = (Number.isFinite(remaining) ? remaining : 300) / daysLeft;
     // Gunluk hak: bazi calismalar 3 kredilik basketbol/one cikan ligleri yeniler, digerleri 1 kredilik ligleri.
     // Guncelleme 2 saatte bire cikti; ucretli olmayan ama sinirli oran servisi yine gunde 8 calismada kullanilir (kredi bitmesin).
-    const toaHour = hour % 4 === 0 || hour % 6 === 0;
+    const toaHour = (hour % 4 === 0 || hour % 6 === 0) && d.getUTCMinutes() < 30;
     let budget = !toaHour || allowance < 2 ? 0 : d.getUTCHours() % 6 === 0 || allowance >= 24 ? 3 : 1;
     const due = chooseSports(active.map(k => ({ key: k })), oddsCache, active.length, now);
     for (const k of due) { const cost = creditCost(k); if (cost > budget) continue; budget -= cost; await pause(1500); const r = await fetchOdds(k, toaKey); remaining = r.remaining; fetched++; oddsCache[k] = { fetchedAt: now, title: sports.find(x => x.key === k)?.title || k, events: r.body }; }
@@ -358,24 +358,31 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
     note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (Polymarket, test asamasinda): mac kazananinda favori, oran 1,30-2,00 (docs/vbtest.json). Bahis sitesinde en az adil fiyatin %3 ustu istenir.
-const voley = [];
+const voley = [], vbNow = new Map();
 { const nm = "Voleybol (Polymarket)";
   try { const J = x => { try { return JSON.parse(x); } catch { return []; } }, evs = [];
     for (let off = 0; off < 400; off += 100) { const l = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?tag_slug=volleyball&closed=false&limit=100&offset=${off}`, 1)); evs.push(...l); if (l.length < 100) break; }
     for (const e of evs) { const ml = (e.markets || []).find(m => m.sportsMarketType === "moneyline" && !m.closed); if (!ml) continue; const gs = ml.gameStartTime || e.startTime, t0 = gs ? Date.parse(String(gs).replace(" ", "T").replace(/\+00$/, "Z")) : NaN; if (!Number.isFinite(t0) || t0 <= now || !inWindow(t0)) continue;
-      const names = J(ml.outcomes), pr = J(ml.outcomePrices).map(Number); if (names.length !== 2 || !pr.every(p => p > 0 && p < 1)) continue; const i = pr[0] >= pr[1] ? 0 : 1, odd = 1 / pr[i]; if (odd < 1.3 || odd > 2.0) continue;
+      const names = J(ml.outcomes), pr = J(ml.outcomePrices).map(Number); vbNow.set(String(ml.id), pr); if (names.length !== 2 || !pr.every(p => p > 0 && p < 1)) continue; const i = pr[0] >= pr[1] ? 0 : 1, odd = 1 / pr[i]; if (odd < 1.3 || odd > 2.0) continue;
       const [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i); voley.push({ id: `pm-${e.slug}`, sport: "volleyball", league: (e.tags || []).map(t => t.label).find(l => l && !/sports|games|volleyball/i.test(l)) || "Voleybol", home: (a || names[0]).trim(), away: (b || names[1]).trim(), kickoff: new Date(t0).toISOString(), date: new Date(t0).toISOString().slice(0, 10), dayKey: ist(t0), key: `PM_${ml.id}_${i}`, pmId: ml.id, pmIdx: i, label: `${names[i]} kazanır`, odds: +odd.toFixed(2), minPlay: +Math.max(1.3, 1.03 * odd).toFixed(2) }); }
     for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: x.minPlay, odds: x.odds }, "voley"));
     note(nm, true, `${evs.length} açık etkinlik, ${voley.length} seçim`);
   } catch (e) { note(nm, false, e.message); } }
-for (const t of tips.filter(x => x.pmId && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 40)) { try { const m = await fetchMarket(t.pmId), pr = JSON.parse(m.outcomePrices || "[]").map(Number); if (m.closed && (pr[t.pmIdx] === 1 || pr[t.pmIdx] === 0)) { const w = pr[t.pmIdx] === 1, paid = t.odds || t.minPlay; Object.assign(t, { status: w ? "won" : "lost", won: w, score: "", profit: +(w ? paid - 1 : -1).toFixed(2) }); } } catch {} }
+// Kapanis orani degeri (CLV), Polymarket kurallari icin: mac baslayana kadar her calismada son adil fiyat saklanir.
+// Deger = alinmasi gereken en dusuk oran (en az) x son adil olasilik - 1. Arti ise piyasa bizim tarafa gelmis demektir.
+{ const pmNow = new Map(); for (const c of candidates) { const g = c.pmGame; if (!g) continue; if (g.moneyline) pmNow.set(String(g.moneyline.id), g.moneyline.prices); for (const l of g.lines || []) pmNow.set(String(l.id), l.prices); }
+  for (const [id, pr] of vbNow) pmNow.set(id, pr);
+  for (const t of tips.filter(x => x.pmId && x.status === "pending")) { const pr = pmNow.get(String(t.pmId)); if (Date.parse(t.kickoff) > now && pr && Number.isFinite(pr[t.pmIdx])) { t.lastFair = +pr[t.pmIdx].toFixed(4); t.lastAt = new Date(now).toISOString(); }
+    if (Date.parse(t.kickoff) <= now && t.lastFair && t.clv == null) t.clv = +((t.minPlay || t.odds) * t.lastFair - 1).toFixed(3); } }
+for (const t of tips.filter(x => x.pmId && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 40)) { try { const m = await fetchMarket(t.pmId), pr = JSON.parse(m.outcomePrices || "[]").map(Number); if (m.closed && (pr[t.pmIdx] === 1 || pr[t.pmIdx] === 0)) { const w = pr[t.pmIdx] === 1, paid = ["test", "voley", "basket"].includes(t.rule) ? (t.minPlay || t.odds) : (t.odds || t.minPlay); Object.assign(t, { status: w ? "won" : "lost", won: w, score: "", profit: +(w ? paid - 1 : -1).toFixed(2) }); } } catch {} }
 for (const t of tips.filter(x => !x.pmId && x.status === "pending" && Date.parse(x.kickoff) < now)) {
   let hs, as, hh = null, ha = null;
   const fd = t.sport === "football" && fdResults.find(r => r.date === t.date && sameTeam(r.HomeTeam, t.home) && sameTeam(r.AwayTeam, t.away));
   if (fd) { hs = +fd.FTHG; as = +fd.FTAG; if (fd.HTHG !== "" && fd.HTHG !== undefined) { hh = +fd.HTHG; ha = +fd.HTAG; } const pc = closeProb(fd, t.key); if (pc) { if (t.odds) t.clv = +(t.odds * pc - 1).toFixed(3); if (t.b365) t.clvB365 = +(t.b365 * pc - 1).toFixed(3); } }
   const ev = hs === undefined && scoreEvents.find(v => `toa-${v.id}` === t.id.split("#")[0] && v.completed && v.scores);
   if (ev) { hs = Number(ev.scores.find(q => q.name === ev.home_team)?.score); as = Number(ev.scores.find(q => q.name === ev.away_team)?.score); }
-  if (Number.isFinite(hs) && Number.isFinite(as) && t.rule === "ah") { const d = t.side ? as - hs : hs - as, parts = Math.abs(t.line * 4) % 2 === 1 ? [t.line - 0.25, t.line + 0.25] : [t.line], o = t.odds, v = +parts.reduce((acc, L) => { const x = d + L; return acc + (x > 0 ? o - 1 : x === 0 ? 0 : -1) / parts.length; }, 0).toFixed(2); Object.assign(t, { status: v > 0 ? "won" : v < 0 ? "lost" : "void", won: v > 0, score: `${hs}-${as}`, profit: v }); }
+  if (Number.isFinite(hs) && Number.isFinite(as) && t.rule === "ah") { const d = t.side ? as - hs : hs - as, parts = Math.abs(t.line * 4) % 2 === 1 ? [t.line - 0.25, t.line + 0.25] : [t.line], o = t.odds, v = +parts.reduce((acc, L) => { const x = d + L; return acc + (x > 0 ? o - 1 : x === 0 ? 0 : -1) / parts.length; }, 0).toFixed(2); Object.assign(t, { status: v > 0 ? "won" : v < 0 ? "lost" : "void", won: v > 0, score: `${hs}-${as}`, profit: v });
+    if (fd) { const ch = Number(fd.AHCh), pc = [num(fd.PCAHH), num(fd.PCAHA)], ac = [num(fd.AvgCAHH), num(fd.AvgCAHA)], pair = pc.every(x => x > 1) ? pc : ac.every(x => x > 1) ? ac : null, home = t.side ? -t.line : t.line; if (pair && Number.isFinite(ch) && ch === home) t.clv = +(t.odds * devig(pair)[t.side] - 1).toFixed(3); } }
   else if (Number.isFinite(hs) && Number.isFinite(as)) { const w = t.kind === "total" ? (t.side === "over" ? hs + as > t.line : hs + as < t.line) : t.kind === "spread" ? (t.side === "home" ? hs + t.line > as : as + t.line > hs) : t.key === "HOME" ? hs > as : t.key === "AWAY" ? as > hs : outcome(byKey[t.key], hs, as, hh, ha) === 1; const paid = t.odds || t.estOdds || t.minPlay; Object.assign(t, { status: w ? "won" : "lost", won: w, score: `${hs}-${as}`, profit: +(w ? paid - 1 : -1).toFixed(2) }); if (t.b365) t.profitB365 = +(w ? t.b365 - 1 : -1).toFixed(2); }
   else if (now - Date.parse(t.kickoff) > 14 * 864e5) t.status = "void";
 }
@@ -474,13 +481,18 @@ function buildProfitRows(tc, cc) {
 // Kendini denetleme: her kuralin canli karnesi. En az 60 sonuclanmis bahiste zarardaysa kural otomatik kapanir,
 // tekrar artiya donerse (son 60 bahis artida) yeniden acilir. Site yalniz acik kurallari gosterir.
 function ruleStatus() {
+  // Arastirma (2026): karar kapanis orani degerine (CLV) gore. En az 50 bahiste CLV'nin %95 ust siniri 0'in altindaysa kural kapanir;
+  // CLV yoksa kar/zarar ancak 300 bahisten sonra karar verir. Kapali kurallar golge modda kaydedilmeye devam eder, toparlanirsa acilir.
   const grp = { fiyat: t => t.rule === "fiyat", ah: t => t.rule === "ah", x1: t => t.rule === "x1", bkou: t => t.rule === "bkou",
     "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total", voley: t => t.rule === "voley" };
   const inBand = t => { const o = t.odds || t.minPlay; return o >= 1.3 && o <= 3.2; }, out = {};
   for (const [k, f] of Object.entries(grp)) {
-    const l = tips.filter(t => f(t) && (t.status === "won" || t.status === "lost") && inBand(t)).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), sum = x => +x.reduce((a, t) => a + (t.profit || 0), 0).toFixed(1);
-    const last = l.slice(-60), kar = sum(l), son = sum(last), açık = l.length < 60 ? true : son >= 0;
-    out[k] = { n: l.length, tutan: l.filter(t => t.status === "won").length, kar, son60: son, açık, neden: l.length < 60 ? "yeterli bahis yok, açık" : açık ? "son 60 bahis artıda" : "son 60 bahis ekside, kapatıldı" };
+    const all = tips.filter(t => f(t) && inBand(t)).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), l = all.filter(t => t.status === "won" || t.status === "lost"), kar = +l.reduce((a, t) => a + (t.profit || 0), 0).toFixed(1);
+    const c = all.filter(t => Number.isFinite(t.clv) && Date.parse(t.kickoff) <= now).slice(-100), m = c.length ? c.reduce((a, t) => a + t.clv, 0) / c.length : null, sd = c.length > 1 ? Math.sqrt(c.reduce((a, t) => a + (t.clv - m) ** 2, 0) / (c.length - 1)) : null, ust = c.length > 1 ? m + 1.96 * sd / Math.sqrt(c.length) : null;
+    let açık = true, neden = "yeterli veri yok, açık (gölge kayıt sürüyor)";
+    if (c.length >= 50) { açık = ust >= 0; neden = açık ? "kapanış oranına göre değer var ya da belirsiz" : "kapanış oranına göre değer yok, kapatıldı"; }
+    else if (l.length >= 300) { açık = kar >= 0; neden = açık ? "300+ bahiste artıda" : "300+ bahiste ekside, kapatıldı"; }
+    out[k] = { n: l.length, tutan: l.filter(t => t.status === "won").length, kar, clvN: c.length, clv100: m === null ? null : +(m * 100).toFixed(1), açık, neden };
   }
   return out;
 }
