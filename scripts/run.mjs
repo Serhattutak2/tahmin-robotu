@@ -306,6 +306,8 @@ const priceMatches = matches.filter(m => m.price);
 // Ayni mac farkli kaynaktan iki kez gelirse tam motorlu olan kalir.
 for (let i = matches.length - 1; i >= 0; i--) { const m = matches[i], j = matches.findIndex((x, k) => k !== i && x.sport === m.sport && Math.abs(Date.parse(x.kickoff) - Date.parse(m.kickoff)) < 3 * 3600e3 && sameName(x.home, m.home) && sameName(x.away, m.away)); if (j >= 0 && (!m.fdDiv || matches[j].fdDiv)) matches.splice(i, 1); }
 for (const m of matches) { const list = []; if (m.bet.rule === "test") list.push([m.bet, "test"]); else if (m.bet.rule === "basket") list.push([m.bet, "basket"]); else { if (m.bet.safe) list.push([m.bet, "kar"]); if (m.bet.second) list.push([m.bet.second, "isabet"]); } if (m.price) list.push([m.price, "fiyat"]); if (m.ah) list.push([m.ah, "ah"]); for (const [bet, rule] of list) if (!tips.some(t => t.id === `${m.id}#${rule}`)) tips.push(tipFrom(m, bet, rule)); }
+// Kaydedilen tahmin, oran sonradan değişse de maç başlayana kadar listede kalsın (dün görünüp bugün görünmeme sorunu)
+for (const m of matches) { if (m.sport !== "football") continue; for (const rule of ["fiyat", "ah"]) { if (m[rule === "fiyat" ? "price" : "ah"]) continue; const t = tips.find(x => x.id === `${m.id}#${rule}` && x.status === "pending"); if (!t) continue; m[rule === "fiyat" ? "price" : "ah"] = { rule, key: t.key, label: t.label, minPlay: t.minPlay, odds: t.odds, b365: t.b365, side: t.side, line: t.line, kayit: true }; } }
 
 // Deger avi (Kaunitz ve ark. 2017 yontemi): 1xBet orani, ~25 sitenin ortak adil fiyatinin ve Pinnacle'in ustundeyse.
 // Melbet ile 1xBet ayni gruptan, oranlari cok yakin. Gecmis 1xBet orani olmadigi icin ileriye donuk kapanis farkiyla olculur.
