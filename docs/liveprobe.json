@@ -1,603 +1,653 @@
 {
- "https://gamma-api.polymarket.com/events?limit=1&active=true&closed=false": {
-  "st": 200,
-  "acao": "*"
+ "live=true&limit=100": {
+  "n": 100,
+  "ms": 321,
+  "kb": 1153,
+  "liveTrue": 100,
+  "ended": 12,
+  "sample": [
+   {
+    "t": "Champions Chess Tour Winner",
+    "live": true,
+    "ended": true,
+    "st": "2024-12-20T12:00:00Z"
+   },
+   {
+    "t": "FIDE World Rapid Chess Champion",
+    "live": true,
+    "ended": true,
+    "st": "2024-12-26T19:00:00Z"
+   },
+   {
+    "t": "FIDE World Blitz Chess Champion",
+    "live": true,
+    "ended": true,
+    "st": "2024-12-26T19:00:00Z"
+   }
+  ]
  },
- "https://clob.polymarket.com/book?token_id=1": {
-  "st": 404,
-  "acao": "*"
+ "live=true&active=true&closed=false&limit=100": {
+  "n": 38,
+  "ms": 377,
+  "kb": 4738,
+  "liveTrue": 38,
+  "ended": 0,
+  "sample": [
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   },
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club - Halftime Result",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   },
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club - Second Half Result",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   }
+  ]
  },
- "https://clob.polymarket.com/midpoints": {
-  "st": 400,
-  "acao": "*"
+ "tag_slug=sports&live=true&closed=false&limit=100": {
+  "n": 38,
+  "ms": 280,
+  "kb": 4738,
+  "liveTrue": 38,
+  "ended": 0,
+  "sample": [
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   },
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club - Halftime Result",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   },
+   {
+    "t": "Rayo Vallecano de Madrid vs. Athletic Club - Second Half Result",
+    "live": true,
+    "ended": false,
+    "score": "0-0",
+    "period": "SUS",
+    "el": "",
+    "st": "2026-10-10T12:00:00Z",
+    "sport": "lal"
+   }
+  ]
  },
- "liveN": 694,
+ "tag_slug=sports&active=true&closed=false&limit=100&order=startTime&ascending=false": {
+  "n": 100,
+  "ms": 436,
+  "kb": 7352,
+  "liveTrue": 8,
+  "ended": 0,
+  "sample": [
+   {
+    "t": "AFC Wimbledon vs. Stevenage FC - More Markets",
+    "live": false,
+    "ended": false,
+    "score": "0-0",
+    "period": "POST",
+    "el": "",
+    "st": "2027-01-26T19:45:00Z",
+    "sport": "el1"
+   },
+   {
+    "t": "AFC Wimbledon vs. Stevenage FC - Total Corners",
+    "st": "2027-01-26T19:45:00Z",
+    "sport": "el1"
+   },
+   {
+    "t": "AFC Wimbledon vs. Stevenage FC - First Team to Score",
+    "live": false,
+    "ended": false,
+    "score": "0-0",
+    "period": "POST",
+    "el": "",
+    "st": "2027-01-26T19:45:00Z",
+    "sport": "el1"
+   }
+  ]
+ },
+ "liveN": 4,
  "live": [
   {
-   "tag": "soccer",
-   "title": "Penrith AFC vs. Bridlington Town AFC - First Team to Score",
-   "live": false,
-   "score": "1-2",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-08T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
+   "tag": "tennis",
+   "title": "Kobe: Mili Poljicak vs Jay Dylan Friend",
+   "score": "4-6, 5-2",
+   "period": "S2",
+   "start": "2026-11-17T06:20:00Z",
+   "sport": "atp",
+   "teams": [
     {
-     "q": "Penrith AFC to score first vs. Bridlington Town AFC?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
+     "id": 3265282,
+     "name": "Mili Poljicak",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/hrv.png",
+     "abbreviation": "poljica",
+     "alias": "M. Poljicak",
+     "createdAt": "2026-03-14T22:00:01.062063Z",
+     "updatedAt": "2026-05-14T09:00:02.664347Z",
+     "providerId": 1189695,
+     "color": "#2A2AE1",
+     "ordering": "home"
     },
     {
-     "q": "Bridlington Town AFC to score first vs. Penrith AFC?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Penrith AFC vs. Bridlington Town AFC: Neither team to score first?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
+     "id": 3265229,
+     "name": "Jay Dylan Friend",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/jpn.png",
+     "abbreviation": "friend",
+     "alias": "J. Friend",
+     "createdAt": "2026-03-11T04:00:00.975222Z",
+     "updatedAt": "2026-05-14T02:34:04.322075Z",
+     "providerId": 1302090,
+     "color": "#a22020",
+     "ordering": "away"
     }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "ZHFK Sisters vs. BSC Young Boys Frauen - Exact Score",
-   "live": false,
-   "score": "1-3",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-08T12:30:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,liquidity,volume,openInterest,createdAt,updatedAt,competitive,parentEventId,enableOrderBook,liquidityClob,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
+   ],
+   "meta": {
+    "context_requires_regen": false,
+    "league": "Kobe"
+   },
    "mk": [
     {
-     "q": "Exact Score: ZHFK Sisters 0 - 0 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
+     "q": "Kobe: Mili Poljicak vs Jay Dylan Friend",
+     "smt": "moneyline",
+     "o": "[\"Mili Poljicak\", \"Jay Dylan Friend\"]",
+     "p": "[\"0.405\", \"0.595\"]",
+     "bid": 0.4,
+     "ask": 0.41,
+     "aob": true,
+     "last": 0.41,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Set 1 Winner: Mili Poljicak vs Jay Dylan Friend",
+     "smt": "tennis_first_set_winner",
+     "o": "[\"Mili Poljicak\", \"Jay Dylan Friend\"]",
+     "p": "[\"0.0005\", \"0.9995\"]",
      "ask": 0.001,
-     "closed": true,
-     "aob": false
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Exact Score: ZHFK Sisters 0 - 1 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.001,
-     "closed": true,
-     "aob": false
+     "q": "Set 2 Winner: Mili Poljicak vs Jay Dylan Friend",
+     "smt": "tennis_set_winner",
+     "o": "[\"Mili Poljicak\", \"Jay Dylan Friend\"]",
+     "p": "[\"0.925\", \"0.075\"]",
+     "bid": 0.89,
+     "ask": 0.96,
+     "line": 2,
+     "aob": true,
+     "last": 0.95,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Exact Score: ZHFK Sisters 1 - 0 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.001,
-     "closed": true,
-     "aob": false
+     "q": "Mili Poljicak vs. Jay Dylan Friend: Total Sets O/U 2.5",
+     "smt": "tennis_set_totals",
+     "o": "[\"Over 2.5\", \"Under 2.5\"]",
+     "p": "[\"0.905\", \"0.095\"]",
+     "bid": 0.87,
+     "ask": 0.94,
+     "line": 2.5,
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Exact Score: ZHFK Sisters 0 - 2 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.001,
-     "closed": true,
-     "aob": false
+     "q": "Poljicak vs. Friend: Match O/U 21.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.9955\", \"0.0045\"]",
+     "bid": 0.991,
+     "ask": 1,
+     "line": 21.5,
+     "aob": true,
+     "last": 0.57,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Exact Score: ZHFK Sisters 1 - 1 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.001,
-     "closed": true,
-     "aob": false
+     "q": "Poljicak vs. Friend: Match O/U 22.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 22.5,
+     "aob": true,
+     "last": 0.48,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Exact Score: ZHFK Sisters 2 - 0 BSC Young Boys Frauen?",
-     "smt": "soccer_exact_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.001,
-     "closed": true,
-     "aob": false
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "CU Técnica de Cajamarca vs. CD Comerciantes Unidos - First Team to Score",
-   "live": false,
-   "score": "1-3",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T18:15:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,finishedTimestamp,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "CU Técnica de Cajamarca to score first vs. CD Comerciantes Unidos?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
+     "q": "Poljicak vs. Friend: Match O/U 23.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
      "p": "[\"0.5\", \"0.5\"]",
      "ask": 1,
-     "closed": false,
-     "aob": true
+     "line": 23.5,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
     },
     {
-     "q": "CD Comerciantes Unidos to score first vs. CU Técnica de Cajamarca?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "CU Técnica de Cajamarca vs. CD Comerciantes Unidos: Neither team to score first?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Dalkeith Thistle FC vs. Haddington Athletic FC - Halftime Result",
-   "live": false,
-   "score": "1-2",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Dalkeith Thistle FC leading at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Dalkeith Thistle FC vs. Haddington Athletic FC: Draw at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Haddington Athletic FC leading at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Dalkeith Thistle FC vs. Haddington Athletic FC - Second Half Result",
-   "live": false,
-   "score": "1-2",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Dalkeith Thistle FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Dalkeith Thistle FC vs. Haddington Athletic FC: Second half draw?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Haddington Athletic FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Dundee North End FC vs. Wigtown & Bladnoch FC - Halftime Result",
-   "live": false,
-   "score": "9-0",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Dundee North End FC leading at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Dundee North End FC vs. Wigtown & Bladnoch FC: Draw at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Wigtown & Bladnoch FC leading at halftime?",
-     "smt": "soccer_halftime_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Dundee North End FC vs. Wigtown & Bladnoch FC - Second Half Result",
-   "live": false,
-   "score": "9-0",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Dundee North End FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Dundee North End FC vs. Wigtown & Bladnoch FC: Second half draw?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Wigtown & Bladnoch FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Creetown FC vs. Stonehaven FC - Second Half Result",
-   "live": false,
-   "score": "0-2",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Creetown FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Creetown FC vs. Stonehaven FC: Second half draw?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Stonehaven FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Vale of Leithen FC vs. Drumchapel United AFC - Second Half Result",
-   "live": false,
-   "score": "0-4",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Vale of Leithen FC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Vale of Leithen FC vs. Drumchapel United AFC: Second half draw?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Drumchapel United AFC to win the second half?",
-     "smt": "soccer_second_half_result",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Walsham-le-Willows FC vs. Dereham Town FC - First Team to Score",
-   "live": false,
-   "score": "1-2",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-11T18:45:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,negRiskMarketID,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,eventDate,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,deployingTimestamp,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Walsham-le-Willows FC to score first vs. Dereham Town FC?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Dereham Town FC to score first vs. Walsham-le-Willows FC?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0.5\", \"0.5\"]",
-     "ask": 1,
-     "closed": false,
-     "aob": true
-    },
-    {
-     "q": "Walsham-le-Willows FC vs. Dereham Town FC: Neither team to score first?",
-     "smt": "soccer_first_to_score",
-     "o": "[\"Yes\", \"No\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.01,
-     "closed": true,
-     "aob": false
-    }
-   ]
-  },
-  {
-   "tag": "soccer",
-   "title": "Broadfields United FC vs. Herne Bay FC - More Markets",
-   "live": false,
-   "score": "1-6",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-11T18:45:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,liquidity,volume,createdAt,updatedAt,competitive,parentEventId,enableOrderBook,liquidityClob,negRisk,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,gameId,teams,sport,eventMetadata,version",
-   "mk": [
-    {
-     "q": "Spread: Broadfields United FC (-1.5)",
-     "smt": "spreads",
-     "o": "[\"Broadfields United FC\", \"Herne Bay FC\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.01,
+     "q": "Set Handicap: Mili Poljicak (-1.5) vs Jay Dylan Friend (+1.5)",
+     "smt": "tennis_set_handicap",
+     "o": "[\"Mili Poljicak\", \"Jay Dylan Friend\"]",
+     "p": "[\"0.004\", \"0.996\"]",
+     "ask": 0.008,
      "line": -1.5,
-     "closed": true,
-     "aob": false
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Spread: Herne Bay FC (-1.5)",
-     "smt": "spreads",
-     "o": "[\"Herne Bay FC\", \"Broadfields United FC\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.8,
+     "q": "Set Handicap: Jay Dylan Friend (-1.5) vs Mili Poljicak (+1.5)",
+     "smt": "tennis_set_handicap",
+     "o": "[\"Jay Dylan Friend\", \"Mili Poljicak\"]",
+     "p": "[\"0.095\", \"0.905\"]",
+     "bid": 0.06,
+     "ask": 0.13,
+     "line": -1.5,
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Game Spread: Jay Dylan Friend (-4.5) vs Mili Poljicak (+4.5)",
+     "smt": "tennis_game_handicap",
+     "o": "[\"Jay Dylan Friend\", \"Mili Poljicak\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": -4.5,
+     "aob": true,
+     "upd": "2026-11-17T07:22:57.825145Z"
+    }
+   ]
+  },
+  {
+   "tag": "tennis",
+   "title": "Kobe: Daniel Michalski vs Taro Daniel",
+   "score": "2-4",
+   "period": "S1",
+   "start": "2026-11-17T07:05:00Z",
+   "sport": "atp",
+   "teams": [
+    {
+     "id": 1957370,
+     "name": "Daniel Michalski",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/pol.png",
+     "abbreviation": "michals",
+     "alias": "D. Michalski",
+     "createdAt": "2026-02-14T23:00:06.456827Z",
+     "updatedAt": "2026-05-14T02:35:39.941317Z",
+     "providerId": 858975,
+     "color": "#c02140",
+     "ordering": "home"
+    },
+    {
+     "id": 3265325,
+     "name": "Taro Daniel",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/jpn.png",
+     "abbreviation": "daniel",
+     "alias": "T. Daniel",
+     "createdAt": "2026-03-17T04:00:02.537519Z",
+     "updatedAt": "2026-05-14T02:34:03.289892Z",
+     "providerId": 363716,
+     "color": "#a22020",
+     "ordering": "away"
+    }
+   ],
+   "meta": {
+    "league": "Kobe",
+    "opticOddsFixtureId": "20261116391DD75F",
+    "opticOddsGameId": "21861-12373-2026-46",
+    "opticOddsNumericalId": 1234544
+   },
+   "mk": [
+    {
+     "q": "Kobe: Daniel Michalski vs Taro Daniel",
+     "smt": "moneyline",
+     "o": "[\"Daniel Michalski\", \"Taro Daniel\"]",
+     "p": "[\"0.095\", \"0.905\"]",
+     "bid": 0.09,
+     "ask": 0.1,
+     "aob": true,
+     "last": 0.13,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Set 1 Winner: Daniel Michalski vs Taro Daniel",
+     "smt": "tennis_first_set_winner",
+     "o": "[\"Daniel Michalski\", \"Taro Daniel\"]",
+     "p": "[\"0.045\", \"0.955\"]",
+     "ask": 0.09,
+     "aob": true,
+     "last": 0.37,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Set 2 Winner: Daniel Michalski vs Taro Daniel",
+     "smt": "tennis_set_winner",
+     "o": "[\"Daniel Michalski\", \"Taro Daniel\"]",
+     "p": "[\"0.205\", \"0.795\"]",
+     "bid": 0.17,
+     "ask": 0.24,
+     "line": 2,
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Daniel Michalski vs. Taro Daniel: Total Sets O/U 2.5",
+     "smt": "tennis_set_totals",
+     "o": "[\"Over 2.5\", \"Under 2.5\"]",
+     "p": "[\"0.225\", \"0.775\"]",
+     "bid": 0.16,
+     "ask": 0.29,
+     "line": 2.5,
+     "aob": true,
+     "last": 0.44,
+     "upd": "2026-11-17T07:32:57.015354Z"
+    },
+    {
+     "q": "Michalski vs. Daniel: Match O/U 21.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 21.5,
+     "aob": true,
+     "last": 0.44,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Michalski vs. Daniel: Match O/U 22.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 22.5,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Michalski vs. Daniel: Match O/U 23.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 23.5,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Set Handicap: Daniel Michalski (-1.5) vs Taro Daniel (+1.5)",
+     "smt": "tennis_set_handicap",
+     "o": "[\"Daniel Michalski\", \"Taro Daniel\"]",
+     "p": "[\"0.5\", \"0.5\"]",
      "ask": 1,
      "line": -1.5,
-     "closed": true,
-     "aob": false
+     "aob": true,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Spread: Broadfields United FC (-2.5)",
-     "smt": "spreads",
-     "o": "[\"Broadfields United FC\", \"Herne Bay FC\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.2,
-     "line": -2.5,
-     "closed": true,
-     "aob": false
+     "q": "Set Handicap: Taro Daniel (-1.5) vs Daniel Michalski (+1.5)",
+     "smt": "tennis_set_handicap",
+     "o": "[\"Taro Daniel\", \"Daniel Michalski\"]",
+     "p": "[\"0.765\", \"0.235\"]",
+     "bid": 0.72,
+     "ask": 0.81,
+     "line": -1.5,
+     "aob": true,
+     "last": 0.58,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Spread: Herne Bay FC (-2.5)",
-     "smt": "spreads",
-     "o": "[\"Herne Bay FC\", \"Broadfields United FC\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.8,
+     "q": "Game Spread: Taro Daniel (-3.5) vs Daniel Michalski (+3.5)",
+     "smt": "tennis_game_handicap",
+     "o": "[\"Taro Daniel\", \"Daniel Michalski\"]",
+     "p": "[\"0.5\", \"0.5\"]",
      "ask": 1,
-     "line": -2.5,
-     "closed": true,
-     "aob": false
-    },
-    {
-     "q": "Broadfields United FC vs. Herne Bay FC: O/U 0.5",
-     "smt": "totals",
-     "o": "[\"Over\", \"Under\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
-     "ask": 1,
-     "line": 0.5,
-     "closed": true,
-     "aob": false
-    },
-    {
-     "q": "Broadfields United FC vs. Herne Bay FC: O/U 1.5",
-     "smt": "totals",
-     "o": "[\"Over\", \"Under\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
-     "ask": 1,
-     "line": 1.5,
-     "closed": true,
-     "aob": false
+     "line": -3.5,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
     }
    ]
   },
   {
-   "tag": "soccer",
-   "title": "Dundee North End FC vs. Wigtown & Bladnoch FC - More Markets",
-   "live": false,
-   "score": "9-0",
-   "period": "VFT",
-   "elapsed": "",
-   "ended": true,
-   "start": "2026-08-22T14:00:00Z",
-   "keys": "id,ticker,slug,title,description,resolutionSource,startDate,creationDate,endDate,image,icon,active,closed,archived,new,featured,restricted,createdAt,updatedAt,parentEventId,enableOrderBook,negRisk,commentCount,markets,series,tags,cyom,showAllOutcomes,showMarketImages,enableNegRisk,automaticallyActive,startTime,seriesSlug,score,elapsed,period,live,ended,negRiskAugmented,pendingDeployment,deploying,gameId,teams,sport,eventMetadata,version",
+   "tag": "tennis",
+   "title": "Sydney: Dane Sweeny vs Christian Langmo",
+   "score": "6-4, 6-7(5-7), 3-3",
+   "period": "S3",
+   "start": "2026-11-17T05:15:00Z",
+   "sport": "atp",
+   "teams": [
+    {
+     "id": 229149,
+     "name": "Dane Sweeny",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/aus.png",
+     "abbreviation": "sweeny",
+     "alias": "D. Sweeny",
+     "createdAt": "2026-01-02T11:00:01.04735Z",
+     "updatedAt": "2026-05-14T09:00:02.657235Z",
+     "providerId": 821195,
+     "color": "#1944B1",
+     "ordering": "home"
+    },
+    {
+     "id": 3265197,
+     "name": "Christian Langmo",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/usa.png",
+     "abbreviation": "langmo",
+     "alias": "C. Langmo",
+     "createdAt": "2026-03-09T15:05:52.658535Z",
+     "updatedAt": "2026-05-14T03:20:00.696499Z",
+     "providerId": 723137,
+     "color": "#154c93",
+     "ordering": "away"
+    }
+   ],
+   "meta": {
+    "context_requires_regen": true,
+    "league": "Sydney",
+    "opticOddsFixtureId": "2026111519292FD6",
+    "opticOddsGameId": "37015-26384-2026-46",
+    "opticOddsNumericalId": 1234470
+   },
    "mk": [
     {
-     "q": "Spread: Dundee North End FC (-1.5)",
-     "smt": "spreads",
-     "o": "[\"Dundee North End FC\", \"Wigtown & Bladnoch FC\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
-     "ask": 1,
-     "line": -1.5,
-     "closed": true,
-     "aob": false
+     "q": "Sydney: Dane Sweeny vs Christian Langmo",
+     "smt": "moneyline",
+     "o": "[\"Dane Sweeny\", \"Christian Langmo\"]",
+     "p": "[\"0.5535\", \"0.4465\"]",
+     "bid": 0.553,
+     "ask": 0.554,
+     "aob": true,
+     "last": 0.629,
+     "upd": "2026-11-17T07:32:57.015354Z"
     },
     {
-     "q": "Spread: Wigtown & Bladnoch FC (-1.5)",
-     "smt": "spreads",
-     "o": "[\"Wigtown & Bladnoch FC\", \"Dundee North End FC\"]",
-     "p": "[\"0\", \"1\"]",
+     "q": "Game Spread: Dane Sweeny (-3.5) vs Christian Langmo (+3.5)",
+     "smt": "tennis_game_handicap",
+     "o": "[\"Dane Sweeny\", \"Christian Langmo\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": -3.5,
+     "aob": true,
+     "upd": "2026-11-17T07:26:57.549051Z"
+    }
+   ]
+  },
+  {
+   "tag": "tennis",
+   "title": "Sydney: Kokoro Isomura vs Sebastian Gorzny",
+   "score": "2-6, 0-0",
+   "period": "S2",
+   "start": "2026-11-17T07:05:00Z",
+   "sport": "atp",
+   "teams": [
+    {
+     "id": 3267750,
+     "name": "Kokoro Isomura",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/jpn.png",
+     "abbreviation": "isomura",
+     "alias": "K. Isomura",
+     "createdAt": "2026-03-21T22:00:02.254159Z",
+     "updatedAt": "2026-05-14T02:35:26.681391Z",
+     "providerId": 1191946,
+     "color": "#a22020",
+     "ordering": "home"
+    },
+    {
+     "id": 3278653,
+     "name": "Sebastian Gorzny",
+     "league": "atp",
+     "record": "0-0",
+     "logo": "https://polymarket-upload.s3.us-east-2.amazonaws.com/country-flags/usa.png",
+     "abbreviation": "gorzny",
+     "createdAt": "2026-06-04T04:00:01.812662Z",
+     "providerId": 1380261,
+     "color": "#154c93",
+     "ordering": "away"
+    }
+   ],
+   "meta": {
+    "league": "Sydney",
+    "opticOddsFixtureId": "202611170FE877C2",
+    "opticOddsGameId": "87974-42618-2026-46",
+    "opticOddsNumericalId": 1237239
+   },
+   "mk": [
+    {
+     "q": "Sydney: Kokoro Isomura vs Sebastian Gorzny",
+     "smt": "moneyline",
+     "o": "[\"Kokoro Isomura\", \"Sebastian Gorzny\"]",
+     "p": "[\"0.045\", \"0.955\"]",
+     "bid": 0.04,
+     "ask": 0.05,
+     "aob": true,
+     "last": 0.05,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Set 1 Winner: Kokoro Isomura vs Sebastian Gorzny",
+     "smt": "tennis_first_set_winner",
+     "o": "[\"Kokoro Isomura\", \"Sebastian Gorzny\"]",
+     "p": "[\"0.005\", \"0.995\"]",
      "ask": 0.01,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Set 2 Winner: Kokoro Isomura vs Sebastian Gorzny",
+     "smt": "tennis_set_winner",
+     "o": "[\"Kokoro Isomura\", \"Sebastian Gorzny\"]",
+     "p": "[\"0.145\", \"0.855\"]",
+     "bid": 0.12,
+     "ask": 0.17,
+     "line": 2,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Kokoro Isomura vs. Sebastian Gorzny: Total Sets O/U 2.5",
+     "smt": "tennis_set_totals",
+     "o": "[\"Over 2.5\", \"Under 2.5\"]",
+     "p": "[\"0.155\", \"0.845\"]",
+     "bid": 0.12,
+     "ask": 0.19,
+     "line": 2.5,
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
+    },
+    {
+     "q": "Isomura vs. Gorzny: Match O/U 21.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 21.5,
+     "aob": true,
+     "upd": "2026-11-17T07:00:58.081661Z"
+    },
+    {
+     "q": "Isomura vs. Gorzny: Match O/U 22.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 22.5,
+     "aob": true,
+     "upd": "2026-11-17T07:00:58.081661Z"
+    },
+    {
+     "q": "Isomura vs. Gorzny: Match O/U 23.5",
+     "smt": "tennis_match_totals",
+     "o": "[\"Over\", \"Under\"]",
+     "p": "[\"0.5\", \"0.5\"]",
+     "ask": 1,
+     "line": 23.5,
+     "aob": true,
+     "upd": "2026-11-17T07:00:58.081661Z"
+    },
+    {
+     "q": "Set Handicap: Sebastian Gorzny (-1.5) vs Kokoro Isomura (+1.5)",
+     "smt": "tennis_set_handicap",
+     "o": "[\"Sebastian Gorzny\", \"Kokoro Isomura\"]",
+     "p": "[\"0.845\", \"0.155\"]",
+     "bid": 0.81,
+     "ask": 0.88,
      "line": -1.5,
-     "closed": true,
-     "aob": false
+     "aob": true,
+     "upd": "2026-11-17T07:30:57.57682Z"
     },
     {
-     "q": "Spread: Dundee North End FC (-2.5)",
-     "smt": "spreads",
-     "o": "[\"Dundee North End FC\", \"Wigtown & Bladnoch FC\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
+     "q": "Game Spread: Sebastian Gorzny (-5.5) vs Kokoro Isomura (+5.5)",
+     "smt": "tennis_game_handicap",
+     "o": "[\"Sebastian Gorzny\", \"Kokoro Isomura\"]",
+     "p": "[\"0.5\", \"0.5\"]",
      "ask": 1,
-     "line": -2.5,
-     "closed": true,
-     "aob": false
-    },
-    {
-     "q": "Spread: Wigtown & Bladnoch FC (-2.5)",
-     "smt": "spreads",
-     "o": "[\"Wigtown & Bladnoch FC\", \"Dundee North End FC\"]",
-     "p": "[\"0\", \"1\"]",
-     "ask": 0.01,
-     "line": -2.5,
-     "closed": true,
-     "aob": false
-    },
-    {
-     "q": "Dundee North End FC vs. Wigtown & Bladnoch FC: O/U 0.5",
-     "smt": "totals",
-     "o": "[\"Over\", \"Under\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
-     "ask": 1,
-     "line": 0.5,
-     "closed": true,
-     "aob": false
-    },
-    {
-     "q": "Dundee North End FC vs. Wigtown & Bladnoch FC: O/U 1.5",
-     "smt": "totals",
-     "o": "[\"Over\", \"Under\"]",
-     "p": "[\"1\", \"0\"]",
-     "bid": 0.99,
-     "ask": 1,
-     "line": 1.5,
-     "closed": true,
-     "aob": false
+     "line": -5.5,
+     "aob": true,
+     "upd": "2026-11-17T07:06:57.211561Z"
     }
    ]
   }
- ],
- "sports": {
-  "st": 200,
-  "acao": "*",
-  "body": "[{\"id\":630,\"sport\":\"ufl\",\"name\":\"UFL\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/ufl.png\",\"resolution\":\"https://www.theufl.com/\",\"ordering\":\"away\",\"tags\":\"1,100639,1186,105925\",\"primaryTagId\":105925,\"series\":\"12553\",\"createdAt\":\"2026-08-07T21:41:19.879539Z\"},{\"id\":651,\"sport\":\"cricadt10\",\"name\":\"Abu Dhabi T10 League\",\"image\":\"https://polymarket-upload.s3.us-east-2.amazonaws.com/league-icons/cricadt10.png\",\"resolution\":\"https://ttensports.com/\",\"ordering\":\"home\",\"tags\":\"1,100639,517,105945\",\"primaryTagId\":105945,\"series\":\"12574\",\"createdAt\":\"2026-08-08T00:24:18.7"
- }
+ ]
 }
