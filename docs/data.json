@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-17T15:25:10.165Z",
+ "generatedAt": "2026-11-17T16:31:05.925Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -37,22 +37,76 @@
  "voley": [],
  "canli": [
   {
-   "id": "pm-live-90123801",
+   "id": "pm-live-90123686",
    "sport": "football",
    "league": "Fifa Friendly",
-   "home": "United Arab Emirates",
-   "away": "Syria",
-   "start": "2026-11-17T14:10:00.000Z",
-   "score": "2-1",
-   "period": "2H",
-   "elapsed": "61",
-   "label": "Toplam gol 3,5 Üst",
-   "p": 0.695,
-   "fair": 1.44,
-   "minPlay": 1.48,
-   "pmId": "6944136",
-   "pmIdx": 0,
-   "smt": "totals"
+   "home": "Russia",
+   "away": "Venezuela",
+   "start": "2026-11-17T16:00:00.000Z",
+   "score": "0-0",
+   "period": "1H",
+   "elapsed": "35",
+   "label": "Beraberlik olmaz (iki taraftan biri kazanır)",
+   "p": 0.775,
+   "fair": 1.29,
+   "minPlay": 1.33,
+   "pmId": "6676920",
+   "pmIdx": 1,
+   "smt": "moneyline"
+  },
+  {
+   "id": "pm-live-90123133",
+   "sport": "football",
+   "league": "Fifa Friendly",
+   "home": "Jordan",
+   "away": "Australia",
+   "start": "2026-11-17T16:00:00.000Z",
+   "score": "1-0",
+   "period": "1H",
+   "elapsed": "36",
+   "label": "Australia kazanamaz (beraberlik ya da rakip)",
+   "p": 0.76,
+   "fair": 1.32,
+   "minPlay": 1.36,
+   "pmId": "6676878",
+   "pmIdx": 1,
+   "smt": "moneyline"
+  },
+  {
+   "id": "pm-live-90123619",
+   "sport": "football",
+   "league": "Fifa Friendly",
+   "home": "Kuwait",
+   "away": "Honduras",
+   "start": "2026-11-17T16:30:00.000Z",
+   "score": "0-0",
+   "period": "1H",
+   "elapsed": "6",
+   "label": "Beraberlik olmaz (iki taraftan biri kazanır)",
+   "p": 0.75,
+   "fair": 1.33,
+   "minPlay": 1.37,
+   "pmId": "6931682",
+   "pmIdx": 1,
+   "smt": "moneyline"
+  },
+  {
+   "id": "pm-live-90123691",
+   "sport": "football",
+   "league": "Fifa Friendly",
+   "home": "Saudi Arabia",
+   "away": "Uzbekistan",
+   "start": "2026-11-17T15:30:00.000Z",
+   "score": "1-2",
+   "period": "HT",
+   "elapsed": "",
+   "label": "Beraberlik olmaz (iki taraftan biri kazanır)",
+   "p": 0.705,
+   "fair": 1.42,
+   "minPlay": 1.46,
+   "pmId": "6676834",
+   "pmIdx": 1,
+   "smt": "moneyline"
   }
  ],
  "board": [
@@ -3732,9 +3786,9 @@
    "label": "Ev sahibi kaybetmez (1X)",
    "minPlay": 1.36,
    "odds": 1.32,
-   "status": "pending",
+   "status": "won",
    "score": "",
-   "profit": null
+   "profit": 0.36
   },
   {
    "id": "pm-afcq-bur-zam-2026-11-17#fpm",
@@ -5854,10 +5908,10 @@
   },
   {
    "d": "2026-11-17",
-   "football": 0,
+   "football": 0.36,
    "basketball": -2,
    "volleyball": 0,
-   "n": 2
+   "n": 3
   }
  ],
  "pastDays": [
@@ -5939,20 +5993,20 @@
    "neden": "yeterli veri yok, açık (gölge kayıt sürüyor)"
   },
   "canli": {
-   "n": 0,
-   "tutan": 0,
-   "kar": 0,
+   "n": 1,
+   "tutan": 1,
+   "kar": 0.3,
    "clvN": 0,
    "clv100": null,
    "açık": true,
    "neden": "yeterli veri yok, açık (gölge kayıt sürüyor)"
   },
   "futbol-pm": {
-   "n": 0,
-   "tutan": 0,
-   "kar": 0,
-   "clvN": 6,
-   "clv100": 3.2,
+   "n": 1,
+   "tutan": 1,
+   "kar": 0.4,
+   "clvN": 13,
+   "clv100": 3.1,
    "açık": true,
    "neden": "yeterli veri yok, açık (gölge kayıt sürüyor)"
   }
@@ -6107,438 +6161,6 @@
  ],
  "matches": [
   {
-   "id": "pm-fif-ksa-uzb-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T15:30:00Z",
-   "home": "Saudi Arabia",
-   "away": "Uzbekistan",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.7164,
-    "lowOdds": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.42,
-    "odds": 1.39,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.44
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.77
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6676834_1",
-    "pmId": "6676834",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.715,
-    "odds": 1.4,
-    "minPlay": 1.44
-   }
-  },
-  {
-   "id": "pm-fif-jor-aus-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Jordan",
-   "away": "Australia",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8159,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.23,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.35
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.78
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6676877_1",
-    "pmId": "6676877",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.755,
-    "odds": 1.32,
-    "minPlay": 1.36
-   }
-  },
-  {
-   "id": "pm-fif-rus-ven-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Russia",
-   "away": "Venezuela",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8756,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.14,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.5
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6676919_0",
-    "pmId": "6676919",
-    "pmIdx": 0,
-    "kind": "ms",
-    "line": null,
-    "label": "MS 1 (ev sahibi kazanır)",
-    "p": 0.685,
-    "odds": 1.46,
-    "minPlay": 1.5
-   }
-  },
-  {
-   "id": "pm-afcq-gam-ic-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Gambia",
-   "away": "Ivory Coast",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8768,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.14,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.38
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.66
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671188_1",
-    "pmId": "6671188",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.735,
-    "odds": 1.36,
-    "minPlay": 1.4
-   }
-  },
-  {
-   "id": "pm-afcq-ken-sa-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Kenya",
-   "away": "South Africa",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8223,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.22,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.91
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671231_1",
-    "pmId": "6671231",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.715,
-    "odds": 1.4,
-    "minPlay": 1.44
-   }
-  },
-  {
-   "id": "pm-afcq-sl-dc-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Sierra Leone",
-   "away": "DR Congo",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.9246,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.08,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.4
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671275_0",
-    "pmId": "6671275",
-    "pmIdx": 0,
-    "kind": "ms",
-    "line": null,
-    "label": "MS 2 (deplasman kazanır)",
-    "p": 0.725,
-    "odds": 1.38,
-    "minPlay": 1.42
-   }
-  },
-  {
-   "id": "pm-afcq-lib-tun-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Libya",
-   "away": "Tunisia",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.7389,
-    "lowOdds": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.38,
-    "odds": 1.35,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.48
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.79
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671316_1",
-    "pmId": "6671316",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Deplasman kaybetmez (X2)",
-    "p": 0.735,
-    "odds": 1.36,
-    "minPlay": 1.4
-   }
-  },
-  {
-   "id": "pm-afcq-tog-alg-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Togo",
-   "away": "Algeria",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.845,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.18,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.73
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671360_1",
-    "pmId": "6671360",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.745,
-    "odds": 1.34,
-    "minPlay": 1.38
-   }
-  },
-  {
-   "id": "pm-afcq-gb-mad-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Guinea-Bissau",
-   "away": "Madagascar",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8844,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.13,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.34
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.57
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6671403_1",
-    "pmId": "6671403",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.765,
-    "odds": 1.31,
-    "minPlay": 1.35
-   }
-  },
-  {
    "id": "pm-cbb-murst-hofst-2026-11-17",
    "sport": "basketball",
    "league": "NCAA",
@@ -6556,217 +6178,25 @@
     "kind": "spread",
     "line": -9.5,
     "label": "Murray State Racers -9,5 handikap",
-    "minPlay": 1.78,
-    "odds": 1.72,
+    "minPlay": 1.76,
+    "odds": 1.71,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Toplam sayı 149,5 Alt",
-     "minPlay": 1.89
+     "minPlay": 1.82
     },
     {
      "label": "Murray State Racers -10,5 handikap",
      "minPlay": 1.93
     },
     {
-     "label": "Hofstra Pride +11,5 handikap",
-     "minPlay": 1.96
+     "label": "Toplam sayı 147,5 Alt",
+     "minPlay": 1.93
     }
    ]
-  },
-  {
-   "id": "pm-conl-dma-cay-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "Dominica",
-   "away": "Cayman Islands",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8856,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.13,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.43
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6684021_0",
-    "pmId": "6684021",
-    "pmIdx": 0,
-    "kind": "ms",
-    "line": null,
-    "label": "MS 1 (ev sahibi kazanır)",
-    "p": 0.715,
-    "odds": 1.4,
-    "minPlay": 1.44
-   }
-  },
-  {
-   "id": "pm-conl-blz-sxm-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "Belize",
-   "away": "Sint Maarten",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.755,
-    "lowOdds": false,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.35,
-    "odds": 1.32,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 2.04
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6684066_1",
-    "pmId": "6684066",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Ev sahibi kaybetmez (1X)",
-    "p": 0.755,
-    "odds": 1.32,
-    "minPlay": 1.36
-   }
-  },
-  {
-   "id": "pm-conl-lca-brb-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "St. Lucia",
-   "away": "Barbados",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.25,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.31
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.76
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6684111_1",
-    "pmId": "6684111",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.78,
-    "odds": 1.28,
-    "minPlay": 1.32
-   }
-  },
-  {
-   "id": "pm-conl-skn-bon-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "St. Kitts and Nevis",
-   "away": "Bonaire",
-   "dayKey": "2026-11-17",
-   "date": "2026-11-17",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8159,
-    "lowOdds": true,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.3,
-    "odds": 1.23,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.51
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 2.01
-    }
-   ],
-   "fpm": {
-    "rule": "fpm",
-    "key": "PM_6684156_1",
-    "pmId": "6684156",
-    "pmIdx": 1,
-    "kind": "dc",
-    "line": null,
-    "label": "Ev sahibi kaybetmez (1X)",
-    "p": 0.675,
-    "odds": 1.48,
-    "minPlay": 1.53
-   }
   },
   {
    "id": "pm-afcq-mau-bf-2026-11-17",
@@ -6783,7 +6213,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7049,
+    "p": 0.7046,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -6796,7 +6226,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.55
+     "minPlay": 1.54
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
@@ -6831,7 +6261,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7833,
+    "p": 0.7839,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6844,7 +6274,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.51
+     "minPlay": 1.52
     },
     {
      "label": "Deplasman kaybetmez (X2)",
@@ -6859,9 +6289,9 @@
     "kind": "dc",
     "line": null,
     "label": "Ev sahibi kaybetmez (1X)",
-    "p": 0.78,
-    "odds": 1.28,
-    "minPlay": 1.32
+    "p": 0.785,
+    "odds": 1.27,
+    "minPlay": 1.31
    }
   },
   {
@@ -6879,24 +6309,24 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7164,
+    "p": 0.7136,
     "lowOdds": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.42,
-    "odds": 1.39,
+    "minPlay": 1.43,
+    "odds": 1.4,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.58
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.59
     },
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.6
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.59
     }
    ],
    "fpm": {
@@ -6975,7 +6405,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8259,
+    "p": 0.8241,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -6988,11 +6418,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.49
+     "minPlay": 1.47
     },
     {
      "label": "MS 2",
-     "minPlay": 1.99
+     "minPlay": 1.97
     }
    ],
    "fpm": {
@@ -7003,9 +6433,201 @@
     "kind": "dc",
     "line": null,
     "label": "Beraberlik olmaz (12)",
-    "p": 0.685,
-    "odds": 1.46,
-    "minPlay": 1.5
+    "p": 0.695,
+    "odds": 1.44,
+    "minPlay": 1.48
+   }
+  },
+  {
+   "id": "pm-conl-dma-cay-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "Dominica",
+   "away": "Cayman Islands",
+   "dayKey": "2026-11-17",
+   "date": "2026-11-17",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.8756,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.14,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.45
+    }
+   ],
+   "fpm": {
+    "rule": "fpm",
+    "key": "PM_6684021_0",
+    "pmId": "6684021",
+    "pmIdx": 0,
+    "kind": "ms",
+    "line": null,
+    "label": "MS 1 (ev sahibi kazanır)",
+    "p": 0.705,
+    "odds": 1.42,
+    "minPlay": 1.46
+   }
+  },
+  {
+   "id": "pm-conl-blz-sxm-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "Belize",
+   "away": "Sint Maarten",
+   "dayKey": "2026-11-17",
+   "date": "2026-11-17",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.75,
+    "lowOdds": false,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.36,
+    "odds": 1.33,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.37
+    },
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 2.02
+    }
+   ],
+   "fpm": {
+    "rule": "fpm",
+    "key": "PM_6684066_1",
+    "pmId": "6684066",
+    "pmIdx": 1,
+    "kind": "dc",
+    "line": null,
+    "label": "Ev sahibi kaybetmez (1X)",
+    "p": 0.75,
+    "odds": 1.33,
+    "minPlay": 1.37
+   }
+  },
+  {
+   "id": "pm-conl-lca-brb-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "St. Lucia",
+   "away": "Barbados",
+   "dayKey": "2026-11-17",
+   "date": "2026-11-17",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.7861,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.27,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.78
+    }
+   ],
+   "fpm": {
+    "rule": "fpm",
+    "key": "PM_6684113_1",
+    "pmId": "6684113",
+    "pmIdx": 1,
+    "kind": "dc",
+    "line": null,
+    "label": "Ev sahibi kaybetmez (1X)",
+    "p": 0.785,
+    "odds": 1.27,
+    "minPlay": 1.31
+   }
+  },
+  {
+   "id": "pm-conl-skn-bon-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "St. Kitts and Nevis",
+   "away": "Bonaire",
+   "dayKey": "2026-11-17",
+   "date": "2026-11-17",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.8159,
+    "lowOdds": true,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.3,
+    "odds": 1.22,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.53
+    },
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.97
+    }
+   ],
+   "fpm": {
+    "rule": "fpm",
+    "key": "PM_6684156_1",
+    "pmId": "6684156",
+    "pmIdx": 1,
+    "kind": "dc",
+    "line": null,
+    "label": "Ev sahibi kaybetmez (1X)",
+    "p": 0.665,
+    "odds": 1.5,
+    "minPlay": 1.55
    }
   },
   {
@@ -7034,15 +6656,15 @@
    "alts": [
     {
      "label": "Houston Cougars -16,5 handikap",
-     "minPlay": 1.82
+     "minPlay": 1.86
+    },
+    {
+     "label": "Toplam sayı 144,5 Alt",
+     "minPlay": 1.86
     },
     {
      "label": "Toplam sayı 143,5 Alt",
      "minPlay": 1.93
-    },
-    {
-     "label": "Rutgers Scarlet Knights +18,5 handikap",
-     "minPlay": 1.96
     }
    ]
   },
@@ -7061,7 +6683,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7662,
+    "p": 0.7685,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7074,11 +6696,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.63
+     "minPlay": 1.62
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.68
+     "minPlay": 1.7
     }
    ],
    "fpm": {
@@ -7109,12 +6731,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.794,
+    "p": 0.804,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.26,
+    "odds": 1.24,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -7122,7 +6744,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
+     "minPlay": 1.45
     },
     {
      "label": "MS 1",
@@ -7137,9 +6759,9 @@
     "kind": "dc",
     "line": null,
     "label": "Beraberlik olmaz (12)",
-    "p": 0.715,
-    "odds": 1.4,
-    "minPlay": 1.44
+    "p": 0.705,
+    "odds": 1.42,
+    "minPlay": 1.46
    }
   },
   {
@@ -7205,7 +6827,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7337,
+    "p": 0.7363,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7218,11 +6840,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.43
+     "minPlay": 1.42
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.85
+     "minPlay": 1.86
     }
    ],
    "fpm": {
@@ -7258,7 +6880,7 @@
     "key": "12",
     "label": "Beraberlik olmaz (12)",
     "minPlay": 1.36,
-    "odds": 1.34,
+    "odds": 1.33,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -7266,11 +6888,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.46
+     "minPlay": 1.48
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.85
+     "minPlay": 1.82
     }
    ],
    "fpm": {
@@ -7397,12 +7019,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7739,
+    "p": 0.7783,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.32,
-    "odds": 1.29,
+    "minPlay": 1.31,
+    "odds": 1.28,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -7410,11 +7032,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "minPlay": 1.44
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.95
+     "minPlay": 1.99
     }
    ],
    "fpm": {
@@ -7445,7 +7067,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9776,
+    "p": 0.9785,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -7484,15 +7106,15 @@
     "kind": "spread",
     "line": -13.5,
     "label": "Florida Gators -13,5 handikap",
-    "minPlay": 1.76,
-    "odds": 1.71,
+    "minPlay": 1.78,
+    "odds": 1.72,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Florida Gators -14,5 handikap",
-     "minPlay": 1.84
+     "minPlay": 1.89
     },
     {
      "label": "Toplam sayı 151,5 Alt",
@@ -7519,7 +7141,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7673,
+    "p": 0.7662,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -7532,7 +7154,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "minPlay": 1.44
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
@@ -7608,15 +7230,15 @@
    "alts": [
     {
      "label": "Southern Illinois Salukis kazanır",
-     "minPlay": 1.86
+     "minPlay": 1.87
     },
     {
      "label": "Toplam sayı 146,5 Alt",
-     "minPlay": 1.91
+     "minPlay": 1.93
     },
     {
-     "label": "Liberty Flames +2,5 handikap",
-     "minPlay": 1.94
+     "label": "Southern Illinois Salukis -1,5 handikap",
+     "minPlay": 1.96
     }
    ]
   },
@@ -7672,7 +7294,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.955,
+    "p": 0.9552,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -7747,21 +7369,12 @@
     "kind": "spread",
     "line": -20.5,
     "label": "Purdue Boilermakers -20,5 handikap",
-    "minPlay": 1.81,
-    "odds": 1.75,
+    "minPlay": 1.84,
+    "odds": 1.79,
     "unverified": true,
     "rule": "test"
    },
-   "alts": [
-    {
-     "label": "Toplam sayı 147,5 Üst",
-     "minPlay": 1.94
-    },
-    {
-     "label": "Purdue Boilermakers -21,5 handikap",
-     "minPlay": 1.96
-    }
-   ]
+   "alts": []
   },
   {
    "id": "pm-conl-guy-vin-2026-11-17",
@@ -7826,7 +7439,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.969,
+    "p": 0.9695,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -7865,19 +7478,15 @@
     "kind": "total",
     "line": 163.5,
     "label": "Toplam sayı 163,5 Üst",
-    "minPlay": 1.86,
-    "odds": 1.8,
+    "minPlay": 1.87,
+    "odds": 1.82,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Tennessee State Tigers +12,5 handikap",
-     "minPlay": 1.93
-    },
-    {
-     "label": "Toplam sayı 164,5 Üst",
-     "minPlay": 1.94
+     "minPlay": 1.89
     }
    ]
   },
@@ -7893,12 +7502,12 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7105308_1",
-    "pmId": "7105308",
-    "pmIdx": 1,
-    "kind": "spread",
-    "line": 12.5,
-    "label": "Manhattan Jaspers +12,5 handikap",
+    "key": "PM_7105311_0",
+    "pmId": "7105311",
+    "pmIdx": 0,
+    "kind": "total",
+    "line": 142.5,
+    "label": "Toplam sayı 142,5 Üst",
     "minPlay": 1.82,
     "odds": 1.77,
     "unverified": true,
@@ -7906,12 +7515,12 @@
    },
    "alts": [
     {
-     "label": "Toplam sayı 144,5 Alt",
-     "minPlay": 1.94
+     "label": "Manhattan Jaspers +12,5 handikap",
+     "minPlay": 1.86
     },
     {
-     "label": "Toplam sayı 142,5 Üst",
-     "minPlay": 1.98
+     "label": "Toplam sayı 143,5 Üst",
+     "minPlay": 1.91
     },
     {
      "label": "Manhattan Jaspers +11,5 handikap",
@@ -7931,29 +7540,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7103776_0",
-    "pmId": "7103776",
+    "key": "PM_7106032_0",
+    "pmId": "7106032",
     "pmIdx": 0,
     "kind": "spread",
-    "line": -9.5,
-    "label": "Dayton Flyers -9,5 handikap",
-    "minPlay": 1.66,
-    "odds": 1.61,
+    "line": -10.5,
+    "label": "Dayton Flyers -10,5 handikap",
+    "minPlay": 1.75,
+    "odds": 1.69,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Toplam sayı 147,5 Alt",
-     "minPlay": 1.91
+     "minPlay": 1.81
+    },
+    {
+     "label": "Toplam sayı 146,5 Alt",
+     "minPlay": 1.87
     },
     {
      "label": "Dayton Flyers -11,5 handikap",
      "minPlay": 1.93
-    },
-    {
-     "label": "Toplam sayı 146,5 Alt",
-     "minPlay": 2.02
     }
    ]
   },
@@ -8008,15 +7617,19 @@
     "kind": "spread",
     "line": 15.5,
     "label": "Monmouth Hawks +15,5 handikap",
-    "minPlay": 1.89,
-    "odds": 1.83,
+    "minPlay": 1.91,
+    "odds": 1.85,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 143,5 Üst",
-     "minPlay": 1.98
+     "label": "Toplam sayı 144,5 Alt",
+     "minPlay": 2.02
+    },
+    {
+     "label": "Wake Forest Demon Deacons -14,5 handikap",
+     "minPlay": 2.04
     }
    ]
   },
@@ -8032,29 +7645,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7098095_0",
-    "pmId": "7098095",
-    "pmIdx": 0,
-    "kind": "total",
-    "line": 145.5,
-    "label": "Toplam sayı 145,5 Üst",
-    "minPlay": 1.81,
-    "odds": 1.75,
+    "key": "PM_7098094_1",
+    "pmId": "7098094",
+    "pmIdx": 1,
+    "kind": "spread",
+    "line": 1.5,
+    "label": "Villanova Wildcats +1,5 handikap",
+    "minPlay": 1.84,
+    "odds": 1.79,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
-    {
-     "label": "Villanova Wildcats +1,5 handikap",
-     "minPlay": 1.82
-    },
     {
      "label": "Villanova Wildcats kazanır",
      "minPlay": 1.89
     },
     {
      "label": "Villanova Wildcats -1,5 handikap",
-     "minPlay": 2.02
+     "minPlay": 2.04
+    },
+    {
+     "label": "Toplam sayı 148,5 Alt",
+     "minPlay": 2.04
     }
    ]
   },
@@ -8083,15 +7696,15 @@
    "alts": [
     {
      "label": "Toplam sayı 162,5 Üst",
-     "minPlay": 1.76
-    },
-    {
-     "label": "Toplam sayı 163,5 Üst",
-     "minPlay": 1.82
+     "minPlay": 1.66
     },
     {
      "label": "Toplam sayı 164,5 Üst",
-     "minPlay": 1.93
+     "minPlay": 1.79
+    },
+    {
+     "label": "Toplam sayı 165,5 Üst",
+     "minPlay": 1.86
     }
    ]
   },
@@ -8107,29 +7720,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7103775_1",
-    "pmId": "7103775",
+    "key": "PM_7107372_1",
+    "pmId": "7107372",
     "pmIdx": 1,
     "kind": "total",
-    "line": 161.5,
-    "label": "Toplam sayı 161,5 Alt",
-    "minPlay": 1.84,
-    "odds": 1.79,
+    "line": 160.5,
+    "label": "Toplam sayı 160,5 Alt",
+    "minPlay": 1.87,
+    "odds": 1.82,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
-    {
-     "label": "Toplam sayı 160,5 Alt",
-     "minPlay": 1.89
-    },
     {
      "label": "Cleveland State Vikings +33,5 handikap",
      "minPlay": 1.94
     },
     {
      "label": "Toplam sayı 159,5 Alt",
-     "minPlay": 1.96
+     "minPlay": 1.98
+    },
+    {
+     "label": "Xavier Musketeers -32,5 handikap",
+     "minPlay": 2.02
     }
    ]
   },
@@ -8145,18 +7758,22 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7103773_0",
-    "pmId": "7103773",
+    "key": "PM_7103080_0",
+    "pmId": "7103080",
     "pmIdx": 0,
     "kind": "spread",
-    "line": -28.5,
-    "label": "Providence Friars -28,5 handikap",
-    "minPlay": 1.87,
-    "odds": 1.82,
+    "line": -27.5,
+    "label": "Providence Friars -27,5 handikap",
+    "minPlay": 1.82,
+    "odds": 1.77,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "Providence Friars -28,5 handikap",
+     "minPlay": 1.91
+    },
     {
      "label": "Providence Friars -29,5 handikap",
      "minPlay": 2.04
@@ -8206,8 +7823,8 @@
     "kind": "total",
     "line": 157.5,
     "label": "Toplam sayı 157,5 Alt",
-    "minPlay": 1.55,
-    "odds": 1.5,
+    "minPlay": 1.54,
+    "odds": 1.49,
     "unverified": true,
     "rule": "test"
    },
@@ -8274,22 +7891,22 @@
     "kind": "total",
     "line": 147.5,
     "label": "Toplam sayı 147,5 Üst",
-    "minPlay": 1.84,
-    "odds": 1.79,
+    "minPlay": 1.75,
+    "odds": 1.69,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "Toplam sayı 149,5 Üst",
+     "minPlay": 1.84
+    },
     {
      "label": "CSUN Matadors +2,5 handikap",
      "minPlay": 1.91
     },
     {
      "label": "Troy Trojans kazanır",
-     "minPlay": 1.94
-    },
-    {
-     "label": "Toplam sayı 148,5 Üst",
      "minPlay": 1.94
     }
    ]
@@ -8306,24 +7923,25 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6948043_1",
-    "pmId": "6948043",
+    "key": "PM_7105304_1",
+    "pmId": "7105304",
     "pmIdx": 1,
-    "kind": "side",
-    "label": "Marshall Thundering Herd kazanır",
-    "minPlay": 1.94,
-    "odds": 1.89,
+    "kind": "total",
+    "line": 147.5,
+    "label": "Toplam sayı 147,5 Alt",
+    "minPlay": 1.91,
+    "odds": 1.85,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 147,5 Alt",
-     "minPlay": 1.96
+     "label": "Marshall Thundering Herd kazanır",
+     "minPlay": 1.94
     },
     {
-     "label": "Toplam sayı 146,5 Üst",
-     "minPlay": 2.04
+     "label": "Toplam sayı 146,5 Alt",
+     "minPlay": 1.96
     }
    ]
   },
@@ -8353,6 +7971,10 @@
    "alts": [
     {
      "label": "Mount St. Mary's Mountaineers kazanır",
+     "minPlay": 1.96
+    },
+    {
+     "label": "Toplam sayı 137,5 Üst",
      "minPlay": 2.02
     }
    ]
@@ -8374,8 +7996,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Green Bay Phoenix kazanır",
-    "minPlay": 1.46,
-    "odds": 1.42,
+    "minPlay": 1.54,
+    "odds": 1.49,
     "unverified": true,
     "rule": "test"
    },
@@ -8385,12 +8007,12 @@
      "minPlay": 1.87
     },
     {
-     "label": "Toplam sayı 146,5 Alt",
-     "minPlay": 1.96
+     "label": "West Florida Argonauts +6,5 handikap",
+     "minPlay": 1.87
     },
     {
-     "label": "West Florida Argonauts +6,5 handikap",
-     "minPlay": 1.96
+     "label": "Toplam sayı 146,5 Alt",
+     "minPlay": 1.94
     }
    ]
   },
@@ -8420,7 +8042,7 @@
    "alts": [
     {
      "label": "Mississippi State Bulldogs +1,5 handikap",
-     "minPlay": 1.91
+     "minPlay": 1.89
     },
     {
      "label": "Toplam sayı 153,5 Üst",
@@ -8428,7 +8050,7 @@
     },
     {
      "label": "UCF Knights +1,5 handikap",
-     "minPlay": 1.98
+     "minPlay": 2
     }
    ]
   },
@@ -8461,11 +8083,11 @@
      "minPlay": 1.93
     },
     {
-     "label": "Miami Hurricanes -41,5 handikap",
-     "minPlay": 2.02
+     "label": "Toplam sayı 149,5 Alt",
+     "minPlay": 1.96
     },
     {
-     "label": "Toplam sayı 148,5 Üst",
+     "label": "Miami Hurricanes -41,5 handikap",
      "minPlay": 2.02
     }
    ]
@@ -8482,27 +8104,18 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7109095_0",
-    "pmId": "7109095",
+    "key": "PM_7111890_0",
+    "pmId": "7111890",
     "pmIdx": 0,
-    "kind": "total",
-    "line": 145.5,
-    "label": "Toplam sayı 145,5 Üst",
-    "minPlay": 1.94,
-    "odds": 1.89,
+    "kind": "spread",
+    "line": -13.5,
+    "label": "Akron Zips -13,5 handikap",
+    "minPlay": 1.93,
+    "odds": 1.87,
     "unverified": true,
     "rule": "test"
    },
-   "alts": [
-    {
-     "label": "Bucknell Bison +14,5 handikap",
-     "minPlay": 1.96
-    },
-    {
-     "label": "Akron Zips -13,5 handikap",
-     "minPlay": 1.98
-    }
-   ]
+   "alts": []
   },
   {
    "id": "pm-cbb-charlt-david-2026-11-17",
@@ -8521,23 +8134,23 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Davidson Wildcats kazanır",
-    "minPlay": 1.67,
-    "odds": 1.63,
+    "minPlay": 1.69,
+    "odds": 1.64,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Charlotte 49ers +4,5 handikap",
-     "minPlay": 1.91
-    },
-    {
-     "label": "Toplam sayı 133,5 Alt",
      "minPlay": 1.94
     },
     {
+     "label": "Toplam sayı 133,5 Alt",
+     "minPlay": 1.96
+    },
+    {
      "label": "Davidson Wildcats -3,5 handikap",
-     "minPlay": 2.04
+     "minPlay": 2
     }
    ]
   },
@@ -8559,23 +8172,23 @@
     "kind": "spread",
     "line": 15.5,
     "label": "Raptors +15,5 handikap",
-    "minPlay": 1.24,
+    "minPlay": 1.23,
     "odds": 1.2,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Knicks +10,5 handikap",
-     "minPlay": 1.24
+     "label": "Toplam sayı 232,5 Alt",
+     "minPlay": 1.23
     },
     {
      "label": "Toplam sayı 200,5 Üst",
      "minPlay": 1.25
     },
     {
-     "label": "Toplam sayı 232,5 Alt",
-     "minPlay": 1.25
+     "label": "Toplam sayı 230,5 Alt",
+     "minPlay": 1.26
     }
    ]
   },
@@ -8612,7 +8225,7 @@
     },
     {
      "label": "Toplam sayı 166,5 Üst",
-     "minPlay": 1.91
+     "minPlay": 1.89
     }
    ]
   },
@@ -8641,16 +8254,16 @@
    },
    "alts": [
     {
-     "label": "Arkansas Razorbacks kazanır",
-     "minPlay": 2
-    },
-    {
      "label": "Toplam sayı 154,5 Alt",
-     "minPlay": 2
+     "minPlay": 1.93
     },
     {
      "label": "Indiana Hoosiers +1,5 handikap",
      "minPlay": 2
+    },
+    {
+     "label": "Arkansas Razorbacks kazanır",
+     "minPlay": 2.04
     }
    ]
   },
@@ -8671,23 +8284,23 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Massachusetts Minutemen kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.24,
     "odds": 1.2,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
+     "label": "Toplam sayı 137,5 Üst",
+     "minPlay": 1.69
+    },
+    {
+     "label": "Toplam sayı 138,5 Üst",
+     "minPlay": 1.75
+    },
+    {
      "label": "Bryant Bulldogs +11,5 handikap",
      "minPlay": 1.82
-    },
-    {
-     "label": "Toplam sayı 139,5 Üst",
-     "minPlay": 1.86
-    },
-    {
-     "label": "Massachusetts Minutemen -9,5 handikap",
-     "minPlay": 1.98
     }
    ]
   },
@@ -8703,12 +8316,12 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7108581_0",
-    "pmId": "7108581",
+    "key": "PM_7108153_0",
+    "pmId": "7108153",
     "pmIdx": 0,
     "kind": "total",
-    "line": 174.5,
-    "label": "Toplam sayı 174,5 Üst",
+    "line": 173.5,
+    "label": "Toplam sayı 173,5 Üst",
     "minPlay": 1.79,
     "odds": 1.74,
     "unverified": true,
@@ -8716,16 +8329,16 @@
    },
    "alts": [
     {
+     "label": "Toplam sayı 174,5 Üst",
+     "minPlay": 1.86
+    },
+    {
      "label": "Alabama Crimson Tide -24,5 handikap",
      "minPlay": 1.89
     },
     {
      "label": "Toplam sayı 175,5 Üst",
-     "minPlay": 1.89
-    },
-    {
-     "label": "Alabama Crimson Tide -25,5 handikap",
-     "minPlay": 2.04
+     "minPlay": 1.96
     }
    ]
   },
@@ -8807,7 +8420,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9005,
+    "p": 0.9,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -8824,7 +8437,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.38
+     "minPlay": 1.37
     }
    ],
    "fpm": {
@@ -8852,24 +8465,28 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7105299_1",
-    "pmId": "7105299",
+    "key": "PM_7104285_1",
+    "pmId": "7104285",
     "pmIdx": 1,
-    "kind": "spread",
-    "line": 26.5,
-    "label": "Oral Roberts Golden Eagles +26,5 handikap",
-    "minPlay": 1.91,
-    "odds": 1.85,
+    "kind": "total",
+    "line": 159.5,
+    "label": "Toplam sayı 159,5 Alt",
+    "minPlay": 1.78,
+    "odds": 1.72,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Oral Roberts Golden Eagles +25,5 handikap",
-     "minPlay": 2.02
+     "label": "Toplam sayı 158,5 Alt",
+     "minPlay": 1.89
     },
     {
-     "label": "Toplam sayı 156,5 Alt",
+     "label": "Oral Roberts Golden Eagles +26,5 handikap",
+     "minPlay": 1.91
+    },
+    {
+     "label": "Oral Roberts Golden Eagles +25,5 handikap",
      "minPlay": 2.02
     }
    ]
@@ -8892,23 +8509,19 @@
     "kind": "spread",
     "line": 34.5,
     "label": "Maryland Eastern Shore Hawks +34,5 handikap",
-    "minPlay": 1.72,
-    "odds": 1.67,
+    "minPlay": 1.7,
+    "odds": 1.65,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Toplam sayı 130,5 Alt",
-     "minPlay": 1.73
-    },
-    {
-     "label": "Maryland Eastern Shore Hawks +33,5 handikap",
-     "minPlay": 1.82
+     "minPlay": 1.7
     },
     {
      "label": "Maryland Eastern Shore Hawks +32,5 handikap",
-     "minPlay": 1.98
+     "minPlay": 1.93
     }
    ]
   },
@@ -8929,23 +8542,23 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Evansville Purple Aces kazanır",
-    "minPlay": 1.35,
-    "odds": 1.31,
+    "minPlay": 1.38,
+    "odds": 1.34,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Evansville Purple Aces -6,5 handikap",
-     "minPlay": 1.81
+     "label": "Evansville Purple Aces -5,5 handikap",
+     "minPlay": 1.79
     },
     {
      "label": "Le Moyne Dolphins +8,5 handikap",
-     "minPlay": 1.96
+     "minPlay": 1.87
     },
     {
-     "label": "Toplam sayı 147,5 Alt",
-     "minPlay": 2.04
+     "label": "Toplam sayı 146,5 Üst",
+     "minPlay": 1.94
     }
    ]
   },
@@ -8961,29 +8574,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7109092_1",
-    "pmId": "7109092",
+    "key": "PM_7109090_1",
+    "pmId": "7109090",
     "pmIdx": 1,
-    "kind": "total",
-    "line": 145.5,
-    "label": "Toplam sayı 145,5 Alt",
-    "minPlay": 1.81,
-    "odds": 1.75,
+    "kind": "spread",
+    "line": 19.5,
+    "label": "Bellarmine Knights +19,5 handikap",
+    "minPlay": 1.87,
+    "odds": 1.82,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Bellarmine Knights +19,5 handikap",
-     "minPlay": 1.82
-    },
-    {
      "label": "Toplam sayı 144,5 Alt",
-     "minPlay": 1.93
+     "minPlay": 1.91
     },
     {
      "label": "Illinois State Redbirds -17,5 handikap",
      "minPlay": 1.94
+    },
+    {
+     "label": "Bellarmine Knights +18,5 handikap",
+     "minPlay": 1.98
     }
    ]
   },
@@ -9004,19 +8617,23 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Middle Tennessee Blue Raiders kazanır",
-    "minPlay": 1.91,
-    "odds": 1.85,
+    "minPlay": 1.93,
+    "odds": 1.87,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Middle Tennessee Blue Raiders -1,5 handikap",
-     "minPlay": 1.98
+     "label": "Georgia Southern Eagles +2,5 handikap",
+     "minPlay": 1.93
     },
     {
-     "label": "Georgia Southern Eagles +2,5 handikap",
-     "minPlay": 1.98
+     "label": "Middle Tennessee Blue Raiders -1,5 handikap",
+     "minPlay": 2.02
+    },
+    {
+     "label": "Toplam sayı 154,5 Üst",
+     "minPlay": 2.02
     }
    ]
   },
@@ -9065,14 +8682,14 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7104279_1",
-    "pmId": "7104279",
-    "pmIdx": 1,
-    "kind": "spread",
-    "line": 44.5,
-    "label": "Eastern Illinois Panthers +44,5 handikap",
-    "minPlay": 1.84,
-    "odds": 1.79,
+    "key": "PM_7104280_0",
+    "pmId": "7104280",
+    "pmIdx": 0,
+    "kind": "total",
+    "line": 144.5,
+    "label": "Toplam sayı 144,5 Üst",
+    "minPlay": 1.81,
+    "odds": 1.75,
     "unverified": true,
     "rule": "test"
    },
@@ -9083,11 +8700,11 @@
     },
     {
      "label": "Eastern Illinois Panthers +43,5 handikap",
-     "minPlay": 1.98
+     "minPlay": 1.96
     },
     {
-     "label": "Vanderbilt Commodores -42,5 handikap",
-     "minPlay": 1.98
+     "label": "Toplam sayı 147,5 Alt",
+     "minPlay": 1.96
     }
    ]
   },
@@ -9108,12 +8725,21 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Lamar Cardinals kazanır",
-    "minPlay": 1.86,
-    "odds": 1.8,
+    "minPlay": 1.91,
+    "odds": 1.85,
     "unverified": true,
     "rule": "test"
    },
-   "alts": []
+   "alts": [
+    {
+     "label": "Omaha Mavericks +2,5 handikap",
+     "minPlay": 1.94
+    },
+    {
+     "label": "Toplam sayı 158,5 Alt",
+     "minPlay": 2.02
+    }
+   ]
   },
   {
    "id": "pm-cbb-jac-niowa-2026-11-17",
@@ -9145,7 +8771,7 @@
     },
     {
      "label": "Northern Iowa Panthers -12,5 handikap",
-     "minPlay": 2.02
+     "minPlay": 2
     },
     {
      "label": "Toplam sayı 153,5 Üst",
@@ -9171,19 +8797,23 @@
     "kind": "spread",
     "line": 4.5,
     "label": "UT Arlington Mavericks +4,5 handikap",
-    "minPlay": 1.75,
-    "odds": 1.69,
+    "minPlay": 1.73,
+    "odds": 1.68,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Southern Miss Golden Eagles kazanır",
-     "minPlay": 1.84
+     "minPlay": 1.82
     },
     {
      "label": "UT Arlington Mavericks +3,5 handikap",
      "minPlay": 1.86
+    },
+    {
+     "label": "UT Arlington Mavericks +2,5 handikap",
+     "minPlay": 2.02
     }
    ]
   },
@@ -9199,25 +8829,67 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7105296_0",
-    "pmId": "7105296",
+    "key": "PM_7104739_0",
+    "pmId": "7104739",
     "pmIdx": 0,
     "kind": "total",
-    "line": 143.5,
-    "label": "Toplam sayı 143,5 Üst",
-    "minPlay": 1.87,
-    "odds": 1.82,
+    "line": 142.5,
+    "label": "Toplam sayı 142,5 Üst",
+    "minPlay": 1.82,
+    "odds": 1.77,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "Toplam sayı 143,5 Üst",
+     "minPlay": 1.86
+    },
     {
      "label": "Toplam sayı 144,5 Üst",
      "minPlay": 1.94
     },
     {
      "label": "Utah Utes -12,5 handikap",
-     "minPlay": 1.96
+     "minPlay": 2
+    }
+   ]
+  },
+  {
+   "id": "pm-cbb-nichls-miss-2026-11-17",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-18T01:30:00Z",
+   "home": "Nicholls Colonels",
+   "away": "Ole Miss Rebels",
+   "dayKey": "2026-11-18",
+   "date": "2026-11-18",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "PM_7104734_1",
+    "pmId": "7104734",
+    "pmIdx": 1,
+    "kind": "spread",
+    "line": 30.5,
+    "label": "Nicholls Colonels +30,5 handikap",
+    "minPlay": 1.84,
+    "odds": 1.79,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": [
+    {
+     "label": "Nicholls Colonels +29,5 handikap",
+     "minPlay": 1.89
+    },
+    {
+     "label": "Toplam sayı 143,5 Alt",
+     "minPlay": 1.98
+    },
+    {
+     "label": "Toplam sayı 142,5 Üst",
+     "minPlay": 2.02
     }
    ]
   },
@@ -9251,7 +8923,7 @@
     },
     {
      "label": "Sam Houston Bearkats +12,5 handikap",
-     "minPlay": 1.96
+     "minPlay": 1.98
     },
     {
      "label": "Toplam sayı 150,5 Alt",
@@ -9277,22 +8949,22 @@
     "kind": "total",
     "line": 150.5,
     "label": "Toplam sayı 150,5 Alt",
-    "minPlay": 1.44,
-    "odds": 1.4,
+    "minPlay": 1.47,
+    "odds": 1.43,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "UC Davis Aggies -10,5 handikap",
-     "minPlay": 1.87
+     "minPlay": 1.84
     },
     {
      "label": "Toplam sayı 144,5 Alt",
      "minPlay": 1.91
     },
     {
-     "label": "Toplam sayı 142,5 Üst",
+     "label": "Toplam sayı 143,5 Alt",
      "minPlay": 1.98
     }
    ]
@@ -9322,15 +8994,15 @@
    "alts": [
     {
      "label": "Tennessee Volunteers +3,5 handikap",
-     "minPlay": 1.93
+     "minPlay": 1.89
     },
     {
      "label": "Toplam sayı 150,5 Alt",
-     "minPlay": 1.98
+     "minPlay": 1.96
     },
     {
      "label": "Toplam sayı 149,5 Üst",
-     "minPlay": 2.02
+     "minPlay": 1.96
     }
    ]
   },
@@ -9363,12 +9035,12 @@
      "minPlay": 1.76
     },
     {
-     "label": "Virginia Cavaliers -25,5 handikap",
-     "minPlay": 1.93
+     "label": "Toplam sayı 147,5 Alt",
+     "minPlay": 1.86
     },
     {
-     "label": "Toplam sayı 147,5 Alt",
-     "minPlay": 1.93
+     "label": "Virginia Cavaliers -25,5 handikap",
+     "minPlay": 1.91
     }
    ]
   },
@@ -9387,7 +9059,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9547,
+    "p": 0.9542,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9420,29 +9092,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7098532_0",
-    "pmId": "7098532",
+    "key": "PM_7097950_0",
+    "pmId": "7097950",
     "pmIdx": 0,
     "kind": "total",
-    "line": 154.5,
-    "label": "Toplam sayı 154,5 Üst",
-    "minPlay": 1.82,
-    "odds": 1.77,
+    "line": 155.5,
+    "label": "Toplam sayı 155,5 Üst",
+    "minPlay": 1.75,
+    "odds": 1.69,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
+     "label": "Toplam sayı 156,5 Üst",
+     "minPlay": 1.82
+    },
+    {
      "label": "UNLV Runnin' Rebels +18,5 handikap",
-     "minPlay": 1.86
+     "minPlay": 1.82
     },
     {
-     "label": "Toplam sayı 155,5 Üst",
-     "minPlay": 1.89
-    },
-    {
-     "label": "Kansas Jayhawks -16,5 handikap",
-     "minPlay": 1.93
+     "label": "Toplam sayı 157,5 Üst",
+     "minPlay": 1.91
     }
    ]
   },
@@ -9458,12 +9130,12 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7105541_1",
-    "pmId": "7105541",
+    "key": "PM_7105546_1",
+    "pmId": "7105546",
     "pmIdx": 1,
-    "kind": "spread",
-    "line": 20.5,
-    "label": "Hornets +20,5 handikap",
+    "kind": "total",
+    "line": 238.5,
+    "label": "Toplam sayı 238,5 Alt",
     "minPlay": 1.23,
     "odds": 1.2,
     "unverified": true,
@@ -9471,12 +9143,12 @@
    },
    "alts": [
     {
-     "label": "Toplam sayı 238,5 Alt",
+     "label": "Hornets +20,5 handikap",
      "minPlay": 1.24
     },
     {
      "label": "Toplam sayı 236,5 Alt",
-     "minPlay": 1.26
+     "minPlay": 1.27
     },
     {
      "label": "Toplam sayı 204,5 Üst",
@@ -9499,7 +9171,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.934,
+    "p": 0.9343,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9532,29 +9204,28 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7104730_1",
-    "pmId": "7104730",
-    "pmIdx": 1,
-    "kind": "total",
-    "line": 136.5,
-    "label": "Toplam sayı 136,5 Alt",
-    "minPlay": 1.78,
-    "odds": 1.72,
+    "key": "PM_6951647_0",
+    "pmId": "6951647",
+    "pmIdx": 0,
+    "kind": "side",
+    "label": "Seattle Redhawks kazanır",
+    "minPlay": 1.33,
+    "odds": 1.29,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "Toplam sayı 136,5 Alt",
+     "minPlay": 1.78
+    },
     {
      "label": "Toplam sayı 135,5 Alt",
      "minPlay": 1.86
     },
     {
      "label": "California Baptist Lancers +9,5 handikap",
-     "minPlay": 1.93
-    },
-    {
-     "label": "Seattle Redhawks -8,5 handikap",
-     "minPlay": 2.02
+     "minPlay": 1.89
     }
    ]
   },
@@ -9575,8 +9246,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Stanford Cardinal kazanır",
-    "minPlay": 1.38,
-    "odds": 1.34,
+    "minPlay": 1.41,
+    "odds": 1.37,
     "unverified": true,
     "rule": "test"
    },
@@ -9587,7 +9258,7 @@
     },
     {
      "label": "UC Irvine Anteaters +7,5 handikap",
-     "minPlay": 1.89
+     "minPlay": 1.84
     },
     {
      "label": "Toplam sayı 144,5 Alt",
@@ -9607,12 +9278,12 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7105627_1",
-    "pmId": "7105627",
+    "key": "PM_7105582_1",
+    "pmId": "7105582",
     "pmIdx": 1,
-    "kind": "total",
-    "line": 243.5,
-    "label": "Toplam sayı 243,5 Alt",
+    "kind": "spread",
+    "line": 7.5,
+    "label": "Clippers +7,5 handikap",
     "minPlay": 1.23,
     "odds": 1.2,
     "unverified": true,
@@ -9620,15 +9291,15 @@
    },
    "alts": [
     {
+     "label": "Toplam sayı 243,5 Alt",
+     "minPlay": 1.23
+    },
+    {
      "label": "Toplam sayı 209,5 Üst",
      "minPlay": 1.26
     },
     {
      "label": "Jazz +18,5 handikap",
-     "minPlay": 1.26
-    },
-    {
-     "label": "Toplam sayı 241,5 Alt",
      "minPlay": 1.26
     }
    ]
@@ -9672,6 +9343,44 @@
    ]
   },
   {
+   "id": "pm-cbb-wvir-aubrn-2026-11-17",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-18T04:59:00Z",
+   "home": "West Virginia Mountaineers",
+   "away": "Auburn Tigers",
+   "dayKey": "2026-11-18",
+   "date": "2026-11-18",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "PM_7101452_0",
+    "pmId": "7101452",
+    "pmIdx": 0,
+    "kind": "total",
+    "line": 141.5,
+    "label": "Toplam sayı 141,5 Üst",
+    "minPlay": 1.84,
+    "odds": 1.79,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": [
+    {
+     "label": "Toplam sayı 142,5 Üst",
+     "minPlay": 1.91
+    },
+    {
+     "label": "West Virginia Mountaineers +1,5 handikap",
+     "minPlay": 1.96
+    },
+    {
+     "label": "Toplam sayı 143,5 Üst",
+     "minPlay": 2.02
+    }
+   ]
+  },
+  {
    "id": "pm-uwcl-rma-im-2026-11-18",
    "sport": "football",
    "league": "Women's Champions League",
@@ -9686,7 +9395,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9196,
+    "p": 0.92,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9714,9 +9423,9 @@
     "kind": "ms",
     "line": null,
     "label": "MS 1 (ev sahibi kazanır)",
-    "p": 0.77,
-    "odds": 1.3,
-    "minPlay": 1.34
+    "p": 0.775,
+    "odds": 1.29,
+    "minPlay": 1.33
    }
   },
   {
@@ -9734,12 +9443,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.904,
+    "p": 0.9086,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.3,
-    "odds": 1.11,
+    "odds": 1.1,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -9782,12 +9491,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8543,
+    "p": 0.8458,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.3,
-    "odds": 1.17,
+    "odds": 1.18,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -9799,7 +9508,7 @@
     },
     {
      "label": "MS 2",
-     "minPlay": 1.68
+     "minPlay": 1.7
     }
    ],
    "fpm": {
@@ -9830,20 +9539,20 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.702,
+    "p": 0.7035,
     "lowOdds": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
     "minPlay": 1.45,
-    "odds": 1.43,
+    "odds": 1.42,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 1.46
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
@@ -9878,12 +9587,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8485,
+    "p": 0.8528,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.3,
-    "odds": 1.18,
+    "odds": 1.17,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -9895,7 +9604,7 @@
     },
     {
      "label": "MS 2",
-     "minPlay": 1.67
+     "minPlay": 1.66
     }
    ],
    "fpm": {
@@ -9926,7 +9635,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.799,
+    "p": 0.796,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -9975,12 +9684,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7438,
+    "p": 0.7451,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.37,
-    "odds": 1.35,
+    "odds": 1.34,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -9992,7 +9701,7 @@
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.87
+     "minPlay": 1.88
     }
    ],
    "fpm": {
@@ -10023,12 +9732,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.686,
+    "p": 0.6814,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.49,
-    "odds": 1.46,
+    "minPlay": 1.5,
+    "odds": 1.47,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -10036,7 +9745,7 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.52
+     "minPlay": 1.51
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
@@ -10045,15 +9754,16 @@
    ],
    "fpm": {
     "rule": "fpm",
-    "key": "PM_5745088_1",
-    "pmId": "5745088",
+    "key": "PM_5745082_1",
+    "pmId": "5745082",
     "pmIdx": 1,
-    "kind": "dc",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.55,
+    "odds": 1.5,
+    "b365": null,
+    "side": null,
     "line": null,
-    "label": "Ev sahibi kaybetmez (1X)",
-    "p": 0.63,
-    "odds": 1.59,
-    "minPlay": 1.63
+    "kayit": true
    }
   },
   {
@@ -10071,12 +9781,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7277,
+    "p": 0.7241,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.4,
-    "odds": 1.37,
+    "minPlay": 1.41,
+    "odds": 1.38,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -10099,9 +9809,9 @@
     "kind": "dc",
     "line": null,
     "label": "Beraberlik olmaz (12)",
-    "p": 0.725,
-    "odds": 1.38,
-    "minPlay": 1.42
+    "p": 0.72,
+    "odds": 1.39,
+    "minPlay": 1.43
    }
   },
   {
@@ -10167,12 +9877,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.885,
+    "p": 0.901,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.13,
+    "odds": 1.11,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -10184,7 +9894,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.44
+     "minPlay": 1.4
     }
    ],
    "fpm": {
@@ -10195,9 +9905,9 @@
     "kind": "ms",
     "line": null,
     "label": "MS 1 (ev sahibi kazanır)",
-    "p": 0.71,
-    "odds": 1.41,
-    "minPlay": 1.45
+    "p": 0.735,
+    "odds": 1.36,
+    "minPlay": 1.4
    }
   },
   {
@@ -10482,8 +10192,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "76ers kazanır",
-    "minPlay": 1.79,
-    "odds": 1.74,
+    "minPlay": 1.82,
+    "odds": 1.77,
     "unverified": true,
     "rule": "test"
    },
@@ -10650,8 +10360,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Pistons kazanır",
-    "minPlay": 1.46,
-    "odds": 1.42,
+    "minPlay": 1.48,
+    "odds": 1.44,
     "unverified": true,
     "rule": "test"
    },
@@ -10674,8 +10384,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Thunder kazanır",
-    "minPlay": 1.48,
-    "odds": 1.44,
+    "minPlay": 1.53,
+    "odds": 1.48,
     "unverified": true,
     "rule": "test"
    },
@@ -10825,7 +10535,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7861,
+    "p": 0.7889,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -10842,7 +10552,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.82
+     "minPlay": 1.8
     }
    ],
    "fpm": {
@@ -10853,9 +10563,9 @@
     "kind": "dc",
     "line": null,
     "label": "Ev sahibi kaybetmez (1X)",
-    "p": 0.785,
+    "p": 0.79,
     "odds": 1.27,
-    "minPlay": 1.31
+    "minPlay": 1.3
    }
   },
   {
@@ -10873,7 +10583,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.992,
+    "p": 0.9915,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -10909,12 +10619,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7612,
+    "p": 0.7574,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.34,
-    "odds": 1.31,
+    "minPlay": 1.35,
+    "odds": 1.32,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -10922,7 +10632,7 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.48
+     "minPlay": 1.47
     },
     {
      "label": "Deplasman kaybetmez (X2)",
@@ -10937,7 +10647,7 @@
     "kind": "dc",
     "line": null,
     "label": "Beraberlik olmaz (12)",
-    "p": 0.76,
+    "p": 0.755,
     "odds": 1.32,
     "minPlay": 1.36
    }
@@ -10957,10 +10667,10 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.745,
+    "p": 0.7463,
     "lowOdds": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.37,
     "odds": 1.34,
     "estOdds": null,
@@ -10969,12 +10679,12 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.39
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.37
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.96
+     "minPlay": 2.01
     }
    ],
    "fpm": {
@@ -11384,6 +11094,72 @@
  },
  "verdict": "Geçmiş testlerde motor çok tutturdu ama kâr kanıtlanmadı; beklenti en iyi ihtimalle sıfıra yakın. Oran sınırını geçmeyen maçı oynama, küçük ve sabit birimle kal.",
  "tipRecent": [
+  {
+   "id": "pm-live-90123602#canli",
+   "rule": "canli",
+   "pmId": "6654402",
+   "pmIdx": 1,
+   "sport": "football",
+   "league": "Fifa Friendly",
+   "kickoff": "2026-11-17T12:00:00.000Z",
+   "date": "2026-11-17",
+   "home": "China PR",
+   "away": "Bahrain",
+   "fdDiv": null,
+   "sportKey": null,
+   "key": "PM_6654402_1",
+   "kind": "spreads",
+   "side": null,
+   "line": null,
+   "unverified": false,
+   "label": "China PR +1,5 handikap",
+   "minPlay": 1.33,
+   "odds": 1.33,
+   "estOdds": null,
+   "b365": null,
+   "recordedAt": "2026-11-17T13:00:00.918Z",
+   "safe": true,
+   "status": "won",
+   "liveScore": "1-2",
+   "livePeriod": "HT",
+   "p0": 0.775,
+   "won": true,
+   "score": "",
+   "profit": 0.33
+  },
+  {
+   "id": "pm-fif-chn-bah1-2026-11-17#fpm",
+   "rule": "fpm",
+   "pmId": "6635009",
+   "pmIdx": 1,
+   "sport": "football",
+   "league": "Fifa Friendly",
+   "kickoff": "2026-11-17T12:00:00Z",
+   "date": "2026-11-17",
+   "home": "China PR",
+   "away": "Bahrain",
+   "fdDiv": null,
+   "sportKey": null,
+   "key": "PM_6635009_1",
+   "kind": "dc",
+   "side": null,
+   "line": null,
+   "unverified": false,
+   "label": "Ev sahibi kaybetmez (1X)",
+   "minPlay": 1.36,
+   "odds": 1.32,
+   "estOdds": null,
+   "b365": null,
+   "recordedAt": "2026-11-17T11:33:52.813Z",
+   "safe": true,
+   "status": "won",
+   "lastFair": 0.725,
+   "lastAt": "2026-11-17T11:48:51.589Z",
+   "clv": -0.014,
+   "won": true,
+   "score": "",
+   "profit": 0.36
+  },
   {
    "id": "pm-cbb-will-minnst-2026-11-16#test",
    "rule": "test",
@@ -11807,241 +11583,9 @@
    "won": true,
    "score": "",
    "profit": 0.5
-  },
-  {
-   "id": "pm-cbb-sdst-nmxst-2026-11-15#test",
-   "rule": "test",
-   "pmId": "7048116",
-   "pmIdx": 0,
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-15T20:30:00Z",
-   "date": "2026-11-15",
-   "home": "San Diego State Aztecs",
-   "away": "New Mexico State Aggies",
-   "fdDiv": null,
-   "sportKey": null,
-   "key": "PM_7048116_0",
-   "kind": "spread",
-   "side": null,
-   "line": -11.5,
-   "unverified": true,
-   "label": "San Diego State Aztecs -11,5 handikap",
-   "minPlay": 1.91,
-   "odds": 1.85,
-   "estOdds": null,
-   "b365": null,
-   "recordedAt": "2026-11-15T19:41:20.185Z",
-   "safe": true,
-   "status": "won",
-   "lastFair": 0.54,
-   "lastAt": "2026-11-15T19:41:20.185Z",
-   "clv": 0.031,
-   "won": true,
-   "score": "",
-   "profit": 0.91
-  },
-  {
-   "id": "pm-cwbb-okst-sdkst-2026-11-15#test",
-   "rule": "test",
-   "pmId": "6906569",
-   "pmIdx": 0,
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-15T19:00:00Z",
-   "date": "2026-11-15",
-   "home": "Oklahoma State Cowboys",
-   "away": "South Dakota State Jackrabbits (W)",
-   "fdDiv": null,
-   "sportKey": null,
-   "key": "PM_6906569_0",
-   "kind": "side",
-   "side": null,
-   "line": null,
-   "unverified": true,
-   "label": "Oklahoma State Cowboys kazanır",
-   "minPlay": 1.67,
-   "odds": 1.63,
-   "estOdds": null,
-   "b365": null,
-   "recordedAt": "2026-11-15T18:06:07.491Z",
-   "safe": true,
-   "status": "won",
-   "lastFair": 0.625,
-   "lastAt": "2026-11-15T18:46:05.841Z",
-   "clv": 0.044,
-   "won": true,
-   "score": "",
-   "profit": 0.67
   }
  ],
  "allMatches": [
-  {
-   "id": "pm-fif-ksa-uzb-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T15:30:00Z",
-   "home": "Saudi Arabia",
-   "away": "Uzbekistan",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.423,
-    "odds": 2.36
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-fif-jor-aus-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Jordan",
-   "away": "Australia",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.572,
-    "odds": 1.75
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-fif-rus-ven-2026-11-17",
-   "sport": "football",
-   "league": "Fifa Friendly",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Russia",
-   "away": "Venezuela",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.682,
-    "odds": 1.47
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-gam-ic-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Gambia",
-   "away": "Ivory Coast",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.616,
-    "odds": 1.62
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-ken-sa-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Kenya",
-   "away": "South Africa",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.533,
-    "odds": 1.88
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-sl-dc-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Sierra Leone",
-   "away": "DR Congo",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.729,
-    "odds": 1.37
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-lib-tun-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Libya",
-   "away": "Tunisia",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.429,
-    "odds": 2.33
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-tog-alg-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Togo",
-   "away": "Algeria",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.59,
-    "odds": 1.69
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-afcq-gb-mad-2026-11-17",
-   "sport": "football",
-   "league": "Africa Cup of Nations Qualifiers",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Guinea-Bissau",
-   "away": "Madagascar",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.648,
-    "odds": 1.54
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cbb-wilson-del-2026-11-17",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-17T16:00:00Z",
-   "home": "Wilson Phoenix",
-   "away": "Delaware Fightin' Blue Hens",
-   "dayKey": "2026-11-17",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
   {
    "id": "pm-cbb-murst-hofst-2026-11-17",
    "sport": "basketball",
@@ -12069,74 +11613,6 @@
    "isPick": false
   },
   {
-   "id": "pm-conl-dma-cay-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "Dominica",
-   "away": "Cayman Islands",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.711,
-    "odds": 1.41
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-conl-blz-sxm-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "Belize",
-   "away": "Sint Maarten",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.5,
-    "odds": 2
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-conl-lca-brb-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "St. Lucia",
-   "away": "Barbados",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.58,
-    "odds": 1.72
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-conl-skn-bon-2026-11-17",
-   "sport": "football",
-   "league": "Concacaf Nations League",
-   "kickoff": "2026-11-17T19:00:00Z",
-   "home": "St. Kitts and Nevis",
-   "away": "Bonaire",
-   "dayKey": "2026-11-17",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.493,
-    "odds": 2.03
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-afcq-mau-bf-2026-11-17",
    "sport": "football",
    "league": "Africa Cup of Nations Qualifiers",
@@ -12146,7 +11622,7 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 2",
-    "probability": 0.365,
+    "probability": 0.366,
     "odds": 2.74
    },
    "lowOdds": false,
@@ -12163,8 +11639,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 1",
-    "probability": 0.458,
-    "odds": 2.18
+    "probability": 0.457,
+    "odds": 2.19
    },
    "lowOdds": false,
    "pick": null,
@@ -12180,8 +11656,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 1",
-    "probability": 0.363,
-    "odds": 2.75
+    "probability": 0.357,
+    "odds": 2.8
    },
    "lowOdds": false,
    "pick": null,
@@ -12214,8 +11690,76 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 2",
-    "probability": 0.512,
-    "odds": 1.95
+    "probability": 0.518,
+    "odds": 1.93
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-conl-dma-cay-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "Dominica",
+   "away": "Cayman Islands",
+   "dayKey": "2026-11-17",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.701,
+    "odds": 1.43
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-conl-blz-sxm-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "Belize",
+   "away": "Sint Maarten",
+   "dayKey": "2026-11-17",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.495,
+    "odds": 2.02
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-conl-lca-brb-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "St. Lucia",
+   "away": "Barbados",
+   "dayKey": "2026-11-17",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.572,
+    "odds": 1.75
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-conl-skn-bon-2026-11-17",
+   "sport": "football",
+   "league": "Concacaf Nations League",
+   "kickoff": "2026-11-17T19:00:00Z",
+   "home": "St. Kitts and Nevis",
+   "away": "Bonaire",
+   "dayKey": "2026-11-17",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.483,
+    "odds": 2.07
    },
    "lowOdds": false,
    "pick": null,
@@ -12244,8 +11788,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 2",
-    "probability": 0.393,
-    "odds": 2.54
+    "probability": 0.399,
+    "odds": 2.51
    },
    "lowOdds": false,
    "pick": null,
@@ -12295,8 +11839,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 1",
-    "probability": 0.447,
-    "odds": 2.24
+    "probability": 0.453,
+    "odds": 2.21
    },
    "lowOdds": false,
    "pick": null,
@@ -12312,8 +11856,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 1",
-    "probability": 0.448,
-    "odds": 2.23
+    "probability": 0.438,
+    "odds": 2.28
    },
    "lowOdds": false,
    "pick": null,
@@ -12363,8 +11907,8 @@
    "dayKey": "2026-11-17",
    "top": {
     "selection": "MS 1",
-    "probability": 0.477,
-    "odds": 2.09
+    "probability": 0.488,
+    "odds": 2.05
    },
    "lowOdds": false,
    "pick": null,
@@ -12406,8 +11950,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.47,
-    "odds": 2.13
+    "probability": 0.473,
+    "odds": 2.12
    },
    "lowOdds": false,
    "pick": null,
@@ -12440,8 +11984,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Southern Illinois Salukis",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.55,
+    "odds": 1.82
    },
    "lowOdds": false,
    "pick": null,
@@ -12792,8 +12336,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Mount St. Mary's Mountaineers",
-    "probability": 0.51,
-    "odds": 1.96
+    "probability": 0.525,
+    "odds": 1.9
    },
    "lowOdds": false,
    "pick": null,
@@ -12809,8 +12353,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Green Bay Phoenix",
-    "probability": 0.705,
-    "odds": 1.42
+    "probability": 0.67,
+    "odds": 1.49
    },
    "lowOdds": false,
    "pick": null,
@@ -12886,8 +12430,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Davidson Wildcats",
-    "probability": 0.615,
-    "odds": 1.63
+    "probability": 0.61,
+    "odds": 1.64
    },
    "lowOdds": false,
    "pick": null,
@@ -12954,8 +12498,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Arkansas Razorbacks",
-    "probability": 0.515,
-    "odds": 1.94
+    "probability": 0.505,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -13014,8 +12558,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Timberwolves",
-    "probability": 0.545,
-    "odds": 1.83
+    "probability": 0.535,
+    "odds": 1.87
    },
    "lowOdds": false,
    "pick": null,
@@ -13044,8 +12588,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 1",
-    "probability": 0.741,
-    "odds": 1.35
+    "probability": 0.745,
+    "odds": 1.34
    },
    "lowOdds": false,
    "pick": null,
@@ -13104,8 +12648,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Evansville Purple Aces",
-    "probability": 0.765,
-    "odds": 1.31
+    "probability": 0.745,
+    "odds": 1.34
    },
    "lowOdds": false,
    "pick": null,
@@ -13151,8 +12695,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Middle Tennessee Blue Raiders",
-    "probability": 0.54,
-    "odds": 1.85
+    "probability": 0.535,
+    "odds": 1.87
    },
    "lowOdds": false,
    "pick": null,
@@ -13215,8 +12759,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Lamar Cardinals",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.54,
+    "odds": 1.85
    },
    "lowOdds": false,
    "pick": null,
@@ -13262,8 +12806,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Southern Miss Golden Eagles",
-    "probability": 0.56,
-    "odds": 1.79
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -13447,8 +12991,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Stanford Cardinal",
-    "probability": 0.745,
-    "odds": 1.34
+    "probability": 0.73,
+    "odds": 1.37
    },
    "lowOdds": false,
    "pick": null,
@@ -13464,8 +13008,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "Clippers",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.685,
+    "odds": 1.46
    },
    "lowOdds": false,
    "pick": null,
@@ -13481,6 +13025,23 @@
    "dayKey": "2026-11-18",
    "top": null,
    "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-wvir-aubrn-2026-11-17",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-18T04:59:00Z",
+   "home": "West Virginia Mountaineers",
+   "away": "Auburn Tigers",
+   "dayKey": "2026-11-18",
+   "top": {
+    "selection": "Auburn Tigers",
+    "probability": 0.505,
+    "odds": 1.98
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -13507,8 +13068,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.742,
-    "odds": 1.35
+    "probability": 0.746,
+    "odds": 1.34
    },
    "lowOdds": false,
    "pick": null,
@@ -13524,8 +13085,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.608,
-    "odds": 1.64
+    "probability": 0.602,
+    "odds": 1.66
    },
    "lowOdds": false,
    "pick": null,
@@ -13541,8 +13102,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.404,
-    "odds": 2.48
+    "probability": 0.402,
+    "odds": 2.49
    },
    "lowOdds": false,
    "pick": null,
@@ -13558,8 +13119,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.611,
-    "odds": 1.64
+    "probability": 0.614,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -13575,7 +13136,7 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.543,
+    "probability": 0.542,
     "odds": 1.84
    },
    "lowOdds": false,
@@ -13592,8 +13153,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.453,
-    "odds": 2.21
+    "probability": 0.456,
+    "odds": 2.19
    },
    "lowOdds": false,
    "pick": null,
@@ -13609,8 +13170,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 2",
-    "probability": 0.357,
-    "odds": 2.8
+    "probability": 0.358,
+    "odds": 2.79
    },
    "lowOdds": false,
    "pick": null,
@@ -13626,8 +13187,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 1",
-    "probability": 0.441,
-    "odds": 2.27
+    "probability": 0.438,
+    "odds": 2.28
    },
    "lowOdds": false,
    "pick": null,
@@ -13660,8 +13221,8 @@
    "dayKey": "2026-11-18",
    "top": {
     "selection": "MS 1",
-    "probability": 0.71,
-    "odds": 1.41
+    "probability": 0.728,
+    "odds": 1.37
    },
    "lowOdds": false,
    "pick": null,
@@ -13788,8 +13349,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "76ers",
-    "probability": 0.575,
-    "odds": 1.74
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -13873,8 +13434,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "Pistons",
-    "probability": 0.705,
-    "odds": 1.42
+    "probability": 0.695,
+    "odds": 1.44
    },
    "lowOdds": false,
    "pick": null,
@@ -13890,8 +13451,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "Thunder",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.675,
+    "odds": 1.48
    },
    "lowOdds": false,
    "pick": null,
@@ -13984,8 +13545,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "MS 1",
-    "probability": 0.562,
-    "odds": 1.78
+    "probability": 0.568,
+    "odds": 1.76
    },
    "lowOdds": false,
    "pick": null,
@@ -14014,8 +13575,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "MS 1",
-    "probability": 0.453,
-    "odds": 2.21
+    "probability": 0.45,
+    "odds": 2.22
    },
    "lowOdds": false,
    "pick": null,
@@ -14031,8 +13592,8 @@
    "dayKey": "2026-11-19",
    "top": {
     "selection": "MS 2",
-    "probability": 0.48,
-    "odds": 2.08
+    "probability": 0.493,
+    "odds": 2.03
    },
    "lowOdds": false,
    "pick": null,
@@ -14041,13 +13602,13 @@
  ],
  "unmatched": 0,
  "stats": {
-  "evaluated": 138,
-  "withOdds": 138,
-  "modelled": 57,
+  "evaluated": 129,
+  "withOdds": 129,
+  "modelled": 48,
   "filtered": 0,
   "thin": 0,
   "byEvaluated": {
-   "football": 57,
+   "football": 48,
    "basketball": 81
   },
   "knownToday": {
@@ -14078,7 +13639,7 @@
   },
   "Polymarket": {
    "ok": true,
-   "info": "277 maç, 0 tanesi eşleşti, 138 tanesi yeni eklendi"
+   "info": "273 maç, 0 tanesi eşleşti, 129 tanesi yeni eklendi"
   },
   "TheSportsDB (maç sayımı)": {
    "ok": true,
@@ -14102,7 +13663,7 @@
   },
   "Canlı maçlar (Polymarket)": {
    "ok": true,
-   "info": "31 canlı etkinlik, 1 tahmin"
+   "info": "47 canlı etkinlik, 4 tahmin"
   },
   "API-Football (sakat/cezalı)": {
    "ok": false,
@@ -14110,7 +13671,7 @@
   }
  },
  "everyMatch": {
-  "pending": 2231,
+  "pending": 2230,
   "done": 715,
   "motor": 0.5016,
   "piyasa": 0.5033,
