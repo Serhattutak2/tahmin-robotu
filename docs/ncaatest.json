@@ -22,514 +22,322 @@
  "matched": 15224,
  "spreadSign": -1,
  "modelGrid": {
-  "lr0.04_c0.5": {
+  "yarilanma30.0_onsel3.0": {
+   "maeModelTot": 13.45,
+   "maeLineTot": 12.93,
+   "maeModelMar": 11.37,
+   "maeLineMar": 8.75
+  },
+  "yarilanma30.0_onsel8.0": {
    "maeModelTot": 13.55,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.76,
-   "maeLineMar": 8.74
+   "maeLineTot": 12.93,
+   "maeModelMar": 11.85,
+   "maeLineMar": 8.75
   },
-  "lr0.04_c0.7": {
-   "maeModelTot": 13.53,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.66,
-   "maeLineMar": 8.74
+  "yarilanma60.0_onsel3.0": {
+   "maeModelTot": 13.45,
+   "maeLineTot": 12.93,
+   "maeModelMar": 11.16,
+   "maeLineMar": 8.75
   },
-  "lr0.06_c0.5": {
-   "maeModelTot": 13.56,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.53,
-   "maeLineMar": 8.74
-  },
-  "lr0.06_c0.7": {
-   "maeModelTot": 13.54,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.41,
-   "maeLineMar": 8.74
-  },
-  "lr0.09_c0.5": {
-   "maeModelTot": 13.66,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.35,
-   "maeLineMar": 8.74
-  },
-  "lr0.09_c0.7": {
-   "maeModelTot": 13.64,
-   "maeLineTot": 12.87,
-   "maeModelMar": 11.22,
-   "maeLineMar": 8.74
+  "yarilanma60.0_onsel8.0": {
+   "maeModelTot": 13.46,
+   "maeLineTot": 12.93,
+   "maeModelMar": 11.63,
+   "maeLineMar": 8.75
   }
  },
  "chosen": {
-  "lr": 0.09,
-  "carry": 0.7
+  "half": 60.0,
+  "priorW": 3.0
  },
  "k": {
-  "toplam": 0.041,
-  "handikap": 0.027
+  "toplam": 0.116,
+  "handikap": 0.058
  },
  "kBySeason": {
   "2022": {
-   "toplam": 0.037,
-   "handikap": 0.038
+   "toplam": 0.122,
+   "handikap": 0.058
   },
   "2023": {
-   "toplam": 0.113,
-   "handikap": 0.046
+   "toplam": 0.11,
+   "handikap": 0.058
   },
   "2024": {
-   "toplam": -0.053,
-   "handikap": -0.032
-  },
-  "2025": {
-   "toplam": 0,
-   "handikap": 0
-  },
-  "2026": {
-   "toplam": 0,
-   "handikap": 0
-  },
-  "2027": {
-   "toplam": 0,
-   "handikap": 0
+   "toplam": -0.059,
+   "handikap": -0.024
   }
  },
  "grid": {
   "toplam kenar>=1.0 maç>=0": {
    "egitim": {
-    "n": 13,
-    "isabet": 53.8,
-    "kar": 0.4,
-    "getiri100": 2.8
+    "n": 437,
+    "isabet": 51.9,
+    "kar": -3.4,
+    "getiri100": -0.8
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 103,
+    "isabet": 42.7,
+    "kar": -19.0,
+    "getiri100": -18.4
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 103,
+    "isabet": 42.7,
+    "kar": -19.0,
+    "getiri100": -18.4
    }
   },
   "toplam kenar>=1.0 maç>=5": {
    "egitim": {
-    "n": 5,
-    "isabet": 60.0,
-    "kar": 0.7,
-    "getiri100": 14.6
+    "n": 202,
+    "isabet": 50.5,
+    "kar": -7.2,
+    "getiri100": -3.6
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 52,
+    "isabet": 44.2,
+    "kar": -8.1,
+    "getiri100": -15.5
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 52,
+    "isabet": 44.2,
+    "kar": -8.1,
+    "getiri100": -15.5
    }
   },
   "toplam kenar>=1.0 maç>=10": {
+   "egitim": {
+    "n": 93,
+    "isabet": 58.1,
+    "kar": 10.1,
+    "getiri100": 10.9
+   },
+   "2024": {
+    "n": 34,
+    "isabet": 38.2,
+    "kar": -9.2,
+    "getiri100": -27.0
+   },
+   "test": {
+    "n": 34,
+    "isabet": 38.2,
+    "kar": -9.2,
+    "getiri100": -27.0
+   }
+  },
+  "toplam kenar>=1.5 maç>=0": {
+   "egitim": {
+    "n": 138,
+    "isabet": 51.4,
+    "kar": -2.4,
+    "getiri100": -1.7
+   },
+   "2024": {
+    "n": 24,
+    "isabet": 33.3,
+    "kar": -8.7,
+    "getiri100": -36.3
+   },
+   "test": {
+    "n": 24,
+    "isabet": 33.3,
+    "kar": -8.7,
+    "getiri100": -36.3
+   }
+  },
+  "toplam kenar>=1.5 maç>=5": {
+   "egitim": {
+    "n": 50,
+    "isabet": 48.0,
+    "kar": -4.2,
+    "getiri100": -8.3
+   },
+   "2024": {
+    "n": 11,
+    "isabet": 27.3,
+    "kar": -5.3,
+    "getiri100": -47.9
+   },
+   "test": {
+    "n": 11,
+    "isabet": 27.3,
+    "kar": -5.3,
+    "getiri100": -47.9
+   }
+  },
+  "toplam kenar>=1.5 maç>=10": {
+   "egitim": {
+    "n": 25,
+    "isabet": 60.0,
+    "kar": 3.6,
+    "getiri100": 14.6
+   },
+   "2024": {
+    "n": 7,
+    "isabet": 28.6,
+    "kar": -3.2,
+    "getiri100": -45.4
+   },
+   "test": {
+    "n": 7,
+    "isabet": 28.6,
+    "kar": -3.2,
+    "getiri100": -45.4
+   }
+  },
+  "toplam kenar>=2.0 maç>=0": {
+   "egitim": {
+    "n": 51,
+    "isabet": 52.9,
+    "kar": 0.6,
+    "getiri100": 1.1
+   },
+   "2024": {
+    "n": 9,
+    "isabet": 33.3,
+    "kar": -3.3,
+    "getiri100": -36.3
+   },
+   "test": {
+    "n": 9,
+    "isabet": 33.3,
+    "kar": -3.3,
+    "getiri100": -36.3
+   }
+  },
+  "toplam kenar>=2.0 maç>=5": {
+   "egitim": {
+    "n": 17,
+    "isabet": 64.7,
+    "kar": 4.0,
+    "getiri100": 23.6
+   },
+   "2024": {
+    "n": 2,
+    "isabet": 50.0,
+    "kar": -0.1,
+    "getiri100": -4.5
+   },
+   "test": {
+    "n": 2,
+    "isabet": 50.0,
+    "kar": -0.1,
+    "getiri100": -4.5
+   }
+  },
+  "toplam kenar>=2.0 maç>=10": {
+   "egitim": {
+    "n": 11,
+    "isabet": 81.8,
+    "kar": 6.2,
+    "getiri100": 56.3
+   },
+   "2024": {
+    "n": 2,
+    "isabet": 50.0,
+    "kar": -0.1,
+    "getiri100": -4.5
+   },
+   "test": {
+    "n": 2,
+    "isabet": 50.0,
+    "kar": -0.1,
+    "getiri100": -4.5
+   }
+  },
+  "toplam kenar>=2.5 maç>=0": {
+   "egitim": {
+    "n": 22,
+    "isabet": 63.6,
+    "kar": 4.7,
+    "getiri100": 21.5
+   },
+   "2024": {
+    "n": 5,
+    "isabet": 40.0,
+    "kar": -1.2,
+    "getiri100": -23.6
+   },
+   "test": {
+    "n": 5,
+    "isabet": 40.0,
+    "kar": -1.2,
+    "getiri100": -23.6
+   }
+  },
+  "toplam kenar>=2.5 maç>=5": {
+   "egitim": {
+    "n": 10,
+    "isabet": 70.0,
+    "kar": 3.4,
+    "getiri100": 33.7
+   },
+   "2024": {
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
+   },
+   "test": {
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
+   }
+  },
+  "toplam kenar>=2.5 maç>=10": {
+   "egitim": {
+    "n": 8,
+    "isabet": 75.0,
+    "kar": 3.5,
+    "getiri100": 43.2
+   },
+   "2024": {
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
+   },
+   "test": {
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
+   }
+  },
+  "toplam kenar>=3.0 maç>=0": {
+   "egitim": {
+    "n": 9,
+    "isabet": 55.6,
+    "kar": 0.5,
+    "getiri100": 6.1
+   },
+   "2024": {
+    "n": 3,
+    "isabet": 33.3,
+    "kar": -1.1,
+    "getiri100": -36.3
+   },
+   "test": {
+    "n": 3,
+    "isabet": 33.3,
+    "kar": -1.1,
+    "getiri100": -36.3
+   }
+  },
+  "toplam kenar>=3.0 maç>=5": {
    "egitim": {
     "n": 4,
     "isabet": 75.0,
     "kar": 1.7,
     "getiri100": 43.2
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=1.5 maç>=0": {
-   "egitim": {
-    "n": 1,
-    "isabet": 0.0,
-    "kar": -1.0,
-    "getiri100": -100.0
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=1.5 maç>=5": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=1.5 maç>=10": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.0 maç>=0": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.0 maç>=5": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.0 maç>=10": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.5 maç>=0": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.5 maç>=5": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=2.5 maç>=10": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=3.0 maç>=0": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   }
-  },
-  "toplam kenar>=3.0 maç>=5": {
-   "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -544,24 +352,12 @@
   },
   "toplam kenar>=3.0 maç>=10": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 4,
+    "isabet": 75.0,
+    "kar": 1.7,
+    "getiri100": 43.2
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -581,29 +377,17 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 1,
+    "isabet": 0.0,
+    "kar": -1.0,
+    "getiri100": -100.0
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 0.0,
+    "kar": -1.0,
+    "getiri100": -100.0
    }
   },
   "toplam kenar>=4.0 maç>=5": {
@@ -613,19 +397,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -645,19 +417,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -672,88 +432,52 @@
   },
   "handikap kenar>=1.0 maç>=0": {
    "egitim": {
-    "n": 4,
-    "isabet": 50.0,
-    "kar": -0.2,
-    "getiri100": -4.5
+    "n": 147,
+    "isabet": 56.5,
+    "kar": 11.5,
+    "getiri100": 7.8
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 21,
+    "isabet": 42.9,
+    "kar": -3.8,
+    "getiri100": -18.1
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 21,
+    "isabet": 42.9,
+    "kar": -3.8,
+    "getiri100": -18.1
    }
   },
   "handikap kenar>=1.0 maç>=5": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 9,
+    "isabet": 77.8,
+    "kar": 4.4,
+    "getiri100": 48.6
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    }
   },
   "handikap kenar>=1.0 maç>=10": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 3,
+    "isabet": 66.7,
+    "kar": 0.8,
+    "getiri100": 27.3
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -768,56 +492,32 @@
   },
   "handikap kenar>=1.5 maç>=0": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 30,
+    "isabet": 66.7,
+    "kar": 8.2,
+    "getiri100": 27.3
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+   "2024": {
+    "n": 1,
+    "isabet": 0.0,
+    "kar": -1.0,
+    "getiri100": -100.0
    },
    "test": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 0.0,
+    "kar": -1.0,
+    "getiri100": -100.0
    }
   },
   "handikap kenar>=1.5 maç>=5": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -837,19 +537,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -864,24 +552,12 @@
   },
   "handikap kenar>=2.0 maç>=0": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 7,
+    "isabet": 57.1,
+    "kar": 0.6,
+    "getiri100": 9.1
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -896,24 +572,12 @@
   },
   "handikap kenar>=2.0 maç>=5": {
    "egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -933,19 +597,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -965,19 +617,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -997,19 +637,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1029,19 +657,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1061,19 +677,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1093,19 +697,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1125,19 +717,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1157,19 +737,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1189,19 +757,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1221,19 +777,7 @@
     "kar": 0.0,
     "getiri100": null
    },
-   "2025": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2026": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
-   },
-   "2027": {
+   "2024": {
     "n": 0,
     "isabet": null,
     "kar": 0.0,
@@ -1250,54 +794,54 @@
  "toplamYon": {
   "kenar>=1.5": {
    "alt": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 5,
+    "isabet": 20.0,
+    "kar": -3.1,
+    "getiri100": -61.8
    },
    "ust": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 6,
+    "isabet": 33.3,
+    "kar": -2.2,
+    "getiri100": -36.3
    },
    "alt_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 13,
+    "isabet": 30.8,
+    "kar": -5.4,
+    "getiri100": -41.2
    },
    "ust_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 37,
+    "isabet": 54.1,
+    "kar": 1.2,
+    "getiri100": 3.2
    }
   },
   "kenar>=2.0": {
    "alt": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 0.0,
+    "kar": -1.0,
+    "getiri100": -100.0
    },
    "ust": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    },
    "alt_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 6,
+    "isabet": 50.0,
+    "kar": -0.3,
+    "getiri100": -4.5
    },
    "ust_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 11,
+    "isabet": 72.7,
+    "kar": 4.3,
+    "getiri100": 38.9
    }
   },
   "kenar>=3.0": {
@@ -1314,16 +858,16 @@
     "getiri100": null
    },
    "alt_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 1,
+    "isabet": 100.0,
+    "kar": 0.9,
+    "getiri100": 91.0
    },
    "ust_egitim": {
-    "n": 0,
-    "isabet": null,
-    "kar": 0.0,
-    "getiri100": null
+    "n": 3,
+    "isabet": 66.7,
+    "kar": 0.8,
+    "getiri100": 27.3
    }
   }
  }
