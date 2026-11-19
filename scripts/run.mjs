@@ -477,7 +477,7 @@ fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
 // Sitede gösterilen tahminler tek kaynaktan (tahmin defteri) gelir: maç başlayınca ya da bitince de sayfada kalır, sonucu yanına yazılır.
 const shownTip = t => { const o = t.odds || t.minPlay;
   if (t.sport === "football") return (t.rule === "ah" && o >= 1.3 && o <= 3.2) || (t.rule === "fiyat" && (t.b365 || t.odds) >= 1.3 && (t.b365 || t.odds) <= 3.2) || (t.rule === "fpm" && t.minPlay >= 1.3);
-  if (t.sport === "basketball") return (t.rule === "test" || t.rule === "basket") && t.kind !== "total" && o >= 1.3 && o <= 2.1 && !/^nba$/i.test(t.league || "") && !/^pm-nba/.test(t.id);
+  if (t.sport === "basketball") return (t.rule === "test" || t.rule === "basket") && t.kind !== "total" && o >= 1.3 && o <= 2.1 && !/^nba$/i.test(t.league || "") && !/^pm-nba/.test(t.id) && !((/^pm-cbb/.test(t.id) || /ncaa/i.test(t.league || "")) && t.kind !== "spread");
   if (t.sport === "volleyball") return t.rule === "voley";
   return false; };
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "voley" ? "voley" : t.kind === "spread" ? "basket-handikap" : "basket-taraf";
