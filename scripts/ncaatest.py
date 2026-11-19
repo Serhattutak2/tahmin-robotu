@@ -192,7 +192,7 @@ for lr in (0.04, 0.06, 0.09):
     for carry in (0.5, 0.7):
         recs = run(lr=lr, carry=carry)
         tr = [r for r in recs if r["season"] in TRAIN]
-        mae = lambda rs, a, b: sum(abs(r[a] - r[b]) for r in rs if r[b] is not None) / max(1, sum(1 for r in rs if r[b] is not None))
+        mae = lambda rs, a, b: sum(abs(r[a] - r[b]) for r in rs if r[a] is not None and r[b] is not None) / max(1, sum(1 for r in rs if r[a] is not None and r[b] is not None))
         key = f"lr{lr}_c{carry}"
         results[key] = dict(maeModelTot=round(mae(tr, "pt", "at"), 2), maeLineTot=round(mae(tr, "lt", "at"), 2), maeModelMar=round(mae(tr, "pm", "am"), 2), maeLineMar=round(mae(tr, "ls", "am"), 2))
         score = results[key]["maeModelTot"] + results[key]["maeModelMar"]
