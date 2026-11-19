@@ -15,52 +15,44 @@ def get(u):
     with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "tahmin-robotu"}), timeout=120) as r:
         return r.read()
 
-frames = []
+SCHED = "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/ncaa_mbb_schedule/ncaa_mbb_schedule_{}.csv.gz"
+frames, sfr = [], []
 for s in SEASONS:
     try:
-        b = pd.read_csv(io.BytesIO(gzip.decompress(get(BOX.format(s)))), low_memory=False)
-        b["season"] = s
-        frames.append(b)
-        print(s, len(b), file=sys.stderr)
+        b = pd.read_csv(io.BytesIO(gzip.decompress(get(BOX.format(s)))), low_memory=False); b["season"] = s; frames.append(b)
+        c = pd.read_csv(io.BytesIO(gzip.decompress(get(SCHED.format(s)))), low_memory=False); c["season"] = s; sfr.append(c)
+        print(s, len(b), len(c), file=sys.stderr)
     except Exception as e:
-        print("box fail", s, e, file=sys.stderr)
-box = pd.concat(frames, ignore_index=True)
-out["boxColumns"] = list(box.columns)[:120]
-print("COLUMNS", list(box.columns), file=sys.stderr)
-print("ROW", box.iloc[0].to_dict(), file=sys.stderr)
-print("ROW2", box.iloc[1].to_dict(), file=sys.stderr)
-
-def col(*names):
-    for n in names:
-        if n in box.columns:
-            return n
-    raise KeyError(names)
-
-C = dict(gid=col("game_id"), date=col("game_date"), tid=col("team_id"), loc=col("team_location"), name=col("team_display_name", "team_name"),
-         ha=col("team_home_away"), pts=col("team_score"), fga=col("field_goals_attempted"), orb=col("offensive_rebounds"),
-         to=col("total_turnovers", "turnovers"), fta=col("free_throws_attempted"))
-neutral = "neutral_site" if "neutral_site" in box.columns else None
-box = box.dropna(subset=[C["pts"], C["fga"]])
-g = defaultdict(dict)
+        print("fail", s, e, file=sys.stderr)
+box = pd.concat(frames, ignore_index=True); sch = pd.concat(sfr, ignore_index=True)
+out["schedColumns"] = list(sch.columns)
+print("SCHED", list(sch.columns), sch.iloc[0].to_dict(), file=sys.stderr)
+key = "contest_id" if "contest_id" in sch.columns else [c for c in sch.columns if "id" in c.lower()][0]
+dcol = next(c for c in ("game_date", "date", "start_date", "game_date_time", "start_time_epoch") if c in sch.columns) if any(c in sch.columns for c in ("game_date", "date", "start_date", "game_date_time")) else [c for c in sch.columns if "date" in c.lower()][0]
+ncol = next((c for c in sch.columns if "neutral" in c.lower()), None)
+dateOf = {}; neutOf = {}
+for r in sch[[key, dcol] + ([ncol] if ncol else [])].itertuples(index=False):
+    dateOf[r[0]] = str(r[1]); neutOf[r[0]] = bool(r[2]) if ncol and str(r[2]).lower() in ("true", "1", "1.0", "yes") else False
+def toDate(v):
+    v = str(v)
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", v)
+    if m: return m.group(0)
+    m = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", v)
+    if m: return f"{m.group(3)}-{int(m.group(1)):02d}-{int(m.group(2)):02d}"
+    return None
+box = box.dropna(subset=["pts", "d_pts", "o_poss"])
+games, seen = [], set()
 for r in box.itertuples(index=False):
-    d = r._asdict() if hasattr(r, "_asdict") else None
-    row = {k: getattr(r, v) for k, v in C.items()}
-    row["season"] = r.season
-    row["neutral"] = bool(getattr(r, neutral)) if neutral else False
-    g[row["gid"]][row["ha"]] = row
-games = []
-for gid, x in g.items():
-    if "home" not in x or "away" not in x:
-        continue
-    h, a = x["home"], x["away"]
-    poss = lambda t: float(t["fga"]) - float(t["orb"] or 0) + float(t["to"] or 0) + 0.475 * float(t["fta"] or 0)
-    p = (poss(h) + poss(a)) / 2
-    if not (40 < p < 110):
-        continue
-    games.append(dict(gid=gid, season=int(h["season"]), date=str(h["date"])[:10], home=str(h["loc"]), away=str(a["loc"]), hid=h["tid"], aid=a["tid"],
-                      hn=str(h["name"]), an=str(a["name"]), hs=float(h["pts"]), as_=float(a["pts"]), poss=p, neutral=h["neutral"]))
+    if r.team != r.home or r.contest_id in seen: continue
+    seen.add(r.contest_id)
+    d = toDate(dateOf.get(r.contest_id, ""))
+    if not d or not (40 < float(r.o_poss) < 110): continue
+    games.append(dict(gid=int(r.contest_id), season=int(r.season), date=d, home=str(r.home), away=str(r.away), hid=str(r.home), aid=str(r.away), hn=str(r.home), an=str(r.away),
+                      hs=float(r.pts), as_=float(r.d_pts), poss=(float(r.o_poss) + float(r.d_poss)) / 2, neutral=neutOf.get(r.contest_id, False)))
 games.sort(key=lambda z: (z["date"], z["gid"]))
 out["games"] = len(games)
+out["neutralGames"] = sum(1 for z in games if z["neutral"])
+print("games", len(games), games[:2], file=sys.stderr)
 
 # ---- cizgiler ve isim eslestirme
 lines = pd.read_csv(io.BytesIO(get(LINES)))
@@ -71,6 +63,8 @@ out["lineRows"] = len(lines)
 
 def norm(s):
     s = str(s).lower().replace("&", " and ")
+    for a, b in (("ga.", "georgia"), ("fla.", "florida"), ("so.", "southern"), ("n.c.", "north carolina"), ("ark.", "arkansas"), ("ky.", "kentucky"), ("la.", "louisiana"), ("miss.", "mississippi"), ("tenn.", "tennessee"), ("ala.", "alabama"), ("mich.", "michigan"), ("ill.", "illinois"), ("ind.", "indiana"), ("wash.", "washington"), ("colo.", "colorado"), ("ariz.", "arizona"), ("okla.", "oklahoma"), ("tex.", "texas"), ("mo.", "missouri"), ("conn.", "connecticut"), ("mass.", "massachusetts"), ("caro.", "carolina"), ("ky ", "kentucky "), ("ga ", "georgia ")):
+        s = s.replace(a, b + " ")
     s = re.sub(r"\bst\.?\b", "state", s)
     s = re.sub(r"\buniv(ersity)?\b|\bof\b|\bthe\b", " ", s)
     s = re.sub(r"[^a-z0-9 ]", " ", s)
