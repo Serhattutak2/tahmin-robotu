@@ -1,0 +1,22 @@
+name: NCAA model testi
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/ncaatest.py", ".github/workflows/ncaatest.yml"]
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pandas
+      - run: python scripts/ncaatest.py
+      - run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs/ncaatest.json data/ncaa_games.json; git diff --cached --quiet || git commit -m "NCAA model testi"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 10; done
