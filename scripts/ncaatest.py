@@ -25,7 +25,10 @@ for s in SEASONS:
     except Exception as e:
         print("box fail", s, e, file=sys.stderr)
 box = pd.concat(frames, ignore_index=True)
-out["boxColumns"] = list(box.columns)[:80]
+out["boxColumns"] = list(box.columns)[:120]
+print("COLUMNS", list(box.columns), file=sys.stderr)
+print("ROW", box.iloc[0].to_dict(), file=sys.stderr)
+print("ROW2", box.iloc[1].to_dict(), file=sys.stderr)
 
 def col(*names):
     for n in names:
