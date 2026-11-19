@@ -105,49 +105,52 @@ corr = sum(a * b for a, b in xs) / max(1, len(xs))
 SIGN = -1 if corr < 0 else 1  # margin_pred_by_line = SIGN * spread
 out["spreadSign"] = SIGN
 
-# ---- model
-def run(lr=0.06, lrT=0.05, hca=3.2, carry=0.6):
-    O, D, T = defaultdict(lambda: None), defaultdict(lambda: None), defaultdict(lambda: None)
-    seasonAvg = {}
-    cnt = defaultdict(int)
+# ---- model: KenPom tarzi duzeltilmis verimlilik ve tempo, her gun yalnizca o gune kadarki maclarla yeniden hesaplanir
+import numpy as np
+from datetime import date as _d
+def ordn(s): y, m, d = map(int, s.split("-")); return _d(y, m, d).toordinal()
+def run(half=45.0, hca=0.014, priorW=4.0, carry=0.6, iters=8):
     recs = []
-    cur = None
-    avgE, avgT = 104.0, 68.0
-    for i, z in enumerate(games):
-        if z["season"] != cur:
-            # sezon gecisi: puanlar ortalamaya dogru cekilir
-            for dct, m in ((O, avgE), (D, avgE), (T, avgT)):
-                for k in list(dct.keys()):
-                    dct[k] = m + carry * (dct[k] - m)
-            cnt = defaultdict(int)
-            cur = z["season"]
-        h, a = z["hid"], z["aid"]
-        for t in (h, a):
-            if O[t] is None:
-                O[t], D[t], T[t] = avgE - 4, avgE + 4, avgT  # yeni/kucuk takim: ortalamanin altinda
-        hadj = 0 if z["neutral"] else hca / 2
-        ph = O[h] * D[a] / avgE + hadj
-        pa = O[a] * D[h] / avgE - hadj
-        tp = T[h] * T[a] / avgT
-        predTot = (ph + pa) * tp / 100
-        predMar = (ph - pa) * tp / 100
-        n = min(cnt[h], cnt[a])
-        if i in lineOf:
-            L = lineOf[i]
-            recs.append(dict(i=i, season=z["season"], date=z["date"], n=n, pt=predTot, pm=predMar, lt=L["total"], ls=(SIGN * L["spread"]) if L["spread"] is not None else None,
-                             at=z["hs"] + z["as_"], am=z["hs"] - z["as_"]))
-        # guncelleme
-        eh = 100 * z["hs"] / z["poss"] - hadj
-        ea = 100 * z["as_"] / z["poss"] + hadj
-        rh, ra = eh - O[h] * D[a] / avgE, ea - O[a] * D[h] / avgE
-        O[h] += lr * rh; D[a] += lr * rh; O[a] += lr * ra; D[h] += lr * ra
-        rt = z["poss"] - tp
-        T[h] += lrT * rt; T[a] += lrT * rt
-        avgE += 0.002 * ((eh + ea) / 2 - avgE)
-        avgT += 0.002 * (z["poss"] - avgT)
-        cnt[h] += 1; cnt[a] += 1
+    prev = {}  # takim -> (O, D, T) gecen sezon sonu
+    for season in SEASONS:
+        G = [i for i, z in enumerate(games) if z["season"] == season]
+        if not G: continue
+        teams = sorted({games[i]["hid"] for i in G} | {games[i]["aid"] for i in G}); ix = {t: k for k, t in enumerate(teams)}; nT = len(teams)
+        H = np.array([ix[games[i]["hid"]] for i in G]); A = np.array([ix[games[i]["aid"]] for i in G])
+        P = np.array([games[i]["poss"] for i in G]); OEh = np.array([100 * games[i]["hs"] / games[i]["poss"] for i in G]); OEa = np.array([100 * games[i]["as_"] / games[i]["poss"] for i in G])
+        DT = np.array([ordn(games[i]["date"]) for i in G]); NE = np.array([games[i]["neutral"] for i in G])
+        hf = np.where(NE, 0.0, hca)
+        avgE = prev.get("_avgE", 104.0)
+        avgT = prev.get("_avgT", 68.0)
+        pO = np.array([avgE + carry * (prev[t][0] - prev["_avgE"]) if t in prev else avgE - 5 for t in teams])
+        pD = np.array([avgE + carry * (prev[t][1] - prev["_avgE"]) if t in prev else avgE + 5 for t in teams])
+        pT = np.array([avgT + carry * (prev[t][2] - prev["_avgT"]) if t in prev else avgT for t in teams])
+        O, D, T = pO.copy(), pD.copy(), pT.copy()
+        for day in sorted(set(DT.tolist())):
+            past = DT < day
+            if past.any():
+                w = 0.5 ** ((day - DT[past]) / half); h, a = H[past], A[past]
+                oh, oa = OEh[past] / (1 + hf[past]), OEa[past] / (1 - hf[past]); pp = P[past]
+                aE = float(np.average(np.concatenate([OEh[past], OEa[past]]), weights=np.concatenate([w, w])))
+                aT = float(np.average(pp, weights=w))
+                for _ in range(iters):
+                    numO = np.bincount(h, w * oh * aE / D[a], nT) + np.bincount(a, w * oa * aE / D[h], nT) + priorW * pO
+                    numD = np.bincount(h, w * oa * aE / O[a], nT) + np.bincount(a, w * oh * aE / O[h], nT) + priorW * pD
+                    numT = np.bincount(h, w * pp * aT / T[a], nT) + np.bincount(a, w * pp * aT / T[h], nT) + priorW * pT
+                    den = np.bincount(h, w, nT) + np.bincount(a, w, nT) + priorW
+                    O, D, T = numO / den, numD / den, numT / den
+                avgE, avgT = aE, aT
+            cnt = np.bincount(H[past], minlength=nT) + np.bincount(A[past], minlength=nT)
+            for k in np.where(DT == day)[0]:
+                gi = G[k]; i, j = H[k], A[k]; f = hf[k]
+                ph = O[i] * D[j] / avgE * (1 + f); pa = O[j] * D[i] / avgE * (1 - f); tp = T[i] * T[j] / avgT
+                if gi in lineOf:
+                    Lx = lineOf[gi]; z = games[gi]
+                    recs.append(dict(i=gi, season=season, date=z["date"], n=int(min(cnt[i], cnt[j])), pt=(ph + pa) * tp / 100, pm=(ph - pa) * tp / 100, lt=Lx["total"],
+                                     ls=(SIGN * Lx["spread"]) if Lx["spread"] is not None else None, at=z["hs"] + z["as_"], am=z["hs"] - z["as_"]))
+        prev = {t: (O[ix[t]], D[ix[t]], T[ix[t]]) for t in teams}; prev["_avgE"] = avgE; prev["_avgT"] = avgT
+        print("sezon", season, len(recs), file=sys.stderr)
     return recs
-
 def Phi(x):
     return 0.5 * (1 + math.erf(x / math.sqrt(2)))
 
@@ -187,34 +190,32 @@ def summ(bs, odds=1.91):
 
 results = {}
 best = None
-TRAIN = {2022, 2023, 2024}
-for lr in (0.04, 0.06, 0.09):
-    for carry in (0.5, 0.7):
-        recs = run(lr=lr, carry=carry)
+TRAIN = {2022, 2023}
+for half in (30.0, 60.0):
+    for priorW in (3.0, 8.0):
+        recs = run(half=half, priorW=priorW)
         tr = [r for r in recs if r["season"] in TRAIN]
         mae = lambda rs, a, b: sum(abs(r[a] - r[b]) for r in rs if r[a] is not None and r[b] is not None) / max(1, sum(1 for r in rs if r[a] is not None and r[b] is not None))
-        key = f"lr{lr}_c{carry}"
+        key = f"yarilanma{half}_onsel{priorW}"
         results[key] = dict(maeModelTot=round(mae(tr, "pt", "at"), 2), maeLineTot=round(mae(tr, "lt", "at"), 2), maeModelMar=round(mae(tr, "pm", "am"), 2), maeLineMar=round(mae(tr, "ls", "am"), 2))
         score = results[key]["maeModelTot"] + results[key]["maeModelMar"]
         if best is None or score < best[0]:
-            best = (score, lr, carry, recs)
-_, lr, carry, recs = best
+            best = (score, half, priorW, recs)
+_, half, priorW, recs = best
 out["modelGrid"] = results
-out["chosen"] = dict(lr=lr, carry=carry)
-
+out["chosen"] = dict(half=half, priorW=priorW)
+SEASONS_T = [2022, 2023, 2024]
 tr = [r for r in recs if r["season"] in TRAIN]
 kt, ks = fitk(tr, "t"), fitk(tr, "s")
 out["k"] = dict(toplam=round(kt, 3), handikap=round(ks, 3))
-# ham k'lar sezon sezon (kucultmenin kararliligi)
-out["kBySeason"] = {s: dict(toplam=round(fitk([r for r in recs if r["season"] == s], "t"), 3), handikap=round(fitk([r for r in recs if r["season"] == s], "s"), 3)) for s in SEASONS}
-
+out["kBySeason"] = {s: dict(toplam=round(fitk([r for r in recs if r["season"] == s], "t"), 3), handikap=round(fitk([r for r in recs if r["season"] == s], "s"), 3)) for s in SEASONS_T}
 grid = {}
 for key, kk in (("t", kt), ("s", ks)):
     for minEdge in (1.0, 1.5, 2.0, 2.5, 3.0, 4.0):
         for minN in (0, 5, 10):
             b = bets(recs, key, kk, 16 if key == "t" else 10.75, minEdge, minN)
             row = {"egitim": summ([x for x in b if x[0] in TRAIN])}
-            for s in SEASONS:
+            for s in SEASONS_T:
                 if s not in TRAIN:
                     row[str(s)] = summ([x for x in b if x[0] == s])
             row["test"] = summ([x for x in b if x[0] not in TRAIN])
