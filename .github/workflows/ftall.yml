@@ -1,0 +1,22 @@
+name: Futbol tum pazarlar
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/ftall.mjs", ".github/workflows/ftall.yml"]
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: true
+      - run: node scripts/ftall.mjs
+      - run: |
+          git config user.name "tahmin-robotu"; git config user.email "tahmin-robotu@users.noreply.github.com"
+          git add docs/ftall.json config/ftmarkets.json; git diff --cached --quiet || git commit -m "Futbol tum pazarlar"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 10; done
