@@ -252,6 +252,21 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     if (ml && er && rule && /^nba/.test(c.pmGame.slug) && er[ml.names[0]] && er[ml.names[1]]) { const E = 1 / (1 + 10 ** (-(er[ml.names[0]].r - er[ml.names[1]].r) / 400)); [[E, ml.prices[0], 0], [1 - E, ml.prices[1], 1]].forEach(([q, pr, i]) => { const odd = 1 / pr, pp = rule.w * q + (1 - rule.w) * pr, ev = pp * odd - 1; if (pr > .1 && pr < .84 && odd >= 1.2 && ev >= rule.e && (!bk || ev > bk.ev)) bk = { ev, key: `PM_${ml.id}_${i}`, pmId: ml.id, pmIdx: i, kind: "side", label: `${ml.names[i]} kazanır`, minPlay: +odd.toFixed(2), odds: +odd.toFixed(2), unverified: true, rule: "basket" }; }); }
     if (bk) return { ...base, bet: bk, alts: [] };
     if (!opts.length) { if (!c.fair) return null; const p = c.probs || devig(c.fair); if (!p) return null; const i = p[0] >= p[1] ? 0 : 1, mp = +(1.03 / p[i]).toFixed(2); if (p[i] < .55 || mp < 1.2) return null; return { ...base, bet: { key: i ? "AWAY" : "HOME", label: `${i ? c.away : c.home} kazanır`, minPlay: mp, odds: c.medianOdds?.[i] ? +c.medianOdds[i].toFixed(2) : null, unverified: true, rule: "test" }, alts: [] }; }
+    // Diger ligler (EuroLeague, ABA, NBL...): sadece taraf degil. Guclu favori (olasilik 0,62-0,77) ya da alternatif toplam sayi cizgisi.
+    // Alternatif cizgi: piyasanin toplam cizgisinden ortanca bulunur (40 dakikalik maclarda sapma ~13 sayi), maca %70 ihtimalle tutacak cizgi verilir.
+    const slug = c.pmGame?.slug || "";
+    if (c.pmGame && !/^(nba|cbb)/.test(slug)) {
+      const sd = 13, Phi = x => { const t = 1 / (1 + 0.2316419 * Math.abs(x)), d = 0.3989423 * Math.exp(-x * x / 2), q = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x > 0 ? 1 - q : q; };
+      const zOf = p => { let lo = -4, hi = 4; for (let k = 0; k < 50; k++) { const m = (lo + hi) / 2; Phi(m) < p ? lo = m : hi = m; } return (lo + hi) / 2; };
+      const cands = [];
+      for (const x of opts) if (x.kind === "side" && x.p >= 0.62 && x.p <= 0.77) cands.push({ key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: "side", label: x.label, p: x.p });
+      const tl = (c.pmGame.lines || []).find(l => l.type === "totals" && Number.isFinite(l.line) && !(l.sp > 0.04));
+      if (tl) { const oi = tl.names.findIndex(n => /over/i.test(n)), pO = tl.prices[oi >= 0 ? oi : 0]; if (pO > 0.2 && pO < 0.8) { const M = tl.line + sd * zOf(pO), up = pO >= 0.5;
+        const L = up ? Math.floor(M - 6.8 - 0.5) + 0.5 : Math.ceil(M + 6.8 + 0.5) - 0.5, p = up ? Phi((M - L) / sd) : Phi((L - M) / sd);
+        cands.push({ key: `ALT_T_${up ? "O" : "U"}_${L}`, pmId: null, pmIdx: null, kind: "total", line: L, alt: { type: "total", line: L, dir: up ? "over" : "under" }, slug, label: `Toplam sayı ${String(L).replace(".", ",")} ${up ? "Üst" : "Alt"}`, p }); } }
+      const best = cands.sort((a, b) => b.p - a.p)[0]; if (!best) return null;
+      return { ...base, bet: { ...best, minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), odds: +(1 / best.p).toFixed(2), unverified: true, rule: "test" }, alts: [] };
+    }
     const b = opts[0], need = x => +Math.max(1.2, 1.03 / x.p).toFixed(2);
     return { ...base, bet: { key: b.key, pmId: b.pmId, pmIdx: b.pmIdx, kind: b.kind, line: b.line, label: b.label, minPlay: need(b), odds: b.odd, unverified: true, rule: "test" }, alts: opts.slice(1, 4).map(x => ({ label: x.label, minPlay: need(x) })) };
   }
@@ -290,7 +305,7 @@ if (eloClubs.length) note("ClubElo", true, `${eloClubs.length} kulüp, ${eloUsed
 const closeProb = (r, key) => { const g = ks => { const v = ks.map(k => num(r[k])); return v.every(x => Number.isFinite(x) && x > 1) ? v : null; };
   const x = g(["PSCH", "PSCD", "PSCA"]) || g(["AvgCH", "AvgCD", "AvgCA"]), o = g(["PC>2.5", "PC<2.5"]) || g(["AvgC>2.5", "AvgC<2.5"]), p = x && devig(x), q = o && devig(o);
   return ({ MS1: p?.[0], MSX: p?.[1], MS2: p?.[2], "1X": p && p[0] + p[1], X2: p && p[1] + p[2], 12: p && p[0] + p[2], U25: q?.[0], A25: q?.[1] })[key] || null; };
-const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, b365: bet.b365 ?? null, recordedAt: new Date(now).toISOString(), safe: true, status: "pending" });
+const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, b365: bet.b365 ?? null, alt: bet.alt ?? null, slug: bet.slug ?? null, recordedAt: new Date(now).toISOString(), safe: true, status: "pending" });
 // Fiyat disiplini: adil fiyat piyasadan; oyna yalniz gercek oran sinirin ustundeyse. Test: docs/zero.json.
 const priceRule = c => { if (c.sport !== "football" || !c.fair) return null; const fair = devig(c.fair); if (!fair) return null;
   // Test (docs/zero2.json): en yuksek oranin %98'i, piyasanin adil fiyatinin ustundeyse; MS ve 2,5 Alt/Ust, oran 1,30-3,20.
@@ -363,15 +378,25 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
     for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85 }, "bkou"));
     note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
-// Voleybol (Polymarket, test asamasinda): mac kazananinda favori, oran 1,30-2,00 (docs/vbtest.json). Bahis sitesinde en az adil fiyatin %3 ustu istenir.
+// Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
+// Denk mac (favori 0,53-0,70) -> toplam set 3,5 ust. Basabas ya da fiyati olusmamis maclar ve 2,00 civari oranlar verilmez.
 const voley = [], vbNow = new Map();
 { const nm = "Voleybol (Polymarket)";
   try { const J = x => { try { return JSON.parse(x); } catch { return []; } }, evs = [];
     for (let off = 0; off < 400; off += 100) { const l = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?tag_slug=volleyball&closed=false&limit=100&offset=${off}`, 1)); evs.push(...l); if (l.length < 100) break; }
     for (const e of evs) { const ml = (e.markets || []).find(m => m.sportsMarketType === "moneyline" && !m.closed); if (!ml) continue; const gs = ml.gameStartTime || e.startTime, t0 = gs ? Date.parse(String(gs).replace(" ", "T").replace(/\+00$/, "Z")) : NaN; if (!Number.isFinite(t0) || t0 <= now || !inWindow(t0)) continue;
-      const names = J(ml.outcomes), pr = J(ml.outcomePrices).map(Number); vbNow.set(String(ml.id), pr); if (names.length !== 2 || !pr.every(p => p > 0 && p < 1)) continue; const i = pr[0] >= pr[1] ? 0 : 1, odd = 1 / pr[i]; if (odd < 1.3 || odd > 2.0) continue;
-      const [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i); voley.push({ id: `pm-${e.slug}`, sport: "volleyball", league: (e.tags || []).map(t => t.label).find(l => l && !/sports|games|volleyball/i.test(l)) || "Voleybol", home: (a || names[0]).trim(), away: (b || names[1]).trim(), kickoff: new Date(t0).toISOString(), date: new Date(t0).toISOString().slice(0, 10), dayKey: ist(t0), key: `PM_${ml.id}_${i}`, pmId: ml.id, pmIdx: i, label: `${names[i]} kazanır`, odds: +odd.toFixed(2), minPlay: +Math.max(1.3, 1.03 * odd).toFixed(2) }); }
-    for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: x.minPlay, odds: x.odds }, "voley"));
+      const names = J(ml.outcomes), pr = J(ml.outcomePrices).map(Number); vbNow.set(String(ml.id), pr); for (const m of e.markets || []) { const q = J(m.outcomePrices).map(Number); if (q.length === 2) vbNow.set(String(m.id), q); } if (names.length !== 2 || !pr.every(p => p > 0 && p < 1)) continue;
+      const bid = Number(ml.bestBid), ask = Number(ml.bestAsk), mid = bid > 0 && ask > 0 && ask - bid <= 0.06 ? (bid + ask) / 2 : NaN; if (!Number.isFinite(mid)) continue; // fiyati olusmamis (islem gormeyen) mac: bilgi yok
+      const fi = mid >= 0.5 ? 0 : 1, fp = fi === 0 ? mid : 1 - mid; if (fp < 0.53) continue; // basabas mac: tahmin yok
+      const base = { id: `pm-${e.slug}`, sport: "volleyball", league: (e.tags || []).map(t => t.label).find(l => l && !/sports|games|volleyball/i.test(l)) || "Voleybol", kickoff: new Date(t0).toISOString(), date: new Date(t0).toISOString().slice(0, 10), dayKey: ist(t0) };
+      const [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i); base.home = (a || names[0]).trim(); base.away = (b || names[1]).trim();
+      let pick = null;
+      if (fp >= 0.70 && fp <= 0.79) pick = { key: `PM_${ml.id}_${fi}`, pmId: ml.id, pmIdx: fi, kind: "side", label: `${names[fi]} kazanır`, p: fp }; // guclu favori: gecmiste fiyatin ima ettiginden sik kazandi (%85)
+      else if (fp < 0.70) { const tm = (e.markets || []).find(m => m.sportsMarketType === "totals" && !m.closed && Number(m.line) === 3.5); // denk mac: 3-0 bitme ihtimali dusuk, mac 4-5 set surer (gecmiste %70)
+        if (tm) pick = { key: `PM_${tm.id}_0`, pmId: tm.id, pmIdx: 0, kind: "total", label: "Toplam set 3,5 üst (maç en az 4 set sürer)", p: fp < 0.62 ? 0.70 : 0.65 }; }
+      if (!pick) continue;
+      voley.push({ ...base, key: pick.key, pmId: pick.pmId, pmIdx: pick.pmIdx, kind: pick.kind, label: pick.label, odds: +(1 / pick.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / pick.p).toFixed(2) }); }
+    for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley2`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: x.kind, label: x.label, minPlay: x.minPlay, odds: x.odds }, "voley2"));
     note(nm, true, `${evs.length} açık etkinlik, ${voley.length} seçim`);
   } catch (e) { note(nm, false, e.message); } }
 // Canli tahmin (test): her calismada oynanan maclar taranir, mac basina tek tahmin kaydedilir (ilk goruldugu an).
@@ -386,9 +411,13 @@ const canli = [];
 // Deger = alinmasi gereken en dusuk oran (en az) x son adil olasilik - 1. Arti ise piyasa bizim tarafa gelmis demektir.
 { const pmNow = new Map(); for (const c of candidates) { const f = c.pmFoot; if (f) { for (const x of Object.values(f.threeM || {})) pmNow.set(String(x.id), [x.p, 1 - x.p]); for (const l of f.lines || []) pmNow.set(String(l.id), l.prices); } } for (const c of candidates) { const g = c.pmGame; if (!g) continue; if (g.moneyline) pmNow.set(String(g.moneyline.id), g.moneyline.prices); for (const l of g.lines || []) pmNow.set(String(l.id), l.prices); }
   for (const [id, pr] of vbNow) pmNow.set(id, pr);
-  for (const t of tips.filter(x => x.pmId && x.status === "pending")) { const pr = pmNow.get(String(t.pmId)); if (Date.parse(t.kickoff) > now && pr && Number.isFinite(pr[t.pmIdx])) { t.lastFair = +pr[t.pmIdx].toFixed(4); t.lastAt = new Date(now).toISOString(); }
+  // Alternatif cizgi tahminleri: sonuc Polymarket mac skorundan
+for (const t of tips.filter(x => x.alt && x.slug && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 60)) { try { const e = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?slug=${encodeURIComponent(t.slug)}`, 1))[0]; const sc = String(e?.score || "").match(/(\d+)\D+(\d+)/);
+  if (e && (e.closed || e.ended) && sc) { const tot = +sc[1] + +sc[2], w = t.alt.dir === "over" ? tot > t.alt.line : tot < t.alt.line; Object.assign(t, { status: w ? "won" : "lost", won: w, score: `${sc[1]}-${sc[2]}`, profit: +(w ? t.minPlay - 1 : -1).toFixed(2) }); }
+  else if (Date.parse(t.kickoff) + 72 * 3600e3 < now) Object.assign(t, { status: "void", profit: 0 }); } catch {} }
+for (const t of tips.filter(x => x.pmId && x.status === "pending")) { const pr = pmNow.get(String(t.pmId)); if (Date.parse(t.kickoff) > now && pr && Number.isFinite(pr[t.pmIdx])) { t.lastFair = +pr[t.pmIdx].toFixed(4); t.lastAt = new Date(now).toISOString(); }
     if (Date.parse(t.kickoff) <= now && t.lastFair && t.clv == null) t.clv = +((t.minPlay || t.odds) * t.lastFair - 1).toFixed(3); } }
-for (const t of tips.filter(x => x.pmId && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 120)) { try { const m = await fetchMarket(t.pmId), pr = JSON.parse(m.outcomePrices || "[]").map(Number); if (m.closed && (pr[t.pmIdx] === 1 || pr[t.pmIdx] === 0)) { const w = pr[t.pmIdx] === 1, paid = ["test", "voley", "basket", "canli", "fpm"].includes(t.rule) ? (t.minPlay || t.odds) : (t.odds || t.minPlay); Object.assign(t, { status: w ? "won" : "lost", won: w, score: "", profit: +(w ? paid - 1 : -1).toFixed(2) }); } } catch {} }
+for (const t of tips.filter(x => x.pmId && x.status === "pending" && Date.parse(x.kickoff) + 3 * 3600e3 < now).slice(0, 120)) { try { const m = await fetchMarket(t.pmId), pr = JSON.parse(m.outcomePrices || "[]").map(Number); if (m.closed && (pr[t.pmIdx] === 1 || pr[t.pmIdx] === 0)) { const w = pr[t.pmIdx] === 1, paid = ["test", "voley", "voley2", "basket", "canli", "fpm"].includes(t.rule) ? (t.minPlay || t.odds) : (t.odds || t.minPlay); Object.assign(t, { status: w ? "won" : "lost", won: w, score: "", profit: +(w ? paid - 1 : -1).toFixed(2) }); } } catch {} }
 for (const t of tips.filter(x => !x.pmId && x.status === "pending" && Date.parse(x.kickoff) < now)) {
   let hs, as, hh = null, ha = null;
   const fd = t.sport === "football" && fdResults.find(r => r.date === t.date && sameTeam(r.HomeTeam, t.home) && sameTeam(r.AwayTeam, t.away));
@@ -477,10 +506,10 @@ fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
 // Sitede gösterilen tahminler tek kaynaktan (tahmin defteri) gelir: maç başlayınca ya da bitince de sayfada kalır, sonucu yanına yazılır.
 const shownTip = t => { const o = t.odds || t.minPlay;
   if (t.sport === "football") return (t.rule === "ah" && o >= 1.3 && o <= 3.2) || (t.rule === "fiyat" && (t.b365 || t.odds) >= 1.3 && (t.b365 || t.odds) <= 3.2) || (t.rule === "fpm" && t.minPlay >= 1.3);
-  if (t.sport === "basketball") return (t.rule === "test" || t.rule === "basket") && t.kind !== "total" && o >= 1.3 && o <= 2.1 && !/^nba$/i.test(t.league || "") && !/^pm-nba/.test(t.id) && !/^pm-cbb/.test(t.id) && !/ncaa|college/i.test(t.league || "");
-  if (t.sport === "volleyball") return t.rule === "voley";
+  if (t.sport === "basketball") return (t.rule === "test" || t.rule === "basket") && o >= 1.3 && o <= 1.85 && !/^nba$/i.test(t.league || "") && !/^pm-nba/.test(t.id) && !/^pm-cbb/.test(t.id) && !/ncaa|college/i.test(t.league || "");
+  if (t.sport === "volleyball") return t.rule === "voley2";
   return false; };
-const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "voley" ? "voley" : t.kind === "spread" ? "basket-handikap" : "basket-taraf";
+const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "voley2" ? "voley" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
 const boardDays = new Set([...pastDays, todayIst, tomorrowIst, afterIst]), boardSeen = new Set(), board = [];
 for (const t of [...tips].sort((a, b) => String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || boardSeen.has(mid)) continue; boardSeen.add(mid);
   board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, odds: t.odds, status: t.status, score: t.score || "", profit: t.profit ?? null }); }
@@ -512,7 +541,7 @@ function ruleStatus() {
   // Arastirma (2026): karar kapanis orani degerine (CLV) gore. En az 50 bahiste CLV'nin %95 ust siniri 0'in altindaysa kural kapanir;
   // CLV yoksa kar/zarar ancak 300 bahisten sonra karar verir. Kapali kurallar golge modda kaydedilmeye devam eder, toparlanirsa acilir.
   const grp = { fiyat: t => t.rule === "fiyat", ah: t => t.rule === "ah", x1: t => t.rule === "x1", bkou: t => t.rule === "bkou",
-    "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total", voley: t => t.rule === "voley", canli: t => t.rule === "canli", "futbol-pm": t => t.rule === "fpm" };
+    "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total", voley: t => t.rule === "voley2", canli: t => t.rule === "canli", "futbol-pm": t => t.rule === "fpm" };
   const inBand = t => { const o = t.odds || t.minPlay; return o >= 1.3 && o <= 3.2; }, out = {};
   for (const [k, f] of Object.entries(grp)) {
     const all = tips.filter(t => f(t) && inBand(t)).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), l = all.filter(t => t.status === "won" || t.status === "lost"), kar = +l.reduce((a, t) => a + (t.profit || 0), 0).toFixed(1);
