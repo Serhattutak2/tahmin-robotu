@@ -1,0 +1,23 @@
+name: Zamanlayici
+# GitHub'in zamanlayicisi saatlerce gecikebiliyor. Bu is 30 dakikada bir tahmin guncellemesini baslatir,
+# yaklasik 5,5 saat sonra kendini yeniden baslatir. Normal zamanlayici da yedek olarak duruyor.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */3 * * *"
+permissions:
+  actions: write
+  contents: read
+concurrency: { group: zamanlayici, cancel-in-progress: false }
+jobs:
+  dongu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}", R: "${{ github.repository }}" }
+        run: |
+          for i in $(seq 1 11); do
+            gh workflow run update.yml -R "$R" --ref main || true
+            sleep 1800
+          done
+          gh workflow run zamanlayici.yml -R "$R" --ref main || true
