@@ -380,24 +380,24 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
 // Denk mac (favori 0,53-0,70) -> toplam set 3,5 ust. Basabas ya da fiyati olusmamis maclar ve 2,00 civari oranlar verilmez.
-const voley = [], vbNow = new Map();
+const voley = [], vbNow = new Map(), vbWhy = {}; const vbW = k => { vbWhy[k] = (vbWhy[k] || 0) + 1; };
 { const nm = "Voleybol (Polymarket)";
   try { const J = x => { try { return JSON.parse(x); } catch { return []; } }, evs = [];
     for (let off = 0; off < 400; off += 100) { const l = JSON.parse(await getText(`https://gamma-api.polymarket.com/events?tag_slug=volleyball&closed=false&limit=100&offset=${off}`, 1)); evs.push(...l); if (l.length < 100) break; }
-    for (const e of evs) { const ml = (e.markets || []).find(m => m.sportsMarketType === "moneyline" && !m.closed); if (!ml) continue; const gs = ml.gameStartTime || e.startTime, t0 = gs ? Date.parse(String(gs).replace(" ", "T").replace(/\+00$/, "Z")) : NaN; if (!Number.isFinite(t0) || t0 <= now || !inWindow(t0)) continue;
+    for (const e of evs) { const ml = (e.markets || []).find(m => m.sportsMarketType === "moneyline" && !m.closed); if (!ml) continue; const gs = ml.gameStartTime || e.startTime, t0 = gs ? Date.parse(String(gs).replace(" ", "T").replace(/\+00$/, "Z")) : NaN; if (!Number.isFinite(t0) || t0 <= now || !inWindow(t0)) { vbW("zaman"); continue; }
       const names = J(ml.outcomes), pr = J(ml.outcomePrices).map(Number); vbNow.set(String(ml.id), pr); for (const m of e.markets || []) { const q = J(m.outcomePrices).map(Number); if (q.length === 2) vbNow.set(String(m.id), q); } if (names.length !== 2 || !pr.every(p => p > 0 && p < 1)) continue;
-      const mid = pr[0]; if (Math.abs(mid - 0.5) < 0.03) continue; // fiyati olusmamis (islem gormeyen) mac: bilgi yok. Gecmis istatistik de bu fiyatla cikarildi
-      const fi = mid >= 0.5 ? 0 : 1, fp = fi === 0 ? mid : 1 - mid; if (fp < 0.53) continue; // basabas mac: tahmin yok
+      const mid = pr[0]; if (Math.abs(mid - 0.5) < 0.03) { vbW("fiyatyok"); continue; } // fiyati olusmamis (islem gormeyen) mac: bilgi yok. Gecmis istatistik de bu fiyatla cikarildi
+      const fi = mid >= 0.5 ? 0 : 1, fp = fi === 0 ? mid : 1 - mid; if (fp < 0.53) { vbW("basabas"); continue; } // basabas mac: tahmin yok
       const base = { id: `pm-${e.slug}`, sport: "volleyball", league: (e.tags || []).map(t => t.label).find(l => l && !/sports|games|volleyball/i.test(l)) || "Voleybol", kickoff: new Date(t0).toISOString(), date: new Date(t0).toISOString().slice(0, 10), dayKey: ist(t0) };
       const [a, b] = String(e.title || "").split(/\s+vs\.?\s+/i); base.home = (a || names[0]).trim(); base.away = (b || names[1]).trim();
       let pick = null;
       if (fp >= 0.70 && fp <= 0.79) pick = { key: `PM_${ml.id}_${fi}`, pmId: ml.id, pmIdx: fi, kind: "side", label: `${names[fi]} kazanır`, p: fp }; // guclu favori: gecmiste fiyatin ima ettiginden sik kazandi (%85)
       else if (fp < 0.70) { const tm = (e.markets || []).find(m => m.sportsMarketType === "totals" && !m.closed && Number(m.line) === 3.5); // denk mac: 3-0 bitme ihtimali dusuk, mac 4-5 set surer (gecmiste %70)
         if (tm) pick = { key: `PM_${tm.id}_0`, pmId: tm.id, pmIdx: 0, kind: "total", label: "Toplam set 3,5 üst (maç en az 4 set sürer)", p: fp < 0.62 ? 0.70 : 0.65 }; }
-      if (!pick) continue;
+      if (!pick) { vbW(fp > 0.79 ? "cokdusukoran" : "toplampazariyok"); continue; }
       voley.push({ ...base, key: pick.key, pmId: pick.pmId, pmIdx: pick.pmIdx, kind: pick.kind, label: pick.label, odds: +(1 / pick.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / pick.p).toFixed(2) }); }
     for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley2`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: x.kind, label: x.label, minPlay: x.minPlay, odds: x.odds }, "voley2"));
-    note(nm, true, `${evs.length} açık etkinlik, ${voley.length} seçim`);
+    note(nm, true, `${evs.length} açık etkinlik, ${voley.length} seçim ${JSON.stringify(vbWhy)}`);
   } catch (e) { note(nm, false, e.message); } }
 // Canli tahmin (test): her calismada oynanan maclar taranir, mac basina tek tahmin kaydedilir (ilk goruldugu an).
 // Sonuc Polymarket pazarinin kapanisindan, kazanc "en az" oranindan hesaplanir.
