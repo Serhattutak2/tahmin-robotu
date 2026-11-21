@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T09:30:48.157Z",
+ "generatedAt": "2026-11-21T10:00:41.642Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -80,15 +80,15 @@
    "away": "Sydney FC",
    "start": "2026-11-21T08:40:00.000Z",
    "score": "0-0",
-   "period": "1H",
-   "elapsed": "45",
-   "label": "Sydney FC kazanamaz (beraberlik ya da rakip)",
-   "p": 0.73,
-   "fair": 1.37,
-   "minPlay": 1.41,
-   "pmId": "6817529",
+   "period": "2H",
+   "elapsed": "56",
+   "label": "Karşılıklı gol yok",
+   "p": 0.78,
+   "fair": 1.28,
+   "minPlay": 1.32,
+   "pmId": "6876081",
    "pmIdx": 1,
-   "smt": "moneyline"
+   "smt": "both_teams_to_score"
   }
  ],
  "board": [
@@ -2141,36 +2141,36 @@
    "profit": 0.33
   },
   {
-   "id": "pm-aus-ccm-per-2026-11-21#ftall",
-   "rk": "futbol-tum",
+   "id": "pm-aus-ccm-per-2026-11-21#fpm",
+   "rk": "futbol-pm",
    "sport": "football",
    "dayKey": "2026-11-21",
    "league": "Australian A-League",
    "kickoff": "2026-11-21T06:00:00Z",
    "home": "Central Coast Mariners FC",
    "away": "Perth Glory FC",
-   "label": "Perth Glory FC gol atar",
-   "minPlay": 1.31,
-   "odds": null,
+   "label": "Beraberlik olmaz (12)",
+   "minPlay": 1.36,
+   "odds": 1.32,
    "status": "lost",
-   "score": "0-0",
+   "score": "",
    "profit": -1
   },
   {
-   "id": "pm-jap-gam-fag-2026-11-21#ftall",
-   "rk": "futbol-tum",
+   "id": "pm-jap-gam-fag-2026-11-21#fpm",
+   "rk": "futbol-pm",
    "sport": "football",
    "dayKey": "2026-11-21",
    "league": "Japan J League",
    "kickoff": "2026-11-21T07:00:00Z",
    "home": "Gamba Ōsaka",
    "away": "Fagiano Okayama",
-   "label": "Gamba Ōsaka gol atar",
-   "minPlay": 1.33,
-   "odds": null,
-   "status": "lost",
-   "score": "0-1",
-   "profit": -1
+   "label": "Beraberlik olmaz (12)",
+   "minPlay": 1.41,
+   "odds": 1.37,
+   "status": "won",
+   "score": "",
+   "profit": 0.41
   },
   {
    "id": "pm-kor-inc-uls-2026-11-21#ftall",
@@ -2184,9 +2184,9 @@
    "label": "3,5 Alt",
    "minPlay": 1.33,
    "odds": null,
-   "status": "pending",
-   "score": "",
-   "profit": null
+   "status": "won",
+   "score": "2-1",
+   "profit": 0.33
   },
   {
    "id": "pm-kor-gwo-dae1-2026-11-21#ftall",
@@ -2200,9 +2200,9 @@
    "label": "Beraberlik olmaz (12)",
    "minPlay": 1.52,
    "odds": null,
-   "status": "pending",
-   "score": "",
-   "profit": null
+   "status": "won",
+   "score": "1-3",
+   "profit": 0.52
   },
   {
    "id": "pm-aus-bri-syd-2026-11-21#ftall",
@@ -6158,10 +6158,10 @@
   },
   {
    "d": "2026-11-21",
-   "football": -2.24,
+   "football": -1.98,
    "basketball": 1.88,
    "volleyball": 0,
-   "n": 60
+   "n": 64
   }
  ],
  "pastDays": [
@@ -6243,27 +6243,27 @@
    "neden": "yeterli veri yok, açık (gölge kayıt sürüyor)"
   },
   "canli": {
-   "n": 174,
-   "tutan": 130,
-   "kar": 10,
+   "n": 176,
+   "tutan": 131,
+   "kar": 9.3,
    "clvN": 1,
    "clv100": 3.1,
    "açık": true,
    "neden": "yeterli veri yok, açık (gölge kayıt sürüyor)"
   },
   "futbol-pm": {
-   "n": 92,
-   "tutan": 72,
-   "kar": 9.1,
-   "clvN": 97,
+   "n": 94,
+   "tutan": 73,
+   "kar": 8.5,
+   "clvN": 98,
    "clv100": 2.8,
    "açık": true,
    "neden": "kapanış oranına göre değer var ya da belirsiz"
   },
   "futbol-tum": {
-   "n": 45,
-   "tutan": 37,
-   "kar": 5.1,
+   "n": 47,
+   "tutan": 39,
+   "kar": 5.9,
    "clvN": 0,
    "clv100": null,
    "açık": true,
@@ -6420,55 +6420,6 @@
  ],
  "matches": [
   {
-   "id": "pm-rus-ore-bal-2026-11-21",
-   "sport": "football",
-   "league": "Russian Premier League",
-   "kickoff": "2026-11-21T10:00:00Z",
-   "home": "FK Orenburg",
-   "away": "FK Baltika Kaliningrad",
-   "dayKey": "2026-11-21",
-   "date": "2026-11-21",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.6834,
-    "lowOdds": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.49,
-    "odds": 1.46,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.54
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.56
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "A25",
-    "label": "2,5 Alt",
-    "p": 0.706,
-    "odds": null,
-    "minPlay": 1.46,
-    "slug": "rus-ore-bal-2026-11-21",
-    "goals": [
-     0.96,
-     0.95
-    ]
-   }
-  },
-  {
    "id": "fd-T1-2026-11-21-Genclerbirligi-Gaziantep",
    "sport": "football",
    "league": "Süper Lig",
@@ -6483,7 +6434,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7277,
+    "p": 0.7264,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -6496,11 +6447,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.49
+     "minPlay": 1.53
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.73
+     "minPlay": 1.68
     }
    ],
    "ftall": {
@@ -6532,12 +6483,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.731,
+    "p": 0.7264,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.4,
-    "odds": 1.37,
+    "odds": 1.38,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -6549,20 +6500,20 @@
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.9
+     "minPlay": 1.86
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "A35",
-    "label": "3,5 Alt",
-    "p": 0.786,
+    "key": "DEP05",
+    "label": "Casa Pia AC gol atar",
+    "p": 0.748,
     "odds": null,
-    "minPlay": 1.31,
+    "minPlay": 1.38,
     "slug": "ptc-acp-casa-2026-11-21",
     "goals": [
      1,
-     1.39
+     1.35
     ]
    }
   },
@@ -6581,11 +6532,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7463,
+    "p": 0.7488,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.37,
+    "minPlay": 1.36,
     "odds": 1.34,
     "estOdds": null,
     "value": false,
@@ -6598,20 +6549,20 @@
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.71
+     "minPlay": 1.73
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "EV05",
-    "label": "Chennaiyin FC gol atar",
-    "p": 0.774,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "p": 0.787,
     "odds": null,
-    "minPlay": 1.33,
+    "minPlay": 1.31,
     "slug": "isp-che-pun-2026-11-21",
     "goals": [
-     1.44,
-     1.31
+     1.52,
+     1.35
     ]
    }
   },
@@ -6630,7 +6581,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7839,
+    "p": 0.8,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6643,7 +6594,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.32
+     "minPlay": 1.33
     },
     {
      "label": "2,5 Üst",
@@ -6728,7 +6679,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8241,
+    "p": 0.8159,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6749,17 +6700,17 @@
     }
    ],
    "price": {
-    "ev": 0.06494974874371873,
-    "p": 0.6281,
+    "ev": 0.05435323383084589,
+    "p": 0.6219,
     "key": "MS1",
     "label": "MS 1",
     "odds": 1.73,
-    "minPlay": 1.62,
+    "minPlay": 1.64,
     "b365": 1.67,
     "book": "en yüksek oran",
     "rule": "fiyat",
     "b365ok": true,
-    "strong": true,
+    "strong": false,
     "first": 1.73,
     "move": "sabit"
    },
@@ -6792,7 +6743,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7562,
+    "p": 0.7574,
     "lowOdds": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -6805,11 +6756,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.44
+     "minPlay": 1.45
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.9
+     "minPlay": 1.89
     }
    ],
    "ftall": {
@@ -6988,7 +6939,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8911,
+    "p": 0.8945,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -7005,7 +6956,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.44
+     "minPlay": 1.42
     }
    ],
    "ftall": {
@@ -7037,7 +6988,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7337,
+    "p": 0.7363,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7050,11 +7001,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.45
+     "minPlay": 1.47
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.81
+     "minPlay": 1.8
     }
    ],
    "ftall": {
@@ -7135,11 +7086,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.705,
+    "p": 0.7065,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.45,
+    "minPlay": 1.44,
     "odds": 1.28,
     "estOdds": null,
     "value": false,
@@ -7148,25 +7099,38 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.55
+     "minPlay": 1.53
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.61
+     "minPlay": 1.63
     }
    ],
+   "price": {
+    "ev": 0.005597014925373234,
+    "p": 0.3731,
+    "key": "MS1",
+    "label": "MS 1",
+    "odds": 2.75,
+    "minPlay": 2.73,
+    "b365": 2.63,
+    "book": "en yüksek oran",
+    "rule": "fiyat",
+    "b365ok": false,
+    "strong": false
+   },
    "ftall": {
     "rule": "ftall",
     "key": "DEP05",
+    "pmId": null,
+    "pmIdx": null,
     "label": "Crewe gol atar",
-    "p": 0.748,
-    "odds": null,
     "minPlay": 1.38,
-    "slug": "el2-gil-cre-2026-11-21",
-    "goals": [
-     1.28,
-     1.35
-    ]
+    "odds": null,
+    "b365": null,
+    "side": null,
+    "line": null,
+    "kayit": true
    }
   },
   {
@@ -7346,7 +7310,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7363,
+    "p": 0.7337,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7359,11 +7323,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.6
+     "minPlay": 1.59
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.63
+     "minPlay": 1.64
     }
    ],
    "ftall": {
@@ -7395,7 +7359,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8844,
+    "p": 0.8832,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -7412,20 +7376,20 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.42
+     "minPlay": 1.43
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "1XU15",
     "label": "1X ve 1,5 Üst",
-    "p": 0.776,
+    "p": 0.781,
     "odds": null,
-    "minPlay": 1.33,
+    "minPlay": 1.32,
     "slug": "epl-mac-ful-2026-11-21",
     "goals": [
-     2.44,
-     0.87
+     2.48,
+     0.91
     ]
    }
   },
@@ -7502,11 +7466,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7035,
+    "p": 0.6965,
     "lowOdds": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.45,
+    "minPlay": 1.47,
     "odds": 1.34,
     "estOdds": null,
     "value": false,
@@ -7519,7 +7483,7 @@
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.66
+     "minPlay": 1.65
     }
    ],
    "ftall": {
@@ -7552,9 +7516,9 @@
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.7035,
+     "mp": 0.6965,
      "odds": 1.34,
-     "minPlay": 1.45
+     "minPlay": 1.47
     }
    ]
   },
@@ -7671,7 +7635,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7389,
+    "p": 0.7415,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7684,11 +7648,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.44
+     "minPlay": 1.43
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.85
+     "minPlay": 1.87
     }
    ],
    "ftall": {
@@ -7720,11 +7684,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.765,
+    "p": 0.7638,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.33,
+    "minPlay": 1.34,
     "odds": 1.31,
     "estOdds": null,
     "value": false,
@@ -7733,11 +7697,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.4
+     "minPlay": 1.39
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 2.02
+     "minPlay": 2.03
     }
    ],
    "ftall": {
@@ -7769,12 +7733,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7673,
-    "lowOdds": false,
+    "p": 0.7723,
+    "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.33,
-    "odds": 1.3,
+    "minPlay": 1.32,
+    "odds": 1.29,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -7782,7 +7746,7 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.36
+     "minPlay": 1.37
     },
     {
      "label": "MS 2",
@@ -7793,13 +7757,13 @@
     "rule": "ftall",
     "key": "X2",
     "label": "Viking FK kaybetmez (X2)",
-    "p": 0.773,
+    "p": 0.766,
     "odds": null,
-    "minPlay": 1.33,
+    "minPlay": 1.35,
     "slug": "nor-tro-vik-2026-11-21",
     "goals": [
-     1.16,
-     1.79
+     1.24,
+     1.87
     ]
    }
   },
@@ -8294,12 +8258,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8458,
+    "p": 0.8543,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.18,
+    "odds": 1.17,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -8311,20 +8275,20 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.57
+     "minPlay": 1.55
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "1XU15",
     "label": "1X ve 1,5 Üst",
-    "p": 0.721,
+    "p": 0.723,
     "odds": null,
-    "minPlay": 1.43,
+    "minPlay": 1.42,
     "slug": "cze1-fmb-fcz-2026-11-21",
     "goals": [
      2.16,
-     0.95
+     0.91
     ]
    }
   },
@@ -8441,12 +8405,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7806,
+    "p": 0.7727,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.31,
-    "odds": 1.28,
+    "minPlay": 1.32,
+    "odds": 1.29,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -8454,24 +8418,24 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.35
+     "minPlay": 1.34
     },
     {
      "label": "MS 2",
-     "minPlay": 1.9
+     "minPlay": 1.91
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "DEPA25",
-    "label": "FC Arouca en fazla 2 gol atar",
-    "p": 0.759,
+    "key": "U15",
+    "label": "1,5 Üst",
+    "p": 0.786,
     "odds": null,
-    "minPlay": 1.36,
+    "minPlay": 1.31,
     "slug": "ptc-cm-aro-2026-11-21",
     "goals": [
-     1,
-     1.71
+     1.08,
+     1.79
     ]
    }
   },
@@ -8819,6 +8783,55 @@
    }
   },
   {
+   "id": "pm-svk1-zil-dbb-2026-11-21",
+   "sport": "football",
+   "league": "Nike Liga",
+   "kickoff": "2026-11-21T14:30:00Z",
+   "home": "MŠK Žilina",
+   "away": "MFK Dukla Banská Bystrica",
+   "dayKey": "2026-11-21",
+   "date": "2026-11-21",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.8657,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.16,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.5
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "A45",
+    "label": "4,5 Alt",
+    "p": 0.786,
+    "odds": null,
+    "minPlay": 1.31,
+    "slug": "svk1-zil-dbb-2026-11-21",
+    "goals": [
+     2.28,
+     0.91
+    ]
+   }
+  },
+  {
    "id": "pm-svk1-tre-pod-2026-11-21",
    "sport": "football",
    "league": "Nike Liga",
@@ -8913,55 +8926,6 @@
     "goals": [
      0.84,
      1.79
-    ]
-   }
-  },
-  {
-   "id": "pm-svk1-zil-dbb-2026-11-21",
-   "sport": "football",
-   "league": "Nike Liga",
-   "kickoff": "2026-11-21T14:30:00Z",
-   "home": "MŠK Žilina",
-   "away": "MFK Dukla Banská Bystrica",
-   "dayKey": "2026-11-21",
-   "date": "2026-11-21",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8657,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.16,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.5
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "A45",
-    "label": "4,5 Alt",
-    "p": 0.786,
-    "odds": null,
-    "minPlay": 1.31,
-    "slug": "svk1-zil-dbb-2026-11-21",
-    "goals": [
-     2.28,
-     0.91
     ]
    }
   },
@@ -9078,7 +9042,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7437,
+    "p": 0.7463,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9091,7 +9055,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
+     "minPlay": 1.4
     },
     {
      "label": "2,5 Üst",
@@ -9176,7 +9140,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8557,
+    "p": 0.8543,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9193,7 +9157,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.59
+     "minPlay": 1.57
     }
    ],
    "ftall": {
@@ -9225,11 +9189,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7264,
+    "p": 0.7164,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.4,
+    "minPlay": 1.42,
     "odds": 1.29,
     "estOdds": null,
     "value": false,
@@ -9238,11 +9202,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.51
+     "minPlay": 1.55
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.71
+     "minPlay": 1.63
     }
    ],
    "ftall": {
@@ -9347,7 +9311,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8844,
+    "p": 0.8756,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -9364,7 +9328,7 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.46
+     "minPlay": 1.48
     }
    ],
    "ftall": {
@@ -9721,7 +9685,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8333,
+    "p": 0.8418,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -9738,21 +9702,21 @@
     },
     {
      "label": "MS 2",
-     "minPlay": 1.64
+     "minPlay": 1.63
     }
    ],
    "price": {
-    "ev": 0.034939393939393826,
-    "p": 0.6212,
+    "ev": 0.045499999999999874,
+    "p": 0.6276,
     "key": "MS2",
     "label": "MS 2",
     "odds": 1.7,
-    "minPlay": 1.64,
+    "minPlay": 1.63,
     "b365": 1.67,
     "book": "en yüksek oran",
     "rule": "fiyat",
     "b365ok": true,
-    "strong": false,
+    "strong": true,
     "first": 1.7,
     "move": "sabit"
    },
@@ -9847,11 +9811,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7538,
+    "p": 0.7638,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.35,
+    "minPlay": 1.34,
     "odds": 1.29,
     "estOdds": null,
     "value": false,
@@ -9860,25 +9824,38 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.35
+     "minPlay": 1.34
     },
     {
      "label": "2,5 Üst",
      "minPlay": 1.65
     }
    ],
+   "price": {
+    "ev": 0.0341708542713568,
+    "p": 0.5276,
+    "key": "MS1",
+    "label": "MS 1",
+    "odds": 2,
+    "minPlay": 1.93,
+    "b365": 1.95,
+    "book": "en yüksek oran",
+    "rule": "fiyat",
+    "b365ok": true,
+    "strong": false
+   },
    "ftall": {
     "rule": "ftall",
     "key": "A45",
+    "pmId": null,
+    "pmIdx": null,
     "label": "4,5 Alt",
-    "p": 0.786,
-    "odds": null,
     "minPlay": 1.31,
-    "slug": "el1-hud-lei-2026-11-21",
-    "goals": [
-     1.84,
-     1.35
-    ]
+    "odds": null,
+    "b365": null,
+    "side": null,
+    "line": null,
+    "kayit": true
    }
   },
   {
@@ -9927,7 +9904,9 @@
     "book": "en yüksek oran",
     "rule": "fiyat",
     "b365ok": false,
-    "strong": false
+    "strong": false,
+    "first": 1.8,
+    "move": "sabit"
    },
    "ftall": {
     "rule": "ftall",
@@ -9970,11 +9949,11 @@
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
+     "label": "Ev sahibi kaybetmez (1X)",
      "minPlay": 1.6
     },
     {
-     "label": "Ev sahibi kaybetmez (1X)",
+     "label": "Deplasman kaybetmez (X2)",
      "minPlay": 1.63
     }
    ],
@@ -10007,7 +9986,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7277,
+    "p": 0.7264,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -10020,11 +9999,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.45
+     "minPlay": 1.44
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.79
+     "minPlay": 1.8
     }
    ],
    "ftall": {
@@ -10056,7 +10035,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7277,
+    "p": 0.73,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -10069,11 +10048,11 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.52
+     "minPlay": 1.51
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.7
+     "minPlay": 1.71
     }
    ],
    "ftall": {
@@ -10105,20 +10084,20 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7739,
+    "p": 0.7662,
     "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.32,
-    "odds": 1.21,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "minPlay": 1.33,
+    "odds": 1.2,
     "estOdds": null,
     "value": false,
     "book": "bet365"
    },
    "alts": [
     {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.32
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.35
     },
     {
      "label": "2,5 Üst",
@@ -10154,20 +10133,20 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7363,
+    "p": 0.7337,
     "lowOdds": true,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.39,
-    "odds": 1.24,
+    "odds": 1.25,
     "estOdds": null,
     "value": false,
     "book": "bet365"
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.4
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.39
     },
     {
      "label": "2,5 Üst",
@@ -10610,11 +10589,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7761,
+    "p": 0.7739,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.31,
+    "minPlay": 1.32,
     "odds": 1.22,
     "estOdds": null,
     "value": false,
@@ -10623,7 +10602,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.37
+     "minPlay": 1.35
     },
     {
      "label": "2,5 Üst",
@@ -10708,7 +10687,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.734,
+    "p": 0.7327,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -10721,7 +10700,7 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.51
+     "minPlay": 1.5
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
@@ -11177,7 +11156,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7538,
+    "p": 0.7562,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -11190,7 +11169,7 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.45
+     "minPlay": 1.44
     },
     {
      "label": "2,5 Üst",
@@ -11989,23 +11968,23 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.49
+     "minPlay": 1.51
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.77
+     "minPlay": 1.74
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "EV05",
     "label": "CD Coquimbo Unido gol atar",
-    "p": 0.774,
+    "p": 0.764,
     "odds": null,
-    "minPlay": 1.33,
+    "minPlay": 1.35,
     "slug": "chi1-ccu-edv-2026-11-21",
     "goals": [
-     1.44,
+     1.4,
      1.19
     ]
    }
@@ -12074,12 +12053,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9045,
+    "p": 0.9055,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.1,
+    "odds": 1.11,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -12096,15 +12075,15 @@
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "MS1",
-    "label": "Wolverhampton Wanderers FC kazanır (MS 1)",
-    "p": 0.752,
+    "key": "1XU15",
+    "label": "1X ve 1,5 Üst",
+    "p": 0.766,
     "odds": null,
-    "minPlay": 1.37,
+    "minPlay": 1.34,
     "slug": "elc-wol-cha-2026-11-21",
     "goals": [
-     2.28,
-     0.67
+     2.36,
+     0.71
     ]
    }
   },
@@ -12136,24 +12115,24 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.52
+     "minPlay": 1.53
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.82
+     "minPlay": 1.81
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "A25",
-    "label": "2,5 Alt",
-    "p": 0.75,
+    "key": "X2",
+    "label": "CD Tondela kaybetmez (X2)",
+    "p": 0.784,
     "odds": null,
-    "minPlay": 1.37,
+    "minPlay": 1.31,
     "slug": "ptc-avs-ton-2026-11-21",
     "goals": [
      0.68,
-     1.07
+     1.03
     ]
    }
   },
@@ -12466,7 +12445,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8325,
+    "p": 0.8342,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -12479,23 +12458,23 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.35
+     "minPlay": 1.34
     },
     {
      "label": "MS 1",
-     "minPlay": 1.73
+     "minPlay": 1.72
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "A35",
     "label": "3,5 Alt",
-    "p": 0.786,
+    "p": 0.777,
     "odds": null,
-    "minPlay": 1.31,
+    "minPlay": 1.33,
     "slug": "ptc-est-fel-2026-11-21",
     "goals": [
-     1.64,
+     1.68,
      0.75
     ]
    }
@@ -12538,8 +12517,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Siena Saints kazanır",
-    "minPlay": 1.51,
-    "odds": 1.47,
+    "minPlay": 1.49,
+    "odds": 1.45,
     "unverified": true,
     "rule": "test"
    },
@@ -12707,7 +12686,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.9296,
+    "p": 0.9347,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
@@ -12805,12 +12784,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8159,
+    "p": 0.8259,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.23,
+    "odds": 1.21,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -12822,20 +12801,20 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.64
+     "minPlay": 1.61
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "A45",
     "label": "4,5 Alt",
-    "p": 0.749,
+    "p": 0.771,
     "odds": null,
-    "minPlay": 1.38,
+    "minPlay": 1.34,
     "slug": "nor-vif-ik-2026-11-21",
     "goals": [
-     2.24,
-     1.15
+     2.2,
+     1.07
     ]
    }
   },
@@ -12903,12 +12882,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8342,
+    "p": 0.84,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.2,
+    "odds": 1.19,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -12920,19 +12899,19 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.74
+     "minPlay": 1.71
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.734,
+    "key": "EVA25",
+    "label": "CS Marítimo en fazla 2 gol atar",
+    "p": 0.783,
     "odds": null,
-    "minPlay": 1.4,
+    "minPlay": 1.32,
     "slug": "ptc-csm-cha-2026-11-21",
     "goals": [
-     1.6,
+     1.64,
      0.71
     ]
    }
@@ -12949,10 +12928,37 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "AWAY",
+    "key": "PM_6998417_1",
+    "pmId": "6998417",
+    "pmIdx": 1,
+    "kind": "side",
     "label": "VMI Keydets kazanır",
-    "minPlay": 1.34,
-    "odds": null,
+    "minPlay": 1.33,
+    "odds": 1.29,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": []
+  },
+  {
+   "id": "pm-cbb-colmb-bostu-2026-11-21",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-21T17:00:00Z",
+   "home": "Columbia Lions",
+   "away": "Boston Terriers",
+   "dayKey": "2026-11-21",
+   "date": "2026-11-21",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "PM_6998467_0",
+    "pmId": "6998467",
+    "pmIdx": 0,
+    "kind": "side",
+    "label": "Columbia Lions kazanır",
+    "minPlay": 1.94,
+    "odds": 1.89,
     "unverified": true,
     "rule": "test"
    },
@@ -13136,7 +13142,9 @@
     "book": "en yüksek oran",
     "rule": "fiyat",
     "b365ok": true,
-    "strong": true
+    "strong": true,
+    "first": 2.6,
+    "move": "sabit"
    },
    "ftall": {
     "rule": "ftall",
@@ -13568,12 +13576,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7337,
+    "p": 0.7291,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.39,
-    "odds": 1.36,
+    "minPlay": 1.4,
+    "odds": 1.37,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -13581,24 +13589,24 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.41
+     "minPlay": 1.42
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.88
+     "minPlay": 1.85
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "A35",
     "label": "3,5 Alt",
-    "p": 0.769,
+    "p": 0.777,
     "odds": null,
-    "minPlay": 1.34,
+    "minPlay": 1.33,
     "slug": "scop-dfc-hmi-2026-11-21",
     "goals": [
      1.04,
-     1.43
+     1.39
     ]
    }
   },
@@ -13707,16 +13715,16 @@
    },
    "alts": [
     {
+     "label": "Denver Pioneers +9,5 handikap",
+     "minPlay": 1.7
+    },
+    {
      "label": "Eastern Michigan Eagles -5,5 handikap",
      "minPlay": 1.81
     },
     {
      "label": "Toplam sayı 136,5 Üst",
      "minPlay": 1.82
-    },
-    {
-     "label": "Toplam sayı 140,5 Alt",
-     "minPlay": 1.91
     }
    ]
   },
@@ -13737,8 +13745,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Kent State Golden Flashes kazanır",
-    "minPlay": 1.69,
-    "odds": 1.64,
+    "minPlay": 1.67,
+    "odds": 1.63,
     "unverified": true,
     "rule": "test"
    },
@@ -13975,6 +13983,55 @@
    }
   },
   {
+   "id": "pm-gtm-xel-suc-2026-11-21",
+   "sport": "football",
+   "league": "Liga Nacional Guatemala",
+   "kickoff": "2026-11-21T19:00:00Z",
+   "home": "CSD Xelajú MC",
+   "away": "CSD Suchitepéquez",
+   "dayKey": "2026-11-21",
+   "date": "2026-11-21",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.955,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.04,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.3
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "1XU15",
+    "label": "1X ve 1,5 Üst",
+    "p": 0.786,
+    "odds": null,
+    "minPlay": 1.31,
+    "slug": "gtm-xel-suc-2026-11-21",
+    "goals": [
+     2.52,
+     0.43
+    ]
+   }
+  },
+  {
    "id": "pm-cbb-nmx-wichst-2026-11-21",
    "sport": "basketball",
    "league": "NCAA",
@@ -14097,13 +14154,10 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998441_0",
-    "pmId": "6998441",
-    "pmIdx": 0,
-    "kind": "side",
+    "key": "HOME",
     "label": "Navy Midshipmen kazanır",
-    "minPlay": 1.56,
-    "odds": 1.52,
+    "minPlay": 1.57,
+    "odds": null,
     "unverified": true,
     "rule": "test"
    },
@@ -14121,10 +14175,13 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "HOME",
+    "key": "PM_6998443_0",
+    "pmId": "6998443",
+    "pmIdx": 0,
+    "kind": "side",
     "label": "Little Rock Trojans kazanır",
-    "minPlay": 1.62,
-    "odds": null,
+    "minPlay": 1.6,
+    "odds": 1.55,
     "unverified": true,
     "rule": "test"
    },
@@ -14190,55 +14247,6 @@
     "rule": "test"
    },
    "alts": []
-  },
-  {
-   "id": "pm-gtm-xel-suc-2026-11-21",
-   "sport": "football",
-   "league": "Liga Nacional Guatemala",
-   "kickoff": "2026-11-21T19:00:00Z",
-   "home": "CSD Xelajú MC",
-   "away": "CSD Suchitepéquez",
-   "dayKey": "2026-11-21",
-   "date": "2026-11-21",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.955,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.05,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.3
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "U15",
-    "label": "1,5 Üst",
-    "p": 0.788,
-    "odds": null,
-    "minPlay": 1.31,
-    "slug": "gtm-xel-suc-2026-11-21",
-    "goals": [
-     2.48,
-     0.43
-    ]
-   }
   },
   {
    "id": "fd-D2-2026-11-21-St_Pauli-Bochum",
@@ -14451,11 +14459,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.715,
+    "p": 0.7164,
     "lowOdds": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.43,
+    "minPlay": 1.42,
     "odds": 1.33,
     "estOdds": null,
     "value": false,
@@ -14464,11 +14472,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.45
+     "minPlay": 1.44
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.76
+     "minPlay": 1.77
     }
    ],
    "ftall": {
@@ -14488,9 +14496,9 @@
     {
      "key": "1X",
      "label": "Ev sahibi kaybetmez (1X)",
-     "mp": 0.715,
+     "mp": 0.7164,
      "odds": 1.33,
-     "minPlay": 1.43
+     "minPlay": 1.42
     }
    ]
   },
@@ -14803,11 +14811,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7264,
+    "p": 0.7228,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.4,
+    "minPlay": 1.41,
     "odds": 1.28,
     "estOdds": null,
     "value": false,
@@ -14816,11 +14824,11 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.51
+     "minPlay": 1.5
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.71
+     "minPlay": 1.7
     }
    ],
    "ftall": {
@@ -14964,7 +14972,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Austin Peay Governors kazanır",
-    "minPlay": 1.73,
+    "minPlay": 1.86,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -15001,7 +15009,7 @@
     },
     {
      "label": "St. Thomas (MN) Tommies kazanır",
-     "minPlay": 1.94
+     "minPlay": 1.93
     },
     {
      "label": "St. Thomas (MN) Tommies -1,5 handikap",
@@ -15021,18 +15029,21 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7213283_0",
-    "pmId": "7213283",
+    "key": "PM_6998491_0",
+    "pmId": "6998491",
     "pmIdx": 0,
-    "kind": "spread",
-    "line": -1.5,
-    "label": "Drake Bulldogs -1,5 handikap",
-    "minPlay": 1.75,
-    "odds": 1.69,
+    "kind": "side",
+    "label": "Drake Bulldogs kazanır",
+    "minPlay": 1.69,
+    "odds": 1.64,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
+    {
+     "label": "Drake Bulldogs -1,5 handikap",
+     "minPlay": 1.75
+    },
     {
      "label": "Missouri State Bears +5,5 handikap",
      "minPlay": 1.75
@@ -15040,10 +15051,6 @@
     {
      "label": "Toplam sayı 146,5 Alt",
      "minPlay": 1.84
-    },
-    {
-     "label": "Toplam sayı 142,5 Üst",
-     "minPlay": 1.91
     }
    ]
   },
@@ -15062,12 +15069,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7143,
+    "p": 0.7164,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.43,
-    "odds": 1.4,
+    "minPlay": 1.42,
+    "odds": 1.39,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -15079,7 +15086,7 @@
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.76
+     "minPlay": 1.75
     }
    ],
    "ftall": {
@@ -15093,6 +15100,55 @@
     "goals": [
      0.92,
      1.19
+    ]
+   }
+  },
+  {
+   "id": "pm-gtm-mix-adm-2026-11-21",
+   "sport": "football",
+   "league": "Liga Nacional Guatemala",
+   "kickoff": "2026-11-21T21:00:00Z",
+   "home": "CSD Mixco",
+   "away": "CD Malacateco",
+   "dayKey": "2026-11-22",
+   "date": "2026-11-21",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.8792,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.14,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.53
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "p": 0.772,
+    "odds": null,
+    "minPlay": 1.33,
+    "slug": "gtm-mix-adm-2026-11-21",
+    "goals": [
+     1.84,
+     0.63
     ]
    }
   },
@@ -15121,16 +15177,16 @@
    },
    "alts": [
     {
+     "label": "George Mason Patriots kazanır",
+     "minPlay": 1.79
+    },
+    {
      "label": "South Florida Bulls +4,5 handikap",
      "minPlay": 1.81
     },
     {
      "label": "Toplam sayı 145,5 Üst",
      "minPlay": 1.89
-    },
-    {
-     "label": "George Mason Patriots -2,5 handikap",
-     "minPlay": 1.98
     }
    ]
   },
@@ -15151,8 +15207,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Central Arkansas Bears kazanır",
-    "minPlay": 1.81,
-    "odds": 1.75,
+    "minPlay": 1.82,
+    "odds": 1.77,
     "unverified": true,
     "rule": "test"
    },
@@ -15215,55 +15271,6 @@
     "rule": "test"
    },
    "alts": []
-  },
-  {
-   "id": "pm-gtm-mix-adm-2026-11-21",
-   "sport": "football",
-   "league": "Liga Nacional Guatemala",
-   "kickoff": "2026-11-21T21:00:00Z",
-   "home": "CSD Mixco",
-   "away": "CD Malacateco",
-   "dayKey": "2026-11-22",
-   "date": "2026-11-21",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8792,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.14,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.53
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "p": 0.772,
-    "odds": null,
-    "minPlay": 1.33,
-    "slug": "gtm-mix-adm-2026-11-21",
-    "goals": [
-     1.84,
-     0.63
-    ]
-   }
   },
   {
    "id": "pm-cbb-sd-ucirv-2026-11-21",
@@ -15334,8 +15341,8 @@
      "minPlay": 1.82
     },
     {
-     "label": "Air Force Falcons +6,5 handikap",
-     "minPlay": 1.96
+     "label": "Toplam sayı 170,5 Üst",
+     "minPlay": 1.94
     }
    ]
   },
@@ -15356,8 +15363,8 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Northeastern Huskies kazanır",
-    "minPlay": 1.41,
-    "odds": 1.37,
+    "minPlay": 1.42,
+    "odds": 1.38,
     "unverified": true,
     "rule": "test"
    },
@@ -15614,10 +15621,6 @@
     {
      "label": "Toplam sayı 154,5 Üst",
      "minPlay": 1.89
-    },
-    {
-     "label": "Toplam sayı 156,5 Alt",
-     "minPlay": 2.02
     }
    ]
   },
@@ -15671,10 +15674,13 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "AWAY",
+    "key": "PM_6998442_1",
+    "pmId": "6998442",
+    "pmIdx": 1,
+    "kind": "side",
     "label": "Chattanooga Mocs kazanır",
-    "minPlay": 1.37,
-    "odds": null,
+    "minPlay": 1.36,
+    "odds": 1.32,
     "unverified": true,
     "rule": "test"
    },
@@ -15704,16 +15710,16 @@
    },
    "alts": [
     {
-     "label": "Villanova Wildcats +5,5 handikap",
-     "minPlay": 1.84
-    },
-    {
      "label": "Michigan Wolverines -3,5 handikap",
      "minPlay": 1.94
     },
     {
      "label": "Toplam sayı 161,5 Alt",
      "minPlay": 1.94
+    },
+    {
+     "label": "Toplam sayı 159,5 Üst",
+     "minPlay": 1.98
     }
    ]
   },
@@ -15846,21 +15852,21 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "ALT_T_U_238.5",
+    "key": "ALT_T_O_218.5",
     "pmId": null,
     "pmIdx": null,
     "kind": "total",
-    "line": 238.5,
+    "line": 218.5,
     "alt": {
      "type": "total",
-     "line": 238.5,
-     "dir": "under"
+     "line": 218.5,
+     "dir": "over"
     },
     "slug": "nba-nop-sas-2026-11-21",
-    "label": "Toplam sayı 238,5 Alt",
-    "p": 0.7150126994178387,
-    "minPlay": 1.44,
-    "odds": 1.4,
+    "label": "Toplam sayı 218,5 Üst",
+    "p": 0.7107427434506561,
+    "minPlay": 1.45,
+    "odds": 1.41,
     "unverified": true,
     "rule": "test"
    },
@@ -15928,30 +15934,6 @@
    ]
   },
   {
-   "id": "pm-cbb-no-txs-2026-11-21",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-22T01:30:00Z",
-   "home": "New Orleans Privateers",
-   "away": "Texas Southern Tigers",
-   "dayKey": "2026-11-22",
-   "date": "2026-11-22",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "PM_6998473_1",
-    "pmId": "6998473",
-    "pmIdx": 1,
-    "kind": "side",
-    "label": "Texas Southern Tigers kazanır",
-    "minPlay": 1.98,
-    "odds": 1.92,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
    "id": "pm-fpd-per-sap-2026-11-21",
    "sport": "football",
    "league": "Liga Promerica",
@@ -16015,11 +15997,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7839,
+    "p": 0.7811,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
+    "minPlay": 1.31,
     "odds": 1.28,
     "estOdds": null,
     "value": false,
@@ -16028,7 +16010,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.43
+     "minPlay": 1.42
     },
     {
      "label": "Deplasman kaybetmez (X2)",
@@ -16099,19 +16081,19 @@
     "kind": "spread",
     "line": 26.5,
     "label": "Washington State Cougars +26,5 handikap",
-    "minPlay": 1.84,
-    "odds": 1.79,
+    "minPlay": 1.86,
+    "odds": 1.8,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 150,5 Alt",
-     "minPlay": 1.89
+     "label": "Duke Blue Devils -24,5 handikap",
+     "minPlay": 1.87
     },
     {
-     "label": "Toplam sayı 148,5 Üst",
-     "minPlay": 2.02
+     "label": "Toplam sayı 150,5 Alt",
+     "minPlay": 1.91
     }
    ]
   },
@@ -16669,11 +16651,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7405,
+    "p": 0.7612,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.38,
+    "minPlay": 1.34,
     "odds": 1.22,
     "estOdds": null,
     "value": false,
@@ -16686,7 +16668,7 @@
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.93
+     "minPlay": 2.01
     }
    ],
    "ftall": {
@@ -16696,7 +16678,7 @@
     "p": 0.759,
     "odds": null,
     "minPlay": 1.36,
-    "slug": null,
+    "slug": "tur-kas-ala-2026-11-22",
     "goals": [
      1.6,
      1.11
@@ -18707,7 +18689,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Portland State Vikings kazanır",
-    "minPlay": 1.41,
+    "minPlay": 1.4,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -18799,7 +18781,7 @@
    "bet": {
     "key": "HOME",
     "label": "Portland Pilots kazanır",
-    "minPlay": 1.37,
+    "minPlay": 1.36,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -18823,7 +18805,7 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Knicks kazanır",
-    "p": 0.76,
+    "p": 0.755,
     "minPlay": 1.36,
     "odds": 1.32,
     "unverified": true,
@@ -18843,10 +18825,14 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "HOME",
+    "key": "PM_6840925_0",
+    "pmId": "6840925",
+    "pmIdx": 0,
+    "kind": "side",
     "label": "Celtics kazanır",
-    "minPlay": 1.4,
-    "odds": null,
+    "p": 0.76,
+    "minPlay": 1.36,
+    "odds": 1.32,
     "unverified": true,
     "rule": "test"
    },
@@ -18887,7 +18873,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Loyola Chicago Ramblers kazanır",
-    "minPlay": 1.56,
+    "minPlay": 1.57,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -19105,7 +19091,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8756,
+    "p": 0.88,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -19118,7 +19104,7 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.31
+     "minPlay": 1.33
     },
     {
      "label": "MS 1",
@@ -19338,7 +19324,7 @@
   "fiyat": {
    "done": 64,
    "won": 33,
-   "pending": 22,
+   "pending": 24,
    "profit": 7
   }
  },
@@ -19361,47 +19347,10 @@
    "id": "2026-11-21#deger1",
    "type": "deger",
    "dayKey": "2026-11-21",
-   "createdAt": "2026-11-21T09:30:48.157Z",
+   "createdAt": "2026-11-21T10:00:41.642Z",
    "status": "pending",
-   "odds": 4.5,
-   "conf": 0.2568,
-   "legs": [
-    {
-     "matchId": "fd-D2-2026-11-21-Wolfsburg-Holstein_Kiel",
-     "home": "Wolfsburg",
-     "away": "Holstein Kiel",
-     "league": "2. Bundesliga",
-     "kickoff": "2026-11-21T12:00:00.000Z",
-     "date": "2026-11-21",
-     "fdDiv": "D2",
-     "key": "MS1",
-     "label": "MS 1",
-     "odds": 1.73,
-     "minPlay": 1.62
-    },
-    {
-     "matchId": "fd-EC-2026-11-21-Yeovil-Forest_Green",
-     "home": "Yeovil",
-     "away": "Forest Green",
-     "league": "National League",
-     "kickoff": "2026-11-21T17:30:00.000Z",
-     "date": "2026-11-21",
-     "fdDiv": "EC",
-     "key": "MS2",
-     "label": "MS 2",
-     "odds": 2.6,
-     "minPlay": 2.5
-    }
-   ]
-  },
-  {
-   "id": "2026-11-21#deger2",
-   "type": "deger",
-   "dayKey": "2026-11-21",
-   "createdAt": "2026-11-21T09:30:48.157Z",
-   "status": "pending",
-   "odds": 4.47,
-   "conf": 0.2503,
+   "odds": 2.94,
+   "conf": 0.3903,
    "legs": [
     {
      "matchId": "fd-E2-2026-11-21-Burton-Luton",
@@ -19414,44 +19363,44 @@
      "key": "MS2",
      "label": "MS 2",
      "odds": 1.7,
-     "minPlay": 1.64
+     "minPlay": 1.63
     },
     {
-     "matchId": "fd-N1-2026-11-21-Groningen-Heerenveen",
-     "home": "Groningen",
-     "away": "Heerenveen",
-     "league": "Eredivisie",
-     "kickoff": "2026-11-21T20:00:00.000Z",
+     "matchId": "fd-D2-2026-11-21-Wolfsburg-Holstein_Kiel",
+     "home": "Wolfsburg",
+     "away": "Holstein Kiel",
+     "league": "2. Bundesliga",
+     "kickoff": "2026-11-21T12:00:00.000Z",
      "date": "2026-11-21",
-     "fdDiv": "N1",
-     "key": "MS2",
-     "label": "MS 2",
-     "odds": 2.63,
-     "minPlay": 2.53
+     "fdDiv": "D2",
+     "key": "MS1",
+     "label": "MS 1",
+     "odds": 1.73,
+     "minPlay": 1.64
     }
    ]
   },
   {
-   "id": "2026-11-21#deger3",
+   "id": "2026-11-21#deger2",
    "type": "deger",
    "dayKey": "2026-11-21",
-   "createdAt": "2026-11-21T09:30:48.157Z",
+   "createdAt": "2026-11-21T10:00:41.642Z",
    "status": "pending",
-   "odds": 3.69,
-   "conf": 0.2908,
+   "odds": 4.1,
+   "conf": 0.2702,
    "legs": [
     {
-     "matchId": "fd-E2-2026-11-21-Leyton_Orient-AFC_Wimbledon",
-     "home": "Leyton Orient",
-     "away": "AFC Wimbledon",
+     "matchId": "fd-E2-2026-11-21-Huddersfield-Leicester",
+     "home": "Huddersfield",
+     "away": "Leicester",
      "league": "League One",
      "kickoff": "2026-11-21T15:00:00.000Z",
      "date": "2026-11-21",
      "fdDiv": "E2",
      "key": "MS1",
      "label": "MS 1",
-     "odds": 1.8,
-     "minPlay": 1.8
+     "odds": 2,
+     "minPlay": 1.93
     },
     {
      "matchId": "fd-EC-2026-11-21-Kidderminster-Fylde",
@@ -19465,6 +19414,30 @@
      "label": "MS 2",
      "odds": 2.05,
      "minPlay": 1.99
+    }
+   ]
+  },
+  {
+   "id": "2026-11-21#deger3",
+   "type": "deger",
+   "dayKey": "2026-11-21",
+   "createdAt": "2026-11-21T10:00:41.642Z",
+   "status": "pending",
+   "odds": 2.6,
+   "conf": 0.4089,
+   "legs": [
+    {
+     "matchId": "fd-EC-2026-11-21-Yeovil-Forest_Green",
+     "home": "Yeovil",
+     "away": "Forest Green",
+     "league": "National League",
+     "kickoff": "2026-11-21T17:30:00.000Z",
+     "date": "2026-11-21",
+     "fdDiv": "EC",
+     "key": "MS2",
+     "label": "MS 2",
+     "odds": 2.6,
+     "minPlay": 2.5
     }
    ]
   }
@@ -19582,47 +19555,10 @@
     "id": "2026-11-21#deger1",
     "type": "deger",
     "dayKey": "2026-11-21",
-    "createdAt": "2026-11-21T09:30:48.157Z",
+    "createdAt": "2026-11-21T10:00:41.642Z",
     "status": "pending",
-    "odds": 4.5,
-    "conf": 0.2568,
-    "legs": [
-     {
-      "matchId": "fd-D2-2026-11-21-Wolfsburg-Holstein_Kiel",
-      "home": "Wolfsburg",
-      "away": "Holstein Kiel",
-      "league": "2. Bundesliga",
-      "kickoff": "2026-11-21T12:00:00.000Z",
-      "date": "2026-11-21",
-      "fdDiv": "D2",
-      "key": "MS1",
-      "label": "MS 1",
-      "odds": 1.73,
-      "minPlay": 1.62
-     },
-     {
-      "matchId": "fd-EC-2026-11-21-Yeovil-Forest_Green",
-      "home": "Yeovil",
-      "away": "Forest Green",
-      "league": "National League",
-      "kickoff": "2026-11-21T17:30:00.000Z",
-      "date": "2026-11-21",
-      "fdDiv": "EC",
-      "key": "MS2",
-      "label": "MS 2",
-      "odds": 2.6,
-      "minPlay": 2.5
-     }
-    ]
-   },
-   {
-    "id": "2026-11-21#deger2",
-    "type": "deger",
-    "dayKey": "2026-11-21",
-    "createdAt": "2026-11-21T09:30:48.157Z",
-    "status": "pending",
-    "odds": 4.47,
-    "conf": 0.2503,
+    "odds": 2.94,
+    "conf": 0.3903,
     "legs": [
      {
       "matchId": "fd-E2-2026-11-21-Burton-Luton",
@@ -19635,44 +19571,44 @@
       "key": "MS2",
       "label": "MS 2",
       "odds": 1.7,
-      "minPlay": 1.64
+      "minPlay": 1.63
      },
      {
-      "matchId": "fd-N1-2026-11-21-Groningen-Heerenveen",
-      "home": "Groningen",
-      "away": "Heerenveen",
-      "league": "Eredivisie",
-      "kickoff": "2026-11-21T20:00:00.000Z",
+      "matchId": "fd-D2-2026-11-21-Wolfsburg-Holstein_Kiel",
+      "home": "Wolfsburg",
+      "away": "Holstein Kiel",
+      "league": "2. Bundesliga",
+      "kickoff": "2026-11-21T12:00:00.000Z",
       "date": "2026-11-21",
-      "fdDiv": "N1",
-      "key": "MS2",
-      "label": "MS 2",
-      "odds": 2.63,
-      "minPlay": 2.53
+      "fdDiv": "D2",
+      "key": "MS1",
+      "label": "MS 1",
+      "odds": 1.73,
+      "minPlay": 1.64
      }
     ]
    },
    {
-    "id": "2026-11-21#deger3",
+    "id": "2026-11-21#deger2",
     "type": "deger",
     "dayKey": "2026-11-21",
-    "createdAt": "2026-11-21T09:30:48.157Z",
+    "createdAt": "2026-11-21T10:00:41.642Z",
     "status": "pending",
-    "odds": 3.69,
-    "conf": 0.2908,
+    "odds": 4.1,
+    "conf": 0.2702,
     "legs": [
      {
-      "matchId": "fd-E2-2026-11-21-Leyton_Orient-AFC_Wimbledon",
-      "home": "Leyton Orient",
-      "away": "AFC Wimbledon",
+      "matchId": "fd-E2-2026-11-21-Huddersfield-Leicester",
+      "home": "Huddersfield",
+      "away": "Leicester",
       "league": "League One",
       "kickoff": "2026-11-21T15:00:00.000Z",
       "date": "2026-11-21",
       "fdDiv": "E2",
       "key": "MS1",
       "label": "MS 1",
-      "odds": 1.8,
-      "minPlay": 1.8
+      "odds": 2,
+      "minPlay": 1.93
      },
      {
       "matchId": "fd-EC-2026-11-21-Kidderminster-Fylde",
@@ -19688,11 +19624,70 @@
       "minPlay": 1.99
      }
     ]
+   },
+   {
+    "id": "2026-11-21#deger3",
+    "type": "deger",
+    "dayKey": "2026-11-21",
+    "createdAt": "2026-11-21T10:00:41.642Z",
+    "status": "pending",
+    "odds": 2.6,
+    "conf": 0.4089,
+    "legs": [
+     {
+      "matchId": "fd-EC-2026-11-21-Yeovil-Forest_Green",
+      "home": "Yeovil",
+      "away": "Forest Green",
+      "league": "National League",
+      "kickoff": "2026-11-21T17:30:00.000Z",
+      "date": "2026-11-21",
+      "fdDiv": "EC",
+      "key": "MS2",
+      "label": "MS 2",
+      "odds": 2.6,
+      "minPlay": 2.5
+     }
+    ]
    }
   ]
  },
  "verdict": "Geçmiş testlerde motor çok tutturdu ama kâr kanıtlanmadı; beklenti en iyi ihtimalle sıfıra yakın. Oran sınırını geçmeyen maçı oynama, küçük ve sabit birimle kal.",
  "tipRecent": [
+  {
+   "id": "pm-live-90113086#canli",
+   "rule": "canli",
+   "pmId": "6812906",
+   "pmIdx": 1,
+   "sport": "football",
+   "league": "Japan J League",
+   "kickoff": "2026-11-21T07:00:00.000Z",
+   "date": "2026-11-21",
+   "home": "Gamba Ōsaka",
+   "away": "Fagiano Okayama",
+   "fdDiv": null,
+   "sportKey": null,
+   "key": "PM_6812906_1",
+   "kind": "moneyline",
+   "side": null,
+   "line": null,
+   "unverified": false,
+   "label": "Fagiano Okayama kazanamaz (beraberlik ya da rakip)",
+   "minPlay": 1.38,
+   "odds": 1.38,
+   "estOdds": null,
+   "b365": null,
+   "alt": null,
+   "slug": null,
+   "p0": 0.745,
+   "recordedAt": "2026-11-21T07:30:35.013Z",
+   "safe": true,
+   "status": "lost",
+   "liveScore": "0-0",
+   "livePeriod": "1H",
+   "won": false,
+   "score": "",
+   "profit": -1
+  },
   {
    "id": "pm-live-90113089#canli",
    "rule": "canli",
@@ -19762,6 +19757,41 @@
    "won": true,
    "score": "",
    "profit": 0.35
+  },
+  {
+   "id": "pm-live-90121135#canli",
+   "rule": "canli",
+   "pmId": "6876136",
+   "pmIdx": 1,
+   "sport": "football",
+   "league": "Australian A-League",
+   "kickoff": "2026-11-21T06:00:00.000Z",
+   "date": "2026-11-21",
+   "home": "Central Coast Mariners FC",
+   "away": "Perth Glory FC",
+   "fdDiv": null,
+   "sportKey": null,
+   "key": "PM_6876136_1",
+   "kind": "totals",
+   "side": null,
+   "line": null,
+   "unverified": false,
+   "label": "Toplam gol 3,5 Alt",
+   "minPlay": 1.3,
+   "odds": 1.3,
+   "estOdds": null,
+   "b365": null,
+   "alt": null,
+   "slug": null,
+   "p0": 0.79,
+   "recordedAt": "2026-11-21T06:30:25.194Z",
+   "safe": true,
+   "status": "won",
+   "liveScore": "0-0",
+   "livePeriod": "1H",
+   "won": true,
+   "score": "",
+   "profit": 0.3
   },
   {
    "id": "pm-live-90123733#canli",
@@ -20147,96 +20177,9 @@
    "won": true,
    "score": "",
    "profit": 0.37
-  },
-  {
-   "id": "pm-live-90113090#canli",
-   "rule": "canli",
-   "pmId": "6812616",
-   "pmIdx": 1,
-   "sport": "football",
-   "league": "Japan J League",
-   "kickoff": "2026-11-21T05:00:00.000Z",
-   "date": "2026-11-21",
-   "home": "FC Machida Zelvia",
-   "away": "V-Varen Nagasaki",
-   "fdDiv": null,
-   "sportKey": null,
-   "key": "PM_6812616_1",
-   "kind": "moneyline",
-   "side": null,
-   "line": null,
-   "unverified": false,
-   "label": "Beraberlik olmaz (iki taraftan biri kazanır)",
-   "minPlay": 1.36,
-   "odds": 1.36,
-   "estOdds": null,
-   "b365": null,
-   "alt": null,
-   "slug": null,
-   "p0": 0.755,
-   "recordedAt": "2026-11-21T05:30:25.863Z",
-   "safe": true,
-   "status": "lost",
-   "liveScore": "0-0",
-   "livePeriod": "1H",
-   "won": false,
-   "score": "",
-   "profit": -1
-  },
-  {
-   "id": "pm-live-154080#canli",
-   "rule": "canli",
-   "pmId": "7015902",
-   "pmIdx": 1,
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-21T04:00:00.000Z",
-   "date": "2026-11-21",
-   "home": "Baylor Bears",
-   "away": "USC Trojans (W)",
-   "fdDiv": null,
-   "sportKey": null,
-   "key": "PM_7015902_1",
-   "kind": "moneyline",
-   "side": null,
-   "line": null,
-   "unverified": false,
-   "label": "USC Trojans kazanır",
-   "minPlay": 1.35,
-   "odds": 1.35,
-   "estOdds": null,
-   "b365": null,
-   "alt": null,
-   "slug": null,
-   "p0": 0.765,
-   "recordedAt": "2026-11-21T05:30:25.863Z",
-   "safe": true,
-   "status": "won",
-   "liveScore": "52-57",
-   "livePeriod": "OT",
-   "won": true,
-   "score": "",
-   "profit": 0.35
   }
  ],
  "allMatches": [
-  {
-   "id": "pm-rus-ore-bal-2026-11-21",
-   "sport": "football",
-   "league": "Russian Premier League",
-   "kickoff": "2026-11-21T10:00:00Z",
-   "home": "FK Orenburg",
-   "away": "FK Baltika Kaliningrad",
-   "dayKey": "2026-11-21",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.347,
-    "odds": 2.88
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
   {
    "id": "fd-T1-2026-11-21-Genclerbirligi-Gaziantep",
    "sport": "football",
@@ -20264,8 +20207,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.462,
-    "odds": 2.16
+    "probability": 0.453,
+    "odds": 2.21
    },
    "lowOdds": false,
    "pick": null,
@@ -20281,8 +20224,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.403,
-    "odds": 2.48
+    "probability": 0.409,
+    "odds": 2.45
    },
    "lowOdds": false,
    "pick": null,
@@ -20349,8 +20292,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.463,
-    "odds": 2.16
+    "probability": 0.46,
+    "odds": 2.17
    },
    "lowOdds": false,
    "pick": null,
@@ -20536,8 +20479,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.373,
-    "odds": 2.68
+    "probability": 0.377,
+    "odds": 2.65
    },
    "lowOdds": false,
    "pick": null,
@@ -20553,8 +20496,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.719,
-    "odds": 1.39
+    "probability": 0.716,
+    "odds": 1.4
    },
    "lowOdds": false,
    "pick": null,
@@ -20651,8 +20594,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.495,
-    "odds": 2.02
+    "probability": 0.497,
+    "odds": 2.01
    },
    "lowOdds": false,
    "pick": null,
@@ -20851,8 +20794,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.652,
-    "odds": 1.53
+    "probability": 0.658,
+    "odds": 1.52
    },
    "lowOdds": false,
    "pick": null,
@@ -20902,7 +20845,7 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.536,
+    "probability": 0.535,
     "odds": 1.87
    },
    "lowOdds": false,
@@ -21042,6 +20985,23 @@
    "isPick": false
   },
   {
+   "id": "pm-svk1-zil-dbb-2026-11-21",
+   "sport": "football",
+   "league": "Nike Liga",
+   "kickoff": "2026-11-21T14:30:00Z",
+   "home": "MŠK Žilina",
+   "away": "MFK Dukla Banská Bystrica",
+   "dayKey": "2026-11-21",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.682,
+    "odds": 1.47
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-svk1-tre-pod-2026-11-21",
    "sport": "football",
    "league": "Nike Liga",
@@ -21070,23 +21030,6 @@
     "selection": "MS 2",
     "probability": 0.602,
     "odds": 1.66
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-svk1-zil-dbb-2026-11-21",
-   "sport": "football",
-   "league": "Nike Liga",
-   "kickoff": "2026-11-21T14:30:00Z",
-   "home": "MŠK Žilina",
-   "away": "MFK Dukla Banská Bystrica",
-   "dayKey": "2026-11-21",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.682,
-    "odds": 1.47
    },
    "lowOdds": false,
    "pick": null,
@@ -22072,8 +22015,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.423,
-    "odds": 2.36
+    "probability": 0.413,
+    "odds": 2.42
    },
    "lowOdds": false,
    "pick": null,
@@ -22123,7 +22066,7 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.739,
+    "probability": 0.741,
     "odds": 1.35
    },
    "lowOdds": false,
@@ -22157,8 +22100,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.441,
-    "odds": 2.27
+    "probability": 0.436,
+    "odds": 2.3
    },
    "lowOdds": false,
    "pick": null,
@@ -22293,8 +22236,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.589,
-    "odds": 1.7
+    "probability": 0.593,
+    "odds": 1.69
    },
    "lowOdds": false,
    "pick": null,
@@ -22327,8 +22270,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Siena Saints",
-    "probability": 0.68,
-    "odds": 1.47
+    "probability": 0.69,
+    "odds": 1.45
    },
    "lowOdds": false,
    "pick": null,
@@ -22442,8 +22385,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.622,
-    "odds": 1.61
+    "probability": 0.632,
+    "odds": 1.58
    },
    "lowOdds": false,
    "pick": null,
@@ -22476,8 +22419,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 1",
-    "probability": 0.588,
-    "odds": 1.7
+    "probability": 0.595,
+    "odds": 1.68
    },
    "lowOdds": false,
    "pick": null,
@@ -22491,12 +22434,8 @@
    "home": "Gardner-Webb Runnin' Bulldogs",
    "away": "VMI Keydets",
    "dayKey": "2026-11-21",
-   "top": {
-    "selection": "VMI Keydets",
-    "probability": 0.77,
-    "odds": 1.3
-   },
-   "lowOdds": false,
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -22510,8 +22449,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Columbia Lions",
-    "probability": 0.54,
-    "odds": 1.85
+    "probability": 0.53,
+    "odds": 1.89
    },
    "lowOdds": false,
    "pick": null,
@@ -22723,8 +22662,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.457,
-    "odds": 2.19
+    "probability": 0.448,
+    "odds": 2.23
    },
    "lowOdds": false,
    "pick": null,
@@ -22783,8 +22722,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Kent State Golden Flashes",
-    "probability": 0.61,
-    "odds": 1.64
+    "probability": 0.615,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -22893,6 +22832,19 @@
    "isPick": false
   },
   {
+   "id": "pm-gtm-xel-suc-2026-11-21",
+   "sport": "football",
+   "league": "Liga Nacional Guatemala",
+   "kickoff": "2026-11-21T19:00:00Z",
+   "home": "CSD Xelajú MC",
+   "away": "CSD Suchitepéquez",
+   "dayKey": "2026-11-21",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cbb-nmx-wichst-2026-11-21",
    "sport": "basketball",
    "league": "NCAA",
@@ -22983,8 +22935,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Navy Midshipmen",
-    "probability": 0.66,
-    "odds": 1.52
+    "probability": 0.655,
+    "odds": 1.53
    },
    "lowOdds": false,
    "pick": null,
@@ -23000,8 +22952,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Little Rock Trojans",
-    "probability": 0.635,
-    "odds": 1.57
+    "probability": 0.645,
+    "odds": 1.55
    },
    "lowOdds": false,
    "pick": null,
@@ -23072,19 +23024,6 @@
     "odds": 2
    },
    "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-gtm-xel-suc-2026-11-21",
-   "sport": "football",
-   "league": "Liga Nacional Guatemala",
-   "kickoff": "2026-11-21T19:00:00Z",
-   "home": "CSD Xelajú MC",
-   "away": "CSD Suchitepéquez",
-   "dayKey": "2026-11-21",
-   "top": null,
-   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -23332,8 +23271,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Austin Peay Governors",
-    "probability": 0.595,
-    "odds": 1.68
+    "probability": 0.555,
+    "odds": 1.8
    },
    "lowOdds": false,
    "pick": null,
@@ -23349,8 +23288,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "St. Thomas (MN) Tommies",
-    "probability": 0.53,
-    "odds": 1.89
+    "probability": 0.535,
+    "odds": 1.87
    },
    "lowOdds": false,
    "pick": null,
@@ -23366,8 +23305,8 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "Drake Bulldogs",
-    "probability": 0.605,
-    "odds": 1.65
+    "probability": 0.61,
+    "odds": 1.64
    },
    "lowOdds": false,
    "pick": null,
@@ -23383,7 +23322,7 @@
    "dayKey": "2026-11-21",
    "top": {
     "selection": "MS 2",
-    "probability": 0.419,
+    "probability": 0.418,
     "odds": 2.39
    },
    "lowOdds": false,
@@ -23399,9 +23338,26 @@
    "away": "Binghamton Bearcats",
    "dayKey": "2026-11-21",
    "top": {
-    "selection": "Army Black Knights",
+    "selection": "Binghamton Bearcats",
     "probability": 0.505,
     "odds": 1.98
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-gtm-mix-adm-2026-11-21",
+   "sport": "football",
+   "league": "Liga Nacional Guatemala",
+   "kickoff": "2026-11-21T21:00:00Z",
+   "home": "CSD Mixco",
+   "away": "CD Malacateco",
+   "dayKey": "2026-11-22",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.667,
+    "odds": 1.5
    },
    "lowOdds": false,
    "pick": null,
@@ -23434,8 +23390,8 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "Central Arkansas Bears",
-    "probability": 0.57,
-    "odds": 1.75
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -23510,23 +23466,6 @@
    "isPick": false
   },
   {
-   "id": "pm-gtm-mix-adm-2026-11-21",
-   "sport": "football",
-   "league": "Liga Nacional Guatemala",
-   "kickoff": "2026-11-21T21:00:00Z",
-   "home": "CSD Mixco",
-   "away": "CD Malacateco",
-   "dayKey": "2026-11-22",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.667,
-    "odds": 1.5
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cbb-sd-ucirv-2026-11-21",
    "sport": "basketball",
    "league": "NCAA",
@@ -23570,8 +23509,8 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "Northeastern Huskies",
-    "probability": 0.73,
-    "odds": 1.37
+    "probability": 0.725,
+    "odds": 1.38
    },
    "lowOdds": false,
    "pick": null,
@@ -23784,8 +23723,8 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "Chattanooga Mocs",
-    "probability": 0.75,
-    "odds": 1.33
+    "probability": 0.76,
+    "odds": 1.32
    },
    "lowOdds": false,
    "pick": null,
@@ -23950,8 +23889,8 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "Texas Southern Tigers",
-    "probability": 0.52,
-    "odds": 1.92
+    "probability": 0.515,
+    "odds": 1.94
    },
    "lowOdds": false,
    "pick": null,
@@ -23984,7 +23923,7 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "MS 1",
-    "probability": 0.497,
+    "probability": 0.498,
     "odds": 2.01
    },
    "lowOdds": false,
@@ -25041,8 +24980,8 @@
    "dayKey": "2026-11-22",
    "top": {
     "selection": "Oklahoma State Cowboys",
-    "probability": 0.525,
-    "odds": 1.9
+    "probability": 0.53,
+    "odds": 1.89
    },
    "lowOdds": false,
    "pick": null,
@@ -25101,25 +25040,8 @@
    "dayKey": "2026-11-23",
    "top": {
     "selection": "Portland State Vikings",
-    "probability": 0.73,
-    "odds": 1.37
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cbb-millig-lipsc-2026-11-22",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-22T22:00:00Z",
-   "home": "Milligan Buffaloes",
-   "away": "Lipscomb Bisons",
-   "dayKey": "2026-11-23",
-   "top": {
-    "selection": "Milligan Buffaloes",
-    "probability": 0.5,
-    "odds": 2
+    "probability": 0.735,
+    "odds": 1.36
    },
    "lowOdds": false,
    "pick": null,
@@ -25220,8 +25142,8 @@
    "dayKey": "2026-11-23",
    "top": {
     "selection": "Portland Pilots",
-    "probability": 0.75,
-    "odds": 1.33
+    "probability": 0.755,
+    "odds": 1.32
    },
    "lowOdds": false,
    "pick": null,
@@ -25250,7 +25172,7 @@
    "dayKey": "2026-11-23",
    "top": {
     "selection": "Knicks",
-    "probability": 0.76,
+    "probability": 0.755,
     "odds": 1.32
    },
    "lowOdds": false,
@@ -25267,8 +25189,8 @@
    "dayKey": "2026-11-23",
    "top": {
     "selection": "Celtics",
-    "probability": 0.735,
-    "odds": 1.36
+    "probability": 0.76,
+    "odds": 1.32
    },
    "lowOdds": false,
    "pick": null,
@@ -25301,8 +25223,8 @@
    "dayKey": "2026-11-23",
    "top": {
     "selection": "Loyola Chicago Ramblers",
-    "probability": 0.66,
-    "odds": 1.52
+    "probability": 0.655,
+    "odds": 1.53
    },
    "lowOdds": false,
    "pick": null,
@@ -25447,14 +25369,14 @@
  ],
  "unmatched": 1,
  "stats": {
-  "evaluated": 316,
-  "withOdds": 316,
-  "modelled": 226,
+  "evaluated": 314,
+  "withOdds": 314,
+  "modelled": 225,
   "filtered": 0,
   "thin": 0,
   "byEvaluated": {
-   "football": 229,
-   "basketball": 87
+   "football": 228,
+   "basketball": 86
   },
   "knownToday": {
    "football": 3,
@@ -25484,7 +25406,7 @@
   },
   "Polymarket": {
    "ok": true,
-   "info": "285 maç, 105 tanesi eşleşti, 141 tanesi yeni eklendi"
+   "info": "285 maç, 106 tanesi eşleşti, 139 tanesi yeni eklendi"
   },
   "TheSportsDB (maç sayımı)": {
    "ok": true,
@@ -25508,7 +25430,7 @@
   },
   "Canlı maçlar (Polymarket)": {
    "ok": true,
-   "info": "34 canlı etkinlik, 1 tahmin"
+   "info": "31 canlı etkinlik, 1 tahmin"
   },
   "API-Football (sakat/cezalı)": {
    "ok": false,
