@@ -255,14 +255,14 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
     // Diger ligler (EuroLeague, ABA, NBL...): sadece taraf degil. Guclu favori (olasilik 0,62-0,77) ya da alternatif toplam sayi cizgisi.
     // Alternatif cizgi: piyasanin toplam cizgisinden ortanca bulunur (40 dakikalik maclarda sapma ~13 sayi), maca %70 ihtimalle tutacak cizgi verilir.
     const slug = c.pmGame?.slug || "";
-    if (c.pmGame && !/^(nba|cbb)/.test(slug)) {
-      const sd = 13, Phi = x => { const t = 1 / (1 + 0.2316419 * Math.abs(x)), d = 0.3989423 * Math.exp(-x * x / 2), q = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x > 0 ? 1 - q : q; };
+    if (c.pmGame && !/^cbb/.test(slug)) {
+      const sd = /^nba/.test(slug) ? 18 : 13, Phi = x => { const t = 1 / (1 + 0.2316419 * Math.abs(x)), d = 0.3989423 * Math.exp(-x * x / 2), q = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274)))); return x > 0 ? 1 - q : q; };
       const zOf = p => { let lo = -4, hi = 4; for (let k = 0; k < 50; k++) { const m = (lo + hi) / 2; Phi(m) < p ? lo = m : hi = m; } return (lo + hi) / 2; };
       const cands = [];
       for (const x of opts) if (x.kind === "side" && x.p >= 0.62 && x.p <= 0.77) cands.push({ key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: "side", label: x.label, p: x.p });
       const tl = (c.pmGame.lines || []).find(l => l.type === "totals" && Number.isFinite(l.line) && !(l.sp > 0.04));
       if (tl) { const oi = tl.names.findIndex(n => /over/i.test(n)), pO = tl.prices[oi >= 0 ? oi : 0]; if (pO > 0.2 && pO < 0.8) { const M = tl.line + sd * zOf(pO), up = pO >= 0.5;
-        const L = up ? Math.floor(M - 6.8 - 0.5) + 0.5 : Math.ceil(M + 6.8 + 0.5) - 0.5, p = up ? Phi((M - L) / sd) : Phi((L - M) / sd);
+        const off = 0.53 * sd, L = up ? Math.floor(M - off - 0.5) + 0.5 : Math.ceil(M + off + 0.5) - 0.5, p = up ? Phi((M - L) / sd) : Phi((L - M) / sd);
         cands.push({ key: `ALT_T_${up ? "O" : "U"}_${L}`, pmId: null, pmIdx: null, kind: "total", line: L, alt: { type: "total", line: L, dir: up ? "over" : "under" }, slug, label: `Toplam sayı ${String(L).replace(".", ",")} ${up ? "Üst" : "Alt"}`, p }); } }
       const best = cands.sort((a, b) => b.p - a.p)[0]; if (!best) return null;
       return { ...base, bet: { ...best, minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), odds: +(1 / best.p).toFixed(2), unverified: true, rule: "test" }, alts: [] };
@@ -521,12 +521,12 @@ fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
 // Sitede gösterilen tahminler tek kaynaktan (tahmin defteri) gelir: maç başlayınca ya da bitince de sayfada kalır, sonucu yanına yazılır.
 const shownTip = t => { const o = t.odds || t.minPlay;
   if (t.sport === "football") return (t.rule === "ah" && o >= 1.3 && o <= 3.2) || (t.rule === "fiyat" && (t.b365 || t.odds) >= 1.3 && (t.b365 || t.odds) <= 3.2) || (t.rule === "fpm" && t.minPlay >= 1.3 && t.status !== "pending") || (t.rule === "ftall" && t.minPlay >= 1.3);
-  if (t.sport === "basketball") return (t.rule === "test" || t.rule === "basket") && o >= 1.3 && o <= 1.85 && !/^nba$/i.test(t.league || "") && !/^pm-nba/.test(t.id) && !/^pm-cbb/.test(t.id) && !/ncaa|college/i.test(t.league || "");
+  if (t.sport === "basketball") return ["test", "basket", "bkou"].includes(t.rule) && o >= 1.3 && o <= 1.85 && !/^pm-cbb/.test(t.id) && !/ncaa|college|wnba|g league|g-league/i.test(t.league || ""); // NBA ve diger ligler; Amerika alt ligleri yok
   if (t.sport === "volleyball") return t.rule === "voley2";
   return false; };
-const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
+const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
 const boardDays = new Set([...pastDays, todayIst, tomorrowIst, afterIst]), boardSeen = new Set(), board = [];
-for (const t of [...tips].sort((a, b) => String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || boardSeen.has(mid)) continue; boardSeen.add(mid);
+for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || boardSeen.has(mid)) continue; boardSeen.add(mid);
   board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, odds: t.odds, status: t.status, score: t.score || "", profit: t.profit ?? null }); }
 board.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Kâr eğrisi: sitede gösterilen tahminlerin gün gün toplam kârı (her bahse 1 birim), spor bazında.
