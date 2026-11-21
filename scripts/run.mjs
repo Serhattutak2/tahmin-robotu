@@ -265,7 +265,8 @@ const matches = candidates.filter(c => inWindow(Date.parse(c.kickoff)) && Date.p
         const off = 0.53 * sd, L = up ? Math.floor(M - off - 0.5) + 0.5 : Math.ceil(M + off + 0.5) - 0.5, p = up ? Phi((M - L) / sd) : Phi((L - M) / sd);
         cands.push({ key: `ALT_T_${up ? "O" : "U"}_${L}`, pmId: null, pmIdx: null, kind: "total", line: L, alt: { type: "total", line: L, dir: up ? "over" : "under" }, slug, label: `Toplam sayı ${String(L).replace(".", ",")} ${up ? "Üst" : "Alt"}`, p }); } }
       const best = cands.sort((a, b) => b.p - a.p)[0]; if (!best) return null;
-      return { ...base, bet: { ...best, minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), odds: +(1 / best.p).toFixed(2), unverified: true, rule: "test" }, alts: [] };
+      if (0.95 / best.p < 1.3) { const ok2 = cands.filter(x => 0.95 / x.p >= 1.3)[0]; if (!ok2) return null; Object.assign(best, ok2); }
+      return { ...base, bet: { ...best, est: +(0.95 / best.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), odds: +(1 / best.p).toFixed(2), unverified: true, rule: "test" }, alts: [] };
     }
     const b = opts[0], need = x => +Math.max(1.2, 1.03 / x.p).toFixed(2);
     return { ...base, bet: { key: b.key, pmId: b.pmId, pmIdx: b.pmIdx, kind: b.kind, line: b.line, label: b.label, minPlay: need(b), odds: b.odd, unverified: true, rule: "test" }, alts: opts.slice(1, 4).map(x => ({ label: x.label, minPlay: need(x) })) };
@@ -305,7 +306,7 @@ if (eloClubs.length) note("ClubElo", true, `${eloClubs.length} kulüp, ${eloUsed
 const closeProb = (r, key) => { const g = ks => { const v = ks.map(k => num(r[k])); return v.every(x => Number.isFinite(x) && x > 1) ? v : null; };
   const x = g(["PSCH", "PSCD", "PSCA"]) || g(["AvgCH", "AvgCD", "AvgCA"]), o = g(["PC>2.5", "PC<2.5"]) || g(["AvgC>2.5", "AvgC<2.5"]), p = x && devig(x), q = o && devig(o);
   return ({ MS1: p?.[0], MSX: p?.[1], MS2: p?.[2], "1X": p && p[0] + p[1], X2: p && p[1] + p[2], 12: p && p[0] + p[2], U25: q?.[0], A25: q?.[1] })[key] || null; };
-const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, b365: bet.b365 ?? null, alt: bet.alt ?? null, slug: bet.slug ?? null, p0: bet.p ?? null, recordedAt: new Date(now).toISOString(), safe: true, status: "pending" });
+const tipFrom = (m, bet, rule) => ({ id: `${m.id}#${rule}`, rule, pmId: bet.pmId || null, pmIdx: bet.pmIdx ?? null, sport: m.sport, league: m.league, kickoff: m.kickoff, date: m.date, home: m.home, away: m.away, fdDiv: m.fdDiv, sportKey: m.sportKey, key: bet.key, kind: bet.kind || null, side: bet.side || null, line: bet.line ?? null, unverified: !!bet.unverified, label: bet.label, minPlay: bet.minPlay, odds: bet.odds ?? null, estOdds: bet.estOdds ?? null, b365: bet.b365 ?? null, alt: bet.alt ?? null, slug: bet.slug ?? null, p0: bet.p ?? null, est: bet.est ?? null, recordedAt: new Date(now).toISOString(), safe: true, status: "pending" });
 // Fiyat disiplini: adil fiyat piyasadan; oyna yalniz gercek oran sinirin ustundeyse. Test: docs/zero.json.
 const priceRule = c => { if (c.sport !== "football" || !c.fair) return null; const fair = devig(c.fair); if (!fair) return null;
   // Test (docs/zero2.json): en yuksek oranin %98'i, piyasanin adil fiyatinin ustundeyse; MS ve 2,5 Alt/Ust, oran 1,30-3,20.
@@ -329,15 +330,20 @@ for (const m of matches) { if (m.sport !== "football" || m.ah || m.price || !FTM
   let pO = c.ou?.fair ? devig(c.ou.fair)?.[0] : null;
   if (pO == null && c.pmFoot) { const tl = (c.pmFoot.lines || []).find(l => l.type === "totals" && l.line === 2.5 && !(l.sp > 0.04)); if (tl) { const oi = tl.names.findIndex(n => /over/i.test(n)); pO = tl.prices[oi >= 0 ? oi : 0]; } }
   const g = fitGoals(pr[0], pr[2], pO); if (!g) continue; const mp = marketProbs(g[0], g[1]);
-  let best = null; for (const mk of MARKETS) { if (mk.half) continue; const p = applyCal(mp[mk.key], FTM.duzeltme?.[mk.key]); if (p < 0.62 || p > 0.79) continue; if (!best || p > best.p) best = { key: mk.key, label: mk.label, p }; }
+  // Bahis sitesi orani: bet365 (1X2, cifte sans, 2,5 alt/ust) varsa o; yoksa adil oranin %7 kesintili hali (yan pazarlarda tipik kesinti).
+  const E = c.entry, O = c.ou?.entry, ok = a => Array.isArray(a) && a.every(v => v > 1);
+  const real = k => ok(E) && { MS1: E[0], MSX: E[1], MS2: E[2], "1X": 1 / (1 / E[0] + 1 / E[1]), X2: 1 / (1 / E[1] + 1 / E[2]), 12: 1 / (1 / E[0] + 1 / E[2]) }[k] || ok(O) && { U25: O[0], A25: O[1] }[k] || null;
+  let best = null; for (const mk of MARKETS) { if (mk.half) continue; const p = applyCal(mp[mk.key], FTM.duzeltme?.[mk.key]); if (p < 0.55 || p > 0.80) continue; const r = real(mk.key), est = r || 0.93 / p; if (est < 1.3 || est > 2.2) continue; if (!best || p > best.p) best = { key: mk.key, label: mk.label, p, est: +est.toFixed(2), real: !!r }; }
   if (!best) continue;
   const lab = best.label.replace("Ev sahibi", m.home).replace("Deplasman", m.away);
-  m.ftall = { rule: "ftall", key: best.key, label: lab, p: +best.p.toFixed(3), odds: null, minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), slug: c.pmFoot?.slug || null, goals: g.map(v => +v.toFixed(2)) }; }
+  m.ftall = { rule: "ftall", key: best.key, label: lab, p: +best.p.toFixed(3), est: best.est, estReal: best.real, odds: null, minPlay: +Math.max(1.3, 1.03 / best.p).toFixed(2), slug: c.pmFoot?.slug || null, goals: g.map(v => +v.toFixed(2)) }; }
 // Oran hareketi: ilk kayittaki orana gore piyasa bu tarafa mi geliyor? (oran dustuyse piyasa da ayni tarafi goruyor)
 for (const m of matches) if (m.price) { const t = tips.find(x => x.id === `${m.id}#fiyat`); if (t && t.odds && t.key === m.price.key) { const d = m.price.odds / t.odds - 1; m.price.first = t.odds; m.price.move = Math.abs(d) < 0.02 ? "sabit" : d < 0 ? "düştü" : "yükseldi"; } }
 const priceMatches = matches.filter(m => m.price);
 // Ayni mac farkli kaynaktan iki kez gelirse tam motorlu olan kalir.
 for (let i = matches.length - 1; i >= 0; i--) { const m = matches[i], j = matches.findIndex((x, k) => k !== i && x.sport === m.sport && Math.abs(Date.parse(x.kickoff) - Date.parse(m.kickoff)) < 3 * 3600e3 && sameName(x.home, m.home) && sameName(x.away, m.away)); if (j >= 0 && (!m.fdDiv || matches[j].fdDiv)) matches.splice(i, 1); }
+// Oran kontrolu oncesi kaydedilmis, baslamamis tahminler (site orani bilinmiyor, 1,30 alti olabilir) yenisiyle degistirilir.
+for (let i = tips.length - 1; i >= 0; i--) { const t = tips[i]; if (t.status === "pending" && t.est == null && ["ftall", "test", "voley2"].includes(t.rule) && Date.parse(t.kickoff) > now) tips.splice(i, 1); }
 for (const m of matches) { const list = []; if (m.bet.rule === "test") list.push([m.bet, "test"]); else if (m.bet.rule === "basket") list.push([m.bet, "basket"]); else { if (m.bet.safe) list.push([m.bet, "kar"]); if (m.bet.second) list.push([m.bet.second, "isabet"]); } if (m.price) list.push([m.price, "fiyat"]); if (m.ah) list.push([m.ah, "ah"]); if (m.ftall) list.push([m.ftall, "ftall"]); for (const [bet, rule] of list) if (!tips.some(t => t.id === `${m.id}#${rule}`)) tips.push(tipFrom(m, bet, rule)); }
 // Kaydedilen tahmin, oran sonradan değişse de maç başlayana kadar listede kalsın (dün görünüp bugün görünmeme sorunu)
 for (const m of matches) { if (m.sport !== "football") continue; for (const rule of ["fiyat", "ah", "ftall"]) { const F = rule === "fiyat" ? "price" : rule; if (m[F]) continue; const t = tips.find(x => x.id === `${m.id}#${rule}` && x.status === "pending"); if (!t) continue; m[F] = { rule, key: t.key, pmId: t.pmId, pmIdx: t.pmIdx, label: t.label, minPlay: t.minPlay, odds: t.odds, b365: t.b365, side: t.side, line: t.line, kayit: true }; } }
@@ -389,7 +395,7 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
       bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `PM_${tl.id}_${i}`, pmId: tl.id, pmIdx: i, label: `Toplam sayı ${String(tl.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: +tl.line, exp: +p.total.toFixed(1), pmOdds: +(1 / tl.prices[i]).toFixed(2), minPlay: 1.85, conf: +q.toFixed(3) });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
-    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85, p: x.conf }, "bkou"));
+    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85, p: x.conf, est: 1.87 }, "bkou"));
     note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
@@ -409,8 +415,9 @@ const voley = [], vbNow = new Map(), vbWhy = {}; const vbW = k => { vbWhy[k] = (
       else if (fp < 0.70) { const tm = (e.markets || []).find(m => m.sportsMarketType === "totals" && !m.closed && Number(m.line) === 3.5); // denk mac: 3-0 bitme ihtimali dusuk, mac 4-5 set surer (gecmiste %70)
         if (tm) pick = { key: `PM_${tm.id}_0`, pmId: tm.id, pmIdx: 0, kind: "total", label: "Toplam set 3,5 üst (maç en az 4 set sürer)", p: fp < 0.62 ? 0.70 : 0.65 }; }
       if (!pick) { vbW(fp > 0.79 ? "cokdusukoran" : "toplampazariyok"); continue; }
-      voley.push({ ...base, key: pick.key, pmId: pick.pmId, pmIdx: pick.pmIdx, kind: pick.kind, label: pick.label, odds: +(1 / pick.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / pick.p).toFixed(2) }); }
-    for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley2`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: x.kind, label: x.label, minPlay: x.minPlay, odds: x.odds }, "voley2"));
+      if (0.94 / pick.p < 1.3) { vbW("oran130alti"); continue; }
+      voley.push({ ...base, key: pick.key, pmId: pick.pmId, pmIdx: pick.pmIdx, kind: pick.kind, label: pick.label, est: +(0.94 / pick.p).toFixed(2), odds: +(1 / pick.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / pick.p).toFixed(2) }); }
+    for (const x of voley) if (!tips.some(t => t.id === `${x.id}#voley2`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, kind: x.kind, label: x.label, minPlay: x.minPlay, odds: x.odds, est: x.est }, "voley2"));
     note(nm, true, `${evs.length} açık etkinlik, ${voley.length} seçim ${JSON.stringify(vbWhy)}`);
   } catch (e) { note(nm, false, e.message); } }
 // Canli tahmin (test): her calismada oynanan maclar taranir, mac basina tek tahmin kaydedilir (ilk goruldugu an).
@@ -526,8 +533,9 @@ const shownTip = t => { const o = t.odds || t.minPlay;
   return false; };
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
 const boardDays = new Set([...pastDays, todayIst, tomorrowIst, afterIst]), boardSeen = new Set(), board = [];
-for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || boardSeen.has(mid)) continue; boardSeen.add(mid);
-  board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, odds: t.odds, p: +(t.p0 ?? (t.rule === "bkou" ? (bkou.find(x => `${x.id}#bkou` === t.id)?.conf ?? 0.70) : null) ?? Math.min(0.85, 1.03 / t.minPlay)).toFixed(3), status: t.status, score: t.score || "", profit: t.profit ?? null }); }
+const estOf = t => t.est ?? (t.rule === "bkou" ? 1.87 : t.rule === "ah" || t.rule === "fiyat" ? (t.b365 || t.odds) : +(0.93 * t.minPlay / 1.03).toFixed(2));
+for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || (t.status === "pending" && !(estOf(t) >= 1.3)) || boardSeen.has(mid)) continue; boardSeen.add(mid);
+  board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, est: +Number(estOf(t)).toFixed(2), odds: t.odds, p: +(t.p0 ?? (t.rule === "bkou" ? (bkou.find(x => `${x.id}#bkou` === t.id)?.conf ?? 0.70) : null) ?? Math.min(0.85, 1.03 / t.minPlay)).toFixed(3), status: t.status, score: t.score || "", profit: t.profit ?? null }); }
 board.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Kâr eğrisi: sitede gösterilen tahminlerin gün gün toplam kârı (her bahse 1 birim), spor bazında.
 const curveMap = {}; for (const t of tips) { if (!shownTip(t) || (t.status !== "won" && t.status !== "lost")) continue; const dk = ist(Date.parse(t.kickoff)); (curveMap[dk] ||= { football: 0, basketball: 0, volleyball: 0, n: 0 }); curveMap[dk][t.sport] += t.profit || 0; curveMap[dk].n++; }

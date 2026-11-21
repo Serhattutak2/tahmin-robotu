@@ -48,7 +48,7 @@ export function livePicks(events, now = Date.now()) {
       const names = J(m.outcomes); if (names.length !== 2) continue;
       const mid = (bid + ask) / 2;
       for (const [i, p] of [[0, mid], [1, 1 - mid]]) {
-        if (p < 0.6 || p > 0.79) continue; // güçlü taraf, ama oran en az 1,30
+        if (p < 0.55 || 0.93 / p < 1.3) continue; // güçlü taraf; bahis sitesinde oran (kesintiyle) en az 1,30
         const l = label(m, i, names, sport); if (!l) continue;
         g.cands.push({ p, pmId: String(m.id), pmIdx: i, smt: m.sportsMarketType, label: l });
       }
@@ -61,7 +61,7 @@ export function livePicks(events, now = Date.now()) {
     if (!g.cands.length) continue;
     g.cands.sort((a, b) => b.p - a.p || pref[a.smt] - pref[b.smt]);
     const c = g.cands[0], [home, away] = g.title.split(/\s+vs\.?\s+/i);
-    out.push({ id: `pm-live-${g.key}`, sport: g.sport, league: g.league, home: (home || g.title).trim(), away: (away || "").trim(), start: g.start, score: g.score, period: g.period, elapsed: g.elapsed, label: c.label, p: +c.p.toFixed(3), fair: +(1 / c.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / c.p).toFixed(2), pmId: c.pmId, pmIdx: c.pmIdx, smt: c.smt });
+    out.push({ id: `pm-live-${g.key}`, sport: g.sport, league: g.league, home: (home || g.title).trim(), away: (away || "").trim(), start: g.start, score: g.score, period: g.period, elapsed: g.elapsed, label: c.label, p: +c.p.toFixed(3), fair: +(1 / c.p).toFixed(2), est: +(0.93 / c.p).toFixed(2), minPlay: +Math.max(1.3, 1.03 / c.p).toFixed(2), pmId: c.pmId, pmIdx: c.pmIdx, smt: c.smt });
   }
   return out.sort((a, b) => b.p - a.p);
 }
