@@ -386,10 +386,10 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
       const tl = (g.lines || []).filter(l => l.type === "totals" && l.prices?.length === 2 && Number.isFinite(+l.line)).sort((x, y) => Math.abs(x.prices[0] - .5) - Math.abs(y.prices[0] - .5))[0]; if (!tl) continue;
       const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) continue;
       const po = bOver(p, +tl.line), oi = Math.max(0, tl.names.findIndex(n => /over/i.test(n))), up = po >= 0.5, i = up ? oi : 1 - oi, q = Math.max(po, 1 - po); if (q < 0.70) continue;
-      bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `PM_${tl.id}_${i}`, pmId: tl.id, pmIdx: i, label: `Toplam sayı ${String(tl.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: +tl.line, exp: +p.total.toFixed(1), pmOdds: +(1 / tl.prices[i]).toFixed(2), minPlay: 1.85 });
+      bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `PM_${tl.id}_${i}`, pmId: tl.id, pmIdx: i, label: `Toplam sayı ${String(tl.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: +tl.line, exp: +p.total.toFixed(1), pmOdds: +(1 / tl.prices[i]).toFixed(2), minPlay: 1.85, conf: +q.toFixed(3) });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
-    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85 }, "bkou"));
+    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85, p: x.conf }, "bkou"));
     note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
@@ -527,7 +527,7 @@ const shownTip = t => { const o = t.odds || t.minPlay;
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
 const boardDays = new Set([...pastDays, todayIst, tomorrowIst, afterIst]), boardSeen = new Set(), board = [];
 for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || boardSeen.has(mid)) continue; boardSeen.add(mid);
-  board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, odds: t.odds, status: t.status, score: t.score || "", profit: t.profit ?? null }); }
+  board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, label: t.label, minPlay: t.minPlay, odds: t.odds, p: +(t.p0 ?? Math.min(0.85, 1.03 / t.minPlay)).toFixed(3), status: t.status, score: t.score || "", profit: t.profit ?? null }); }
 board.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Kâr eğrisi: sitede gösterilen tahminlerin gün gün toplam kârı (her bahse 1 birim), spor bazında.
 const curveMap = {}; for (const t of tips) { if (!shownTip(t) || (t.status !== "won" && t.status !== "lost")) continue; const dk = ist(Date.parse(t.kickoff)); (curveMap[dk] ||= { football: 0, basketball: 0, volleyball: 0, n: 0 }); curveMap[dk][t.sport] += t.profit || 0; curveMap[dk].n++; }
