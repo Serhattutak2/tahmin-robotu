@@ -325,13 +325,20 @@ for (const m of matches) { const c = candidates.find(x => x.id === m.id); const 
 const FTM = (() => { try { return JSON.parse(fs.readFileSync("config/ftmarkets.json", "utf8")); } catch { return null; } })();
 const FGRID = []; { const f = [1]; for (let i = 1; i < 14; i++) f[i] = f[i - 1] * i; const po = (l, k) => Math.exp(-l) * l ** k / f[k]; for (let lh = 0.2; lh <= 4.0; lh += 0.04) for (let la = 0.15; la <= 3.6; la += 0.04) { let h = 0, a = 0, o = 0, t = 0; for (let i = 0; i < 11; i++) for (let j = 0; j < 11; j++) { const p = po(lh, i) * po(la, j); t += p; if (i > j) h += p; else if (i < j) a += p; if (i + j > 2.5) o += p; } FGRID.push([lh, la, h / t, a / t, o / t]); } }
 const fitGoals = (p1, p2, pO) => { let b = null, bv = 1e9; for (const g of FGRID) { const v = (g[2] - p1) ** 2 + (g[3] - p2) ** 2 + (pO == null ? 0 : (g[4] - pO) ** 2); if (v < bv) { bv = v; b = g; } } return b && [b[0], b[1]]; };
+// Ayni mac iki kaynaktan gelirse (ornegin "Buyuksehyr - Corum" ve "Rams Basaksehir FK - Corum FK") bir kez tutulur; bet365 oranli olan tercih edilir.
+{ const nz = x => String(x || "").toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ı/g, "i").replace(/\b(fk|fc|sk|cf|cd|club|sc|ac|as|afc|bld|belediye|spor|rams)\b/g, "").replace(/[^a-z0-9]/g, "");
+  const same = (a, b) => { const x = nz(a), y = nz(b); return x && y && (x.includes(y) || y.includes(x) || (x.length >= 5 && y.length >= 5 && x.slice(-5) === y.slice(-5))); };
+  const drop = new Set(); const F = matches.filter(m => m.sport === "football");
+  for (let i = 0; i < F.length; i++) for (let j = i + 1; j < F.length; j++) { const a = F[i], b = F[j]; if (drop.has(a.id) || drop.has(b.id) || a.dayKey !== b.dayKey || Math.abs(Date.parse(a.kickoff) - Date.parse(b.kickoff)) > 3 * 3600e3) continue;
+    if ((same(a.home, b.home) && same(a.away, b.away)) || (same(a.away, b.away) && Math.abs(Date.parse(a.kickoff) - Date.parse(b.kickoff)) < 20 * 60e3)) drop.add(a.fdDiv ? b.id : a.id); }
+  for (let i = matches.length - 1; i >= 0; i--) if (drop.has(matches[i].id)) matches.splice(i, 1); }
 for (const m of matches) { if (m.sport !== "football" || m.ah || m.price || !FTM) continue; const c = candidates.find(x => x.id === m.id); if (!c) continue;
   const pr = c.probs || (c.fair && devig(c.fair)); if (!pr || pr.length !== 3) continue;
   let pO = c.ou?.fair ? devig(c.ou.fair)?.[0] : null;
   if (pO == null && c.pmFoot) { const tl = (c.pmFoot.lines || []).find(l => l.type === "totals" && l.line === 2.5 && !(l.sp > 0.04)); if (tl) { const oi = tl.names.findIndex(n => /over/i.test(n)); pO = tl.prices[oi >= 0 ? oi : 0]; } }
   const g = fitGoals(pr[0], pr[2], pO); if (!g) continue; const mp = marketProbs(g[0], g[1]);
   // Bahis sitesi orani: bet365 (1X2, cifte sans, 2,5 alt/ust) varsa o; yoksa adil oranin %7 kesintili hali (yan pazarlarda tipik kesinti).
-  const E = c.entry, O = c.ou?.entry, ok = a => Array.isArray(a) && a.every(v => v > 1);
+  const isBook = c.bookmaker && !/polymarket/i.test(c.bookmaker), E = isBook ? c.entry : null, O = isBook ? c.ou?.entry : null, ok = a => Array.isArray(a) && a.every(v => v > 1); // Polymarket orani kesintisiz, gercek site orani sayilmaz
   const real = k => ok(E) && { MS1: E[0], MSX: E[1], MS2: E[2], "1X": 1 / (1 / E[0] + 1 / E[1]), X2: 1 / (1 / E[1] + 1 / E[2]), 12: 1 / (1 / E[0] + 1 / E[2]) }[k] || ok(O) && { U25: O[0], A25: O[1] }[k] || null;
   let best = null; for (const mk of MARKETS) { if (mk.half) continue; const p = applyCal(mp[mk.key], FTM.duzeltme?.[mk.key]); if (p < 0.55 || p > 0.80) continue; const r = real(mk.key), est = r || 0.93 / p; if (est < 1.3 || est > 2.2) continue; if (!best || p > best.p) best = { key: mk.key, label: mk.label, p, est: +est.toFixed(2), real: !!r }; }
   if (!best) continue;
