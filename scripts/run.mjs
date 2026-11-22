@@ -533,7 +533,7 @@ const shownTip = t => { const o = t.odds || t.minPlay;
   return false; };
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
 const boardDays = new Set([...pastDays, todayIst, tomorrowIst, afterIst]), boardSeen = new Set(), board = [];
-const estOf = t => t.est ?? (t.rule === "bkou" ? 1.87 : t.rule === "ah" || t.rule === "fiyat" ? (t.b365 || t.odds) : +(0.93 * t.minPlay / 1.03).toFixed(2));
+const estOf = t => t.est ?? (t.rule === "bkou" ? 1.87 : t.rule === "ah" || t.rule === "fiyat" ? (t.b365 || +(t.odds * 0.95).toFixed(2)) : +(0.93 * t.minPlay / 1.03).toFixed(2));
 // Gercek (bahis sitesi) oranla kar: kural ancak bununla kendini kanitlarsa sitede gosterilir. Digerleri golgede kaydedilmeye devam eder.
 // Guvenilir: en az 30 sonuclanmis bahiste, sitedeki oranla 100 bahiste +3 birimden fazla. Asya handikap degeri bet365 gercek oraniyla
 // gecmis iki sezonda kârli oldugu icin (127 bahis, +15) bastan guvenilir sayilir. En dusuk oran 1,40, gunde en fazla 5 tahmin.
