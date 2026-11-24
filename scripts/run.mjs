@@ -551,7 +551,7 @@ fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
 // Sitede gösterilen tahminler tek kaynaktan (tahmin defteri) gelir: maç başlayınca ya da bitince de sayfada kalır, sonucu yanına yazılır.
 const shownTip = t => { const o = t.odds || t.minPlay;
   if (t.sport === "football") return (t.rule === "ah" && o >= 1.3 && o <= 3.2) || (t.rule === "fiyat" && (t.b365 || t.odds) >= 1.3 && (t.b365 || t.odds) <= 3.2) || (t.rule === "fpm" && t.minPlay >= 1.3 && t.status !== "pending") || (t.rule === "ftall" && t.minPlay >= 1.3);
-  if (t.sport === "basketball") return ["test", "basket", "bkou"].includes(t.rule) && o >= 1.3 && o <= 1.85 && !/^pm-cbb/.test(t.id) && !/ncaa|college|wnba|g league|g-league/i.test(t.league || ""); // NBA ve diger ligler; Amerika alt ligleri yok
+  if (t.sport === "basketball") return !(t.rule === "bkou" && !t.book) && ["test", "basket", "bkou"].includes(t.rule) && o >= 1.3 && o <= 1.85 && !/^pm-cbb/.test(t.id) && !/ncaa|college|wnba|g league|g-league/i.test(t.league || ""); // NBA ve diger ligler; Amerika alt ligleri yok
   if (t.sport === "volleyball") return t.rule === "voley2";
   return false; };
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
@@ -560,13 +560,13 @@ const estOf = t => t.est ?? (t.rule === "bkou" ? 1.87 : t.rule === "ah" || t.rul
 // Gercek (bahis sitesi) oranla kar: kural ancak bununla kendini kanitlarsa sitede gosterilir. Digerleri golgede kaydedilmeye devam eder.
 // Guvenilir: en az 30 sonuclanmis bahiste, sitedeki oranla 100 bahiste +3 birimden fazla. Asya handikap degeri bet365 gercek oraniyla
 // gecmis iki sezonda kârli oldugu icin (127 bahis, +15) bastan guvenilir sayilir. En dusuk oran 1,40, gunde en fazla 5 tahmin.
-const siteKar = {}; for (const t of tips) { if (t.status !== "won" && t.status !== "lost") continue; const k = t.rule === "canli" ? "canli" : ruleKey(t); const x = (siteKar[k] ||= { n: 0, tutan: 0, kar: 0 }); x.n++; if (t.status === "won") { x.tutan++; x.kar += estOf(t) - 1; } else x.kar -= 1; }
+const siteKar = {}; for (const t of tips) { if (t.status !== "won" && t.status !== "lost") continue; if (t.rule === "bkou" && !t.book) continue; /* dogrulanmamis cizgili eski NBA kayitlari karneye girmez */ const k = t.rule === "canli" ? "canli" : ruleKey(t); const x = (siteKar[k] ||= { n: 0, tutan: 0, kar: 0 }); x.n++; if (t.status === "won") { x.tutan++; x.kar += estOf(t) - 1; } else x.kar -= 1; }
 for (const x of Object.values(siteKar)) x.kar = +x.kar.toFixed(1);
 const trusted = k => k === "ah" || (siteKar[k]?.n >= 30 && siteKar[k].kar / siteKar[k].n >= 0.03);
 const MIN_ODDS = 1.4, PER_DAY = 10;
 // Orta risk: kanitlanmis kural degil ama gercek site oraniyla degeri -%2'den iyi (gecmiste gunun en iyi adaylari: rastgeleden cok daha az zarar, ~-%2).
 const valOf = t => t.val ?? (t.p0 != null ? t.p0 * estOf(t) - 1 : null);
-const tier2 = t => ["ftall", "fiyat"].includes(t.rule) && valOf(t) != null && valOf(t) >= -0.02;
+const tier2 = t => ["ftall", "fiyat", "bkou"].includes(t.rule) && valOf(t) != null && valOf(t) >= -0.02;
 for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || !(trusted(ruleKey(t)) || tier2(t)) || (t.status === "pending" && !(estOf(t) >= MIN_ODDS)) || boardSeen.has(mid)) continue; boardSeen.add(mid);
   board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, tier: trusted(ruleKey(t)) ? "saglam" : "orta", book: t.book || (t.rule === "ah" || t.rule === "fiyat" ? "bet365" : null), val: valOf(t) == null ? null : +valOf(t).toFixed(3), label: t.label, minPlay: t.minPlay, est: +Number(estOf(t)).toFixed(2), odds: t.odds, p: +(t.p0 ?? (t.rule === "bkou" ? (bkou.find(x => `${x.id}#bkou` === t.id)?.conf ?? 0.70) : null) ?? Math.min(0.85, 1.03 / t.minPlay)).toFixed(3), status: t.status, score: t.score || "", profit: t.profit ?? null }); }
 { const keep = new Set(); const byDay = {}; for (const x of board) (byDay[x.dayKey] ||= []).push(x);
