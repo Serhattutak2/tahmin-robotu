@@ -1,0 +1,13 @@
+import fs from "node:fs";
+const out = {}; const get = async (u, h = {}) => { const t = Date.now(); try { const r = await fetch(u, { headers: { "User-Agent": "tahmin-robotu (github actions)", ...h } }); const s = await r.text(); return { st: r.status, ms: Date.now() - t, s }; } catch (e) { return { st: 0, s: String(e) }; } };
+{ const r = await get("https://www.football-data.co.uk/fixtures.csv"); const head = r.s.split("\n")[0]; out.fixtures = { st: r.st, rows: r.s.split("\n").length, has1XB: /1XBH/.test(head), cols: head.split(",").filter(c => /1XB|BFE|B365|PS|Avg|Max/.test(c)).join(" ") }; const L = r.s.split("\n"); const H = L[0].split(","); const i = H.indexOf("1XBH"); out.fixtures.with1xb = i < 0 ? 0 : L.slice(1).filter(l => l.split(",")[i]).length; out.fixtures.divs = [...new Set(L.slice(1).map(l => l.split(",")[0]))].join(","); }
+out.espn = {};
+for (const lg of ["soccer/uefa.champions", "soccer/uefa.europa", "soccer/uefa.europa.conf", "soccer/tur.1", "soccer/eng.1", "soccer/esp.1", "basketball/nba", "basketball/mens-college-basketball"]) {
+  const r = await get(`https://site.api.espn.com/apis/site/v2/sports/${lg}/scoreboard`); let ev = []; try { ev = JSON.parse(r.s).events || []; } catch {}
+  const withOdds = ev.filter(e => e.competitions?.[0]?.odds?.length);
+  out.espn[lg] = { st: r.st, events: ev.length, withOdds: withOdds.length, sample: withOdds[0] ? { name: withOdds[0].name, date: withOdds[0].date, odds: JSON.stringify(withOdds[0].competitions[0].odds[0]).slice(0, 900) } : null };
+}
+{ const r = await get("https://external-api.kalshi.com/trade-api/v2/events?status=open&limit=200&with_nested_markets=true"); let ev = []; try { ev = JSON.parse(r.s).events || []; } catch {} const sp = ev.filter(e => /soccer|football|nba|basket|ucl|champions|premier/i.test((e.category || "") + " " + (e.title || "") + " " + (e.series_ticker || "")));
+  out.kalshi = { st: r.st, events: ev.length, sports: sp.length, cats: [...new Set(ev.map(e => e.category))].join(","), sample: sp.slice(0, 3).map(e => ({ t: e.title, s: e.series_ticker, m: (e.markets || []).slice(0, 3).map(m => ({ t: m.ticker, sub: m.yes_sub_title, bid: m.yes_bid, ask: m.yes_ask, vol: m.volume })) })) }; }
+{ const r = await get("https://external-api.kalshi.com/trade-api/v2/series?category=Sports"); let s = []; try { s = JSON.parse(r.s).series || []; } catch {} out.kalshiSeries = { st: r.st, n: s.length, sample: s.filter(x => /soccer|ucl|epl|laliga|nba|euroleague|serie|bundes|ligue|turk/i.test(x.ticker + " " + x.title)).slice(0, 40).map(x => x.ticker + " | " + x.title) }; }
+fs.writeFileSync("docs/srcprobe.json", JSON.stringify(out, null, 1));
