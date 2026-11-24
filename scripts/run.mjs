@@ -414,7 +414,7 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
       const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); if (!H || !A) continue;
       const de = dk.find(e => Math.abs(Date.parse(e.kickoff) - Date.parse(c.kickoff)) < 3 * 3600e3 && nick(e.homeNick || e.home) === nick(c.home) && nick(e.awayNick || e.away) === nick(c.away)); if (!de || !de.line || !de.over || !de.under) continue;
       const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) continue;
-      const po = bOver(p, de.line), up = po >= 0.5, q = Math.max(po, 1 - po), od = up ? de.over : de.under; if (q < 0.70 || od < 1.4) continue;
+      const po = bOver(p, de.line), up = po >= 0.5, q = Math.max(po, 1 - po), od = up ? de.over : de.under; if (q < 0.62 || od < 1.4) continue; // basket5.json: gercek acilis cizgilerinde 0,60+ secimler sinavda +4,4/100, 0,70+ secimler +11,6/100
       bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `ALT_T_${up ? "O" : "U"}_${de.line}`, pmId: null, pmIdx: null, alt: { type: "total", line: de.line, dir: up ? "over" : "under" }, slug: c.pmGame.slug, book: de.provider, label: `Toplam sayı ${String(de.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: de.line, exp: +p.total.toFixed(1), est: od, minPlay: +Math.max(1.3, 1.03 / q).toFixed(2), conf: +q.toFixed(3) });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
