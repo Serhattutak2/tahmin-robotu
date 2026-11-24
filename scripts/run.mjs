@@ -407,19 +407,19 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
     const teamOf = n => M.t[nick(n)] ? nick(n) : null;
     // Ana cizgi ve oran DraftKings'ten (ESPN). Eski hata: Polymarket'te islem gormeyen yan cizgiler 0,50 fiyatla ana cizgi saniliyordu.
-    let dk = []; try { dk = await fetchEspnNba(todayIst, afterIst); } catch {}
+    let dk = [], dkErr = ""; try { dk = await fetchEspnNba(todayIst, afterIst); } catch (e) { dkErr = e.message; } const why = { aday: 0, takim: 0, dkYok: 0, az: 0, oran: 0 }, qs = [];
     // Bu duzeltmeden once kaydedilmis, baslamamis NBA toplam tahminleri (dogrulanmamis cizgi) silinir.
     for (let i = tips.length - 1; i >= 0; i--) { const t = tips[i]; if (t.rule === "bkou" && t.status === "pending" && !t.book && Date.parse(t.kickoff) > now) tips.splice(i, 1); }
     for (const c of candidates.filter(c => c.pmGame && /^nba/.test(c.pmGame.slug || "") && Date.parse(c.kickoff) > now && inWindow(Date.parse(c.kickoff)))) {
-      const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); if (!H || !A) continue;
-      const de = dk.find(e => Math.abs(Date.parse(e.kickoff) - Date.parse(c.kickoff)) < 3 * 3600e3 && nick(e.homeNick || e.home) === nick(c.home) && nick(e.awayNick || e.away) === nick(c.away)); if (!de || !de.line || !de.over || !de.under) continue;
-      const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) continue;
-      const po = bOver(p, de.line), up = po >= 0.5, q = Math.max(po, 1 - po), od = up ? de.over : de.under; if (q < 0.62 || od < 1.4) continue; // basket5.json: gercek acilis cizgilerinde 0,60+ secimler sinavda +4,4/100, 0,70+ secimler +11,6/100
+      const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); why.aday++; if (!H || !A) { why.takim++; continue; }
+      const de = dk.find(e => Math.abs(Date.parse(e.kickoff) - Date.parse(c.kickoff)) < 3 * 3600e3 && nick(e.homeNick || e.home) === nick(c.home) && nick(e.awayNick || e.away) === nick(c.away)); if (!de || !de.line || !de.over || !de.under) { why.dkYok++; continue; }
+      const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) { why.az++; continue; }
+      const po = bOver(p, de.line), up = po >= 0.5, q = Math.max(po, 1 - po), od = up ? de.over : de.under; qs.push(`${nick(c.home)}-${nick(c.away)} ${de.line} beklenen ${p.total.toFixed(1)} q${q.toFixed(2)}`); if (q < 0.62 || od < 1.4) { why.oran++; continue; } // basket5.json: gercek acilis cizgilerinde 0,60+ secimler sinavda +4,4/100, 0,70+ secimler +11,6/100
       bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `ALT_T_${up ? "O" : "U"}_${de.line}`, pmId: null, pmIdx: null, alt: { type: "total", line: de.line, dir: up ? "over" : "under" }, slug: c.pmGame.slug, book: de.provider, label: `Toplam sayı ${String(de.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: de.line, exp: +p.total.toFixed(1), est: od, minPlay: +Math.max(1.3, 1.03 / q).toFixed(2), conf: +q.toFixed(3) });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
     for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: null, pmIdx: null, alt: x.alt, slug: x.slug, book: x.book, label: x.label, minPlay: x.est, odds: x.est, p: x.conf, est: x.est }, "bkou"));
-    note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
+    note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} alt/üst seçimi; DraftKings NBA ${dk.length} maç${dkErr ? " hata " + dkErr : ""}; ${JSON.stringify(why)}; ${qs.slice(0, 8).join(" | ")}`);
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
 // Denk mac (favori 0,53-0,70) -> toplam set 3,5 ust. Basabas ya da fiyati olusmamis maclar ve 2,00 civari oranlar verilmez.
