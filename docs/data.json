@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-24T05:05:49.977Z",
+ "generatedAt": "2026-11-24T05:35:55.826Z",
  "strategy": {
   "minEdge": 0.04,
   "maxOdds": 10,
@@ -15,6 +15,25 @@
  },
  "x1": [],
  "bkou": [
+  {
+   "id": "pm-nba-mia-phi-2026-11-25",
+   "sport": "basketball",
+   "league": "NBA",
+   "home": "Heat",
+   "away": "76ers",
+   "kickoff": "2026-11-25T22:00:00Z",
+   "date": "2026-11-25",
+   "dayKey": "2026-11-26",
+   "key": "PM_7303258_0",
+   "pmId": "7303258",
+   "pmIdx": 0,
+   "label": "Toplam sayı 232,5 Üst",
+   "line": 232.5,
+   "exp": 259.1,
+   "pmOdds": 2,
+   "minPlay": 1.85,
+   "conf": 0.916
+  },
   {
    "id": "pm-nba-bos-was-2026-11-24",
    "sport": "basketball",
@@ -1675,6 +1694,26 @@
    "status": "pending",
    "score": "",
    "profit": null
+  },
+  {
+   "id": "pm-nba-mia-phi-2026-11-25#bkou",
+   "rk": "bkou",
+   "sport": "basketball",
+   "dayKey": "2026-11-26",
+   "league": "NBA",
+   "kickoff": "2026-11-25T22:00:00Z",
+   "home": "Heat",
+   "away": "76ers",
+   "tier": "saglam",
+   "val": 0.713,
+   "label": "Toplam sayı 232,5 Üst",
+   "minPlay": 1.85,
+   "est": 1.87,
+   "odds": 1.85,
+   "p": 0.916,
+   "status": "pending",
+   "score": "",
+   "profit": null
   }
  ],
  "kârEğrisi": [
@@ -1828,9 +1867,9 @@
   {
    "d": "2026-11-24",
    "football": -3.11,
-   "basketball": -2.26,
+   "basketball": -2.91,
    "volleyball": 0,
-   "n": 18
+   "n": 20
   }
  ],
  "pastDays": [
@@ -1850,14 +1889,14 @@
    "kar": 0.8
   },
   "basket-toplam": {
-   "n": 161,
-   "tutan": 94,
-   "kar": -14.5
+   "n": 163,
+   "tutan": 95,
+   "kar": -15.2
   },
   "basket-handikap": {
-   "n": 226,
+   "n": 227,
    "tutan": 134,
-   "kar": -21.2
+   "kar": -22.2
   },
   "bkou": {
    "n": 57,
@@ -1936,18 +1975,18 @@
    "neden": "kapanış oranına göre değer var ya da belirsiz"
   },
   "basket-handikap": {
-   "n": 203,
+   "n": 204,
    "tutan": 113,
-   "kar": -6,
+   "kar": -7,
    "clvN": 100,
    "clv100": -0.2,
    "açık": true,
    "neden": "kapanış oranına göre değer var ya da belirsiz"
   },
   "basket-toplam": {
-   "n": 149,
-   "tutan": 82,
-   "kar": -4.3,
+   "n": 151,
+   "tutan": 83,
+   "kar": -4.9,
    "clvN": 65,
    "clv100": 1.5,
    "açık": true,
@@ -2258,12 +2297,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7931,
+    "p": 0.798,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
     "minPlay": 1.3,
-    "odds": 1.26,
+    "odds": 1.25,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -2275,23 +2314,23 @@
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.97
+     "minPlay": 1.99
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "KGY",
-    "label": "Karşılıklı gol yok",
-    "p": 0.641,
-    "est": 1.45,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "p": 0.663,
+    "est": 1.4,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.61,
+    "minPlay": 1.55,
     "slug": "egy1-zef-aqs-2026-11-24",
     "goals": [
-     1.2,
-     0.67
+     1.16,
+     0.63
     ]
    }
   },
@@ -2313,19 +2352,23 @@
     "kind": "total",
     "line": 144.5,
     "label": "Toplam sayı 144,5 Üst",
-    "minPlay": 1.81,
-    "odds": 1.75,
+    "minPlay": 1.82,
+    "odds": 1.77,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
+     "label": "Toplam sayı 148,5 Alt",
+     "minPlay": 1.89
+    },
+    {
      "label": "St. Bonaventure Bonnies +1,5 handikap",
      "minPlay": 1.91
     },
     {
-     "label": "Toplam sayı 148,5 Alt",
-     "minPlay": 1.91
+     "label": "Toplam sayı 146,5 Üst",
+     "minPlay": 1.98
     }
    ]
   },
@@ -2343,7 +2386,7 @@
    "bet": {
     "key": "HOME",
     "label": "Bucknell Bison kazanır",
-    "minPlay": 1.27,
+    "minPlay": 1.44,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -2443,7 +2486,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Northern Colorado Bears kazanır",
-    "minPlay": 1.66,
+    "minPlay": 1.67,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -2476,11 +2519,11 @@
    "alts": [
     {
      "label": "Akron Zips kazanır",
-     "minPlay": 1.79
+     "minPlay": 1.81
     },
     {
      "label": "Toplam sayı 140,5 Üst",
-     "minPlay": 1.84
+     "minPlay": 1.82
     },
     {
      "label": "Akron Zips -1,5 handikap",
@@ -2503,7 +2546,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7562,
+    "p": 0.7586,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -2516,27 +2559,27 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.51
+     "minPlay": 1.5
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.8
+     "minPlay": 1.82
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "KGV",
-    "label": "Karşılıklı gol var",
-    "p": 0.592,
-    "est": 1.57,
+    "key": "A35",
+    "label": "3,5 Alt",
+    "p": 0.652,
+    "est": 1.43,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.74,
+    "minPlay": 1.58,
     "slug": "ucl-gal-ast-2026-11-24",
     "goals": [
-     1.32,
-     1.55
+     1.36,
+     1.63
     ]
    }
   },
@@ -2593,6 +2636,58 @@
    }
   },
   {
+   "id": "pm-itsb-sta-cat-2026-11-24",
+   "sport": "football",
+   "league": "Serie B",
+   "kickoff": "2026-11-24T18:00:00Z",
+   "home": "SS Juve Stabia",
+   "away": "US Catanzaro 1929",
+   "dayKey": "2026-11-24",
+   "date": "2026-11-24",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.7662,
+    "lowOdds": false,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.33,
+    "odds": 1.3,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.4
+    },
+    {
+     "label": "Deplasman kaybetmez (X2)",
+     "minPlay": 2.01
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "1XA35",
+    "label": "1X ve 3,5 Alt",
+    "p": 0.634,
+    "est": 1.47,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.63,
+    "slug": "itsb-sta-cat-2026-11-24",
+    "goals": [
+     1.4,
+     0.87
+    ]
+   }
+  },
+  {
    "id": "pm-egy1-ems-apc-2026-11-24",
    "sport": "football",
    "league": "egypt premier league",
@@ -2645,58 +2740,6 @@
    }
   },
   {
-   "id": "pm-itsb-sta-cat-2026-11-24",
-   "sport": "football",
-   "league": "Serie B",
-   "kickoff": "2026-11-24T18:00:00Z",
-   "home": "SS Juve Stabia",
-   "away": "US Catanzaro 1929",
-   "dayKey": "2026-11-24",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.7739,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.32,
-    "odds": 1.29,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.41
-    },
-    {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 2.03
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "1XA35",
-    "label": "1X ve 3,5 Alt",
-    "p": 0.651,
-    "est": 1.43,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.58,
-    "slug": "itsb-sta-cat-2026-11-24",
-    "goals": [
-     1.36,
-     0.83
-    ]
-   }
-  },
-  {
    "id": "pm-egy1-eme-elq-2026-11-25",
    "sport": "football",
    "league": "egypt premier league",
@@ -2711,7 +2754,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7739,
+    "p": 0.7727,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -2728,7 +2771,7 @@
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.86
+     "minPlay": 1.87
     }
    ],
    "ftall": {
@@ -2772,18 +2815,39 @@
    },
    "alts": [
     {
-     "label": "Toplam sayı 165,5 Üst",
-     "minPlay": 1.84
-    },
-    {
-     "label": "Toplam sayı 169,5 Alt",
-     "minPlay": 1.87
-    },
-    {
      "label": "Toplam sayı 166,5 Üst",
-     "minPlay": 1.91
+     "minPlay": 1.98
+    },
+    {
+     "label": "Toplam sayı 167,5 Üst",
+     "minPlay": 2.02
+    },
+    {
+     "label": "Southern Utah Thunderbirds +8,5 handikap",
+     "minPlay": 2.02
     }
    ]
+  },
+  {
+   "id": "pm-cbb-jac-nhvn-2026-11-24",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-24T18:00:00Z",
+   "home": "Lindenwood Lions",
+   "away": "New Haven Chargers",
+   "dayKey": "2026-11-24",
+   "date": "2026-11-24",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "HOME",
+    "label": "Lindenwood Lions kazanır",
+    "minPlay": 1.87,
+    "odds": null,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": []
   },
   {
    "id": "pm-cbb-pitt-okl-2026-11-24",
@@ -2927,40 +2991,40 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.6881,
+    "p": 0.7065,
     "lowOdds": false,
-    "key": "12",
-    "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.48,
-    "odds": 1.45,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.44,
+    "odds": 1.41,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
    },
    "alts": [
     {
-     "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.53
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.49
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.59
+     "minPlay": 1.68
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "1X",
-    "label": "L.R. Vicenza kaybetmez (1X)",
-    "p": 0.661,
-    "est": 1.41,
+    "key": "12",
+    "label": "Beraberlik olmaz (12)",
+    "p": 0.663,
+    "est": 1.4,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.56,
+    "minPlay": 1.55,
     "slug": "itsb-vic-car-2026-11-24",
     "goals": [
-     0.96,
-     0.99
+     0.88,
+     1.07
     ]
    }
   },
@@ -2979,7 +3043,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7094,
+    "p": 0.7065,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -2992,11 +3056,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.57
+     "minPlay": 1.55
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.59
+     "minPlay": 1.6
     }
    ],
    "ftall": {
@@ -3134,7 +3198,7 @@
    "bet": {
     "key": "HOME",
     "label": "Sacred Heart Pioneers kazanır",
-    "minPlay": 1.5,
+    "minPlay": 1.53,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -3155,7 +3219,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Florida Gulf Coast Eagles (W) kazanır",
-    "minPlay": 1.39,
+    "minPlay": 1.37,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -3176,7 +3240,7 @@
    "bet": {
     "key": "HOME",
     "label": "Siena Saints kazanır",
-    "minPlay": 1.4,
+    "minPlay": 1.39,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -3200,16 +3264,12 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Oregon State Beavers kazanır",
-    "minPlay": 1.26,
-    "odds": 1.23,
+    "minPlay": 1.29,
+    "odds": 1.25,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
-    {
-     "label": "San Francisco Dons +10,5 handikap",
-     "minPlay": 1.84
-    },
     {
      "label": "Toplam sayı 148,5 Üst",
      "minPlay": 1.86
@@ -3217,6 +3277,10 @@
     {
      "label": "Toplam sayı 152,5 Alt",
      "minPlay": 1.87
+    },
+    {
+     "label": "San Francisco Dons +9,5 handikap",
+     "minPlay": 1.94
     }
    ]
   },
@@ -3287,7 +3351,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8325,
+    "p": 0.8342,
     "lowOdds": true,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -3304,23 +3368,23 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.61
+     "minPlay": 1.6
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "12U15",
-    "label": "12 ve 1,5 Üst",
-    "p": 0.657,
-    "est": 1.42,
+    "key": "EV15",
+    "label": "Cardiff City FC 2+ gol atar",
+    "p": 0.659,
+    "est": 1.41,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.57,
+    "minPlay": 1.56,
     "slug": "elc-car-pne-2026-11-24",
     "goals": [
-     2.12,
-     0.99
+     2.2,
+     1.03
     ]
    }
   },
@@ -3495,7 +3559,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7337,
+    "p": 0.7363,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -3508,27 +3572,27 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.59
+     "minPlay": 1.6
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.64
+     "minPlay": 1.63
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "1X",
     "label": "Sheffield United FC kaybetmez (1X)",
-    "p": 0.655,
-    "est": 1.42,
+    "p": 0.644,
+    "est": 1.44,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.57,
+    "minPlay": 1.6,
     "slug": "elc-she-sot-2026-11-24",
     "goals": [
      1.32,
-     1.27
+     1.31
     ]
    }
   },
@@ -3755,7 +3819,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7562,
+    "p": 0.755,
     "lowOdds": false,
     "key": "1X",
     "label": "Ev sahibi kaybetmez (1X)",
@@ -3772,23 +3836,23 @@
     },
     {
      "label": "MS 1",
-     "minPlay": 1.99
+     "minPlay": 2
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "1XU15",
-    "label": "1X ve 1,5 Üst",
-    "p": 0.609,
-    "est": 1.53,
+    "key": "DEP05",
+    "label": "Wealdstone FC gol atar",
+    "p": 0.648,
+    "est": 1.44,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.69,
+    "minPlay": 1.59,
     "slug": "enl-alt-wea-2026-11-24",
     "goals": [
-     1.72,
-     1.11
+     1.6,
+     1.03
     ]
    }
   },
@@ -4015,11 +4079,11 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.725,
+    "p": 0.7264,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.41,
+    "minPlay": 1.4,
     "odds": 1.38,
     "estOdds": null,
     "value": false,
@@ -4028,26 +4092,26 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.53
+     "minPlay": 1.55
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.67
+     "minPlay": 1.65
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "1X",
     "label": "Stevenage FC kaybetmez (1X)",
-    "p": 0.62,
-    "est": 1.5,
+    "p": 0.629,
+    "est": 1.48,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.66,
+    "minPlay": 1.64,
     "slug": "el1-ste-swe-2026-09-26",
     "goals": [
-     1.16,
+     1.2,
      1.27
     ]
    }
@@ -4309,6 +4373,110 @@
     "goals": [
      1.04,
      1.75
+    ]
+   }
+  },
+  {
+   "id": "pm-elc-wol-der-2026-11-24",
+   "sport": "football",
+   "league": "EFL Championship",
+   "kickoff": "2026-11-24T20:00:00Z",
+   "home": "Wolverhampton Wanderers FC",
+   "away": "Derby County FC",
+   "dayKey": "2026-11-24",
+   "date": "2026-11-24",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.9146,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.1,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.36
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "MS1U15",
+    "label": "MS 1 ve 1,5 Üst",
+    "p": 0.633,
+    "est": 1.47,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.63,
+    "slug": "elc-wol-der-2026-11-24",
+    "goals": [
+     2.28,
+     0.63
+    ]
+   }
+  },
+  {
+   "id": "pm-scop-ran-abe-2026-10-31",
+   "sport": "football",
+   "league": "Scottish Premiership",
+   "kickoff": "2026-11-24T20:00:00Z",
+   "home": "Rangers FC",
+   "away": "Aberdeen FC",
+   "dayKey": "2026-11-24",
+   "date": "2026-11-24",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.9246,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.08,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.3
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "HE1",
+    "label": "Rangers FC 2+ farkla kazanır",
+    "p": 0.577,
+    "est": 1.61,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.79,
+    "slug": "scop-ran-abe-2026-10-31",
+    "goals": [
+     2.68,
+     0.71
     ]
    }
   },
@@ -4677,110 +4845,6 @@
    }
   },
   {
-   "id": "pm-elc-wol-der-2026-11-24",
-   "sport": "football",
-   "league": "EFL Championship",
-   "kickoff": "2026-11-24T20:00:00Z",
-   "home": "Wolverhampton Wanderers FC",
-   "away": "Derby County FC",
-   "dayKey": "2026-11-24",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.9146,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.1,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.36
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "MS1U15",
-    "label": "MS 1 ve 1,5 Üst",
-    "p": 0.633,
-    "est": 1.47,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.63,
-    "slug": "elc-wol-der-2026-11-24",
-    "goals": [
-     2.28,
-     0.63
-    ]
-   }
-  },
-  {
-   "id": "pm-scop-ran-abe-2026-10-31",
-   "sport": "football",
-   "league": "Scottish Premiership",
-   "kickoff": "2026-11-24T20:00:00Z",
-   "home": "Rangers FC",
-   "away": "Aberdeen FC",
-   "dayKey": "2026-11-24",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.9246,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.08,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.3
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "HE1",
-    "label": "Rangers FC 2+ farkla kazanır",
-    "p": 0.577,
-    "est": 1.61,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.79,
-    "slug": "scop-ran-abe-2026-10-31",
-    "goals": [
-     2.68,
-     0.71
-    ]
-   }
-  },
-  {
    "id": "pm-cwbb-wmich-jac-2026-11-24",
    "sport": "basketball",
    "league": "NCAA",
@@ -4794,7 +4858,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Lindenwood Lions (W) kazanır",
-    "minPlay": 1.58,
+    "minPlay": 1.6,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -4827,14 +4891,6 @@
     {
      "label": "TCU Horned Frogs +7,5 handikap",
      "minPlay": 1.89
-    },
-    {
-     "label": "Toplam sayı 154,5 Alt",
-     "minPlay": 2.02
-    },
-    {
-     "label": "TCU Horned Frogs +6,5 handikap",
-     "minPlay": 2.02
     }
    ]
   },
@@ -4860,7 +4916,12 @@
     "unverified": true,
     "rule": "test"
    },
-   "alts": []
+   "alts": [
+    {
+     "label": "Maryland Terrapins +4,5 handikap",
+     "minPlay": 2.02
+    }
+   ]
   },
   {
    "id": "pm-cbb-ndak-det-2026-11-24",
@@ -4879,23 +4940,23 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "North Dakota Fighting Hawks kazanır",
-    "minPlay": 1.66,
-    "odds": 1.61,
+    "minPlay": 1.65,
+    "odds": 1.6,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 155,5 Alt",
-     "minPlay": 1.81
+     "label": "North Dakota Fighting Hawks -2,5 handikap",
+     "minPlay": 1.78
     },
     {
-     "label": "Toplam sayı 151,5 Üst",
-     "minPlay": 1.94
+     "label": "Toplam sayı 152,5 Alt",
+     "minPlay": 1.86
     },
     {
-     "label": "Toplam sayı 153,5 Alt",
-     "minPlay": 1.98
+     "label": "North Dakota Fighting Hawks -3,5 handikap",
+     "minPlay": 1.91
     }
    ]
   },
@@ -4911,29 +4972,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7298496_0",
-    "pmId": "7298496",
-    "pmIdx": 0,
-    "kind": "total",
-    "line": 133.5,
-    "label": "Toplam sayı 133,5 Üst",
-    "minPlay": 1.87,
-    "odds": 1.82,
+    "key": "PM_7298448_1",
+    "pmId": "7298448",
+    "pmIdx": 1,
+    "kind": "spread",
+    "line": 2.5,
+    "label": "Appalachian State Mountaineers +2,5 handikap",
+    "minPlay": 1.84,
+    "odds": 1.79,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
+     "label": "Toplam sayı 133,5 Üst",
+     "minPlay": 1.87
+    },
+    {
      "label": "Yale Bulldogs +1,5 handikap",
-     "minPlay": 1.94
+     "minPlay": 1.93
     },
     {
      "label": "Toplam sayı 134,5 Üst",
      "minPlay": 1.98
-    },
-    {
-     "label": "Toplam sayı 135,5 Alt",
-     "minPlay": 2.02
     }
    ]
   },
@@ -4951,7 +5012,7 @@
    "bet": {
     "key": "HOME",
     "label": "West Virginia Mountaineers kazanır",
-    "minPlay": 1.49,
+    "minPlay": 1.48,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -4972,7 +5033,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Arkansas State Red Wolves kazanır",
-    "minPlay": 1.62,
+    "minPlay": 1.61,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5088,22 +5149,14 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998593_0",
-    "pmId": "6998593",
-    "pmIdx": 0,
-    "kind": "side",
+    "key": "HOME",
     "label": "Michigan Wolverines kazanır",
-    "minPlay": 1.51,
-    "odds": 1.47,
+    "minPlay": 1.5,
+    "odds": null,
     "unverified": true,
     "rule": "test"
    },
-   "alts": [
-    {
-     "label": "Creighton Bluejays +6,5 handikap",
-     "minPlay": 2.02
-    }
-   ]
+   "alts": []
   },
   {
    "id": "pm-cbb-wyom-kentst-2026-11-24",
@@ -5122,23 +5175,23 @@
     "pmIdx": 0,
     "kind": "side",
     "label": "Wyoming Cowboys kazanır",
-    "minPlay": 1.28,
-    "odds": 1.24,
+    "minPlay": 1.32,
+    "odds": 1.28,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Wyoming Cowboys -6,5 handikap",
-     "minPlay": 1.72
-    },
-    {
      "label": "Kent State Golden Flashes +10,5 handikap",
-     "minPlay": 1.82
+     "minPlay": 1.76
     },
     {
-     "label": "Wyoming Cowboys -8,5 handikap",
-     "minPlay": 1.94
+     "label": "Kent State Golden Flashes +9,5 handikap",
+     "minPlay": 1.87
+    },
+    {
+     "label": "Toplam sayı 143,5 Üst",
+     "minPlay": 1.91
     }
    ]
   },
@@ -5156,7 +5209,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Boston College Eagles (W) kazanır",
-    "minPlay": 1.36,
+    "minPlay": 1.34,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5177,49 +5230,7 @@
    "bet": {
     "key": "HOME",
     "label": "Georgia Southern Eagles kazanır",
-    "minPlay": 1.72,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cwbb-nichls-loulaf-2026-11-24",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-24T23:00:00Z",
-   "home": "Nicholls Colonels",
-   "away": "Louisiana-Lafayette Ragin' Cajuns (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Louisiana-Lafayette Ragin' Cajuns (W) kazanır",
-    "minPlay": 1.81,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cwbb-niagra-duq-2026-11-24",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-24T23:00:00Z",
-   "home": "Niagara Purple Eagles",
-   "away": "Duquesne Dukes (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Duquesne Dukes (W) kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.76,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5262,30 +5273,6 @@
      "minPlay": 1.84
     }
    ]
-  },
-  {
-   "id": "pm-cbb-queen-woff-2026-11-24",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-24T23:00:00Z",
-   "home": "Queens (NC) Royals",
-   "away": "Wofford Terriers",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-24",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "PM_6998636_1",
-    "pmId": "6998636",
-    "pmIdx": 1,
-    "kind": "side",
-    "label": "Wofford Terriers kazanır",
-    "minPlay": 2.02,
-    "odds": 1.96,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
   },
   {
    "id": "pm-cbb-usi-vamil-2026-11-24",
@@ -5341,8 +5328,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Florida Atlantic Owls kazanır",
-    "minPlay": 1.42,
-    "odds": 1.38,
+    "minPlay": 1.41,
+    "odds": 1.37,
     "unverified": true,
     "rule": "test"
    },
@@ -5356,7 +5343,7 @@
      "minPlay": 1.79
     },
     {
-     "label": "Toplam sayı 159,5 Üst",
+     "label": "Toplam sayı 161,5 Alt",
      "minPlay": 1.91
     }
    ]
@@ -5386,12 +5373,8 @@
    },
    "alts": [
     {
-     "label": "Toplam sayı 156,5 Üst",
-     "minPlay": 1.89
-    },
-    {
      "label": "Toplam sayı 158,5 Alt",
-     "minPlay": 2
+     "minPlay": 1.98
     },
     {
      "label": "Toplam sayı 157,5 Üst",
@@ -5413,7 +5396,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Temple Owls (W) kazanır",
-    "minPlay": 1.48,
+    "minPlay": 1.45,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5434,7 +5417,7 @@
    "bet": {
     "key": "HOME",
     "label": "East Texas A&M Lions kazanır",
-    "minPlay": 1.84,
+    "minPlay": 1.86,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5455,7 +5438,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Youngstown State Penguins (W) kazanır",
-    "minPlay": 1.36,
+    "minPlay": 1.33,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5518,7 +5501,7 @@
    "bet": {
     "key": "HOME",
     "label": "Lehigh Mountain Hawks kazanır",
-    "minPlay": 1.46,
+    "minPlay": 1.55,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5576,7 +5559,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Lamar Cardinals kazanır",
-    "minPlay": 1.66,
+    "minPlay": 1.67,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5651,7 +5634,7 @@
    "bet": {
     "key": "HOME",
     "label": "Western Illinois Leathernecks kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.21,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5672,7 +5655,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Evansville Purple Aces (W) kazanır",
-    "minPlay": 1.79,
+    "minPlay": 1.81,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -5691,28 +5674,29 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998579_0",
-    "pmId": "6998579",
-    "pmIdx": 0,
-    "kind": "side",
-    "label": "Vanderbilt Commodores kazanır",
-    "minPlay": 1.87,
-    "odds": 1.82,
+    "key": "PM_7293945_1",
+    "pmId": "7293945",
+    "pmIdx": 1,
+    "kind": "spread",
+    "line": 3.5,
+    "label": "Ohio State Buckeyes +3,5 handikap",
+    "minPlay": 1.81,
+    "odds": 1.75,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
      "label": "Toplam sayı 154,5 Üst",
+     "minPlay": 1.81
+    },
+    {
+     "label": "Vanderbilt Commodores kazanır",
      "minPlay": 1.87
     },
     {
-     "label": "Toplam sayı 157,5 Alt",
+     "label": "Toplam sayı 158,5 Alt",
      "minPlay": 1.94
-    },
-    {
-     "label": "Ohio State Buckeyes +2,5 handikap",
-     "minPlay": 1.96
     }
    ]
   },
@@ -5734,8 +5718,8 @@
     "kind": "total",
     "line": 147.5,
     "label": "Toplam sayı 147,5 Üst",
-    "minPlay": 2,
-    "odds": 1.94,
+    "minPlay": 1.93,
+    "odds": 1.87,
     "unverified": true,
     "rule": "test"
    },
@@ -5783,8 +5767,8 @@
     "kind": "spread",
     "line": -34.5,
     "label": "Florida Gators -34,5 handikap",
-    "minPlay": 1.87,
-    "odds": 1.82,
+    "minPlay": 1.89,
+    "odds": 1.83,
     "unverified": true,
     "rule": "test"
    },
@@ -5795,7 +5779,7 @@
     },
     {
      "label": "Milwaukee Panthers +36,5 handikap",
-     "minPlay": 1.93
+     "minPlay": 1.89
     },
     {
      "label": "Toplam sayı 157,5 Alt",
@@ -5833,11 +5817,11 @@
     },
     {
      "label": "Toplam sayı 154,5 Üst",
-     "minPlay": 1.84
+     "minPlay": 1.82
     },
     {
      "label": "Toplam sayı 158,5 Alt",
-     "minPlay": 1.87
+     "minPlay": 1.89
     }
    ]
   },
@@ -5870,6 +5854,10 @@
     },
     {
      "label": "Toplam sayı 158,5 Üst",
+     "minPlay": 1.86
+    },
+    {
+     "label": "Toplam sayı 162,5 Alt",
      "minPlay": 1.87
     }
    ]
@@ -5912,32 +5900,33 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Loyola Maryland Greyhounds kazanır",
-    "minPlay": 1.72,
-    "odds": 1.67,
+    "minPlay": 1.73,
+    "odds": 1.68,
     "unverified": true,
     "rule": "test"
    },
    "alts": []
   },
   {
-   "id": "pm-cbb-mstm-morgst-2026-11-24",
+   "id": "pm-cbb-nhamp-seton-2026-11-24",
    "sport": "basketball",
    "league": "NCAA",
    "kickoff": "2026-11-25T00:00:00Z",
-   "home": "Mount St. Mary's Mountaineers",
-   "away": "Morgan State Bears",
+   "home": "New Hampshire Wildcats",
+   "away": "Seton Hall Pirates",
    "dayKey": "2026-11-25",
    "date": "2026-11-25",
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998611_1",
-    "pmId": "6998611",
-    "pmIdx": 1,
-    "kind": "side",
-    "label": "Morgan State Bears kazanır",
-    "minPlay": 2,
-    "odds": 1.94,
+    "key": "PM_7299568_0",
+    "pmId": "7299568",
+    "pmIdx": 0,
+    "kind": "spread",
+    "line": -20.5,
+    "label": "Seton Hall Pirates -20,5 handikap",
+    "minPlay": 1.89,
+    "odds": 1.83,
     "unverified": true,
     "rule": "test"
    },
@@ -6004,7 +5993,12 @@
     "unverified": true,
     "rule": "test"
    },
-   "alts": []
+   "alts": [
+    {
+     "label": "Iowa Hawkeyes -26,5 handikap",
+     "minPlay": 1.87
+    }
+   ]
   },
   {
    "id": "pm-cbb-verm-siena-2026-11-24",
@@ -6018,14 +6012,13 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7301435_1",
-    "pmId": "7301435",
+    "key": "PM_6998634_1",
+    "pmId": "6998634",
     "pmIdx": 1,
-    "kind": "spread",
-    "line": 3.5,
-    "label": "Vermont Catamounts +3,5 handikap",
-    "minPlay": 1.98,
-    "odds": 1.92,
+    "kind": "side",
+    "label": "Siena Saints kazanır",
+    "minPlay": 1.75,
+    "odds": 1.69,
     "unverified": true,
     "rule": "test"
    },
@@ -6069,8 +6062,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Old Dominion Monarchs kazanır",
-    "minPlay": 1.33,
-    "odds": 1.29,
+    "minPlay": 1.35,
+    "odds": 1.31,
     "unverified": true,
     "rule": "test"
    },
@@ -6085,7 +6078,7 @@
     },
     {
      "label": "Toplam sayı 135,5 Alt",
-     "minPlay": 1.86
+     "minPlay": 1.84
     }
    ]
   },
@@ -6103,7 +6096,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Western Kentucky Hilltoppers (W) kazanır",
-    "minPlay": 1.46,
+    "minPlay": 1.55,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -6139,38 +6132,14 @@
      "minPlay": 1.81
     },
     {
-     "label": "Toplam sayı 162,5 Üst",
+     "label": "West Georgia Wolves +16,5 handikap",
      "minPlay": 1.91
     },
     {
-     "label": "West Georgia Wolves +16,5 handikap",
-     "minPlay": 1.91
+     "label": "Toplam sayı 164,5 Alt",
+     "minPlay": 1.94
     }
    ]
-  },
-  {
-   "id": "pm-cbb-houbap-lamon-2026-11-24",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T00:30:00Z",
-   "home": "Houston Christian Huskies",
-   "away": "Louisiana-Monroe Warhawks",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "PM_6998595_0",
-    "pmId": "6998595",
-    "pmIdx": 0,
-    "kind": "side",
-    "label": "Houston Christian Huskies kazanır",
-    "minPlay": 1.86,
-    "odds": 1.8,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
   },
   {
    "id": "pm-cbb-hpnt-duq-2026-11-24",
@@ -6184,13 +6153,10 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998604_0",
-    "pmId": "6998604",
-    "pmIdx": 0,
-    "kind": "side",
+    "key": "HOME",
     "label": "High Point Panthers kazanır",
-    "minPlay": 1.27,
-    "odds": 1.23,
+    "minPlay": 1.41,
+    "odds": null,
     "unverified": true,
     "rule": "test"
    },
@@ -6213,23 +6179,23 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Southeast Missouri State Redhawks kazanır",
-    "minPlay": 1.75,
-    "odds": 1.69,
+    "minPlay": 1.67,
+    "odds": 1.63,
     "unverified": true,
     "rule": "test"
    },
    "alts": [
     {
-     "label": "Toplam sayı 151,5 Alt",
-     "minPlay": 1.91
+     "label": "Purdue Fort Wayne Mastodons +6,5 handikap",
+     "minPlay": 1.69
+    },
+    {
+     "label": "Toplam sayı 147,5 Üst",
+     "minPlay": 1.86
     },
     {
      "label": "Southeast Missouri State Redhawks -2,5 handikap",
-     "minPlay": 1.93
-    },
-    {
-     "label": "Toplam sayı 149,5 Üst",
-     "minPlay": 1.98
+     "minPlay": 1.89
     }
    ]
   },
@@ -6280,7 +6246,7 @@
    "bet": {
     "key": "HOME",
     "label": "DePaul Blue Demons kazanır",
-    "minPlay": 1.31,
+    "minPlay": 1.29,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -6322,7 +6288,7 @@
    "bet": {
     "key": "HOME",
     "label": "Northern Colorado Bears kazanır",
-    "minPlay": 1.33,
+    "minPlay": 1.32,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -6382,12 +6348,12 @@
      "minPlay": 1.94
     },
     {
-     "label": "Central Michigan Chippewas +21,5 handikap",
+     "label": "Toplam sayı 153,5 Alt",
      "minPlay": 1.94
     },
     {
-     "label": "Toplam sayı 153,5 Alt",
-     "minPlay": 1.96
+     "label": "Central Michigan Chippewas +21,5 handikap",
+     "minPlay": 1.94
     }
    ]
   },
@@ -6482,7 +6448,7 @@
     },
     {
      "label": "Toplam sayı 144,5 Alt",
-     "minPlay": 1.93
+     "minPlay": 1.94
     },
     {
      "label": "Toplam sayı 142,5 Üst",
@@ -6504,7 +6470,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Cornell Big Red kazanır",
-    "minPlay": 1.24,
+    "minPlay": 1.23,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -6528,8 +6494,8 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "North Alabama Lions kazanır",
-    "minPlay": 1.75,
-    "odds": 1.69,
+    "minPlay": 1.73,
+    "odds": 1.68,
     "unverified": true,
     "rule": "test"
    },
@@ -6567,8 +6533,8 @@
      "minPlay": 1.86
     },
     {
-     "label": "Toplam sayı 149,5 Alt",
-     "minPlay": 1.96
+     "label": "Toplam sayı 150,5 Alt",
+     "minPlay": 1.87
     }
    ]
   },
@@ -6624,7 +6590,7 @@
    "bet": {
     "key": "HOME",
     "label": "Virginia Cavaliers kazanır",
-    "minPlay": 1.45,
+    "minPlay": 1.21,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -6673,14 +6639,42 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_7296615_0",
-    "pmId": "7296615",
+    "key": "PM_6998661_1",
+    "pmId": "6998661",
+    "pmIdx": 1,
+    "kind": "side",
+    "label": "Washington State Cougars kazanır",
+    "minPlay": 1.6,
+    "odds": 1.55,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": [
+    {
+     "label": "Toplam sayı 155,5 Üst",
+     "minPlay": 1.89
+    }
+   ]
+  },
+  {
+   "id": "pm-cbb-gcan-stlou-2026-11-24",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T02:30:00Z",
+   "home": "Grand Canyon Antelopes",
+   "away": "Saint Louis Billikens",
+   "dayKey": "2026-11-25",
+   "date": "2026-11-25",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "PM_6998598_0",
+    "pmId": "6998598",
     "pmIdx": 0,
-    "kind": "total",
-    "line": 155.5,
-    "label": "Toplam sayı 155,5 Üst",
-    "minPlay": 1.89,
-    "odds": 1.83,
+    "kind": "side",
+    "label": "Grand Canyon Antelopes kazanır",
+    "minPlay": 2.02,
+    "odds": 1.96,
     "unverified": true,
     "rule": "test"
    },
@@ -6807,13 +6801,10 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998600_0",
-    "pmId": "6998600",
-    "pmIdx": 0,
-    "kind": "side",
+    "key": "HOME",
     "label": "St. John's Red Storm kazanır",
     "minPlay": 1.3,
-    "odds": 1.27,
+    "odds": null,
     "unverified": true,
     "rule": "test"
    },
@@ -6831,13 +6822,10 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "PM_6998601_0",
-    "pmId": "6998601",
-    "pmIdx": 0,
-    "kind": "side",
+    "key": "HOME",
     "label": "Stanford Cardinal kazanır",
-    "minPlay": 1.69,
-    "odds": 1.64,
+    "minPlay": 1.65,
+    "odds": null,
     "unverified": true,
     "rule": "test"
    },
@@ -6858,27 +6846,6 @@
     "key": "AWAY",
     "label": "Pepperdine Waves kazanır",
     "minPlay": 1.5,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cbb-gnzg-kanst-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T05:30:00Z",
-   "home": "Gonzaga Bulldogs",
-   "away": "Kansas State Wildcats",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "HOME",
-    "label": "Gonzaga Bulldogs kazanır",
-    "minPlay": 1.26,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -7056,7 +7023,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.72,
+    "p": 0.7206,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7069,27 +7036,27 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.52
+     "minPlay": 1.5
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.67
+     "minPlay": 1.71
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "1X",
     "label": "Avispa Fukuoka kaybetmez (1X)",
-    "p": 0.622,
-    "est": 1.49,
+    "p": 0.601,
+    "est": 1.55,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.65,
+    "minPlay": 1.71,
     "slug": "jap-avi-yom-2026-11-25",
     "goals": [
-     1.12,
-     1.23
+     1.08,
+     1.27
     ]
    }
   },
@@ -7108,12 +7075,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.74,
+    "p": 0.7363,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
-    "minPlay": 1.38,
-    "odds": 1.35,
+    "minPlay": 1.39,
+    "odds": 1.36,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -7121,11 +7088,11 @@
    "alts": [
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.44
+     "minPlay": 1.43
     },
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.86
+     "minPlay": 1.85
     }
    ],
    "ftall": {
@@ -7784,7 +7751,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.783,
+    "p": 0.784,
     "lowOdds": true,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -7801,23 +7768,23 @@
     },
     {
      "label": "MS 2",
-     "minPlay": 1.85
+     "minPlay": 1.84
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "X2U15",
-    "label": "X2 ve 1,5 Üst",
+    "key": "12U15",
+    "label": "12 ve 1,5 Üst",
     "p": 0.658,
     "est": 1.41,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.57,
+    "minPlay": 1.56,
     "slug": "ukr1-kry-met-2026-09-12",
     "goals": [
-     1.2,
-     1.95
+     1.24,
+     2.03
     ]
    }
   },
@@ -7950,7 +7917,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Princeton Tigers (W) kazanır",
-    "minPlay": 1.33,
+    "minPlay": 1.44,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -7971,7 +7938,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Harvard Crimson (W) kazanır",
-    "minPlay": 1.29,
+    "minPlay": 1.6,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -7992,27 +7959,6 @@
    "bet": {
     "key": "HOME",
     "label": "NJIT Highlanders kazanır",
-    "minPlay": 1.86,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cwbb-chat-gast-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T17:00:00Z",
-   "home": "Chattanooga Mocs",
-   "away": "Georgia State Panthers (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Georgia State Panthers (W) kazanır",
     "minPlay": 1.82,
     "odds": null,
     "unverified": true,
@@ -8034,7 +7980,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Purdue Boilermakers (W) kazanır",
-    "minPlay": 1.73,
+    "minPlay": 1.82,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8202,12 +8148,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.6847,
+    "p": 0.6881,
     "lowOdds": false,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.49,
-    "odds": 1.46,
+    "minPlay": 1.48,
+    "odds": 1.45,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -8357,7 +8303,7 @@
    "bet": {
     "key": "HOME",
     "label": "Long Beach State Beach kazanır",
-    "minPlay": 1.75,
+    "minPlay": 1.82,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8378,7 +8324,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Stony Brook Seawolves kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.22,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8399,7 +8345,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Mercyhurst Lakers (W) kazanır",
-    "minPlay": 1.82,
+    "minPlay": 1.81,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8420,7 +8366,7 @@
    "bet": {
     "key": "HOME",
     "label": "Saint Mary's Gaels kazanır",
-    "minPlay": 1.87,
+    "minPlay": 1.79,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8441,7 +8387,7 @@
    "bet": {
     "key": "HOME",
     "label": "Furman Paladins kazanır",
-    "minPlay": 1.22,
+    "minPlay": 1.23,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8462,28 +8408,7 @@
    "bet": {
     "key": "HOME",
     "label": "Southern Indiana Screaming Eagles kazanır",
-    "minPlay": 1.7,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cbb-ekent-miaoh-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T18:00:00Z",
-   "home": "Eastern Kentucky Colonels",
-   "away": "Miami (OH) RedHawks",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Miami (OH) RedHawks kazanır",
-    "minPlay": 1.22,
+    "minPlay": 1.75,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8512,6 +8437,27 @@
    "alts": []
   },
   {
+   "id": "pm-cbb-ekent-miaoh-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T18:00:00Z",
+   "home": "Eastern Kentucky Colonels",
+   "away": "Miami (OH) RedHawks",
+   "dayKey": "2026-11-25",
+   "date": "2026-11-25",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "AWAY",
+    "label": "Miami (OH) RedHawks kazanır",
+    "minPlay": 1.22,
+    "odds": null,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": []
+  },
+  {
    "id": "pm-cwbb-robms-stetsn-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -8525,7 +8471,7 @@
    "bet": {
     "key": "HOME",
     "label": "Robert Morris Colonials kazanır",
-    "minPlay": 1.69,
+    "minPlay": 1.73,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8547,48 +8493,6 @@
     "key": "HOME",
     "label": "Davidson Wildcats kazanır",
     "minPlay": 1.3,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cwbb-arz-geows-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T18:30:00Z",
-   "home": "Arizona Wildcats",
-   "away": "George Washington Revolutionaries (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "HOME",
-    "label": "Arizona Wildcats kazanır",
-    "minPlay": 1.78,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cwbb-wisc-aubrn-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T18:30:00Z",
-   "home": "Wisconsin Badgers",
-   "away": "Auburn Tigers (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Auburn Tigers (W) kazanır",
-    "minPlay": 1.81,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8817,7 +8721,7 @@
    "bet": {
     "key": "AWAY",
     "label": "NJIT Highlanders kazanır",
-    "minPlay": 1.81,
+    "minPlay": 1.82,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -8888,6 +8792,27 @@
    "alts": []
   },
   {
+   "id": "pm-cwbb-flam-kenest-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T19:00:00Z",
+   "home": "Florida A&M Rattlers",
+   "away": "Kennesaw State Owls (W)",
+   "dayKey": "2026-11-25",
+   "date": "2026-11-25",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "AWAY",
+    "label": "Kennesaw State Owls (W) kazanır",
+    "minPlay": 1.57,
+    "odds": null,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": []
+  },
+  {
    "id": "pm-cbb-abchr-sdkst-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -8909,27 +8834,6 @@
    "alts": []
   },
   {
-   "id": "pm-cwbb-flam-kenest-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T19:00:00Z",
-   "home": "Florida A&M Rattlers",
-   "away": "Kennesaw State Owls (W)",
-   "dayKey": "2026-11-25",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Kennesaw State Owls (W) kazanır",
-    "minPlay": 1.41,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
    "id": "pm-cbb-xav-txam-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -8943,7 +8847,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Texas A&M Aggies kazanır",
-    "minPlay": 1.62,
+    "minPlay": 1.58,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9381,12 +9285,12 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.8241,
+    "p": 0.8159,
     "lowOdds": true,
     "key": "X2",
     "label": "Deplasman kaybetmez (X2)",
     "minPlay": 1.3,
-    "odds": 1.21,
+    "odds": 1.23,
     "estOdds": null,
     "value": false,
     "book": "Polymarket"
@@ -9394,27 +9298,27 @@
    "alts": [
     {
      "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.32
+     "minPlay": 1.31
     },
     {
      "label": "MS 2",
-     "minPlay": 1.71
+     "minPlay": 1.72
     }
    ],
    "ftall": {
     "rule": "ftall",
-    "key": "X2U15",
-    "label": "X2 ve 1,5 Üst",
-    "p": 0.652,
-    "est": 1.43,
+    "key": "EV05",
+    "label": "Lille OSC gol atar",
+    "p": 0.623,
+    "est": 1.49,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.58,
+    "minPlay": 1.65,
     "slug": "ucl-lil-bay-2026-11-25",
     "goals": [
-     0.88,
-     1.83
+     0.96,
+     1.91
     ]
    }
   },
@@ -9682,7 +9586,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Cleveland State Vikings (W) kazanır",
-    "minPlay": 1.34,
+    "minPlay": 1.75,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9703,7 +9607,7 @@
    "bet": {
     "key": "AWAY",
     "label": "UNLV Runnin' Rebels (W) kazanır",
-    "minPlay": 1.48,
+    "minPlay": 1.66,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9725,27 +9629,6 @@
     "key": "AWAY",
     "label": "Florida International Golden Panthers kazanır",
     "minPlay": 1.67,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-cbb-pvam-marsh-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T21:00:00Z",
-   "home": "Prairie View A&M Panthers",
-   "away": "Marshall Thundering Herd",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Marshall Thundering Herd kazanır",
-    "minPlay": 1.21,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9850,7 +9733,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Bradley Braves (W) kazanır",
-    "minPlay": 1.36,
+    "minPlay": 1.72,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9871,7 +9754,7 @@
    "bet": {
     "key": "AWAY",
     "label": "USC Upstate Spartans (W) kazanır",
-    "minPlay": 1.84,
+    "minPlay": 1.79,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9892,7 +9775,7 @@
    "bet": {
     "key": "HOME",
     "label": "USC Trojans kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.24,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9955,7 +9838,7 @@
    "bet": {
     "key": "AWAY",
     "label": "UC Riverside Highlanders kazanır",
-    "minPlay": 1.82,
+    "minPlay": 1.73,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -9976,7 +9859,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Portland Pilots (W) kazanır",
-    "minPlay": 1.32,
+    "minPlay": 1.62,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10057,27 +9940,6 @@
    "alts": []
   },
   {
-   "id": "pm-cbb-bcook-rich-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T23:00:00Z",
-   "home": "Bethune-Cookman Wildcats",
-   "away": "Richmond Spiders",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-25",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Richmond Spiders kazanır",
-    "minPlay": 1.32,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
    "id": "pm-cwbb-camp-merc-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -10099,20 +9961,20 @@
    "alts": []
   },
   {
-   "id": "pm-cwbb-vand-oregst-2026-11-25",
+   "id": "pm-cbb-bcook-rich-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
-   "kickoff": "2026-11-25T23:30:00Z",
-   "home": "Vanderbilt Commodores",
-   "away": "Oregon State Beavers (W)",
+   "kickoff": "2026-11-25T23:00:00Z",
+   "home": "Bethune-Cookman Wildcats",
+   "away": "Richmond Spiders",
    "dayKey": "2026-11-26",
    "date": "2026-11-25",
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "HOME",
-    "label": "Vanderbilt Commodores kazanır",
-    "minPlay": 1.54,
+    "key": "AWAY",
+    "label": "Richmond Spiders kazanır",
+    "minPlay": 1.32,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10133,7 +9995,7 @@
    "bet": {
     "key": "AWAY",
     "label": "James Madison Dukes (W) kazanır",
-    "minPlay": 1.44,
+    "minPlay": 1.62,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10227,7 +10089,7 @@
    "bet": {
     "key": "AWAY",
     "label": "George Mason Patriots kazanır",
-    "minPlay": 1.22,
+    "minPlay": 1.21,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10269,7 +10131,7 @@
    "bet": {
     "key": "HOME",
     "label": "Northern Illinois Huskies kazanır",
-    "minPlay": 1.67,
+    "minPlay": 1.66,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10290,7 +10152,7 @@
    "bet": {
     "key": "AWAY",
     "label": "UNCW Seahawks kazanır",
-    "minPlay": 1.35,
+    "minPlay": 1.36,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10319,27 +10181,6 @@
    "alts": []
   },
   {
-   "id": "pm-cbb-utahst-smu-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-26T00:00:00Z",
-   "home": "Utah State Aggies",
-   "away": "SMU Mustangs",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "HOME",
-    "label": "Utah State Aggies kazanır",
-    "minPlay": 1.75,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
    "id": "pm-cwbb-stlou-niowa-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -10353,7 +10194,28 @@
    "bet": {
     "key": "AWAY",
     "label": "Northern Iowa Panthers (W) kazanır",
-    "minPlay": 1.3,
+    "minPlay": 1.53,
+    "odds": null,
+    "unverified": true,
+    "rule": "test"
+   },
+   "alts": []
+  },
+  {
+   "id": "pm-cbb-utahst-smu-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-26T00:00:00Z",
+   "home": "Utah State Aggies",
+   "away": "SMU Mustangs",
+   "dayKey": "2026-11-26",
+   "date": "2026-11-26",
+   "fdDiv": null,
+   "sportKey": null,
+   "bet": {
+    "key": "HOME",
+    "label": "Utah State Aggies kazanır",
+    "minPlay": 1.76,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10377,10 +10239,10 @@
     "pmIdx": 1,
     "kind": "side",
     "label": "Knicks kazanır",
-    "p": 0.65,
-    "est": 1.46,
-    "minPlay": 1.58,
-    "odds": 1.54,
+    "p": 0.655,
+    "est": 1.45,
+    "minPlay": 1.57,
+    "odds": 1.53,
     "unverified": true,
     "rule": "test"
    },
@@ -10446,7 +10308,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Rockets kazanır",
-    "minPlay": 1.38,
+    "minPlay": 1.41,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10561,28 +10423,7 @@
    "bet": {
     "key": "HOME",
     "label": "San Diego Toreros kazanır",
-    "minPlay": 1.69,
-    "odds": null,
-    "unverified": true,
-    "rule": "test"
-   },
-   "alts": []
-  },
-  {
-   "id": "pm-nba-sac-gsw-2026-11-25",
-   "sport": "basketball",
-   "league": "NBA",
-   "kickoff": "2026-11-26T03:00:00Z",
-   "home": "Kings",
-   "away": "Warriors",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "bet": {
-    "key": "AWAY",
-    "label": "Warriors kazanır",
-    "minPlay": 1.39,
+    "minPlay": 1.67,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10601,10 +10442,15 @@
    "fdDiv": null,
    "sportKey": null,
    "bet": {
-    "key": "HOME",
+    "key": "PM_6956408_0",
+    "pmId": "6956408",
+    "pmIdx": 0,
+    "kind": "side",
     "label": "Spurs kazanır",
-    "minPlay": 1.58,
-    "odds": null,
+    "p": 0.635,
+    "est": 1.5,
+    "minPlay": 1.62,
+    "odds": 1.57,
     "unverified": true,
     "rule": "test"
    },
@@ -10718,7 +10564,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Cincinnati Bearcats kazanır",
-    "minPlay": 1.53,
+    "minPlay": 1.54,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10739,7 +10585,7 @@
    "bet": {
     "key": "AWAY",
     "label": "UTSA Roadrunners kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.22,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -10760,220 +10606,12 @@
    "bet": {
     "key": "HOME",
     "label": "Purdue Boilermakers kazanır",
-    "minPlay": 1.55,
+    "minPlay": 1.66,
     "odds": null,
     "unverified": true,
     "rule": "test"
    },
    "alts": []
-  },
-  {
-   "id": "pm-uel-usg-lep-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "RU Saint-Gilloise",
-   "away": "KKS Lech Poznań",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.8812,
-    "lowOdds": true,
-    "key": "1X",
-    "label": "Ev sahibi kaybetmez (1X)",
-    "minPlay": 1.3,
-    "odds": 1.13,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 1",
-     "minPlay": 1.44
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "MS1U15",
-    "label": "MS 1 ve 1,5 Üst",
-    "p": 0.617,
-    "est": 1.51,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.67,
-    "slug": "uel-usg-lep-2026-11-26",
-    "goals": [
-     2.32,
-     0.83
-    ]
-   }
-  },
-  {
-   "id": "pm-uel-plz-ben-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "FC Viktoria Plzeň",
-   "away": "Sport Lisboa e Benfica",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.845,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.19,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.56
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "DEP15",
-    "label": "Sport Lisboa e Benfica 2+ gol atar",
-    "p": 0.649,
-    "est": 1.43,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.59,
-    "slug": "uel-plz-ben-2026-11-26",
-    "goals": [
-     0.96,
-     2.19
-    ]
-   }
-  },
-  {
-   "id": "pm-uel-cel1-bou-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "RC Celta de Vigo",
-   "away": "AFC Bournemouth",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.7475,
-    "lowOdds": false,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.37,
-    "odds": 1.34,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.39
-    },
-    {
-     "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.96
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "EV05",
-    "label": "RC Celta de Vigo gol atar",
-    "p": 0.623,
-    "est": 1.49,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.65,
-    "slug": "uel-cel1-bou-2026-11-26",
-    "goals": [
-     0.96,
-     1.43
-    ]
-   }
-  },
-  {
-   "id": "pm-uel-din-lev-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "GNK Dinamo Zagreb",
-   "away": "Bayer 04 Leverkusen",
-   "dayKey": "2026-11-26",
-   "date": "2026-11-26",
-   "fdDiv": null,
-   "sportKey": null,
-   "ah": null,
-   "bet": {
-    "rule": "piyasa",
-    "safe": false,
-    "p": 0.7861,
-    "lowOdds": true,
-    "key": "X2",
-    "label": "Deplasman kaybetmez (X2)",
-    "minPlay": 1.3,
-    "odds": 1.27,
-    "estOdds": null,
-    "value": false,
-    "book": "Polymarket"
-   },
-   "alts": [
-    {
-     "label": "Beraberlik olmaz (12)",
-     "minPlay": 1.3
-    },
-    {
-     "label": "MS 2",
-     "minPlay": 1.78
-    }
-   ],
-   "ftall": {
-    "rule": "ftall",
-    "key": "12U15",
-    "label": "12 ve 1,5 Üst",
-    "p": 0.652,
-    "est": 1.43,
-    "estReal": false,
-    "val": -0.07,
-    "odds": null,
-    "minPlay": 1.58,
-    "slug": "uel-din-lev-2026-11-26",
-    "goals": [
-     1.16,
-     2.03
-    ]
-   }
   },
   {
    "id": "pm-uel-rbs-aa-2026-11-26",
@@ -11652,6 +11290,214 @@
    }
   },
   {
+   "id": "pm-uel-usg-lep-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "RU Saint-Gilloise",
+   "away": "KKS Lech Poznań",
+   "dayKey": "2026-11-26",
+   "date": "2026-11-26",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.8812,
+    "lowOdds": true,
+    "key": "1X",
+    "label": "Ev sahibi kaybetmez (1X)",
+    "minPlay": 1.3,
+    "odds": 1.13,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 1",
+     "minPlay": 1.44
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "MS1U15",
+    "label": "MS 1 ve 1,5 Üst",
+    "p": 0.617,
+    "est": 1.51,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.67,
+    "slug": "uel-usg-lep-2026-11-26",
+    "goals": [
+     2.32,
+     0.83
+    ]
+   }
+  },
+  {
+   "id": "pm-uel-plz-ben-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "FC Viktoria Plzeň",
+   "away": "Sport Lisboa e Benfica",
+   "dayKey": "2026-11-26",
+   "date": "2026-11-26",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.845,
+    "lowOdds": true,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.3,
+    "odds": 1.19,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 2",
+     "minPlay": 1.56
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "DEP15",
+    "label": "Sport Lisboa e Benfica 2+ gol atar",
+    "p": 0.649,
+    "est": 1.43,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.59,
+    "slug": "uel-plz-ben-2026-11-26",
+    "goals": [
+     0.96,
+     2.19
+    ]
+   }
+  },
+  {
+   "id": "pm-uel-cel1-bou-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "RC Celta de Vigo",
+   "away": "AFC Bournemouth",
+   "dayKey": "2026-11-26",
+   "date": "2026-11-26",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.7475,
+    "lowOdds": false,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.37,
+    "odds": 1.34,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.39
+    },
+    {
+     "label": "Ev sahibi kaybetmez (1X)",
+     "minPlay": 1.96
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "EV05",
+    "label": "RC Celta de Vigo gol atar",
+    "p": 0.623,
+    "est": 1.49,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.65,
+    "slug": "uel-cel1-bou-2026-11-26",
+    "goals": [
+     0.96,
+     1.43
+    ]
+   }
+  },
+  {
+   "id": "pm-uel-din-lev-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "GNK Dinamo Zagreb",
+   "away": "Bayer 04 Leverkusen",
+   "dayKey": "2026-11-26",
+   "date": "2026-11-26",
+   "fdDiv": null,
+   "sportKey": null,
+   "ah": null,
+   "bet": {
+    "rule": "piyasa",
+    "safe": false,
+    "p": 0.7861,
+    "lowOdds": true,
+    "key": "X2",
+    "label": "Deplasman kaybetmez (X2)",
+    "minPlay": 1.3,
+    "odds": 1.27,
+    "estOdds": null,
+    "value": false,
+    "book": "Polymarket"
+   },
+   "alts": [
+    {
+     "label": "Beraberlik olmaz (12)",
+     "minPlay": 1.3
+    },
+    {
+     "label": "MS 2",
+     "minPlay": 1.78
+    }
+   ],
+   "ftall": {
+    "rule": "ftall",
+    "key": "12U15",
+    "label": "12 ve 1,5 Üst",
+    "p": 0.652,
+    "est": 1.43,
+    "estReal": false,
+    "val": -0.07,
+    "odds": null,
+    "minPlay": 1.58,
+    "slug": "uel-din-lev-2026-11-26",
+    "goals": [
+     1.16,
+     2.03
+    ]
+   }
+  },
+  {
    "id": "pm-cbb-boscol-ucf-2026-11-26",
    "sport": "basketball",
    "league": "NCAA",
@@ -11665,7 +11511,7 @@
    "bet": {
     "key": "AWAY",
     "label": "UCF Knights kazanır",
-    "minPlay": 1.49,
+    "minPlay": 1.51,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -11686,7 +11532,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Arizona State Sun Devils kazanır",
-    "minPlay": 1.55,
+    "minPlay": 1.54,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -11707,7 +11553,7 @@
    "bet": {
     "key": "AWAY",
     "label": "Texas Longhorns kazanır",
-    "minPlay": 1.23,
+    "minPlay": 1.27,
     "odds": null,
     "unverified": true,
     "rule": "test"
@@ -11989,7 +11835,7 @@
    "bet": {
     "rule": "piyasa",
     "safe": false,
-    "p": 0.7696,
+    "p": 0.7685,
     "lowOdds": false,
     "key": "12",
     "label": "Beraberlik olmaz (12)",
@@ -12002,27 +11848,27 @@
    "alts": [
     {
      "label": "Ev sahibi kaybetmez (1X)",
-     "minPlay": 1.47
+     "minPlay": 1.46
     },
     {
      "label": "Deplasman kaybetmez (X2)",
-     "minPlay": 1.91
+     "minPlay": 1.92
     }
    ],
    "ftall": {
     "rule": "ftall",
     "key": "KGV",
     "label": "Karşılıklı gol var",
-    "p": 0.635,
-    "est": 1.46,
+    "p": 0.653,
+    "est": 1.43,
     "estReal": false,
     "val": -0.07,
     "odds": null,
-    "minPlay": 1.62,
+    "minPlay": 1.58,
     "slug": "col-scf-twe-2026-11-26",
     "goals": [
-     1.76,
-     1.39
+     1.84,
+     1.43
     ]
    }
   },
@@ -12584,10 +12430,10 @@
    "profit": -13.6
   },
   "test": {
-   "done": 1064,
-   "won": 707,
-   "pending": 502,
-   "profit": 48.2
+   "done": 1067,
+   "won": 708,
+   "pending": 490,
+   "profit": 46.6
   },
   "basket": {
    "done": 34,
@@ -14045,8 +13891,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 1",
-    "probability": 0.483,
-    "odds": 2.07
+    "probability": 0.488,
+    "odds": 2.05
    },
    "lowOdds": false,
    "pick": null,
@@ -14077,8 +13923,12 @@
    "home": "Bucknell Bison",
    "away": "Le Moyne Dolphins (W)",
    "dayKey": "2026-11-24",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "Bucknell Bison",
+    "probability": 0.715,
+    "odds": 1.4
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -14092,7 +13942,7 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "William & Mary Tribe",
-    "probability": 0.755,
+    "probability": 0.76,
     "odds": 1.32
    },
    "lowOdds": false,
@@ -14152,8 +14002,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "St. Bonaventure Bonnies",
-    "probability": 0.545,
-    "odds": 1.83
+    "probability": 0.55,
+    "odds": 1.82
    },
    "lowOdds": false,
    "pick": null,
@@ -14182,8 +14032,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Northern Colorado Bears",
-    "probability": 0.62,
-    "odds": 1.61
+    "probability": 0.615,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -14199,8 +14049,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Akron Zips",
-    "probability": 0.575,
-    "odds": 1.74
+    "probability": 0.57,
+    "odds": 1.75
    },
    "lowOdds": false,
    "pick": null,
@@ -14216,8 +14066,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 2",
-    "probability": 0.433,
-    "odds": 2.31
+    "probability": 0.438,
+    "odds": 2.28
    },
    "lowOdds": false,
    "pick": null,
@@ -14241,6 +14091,23 @@
    "isPick": false
   },
   {
+   "id": "pm-itsb-sta-cat-2026-11-24",
+   "sport": "football",
+   "league": "Serie B",
+   "kickoff": "2026-11-24T18:00:00Z",
+   "home": "SS Juve Stabia",
+   "away": "US Catanzaro 1929",
+   "dayKey": "2026-11-24",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.493,
+    "odds": 2.03
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-egy1-ems-apc-2026-11-24",
    "sport": "football",
    "league": "egypt premier league",
@@ -14258,23 +14125,6 @@
    "isPick": false
   },
   {
-   "id": "pm-itsb-sta-cat-2026-11-24",
-   "sport": "football",
-   "league": "Serie B",
-   "kickoff": "2026-11-24T18:00:00Z",
-   "home": "SS Juve Stabia",
-   "away": "US Catanzaro 1929",
-   "dayKey": "2026-11-24",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.497,
-    "odds": 2.01
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-egy1-eme-elq-2026-11-25",
    "sport": "football",
    "league": "egypt premier league",
@@ -14284,8 +14134,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 1",
-    "probability": 0.452,
-    "odds": 2.21
+    "probability": 0.455,
+    "odds": 2.2
    },
    "lowOdds": false,
    "pick": null,
@@ -14313,9 +14163,9 @@
    "away": "Bethune-Cookman Wildcats (W)",
    "dayKey": "2026-11-24",
    "top": {
-    "selection": "Wright State Raiders",
-    "probability": 0.505,
-    "odds": 1.98
+    "selection": "Bethune-Cookman Wildcats (W)",
+    "probability": 0.52,
+    "odds": 1.92
    },
    "lowOdds": false,
    "pick": null,
@@ -14365,8 +14215,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Lindenwood Lions",
-    "probability": 0.545,
-    "odds": 1.83
+    "probability": 0.55,
+    "odds": 1.82
    },
    "lowOdds": false,
    "pick": null,
@@ -14433,8 +14283,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 2",
-    "probability": 0.356,
-    "odds": 2.81
+    "probability": 0.393,
+    "odds": 2.54
    },
    "lowOdds": false,
    "pick": null,
@@ -14450,8 +14300,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 2",
-    "probability": 0.36,
-    "odds": 2.78
+    "probability": 0.363,
+    "odds": 2.75
    },
    "lowOdds": false,
    "pick": null,
@@ -14501,8 +14351,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Sacred Heart Pioneers",
-    "probability": 0.685,
-    "odds": 1.46
+    "probability": 0.675,
+    "odds": 1.48
    },
    "lowOdds": false,
    "pick": null,
@@ -14535,8 +14385,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Florida Gulf Coast Eagles (W)",
-    "probability": 0.74,
-    "odds": 1.35
+    "probability": 0.75,
+    "odds": 1.33
    },
    "lowOdds": false,
    "pick": null,
@@ -14565,8 +14415,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Siena Saints",
-    "probability": 0.735,
-    "odds": 1.36
+    "probability": 0.74,
+    "odds": 1.35
    },
    "lowOdds": false,
    "pick": null,
@@ -14612,8 +14462,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 1",
-    "probability": 0.635,
-    "odds": 1.58
+    "probability": 0.638,
+    "odds": 1.57
    },
    "lowOdds": false,
    "pick": null,
@@ -14680,8 +14530,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 1",
-    "probability": 0.377,
-    "odds": 2.65
+    "probability": 0.373,
+    "odds": 2.68
    },
    "lowOdds": false,
    "pick": null,
@@ -14782,8 +14632,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 1",
-    "probability": 0.512,
-    "odds": 1.95
+    "probability": 0.51,
+    "odds": 1.96
    },
    "lowOdds": false,
    "pick": null,
@@ -14884,8 +14734,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "MS 2",
-    "probability": 0.39,
-    "odds": 2.56
+    "probability": 0.383,
+    "odds": 2.61
    },
    "lowOdds": false,
    "pick": null,
@@ -14973,6 +14823,36 @@
     "odds": 1.86
    },
    "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-elc-wol-der-2026-11-24",
+   "sport": "football",
+   "league": "EFL Championship",
+   "kickoff": "2026-11-24T20:00:00Z",
+   "home": "Wolverhampton Wanderers FC",
+   "away": "Derby County FC",
+   "dayKey": "2026-11-24",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.749,
+    "odds": 1.34
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-scop-ran-abe-2026-10-31",
+   "sport": "football",
+   "league": "Scottish Premiership",
+   "kickoff": "2026-11-24T20:00:00Z",
+   "home": "Rangers FC",
+   "away": "Aberdeen FC",
+   "dayKey": "2026-11-24",
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -15088,36 +14968,6 @@
    "isPick": false
   },
   {
-   "id": "pm-elc-wol-der-2026-11-24",
-   "sport": "football",
-   "league": "EFL Championship",
-   "kickoff": "2026-11-24T20:00:00Z",
-   "home": "Wolverhampton Wanderers FC",
-   "away": "Derby County FC",
-   "dayKey": "2026-11-24",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.749,
-    "odds": 1.34
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-scop-ran-abe-2026-10-31",
-   "sport": "football",
-   "league": "Scottish Premiership",
-   "kickoff": "2026-11-24T20:00:00Z",
-   "home": "Rangers FC",
-   "away": "Aberdeen FC",
-   "dayKey": "2026-11-24",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cwbb-wmich-jac-2026-11-24",
    "sport": "basketball",
    "league": "NCAA",
@@ -15127,8 +14977,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Lindenwood Lions (W)",
-    "probability": 0.65,
-    "odds": 1.54
+    "probability": 0.645,
+    "odds": 1.55
    },
    "lowOdds": false,
    "pick": null,
@@ -15144,8 +14994,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Pepperdine Waves",
-    "probability": 0.53,
-    "odds": 1.89
+    "probability": 0.54,
+    "odds": 1.85
    },
    "lowOdds": false,
    "pick": null,
@@ -15195,8 +15045,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "North Dakota Fighting Hawks",
-    "probability": 0.62,
-    "odds": 1.61
+    "probability": 0.625,
+    "odds": 1.6
    },
    "lowOdds": false,
    "pick": null,
@@ -15229,8 +15079,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "West Virginia Mountaineers",
-    "probability": 0.69,
-    "odds": 1.45
+    "probability": 0.695,
+    "odds": 1.44
    },
    "lowOdds": false,
    "pick": null,
@@ -15246,8 +15096,8 @@
    "dayKey": "2026-11-24",
    "top": {
     "selection": "Arkansas State Red Wolves",
-    "probability": 0.635,
-    "odds": 1.57
+    "probability": 0.64,
+    "odds": 1.56
    },
    "lowOdds": false,
    "pick": null,
@@ -15366,8 +15216,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Iowa State Cyclones",
-    "probability": 0.745,
-    "odds": 1.34
+    "probability": 0.74,
+    "odds": 1.35
    },
    "lowOdds": false,
    "pick": null,
@@ -15383,8 +15233,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Michigan Wolverines",
-    "probability": 0.68,
-    "odds": 1.47
+    "probability": 0.685,
+    "odds": 1.46
    },
    "lowOdds": false,
    "pick": null,
@@ -15430,8 +15280,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Boston College Eagles (W)",
-    "probability": 0.76,
-    "odds": 1.32
+    "probability": 0.77,
+    "odds": 1.3
    },
    "lowOdds": false,
    "pick": null,
@@ -15490,8 +15340,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Georgia Southern Eagles",
-    "probability": 0.6,
-    "odds": 1.67
+    "probability": 0.585,
+    "odds": 1.71
    },
    "lowOdds": false,
    "pick": null,
@@ -15507,8 +15357,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Louisiana-Lafayette Ragin' Cajuns (W)",
-    "probability": 0.57,
-    "odds": 1.75
+    "probability": 0.535,
+    "odds": 1.87
    },
    "lowOdds": false,
    "pick": null,
@@ -15571,8 +15421,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Wofford Terriers",
-    "probability": 0.51,
-    "odds": 1.96
+    "probability": 0.505,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -15605,8 +15455,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Florida Atlantic Owls",
-    "probability": 0.725,
-    "odds": 1.38
+    "probability": 0.73,
+    "odds": 1.37
    },
    "lowOdds": false,
    "pick": null,
@@ -15635,8 +15485,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Temple Owls (W)",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.71,
+    "odds": 1.41
    },
    "lowOdds": false,
    "pick": null,
@@ -15652,8 +15502,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "East Texas A&M Lions",
-    "probability": 0.56,
-    "odds": 1.79
+    "probability": 0.555,
+    "odds": 1.8
    },
    "lowOdds": false,
    "pick": null,
@@ -15667,12 +15517,8 @@
    "home": "Akron Zips",
    "away": "Youngstown State Penguins (W)",
    "dayKey": "2026-11-25",
-   "top": {
-    "selection": "Youngstown State Penguins (W)",
-    "probability": 0.76,
-    "odds": 1.32
-   },
-   "lowOdds": false,
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -15725,8 +15571,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Arkansas Razorbacks (W)",
-    "probability": 0.505,
-    "odds": 1.98
+    "probability": 0.51,
+    "odds": 1.96
    },
    "lowOdds": false,
    "pick": null,
@@ -15742,8 +15588,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Lehigh Mountain Hawks",
-    "probability": 0.705,
-    "odds": 1.42
+    "probability": 0.665,
+    "odds": 1.5
    },
    "lowOdds": false,
    "pick": null,
@@ -15776,8 +15622,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Lamar Cardinals",
-    "probability": 0.62,
-    "odds": 1.61
+    "probability": 0.615,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -15793,8 +15639,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Pistons",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -15892,8 +15738,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Evansville Purple Aces (W)",
-    "probability": 0.575,
-    "odds": 1.74
+    "probability": 0.57,
+    "odds": 1.75
    },
    "lowOdds": false,
    "pick": null,
@@ -16021,8 +15867,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Nevada Wolf Pack",
-    "probability": 0.505,
-    "odds": 1.98
+    "probability": 0.51,
+    "odds": 1.96
    },
    "lowOdds": false,
    "pick": null,
@@ -16085,8 +15931,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Loyola Maryland Greyhounds",
-    "probability": 0.6,
-    "odds": 1.67
+    "probability": 0.595,
+    "odds": 1.68
    },
    "lowOdds": false,
    "pick": null,
@@ -16102,8 +15948,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Morgan State Bears",
-    "probability": 0.515,
-    "odds": 1.94
+    "probability": 0.505,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -16175,8 +16021,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Siena Saints",
-    "probability": 0.585,
-    "odds": 1.71
+    "probability": 0.59,
+    "odds": 1.69
    },
    "lowOdds": false,
    "pick": null,
@@ -16237,8 +16083,12 @@
    "home": "Hampton Pirates",
    "away": "Old Dominion Monarchs",
    "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "Old Dominion Monarchs",
+    "probability": 0.765,
+    "odds": 1.31
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -16303,8 +16153,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Western Kentucky Hilltoppers (W)",
-    "probability": 0.705,
-    "odds": 1.42
+    "probability": 0.665,
+    "odds": 1.5
    },
    "lowOdds": false,
    "pick": null,
@@ -16320,8 +16170,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Northwestern State Demons (W)",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -16350,8 +16200,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Houston Christian Huskies",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -16365,8 +16215,12 @@
    "home": "High Point Panthers",
    "away": "Duquesne Dukes",
    "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "High Point Panthers",
+    "probability": 0.73,
+    "odds": 1.37
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -16380,8 +16234,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Southeast Missouri State Redhawks",
-    "probability": 0.59,
-    "odds": 1.69
+    "probability": 0.615,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -16629,8 +16483,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "North Alabama Lions",
-    "probability": 0.59,
-    "odds": 1.69
+    "probability": 0.595,
+    "odds": 1.68
    },
    "lowOdds": false,
    "pick": null,
@@ -16723,8 +16577,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Charleston Cougars",
-    "probability": 0.535,
-    "odds": 1.87
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -16789,12 +16643,8 @@
    "home": "Virginia Cavaliers",
    "away": "UAB Blazers (W)",
    "dayKey": "2026-11-25",
-   "top": {
-    "selection": "Virginia Cavaliers",
-    "probability": 0.71,
-    "odds": 1.41
-   },
-   "lowOdds": false,
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -16877,8 +16727,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Washington State Cougars",
-    "probability": 0.64,
-    "odds": 1.56
+    "probability": 0.645,
+    "odds": 1.55
    },
    "lowOdds": false,
    "pick": null,
@@ -16894,8 +16744,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Grand Canyon Antelopes",
-    "probability": 0.525,
-    "odds": 1.9
+    "probability": 0.51,
+    "odds": 1.96
    },
    "lowOdds": false,
    "pick": null,
@@ -16945,8 +16795,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Portland State Vikings (W)",
-    "probability": 0.545,
-    "odds": 1.83
+    "probability": 0.585,
+    "odds": 1.71
    },
    "lowOdds": false,
    "pick": null,
@@ -16992,8 +16842,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Stanford Cardinal",
-    "probability": 0.61,
-    "odds": 1.64
+    "probability": 0.625,
+    "odds": 1.6
    },
    "lowOdds": false,
    "pick": null,
@@ -17103,8 +16953,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "MS 2",
-    "probability": 0.39,
-    "odds": 2.56
+    "probability": 0.402,
+    "odds": 2.49
    },
    "lowOdds": false,
    "pick": null,
@@ -17120,8 +16970,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "MS 2",
-    "probability": 0.45,
-    "odds": 2.22
+    "probability": 0.448,
+    "odds": 2.23
    },
    "lowOdds": false,
    "pick": null,
@@ -17341,7 +17191,7 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "MS 2",
-    "probability": 0.552,
+    "probability": 0.554,
     "odds": 1.81
    },
    "lowOdds": false,
@@ -17460,23 +17310,6 @@
    "isPick": false
   },
   {
-   "id": "pm-cbb-mrcm-fordm-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T16:00:00Z",
-   "home": "Mercy Mavericks",
-   "away": "Fordham Rams",
-   "dayKey": "2026-11-25",
-   "top": {
-    "selection": "Fordham Rams",
-    "probability": 0.505,
-    "odds": 1.98
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cwbb-moco-ncg-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -17488,6 +17321,23 @@
     "selection": "Montreat College Cavaliers",
     "probability": 0.5,
     "odds": 2
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-mrcm-fordm-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T16:00:00Z",
+   "home": "Mercy Mavericks",
+   "away": "Fordham Rams",
+   "dayKey": "2026-11-25",
+   "top": {
+    "selection": "Fordham Rams",
+    "probability": 0.505,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -17569,8 +17419,12 @@
    "home": "Rutgers Scarlet Knights",
    "away": "Princeton Tigers (W)",
    "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "Princeton Tigers (W)",
+    "probability": 0.715,
+    "odds": 1.4
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -17582,8 +17436,12 @@
    "home": "Illinois State Redbirds",
    "away": "Harvard Crimson (W)",
    "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "Harvard Crimson (W)",
+    "probability": 0.645,
+    "odds": 1.55
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -17597,8 +17455,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "NJIT Highlanders",
-    "probability": 0.555,
-    "odds": 1.8
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -17614,8 +17472,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Georgia State Panthers (W)",
-    "probability": 0.565,
-    "odds": 1.77
+    "probability": 0.52,
+    "odds": 1.92
    },
    "lowOdds": false,
    "pick": null,
@@ -17631,8 +17489,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Purdue Boilermakers (W)",
-    "probability": 0.595,
-    "odds": 1.68
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -17712,8 +17570,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "MS 2",
-    "probability": 0.345,
-    "odds": 2.9
+    "probability": 0.347,
+    "odds": 2.89
    },
    "lowOdds": false,
    "pick": null,
@@ -17780,8 +17638,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Long Beach State Beach",
-    "probability": 0.59,
-    "odds": 1.69
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -17827,8 +17685,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Mercyhurst Lakers (W)",
-    "probability": 0.565,
-    "odds": 1.77
+    "probability": 0.57,
+    "odds": 1.75
    },
    "lowOdds": false,
    "pick": null,
@@ -17844,8 +17702,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Saint Mary's Gaels",
-    "probability": 0.55,
-    "odds": 1.82
+    "probability": 0.575,
+    "odds": 1.74
    },
    "lowOdds": false,
    "pick": null,
@@ -17908,8 +17766,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Southern Indiana Screaming Eagles",
-    "probability": 0.605,
-    "odds": 1.65
+    "probability": 0.59,
+    "odds": 1.69
    },
    "lowOdds": false,
    "pick": null,
@@ -17922,19 +17780,6 @@
    "kickoff": "2026-11-25T18:00:00Z",
    "home": "Mississippi Valley State Delta Devils",
    "away": "Louisiana Tech Bulldogs (W)",
-   "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cbb-ekent-miaoh-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T18:00:00Z",
-   "home": "Eastern Kentucky Colonels",
-   "away": "Miami (OH) RedHawks",
    "dayKey": "2026-11-25",
    "top": null,
    "lowOdds": true,
@@ -17976,6 +17821,19 @@
    "isPick": false
   },
   {
+   "id": "pm-cbb-ekent-miaoh-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T18:00:00Z",
+   "home": "Eastern Kentucky Colonels",
+   "away": "Miami (OH) RedHawks",
+   "dayKey": "2026-11-25",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cwbb-robms-stetsn-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -17985,8 +17843,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Robert Morris Colonials",
-    "probability": 0.61,
-    "odds": 1.64
+    "probability": 0.595,
+    "odds": 1.68
    },
    "lowOdds": false,
    "pick": null,
@@ -18014,9 +17872,9 @@
    "away": "George Washington Revolutionaries (W)",
    "dayKey": "2026-11-25",
    "top": {
-    "selection": "Arizona Wildcats",
-    "probability": 0.58,
-    "odds": 1.72
+    "selection": "George Washington Revolutionaries (W)",
+    "probability": 0.505,
+    "odds": 1.98
    },
    "lowOdds": false,
    "pick": null,
@@ -18045,8 +17903,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Auburn Tigers (W)",
-    "probability": 0.57,
-    "odds": 1.75
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -18143,8 +18001,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "NJIT Highlanders",
-    "probability": 0.57,
-    "odds": 1.75
+    "probability": 0.565,
+    "odds": 1.77
    },
    "lowOdds": false,
    "pick": null,
@@ -18258,19 +18116,6 @@
    "isPick": false
   },
   {
-   "id": "pm-cbb-abchr-sdkst-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T19:00:00Z",
-   "home": "Abilene Christian Wildcats",
-   "away": "South Dakota State Jackrabbits",
-   "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cwbb-flam-kenest-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -18280,8 +18125,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Kennesaw State Owls (W)",
-    "probability": 0.73,
-    "odds": 1.37
+    "probability": 0.655,
+    "odds": 1.53
    },
    "lowOdds": false,
    "pick": null,
@@ -18297,8 +18142,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Eastern Illinois Panthers (W)",
-    "probability": 0.53,
-    "odds": 1.89
+    "probability": 0.545,
+    "odds": 1.83
    },
    "lowOdds": false,
    "pick": null,
@@ -18322,6 +18167,19 @@
    "isPick": false
   },
   {
+   "id": "pm-cbb-abchr-sdkst-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T19:00:00Z",
+   "home": "Abilene Christian Wildcats",
+   "away": "South Dakota State Jackrabbits",
+   "dayKey": "2026-11-25",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cbb-xav-txam-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -18331,8 +18189,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Texas A&M Aggies",
-    "probability": 0.635,
-    "odds": 1.57
+    "probability": 0.65,
+    "odds": 1.54
    },
    "lowOdds": false,
    "pick": null,
@@ -18480,8 +18338,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "MS 2",
-    "probability": 0.598,
-    "odds": 1.67
+    "probability": 0.592,
+    "odds": 1.69
    },
    "lowOdds": false,
    "pick": null,
@@ -18590,19 +18448,6 @@
    "isPick": false
   },
   {
-   "id": "pm-cbb-jackst-okst-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T20:00:00Z",
-   "home": "Jackson State Tigers",
-   "away": "Oklahoma State Cowboys",
-   "dayKey": "2026-11-25",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cwbb-jac-clvst-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -18612,8 +18457,8 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "Cleveland State Vikings (W)",
-    "probability": 0.77,
-    "odds": 1.3
+    "probability": 0.59,
+    "odds": 1.69
    },
    "lowOdds": false,
    "pick": null,
@@ -18629,10 +18474,23 @@
    "dayKey": "2026-11-25",
    "top": {
     "selection": "UNLV Runnin' Rebels (W)",
-    "probability": 0.695,
-    "odds": 1.44
+    "probability": 0.62,
+    "odds": 1.61
    },
    "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-jackst-okst-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T20:00:00Z",
+   "home": "Jackson State Tigers",
+   "away": "Oklahoma State Cowboys",
+   "dayKey": "2026-11-25",
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -18808,8 +18666,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Bradley Braves (W)",
-    "probability": 0.76,
-    "odds": 1.32
+    "probability": 0.6,
+    "odds": 1.67
    },
    "lowOdds": false,
    "pick": null,
@@ -18825,8 +18683,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Memphis Tigers (W)",
-    "probability": 0.545,
-    "odds": 1.83
+    "probability": 0.53,
+    "odds": 1.89
    },
    "lowOdds": false,
    "pick": null,
@@ -18842,8 +18700,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "USC Upstate Spartans (W)",
-    "probability": 0.56,
-    "odds": 1.79
+    "probability": 0.575,
+    "odds": 1.74
    },
    "lowOdds": false,
    "pick": null,
@@ -18871,9 +18729,9 @@
    "away": "76ers",
    "dayKey": "2026-11-26",
    "top": {
-    "selection": "Heat",
-    "probability": 0.51,
-    "odds": 1.96
+    "selection": "76ers",
+    "probability": 0.585,
+    "odds": 1.71
    },
    "lowOdds": false,
    "pick": null,
@@ -18932,8 +18790,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "UC Riverside Highlanders",
-    "probability": 0.565,
-    "odds": 1.77
+    "probability": 0.595,
+    "odds": 1.68
    },
    "lowOdds": false,
    "pick": null,
@@ -18960,8 +18818,12 @@
    "home": "UC Santa Barbara Gauchos",
    "away": "Portland Pilots (W)",
    "dayKey": "2026-11-26",
-   "top": null,
-   "lowOdds": true,
+   "top": {
+    "selection": "Portland Pilots (W)",
+    "probability": 0.635,
+    "odds": 1.57
+   },
+   "lowOdds": false,
    "pick": null,
    "isPick": false
   },
@@ -18996,19 +18858,6 @@
    "isPick": false
   },
   {
-   "id": "pm-cbb-albny-syra-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T23:00:00Z",
-   "home": "Albany Great Danes",
-   "away": "Syracuse Orange",
-   "dayKey": "2026-11-26",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cbb-csunr-webst-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -19035,23 +18884,10 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Northwestern State Demons",
-    "probability": 0.54,
-    "odds": 1.85
+    "probability": 0.525,
+    "odds": 1.9
    },
    "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cbb-bcook-rich-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-25T23:00:00Z",
-   "home": "Bethune-Cookman Wildcats",
-   "away": "Richmond Spiders",
-   "dayKey": "2026-11-26",
-   "top": null,
-   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -19073,6 +18909,32 @@
    "isPick": false
   },
   {
+   "id": "pm-cbb-bcook-rich-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T23:00:00Z",
+   "home": "Bethune-Cookman Wildcats",
+   "away": "Richmond Spiders",
+   "dayKey": "2026-11-26",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-albny-syra-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-25T23:00:00Z",
+   "home": "Albany Great Danes",
+   "away": "Syracuse Orange",
+   "dayKey": "2026-11-26",
+   "top": null,
+   "lowOdds": true,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cwbb-vand-oregst-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -19080,12 +18942,8 @@
    "home": "Vanderbilt Commodores",
    "away": "Oregon State Beavers (W)",
    "dayKey": "2026-11-26",
-   "top": {
-    "selection": "Vanderbilt Commodores",
-    "probability": 0.67,
-    "odds": 1.49
-   },
-   "lowOdds": false,
+   "top": null,
+   "lowOdds": true,
    "pick": null,
    "isPick": false
   },
@@ -19099,8 +18957,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "James Madison Dukes (W)",
-    "probability": 0.715,
-    "odds": 1.4
+    "probability": 0.635,
+    "odds": 1.57
    },
    "lowOdds": false,
    "pick": null,
@@ -19193,8 +19051,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Northern Illinois Huskies",
-    "probability": 0.615,
-    "odds": 1.63
+    "probability": 0.62,
+    "odds": 1.61
    },
    "lowOdds": false,
    "pick": null,
@@ -19210,8 +19068,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "UNCW Seahawks",
-    "probability": 0.765,
-    "odds": 1.31
+    "probability": 0.76,
+    "odds": 1.32
    },
    "lowOdds": false,
    "pick": null,
@@ -19278,36 +19136,6 @@
    "isPick": false
   },
   {
-   "id": "pm-cbb-utahst-smu-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-26T00:00:00Z",
-   "home": "Utah State Aggies",
-   "away": "SMU Mustangs",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "Utah State Aggies",
-    "probability": 0.59,
-    "odds": 1.69
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cbb-norfst-ncst-2026-11-25",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-26T00:00:00Z",
-   "home": "Norfolk State Spartans",
-   "away": "North Carolina State Wolfpack",
-   "dayKey": "2026-11-26",
-   "top": null,
-   "lowOdds": true,
-   "pick": null,
-   "isPick": false
-  },
-  {
    "id": "pm-cwbb-selou-tx-2026-11-25",
    "sport": "basketball",
    "league": "NCAA",
@@ -19328,6 +19156,40 @@
    "home": "Saint Louis Billikens",
    "away": "Northern Iowa Panthers (W)",
    "dayKey": "2026-11-26",
+   "top": {
+    "selection": "Northern Iowa Panthers (W)",
+    "probability": 0.675,
+    "odds": 1.48
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-utahst-smu-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-26T00:00:00Z",
+   "home": "Utah State Aggies",
+   "away": "SMU Mustangs",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "Utah State Aggies",
+    "probability": 0.585,
+    "odds": 1.71
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-cbb-norfst-ncst-2026-11-25",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-26T00:00:00Z",
+   "home": "Norfolk State Spartans",
+   "away": "North Carolina State Wolfpack",
+   "dayKey": "2026-11-26",
    "top": null,
    "lowOdds": true,
    "pick": null,
@@ -19343,8 +19205,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Knicks",
-    "probability": 0.65,
-    "odds": 1.54
+    "probability": 0.655,
+    "odds": 1.53
    },
    "lowOdds": false,
    "pick": null,
@@ -19360,8 +19222,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Thunder",
-    "probability": 0.515,
-    "odds": 1.94
+    "probability": 0.52,
+    "odds": 1.92
    },
    "lowOdds": false,
    "pick": null,
@@ -19411,8 +19273,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Bucks",
-    "probability": 0.52,
-    "odds": 1.92
+    "probability": 0.525,
+    "odds": 1.9
    },
    "lowOdds": false,
    "pick": null,
@@ -19428,8 +19290,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Rockets",
-    "probability": 0.745,
-    "odds": 1.34
+    "probability": 0.73,
+    "odds": 1.37
    },
    "lowOdds": false,
    "pick": null,
@@ -19509,8 +19371,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "San Diego Toreros",
-    "probability": 0.61,
-    "odds": 1.64
+    "probability": 0.615,
+    "odds": 1.63
    },
    "lowOdds": false,
    "pick": null,
@@ -19543,8 +19405,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Spurs",
-    "probability": 0.65,
-    "odds": 1.54
+    "probability": 0.635,
+    "odds": 1.57
    },
    "lowOdds": false,
    "pick": null,
@@ -19607,8 +19469,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Cincinnati Bearcats",
-    "probability": 0.675,
-    "odds": 1.48
+    "probability": 0.67,
+    "odds": 1.49
    },
    "lowOdds": false,
    "pick": null,
@@ -19705,8 +19567,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Purdue Boilermakers",
-    "probability": 0.665,
-    "odds": 1.5
+    "probability": 0.62,
+    "odds": 1.61
    },
    "lowOdds": false,
    "pick": null,
@@ -19741,74 +19603,6 @@
     "selection": "Little Rock Trojans",
     "probability": 0.5,
     "odds": 2
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-uel-usg-lep-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "RU Saint-Gilloise",
-   "away": "KKS Lech Poznań",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "MS 1",
-    "probability": 0.708,
-    "odds": 1.41
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-uel-plz-ben-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "FC Viktoria Plzeň",
-   "away": "Sport Lisboa e Benfica",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.655,
-    "odds": 1.53
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-uel-cel1-bou-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "RC Celta de Vigo",
-   "away": "AFC Bournemouth",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.48,
-    "odds": 2.08
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-uel-din-lev-2026-11-26",
-   "sport": "football",
-   "league": "UEL",
-   "kickoff": "2026-11-26T17:45:00Z",
-   "home": "GNK Dinamo Zagreb",
-   "away": "Bayer 04 Leverkusen",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "MS 2",
-    "probability": 0.572,
-    "odds": 1.75
    },
    "lowOdds": false,
    "pick": null,
@@ -20020,6 +19814,74 @@
    "isPick": false
   },
   {
+   "id": "pm-uel-usg-lep-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "RU Saint-Gilloise",
+   "away": "KKS Lech Poznań",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "MS 1",
+    "probability": 0.708,
+    "odds": 1.41
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-uel-plz-ben-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "FC Viktoria Plzeň",
+   "away": "Sport Lisboa e Benfica",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.655,
+    "odds": 1.53
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-uel-cel1-bou-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "RC Celta de Vigo",
+   "away": "AFC Bournemouth",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.48,
+    "odds": 2.08
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
+   "id": "pm-uel-din-lev-2026-11-26",
+   "sport": "football",
+   "league": "UEL",
+   "kickoff": "2026-11-26T17:45:00Z",
+   "home": "GNK Dinamo Zagreb",
+   "away": "Bayer 04 Leverkusen",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "MS 2",
+    "probability": 0.572,
+    "odds": 1.75
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-cwbb-mcnst-char-2026-11-26",
    "sport": "basketball",
    "league": "NCAA",
@@ -20046,8 +19908,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "UCF Knights",
-    "probability": 0.69,
-    "odds": 1.45
+    "probability": 0.68,
+    "odds": 1.47
    },
    "lowOdds": false,
    "pick": null,
@@ -20097,8 +19959,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "Arizona State Sun Devils",
-    "probability": 0.665,
-    "odds": 1.5
+    "probability": 0.67,
+    "odds": 1.49
    },
    "lowOdds": false,
    "pick": null,
@@ -20250,6 +20112,23 @@
    "isPick": false
   },
   {
+   "id": "pm-cwbb-grmbst-colst-2026-11-26",
+   "sport": "basketball",
+   "league": "NCAA",
+   "kickoff": "2026-11-26T20:00:00Z",
+   "home": "Grambling State Tigers",
+   "away": "Colorado State Rams (W)",
+   "dayKey": "2026-11-26",
+   "top": {
+    "selection": "Grambling State Tigers",
+    "probability": 0.5,
+    "odds": 2
+   },
+   "lowOdds": false,
+   "pick": null,
+   "isPick": false
+  },
+  {
    "id": "pm-col-scf-twe-2026-11-26",
    "sport": "football",
    "league": "Europa Conference League",
@@ -20259,8 +20138,8 @@
    "dayKey": "2026-11-26",
    "top": {
     "selection": "MS 1",
-    "probability": 0.466,
-    "odds": 2.15
+    "probability": 0.468,
+    "odds": 2.14
    },
    "lowOdds": false,
    "pick": null,
@@ -20278,23 +20157,6 @@
     "selection": "MS 1",
     "probability": 0.447,
     "odds": 2.24
-   },
-   "lowOdds": false,
-   "pick": null,
-   "isPick": false
-  },
-  {
-   "id": "pm-cwbb-grmbst-colst-2026-11-26",
-   "sport": "basketball",
-   "league": "NCAA",
-   "kickoff": "2026-11-26T20:00:00Z",
-   "home": "Grambling State Tigers",
-   "away": "Colorado State Rams (W)",
-   "dayKey": "2026-11-26",
-   "top": {
-    "selection": "Grambling State Tigers",
-    "probability": 0.5,
-    "odds": 2
    },
    "lowOdds": false,
    "pick": null,
@@ -20495,7 +20357,7 @@
  "sources": {
   "The Odds API": {
    "ok": true,
-   "info": "49 aktif lig, bugün-yarın maçı olan 17, bu çalışmada 0 yenilendi, önbellekte 0, kalan kredi 0"
+   "info": "48 aktif lig, bugün-yarın maçı olan 17, bu çalışmada 0 yenilendi, önbellekte 0, kalan kredi 0"
   },
   "football-data ek ligler": {
    "ok": true,
@@ -20515,7 +20377,7 @@
   },
   "Polymarket": {
    "ok": true,
-   "info": "567 maç, 0 tanesi eşleşti, 406 tanesi yeni eklendi"
+   "info": "571 maç, 0 tanesi eşleşti, 406 tanesi yeni eklendi"
   },
   "TheSportsDB (maç sayımı)": {
    "ok": true,
@@ -20531,7 +20393,7 @@
   },
   "NBA sonuçları (Polymarket kapanmış maçlar)": {
    "ok": true,
-   "info": "316 biten maç (6 sorgu), 2 erken alt/üst seçimi"
+   "info": "316 biten maç (6 sorgu), 3 erken alt/üst seçimi"
   },
   "Voleybol (Polymarket)": {
    "ok": true,
@@ -20539,7 +20401,7 @@
   },
   "Canlı maçlar (Polymarket)": {
    "ok": true,
-   "info": "30 canlı etkinlik, 3 tahmin"
+   "info": "26 canlı etkinlik, 0 tahmin"
   },
   "API-Football (sakat/cezalı)": {
    "ok": false,
