@@ -16,7 +16,7 @@ import { getText } from "../lib/sources.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
 import { EXTRA_LEAGUES, ALL_LEAGUES, extraRows, clubElo } from "../lib/sources.mjs";
 import { livePicks, LIVE_URL } from "../docs/live.mjs";
-import { fetchEspnSoccer, matchEvent, fetchEspnNba } from "../lib/espn.mjs";
+import { fetchEspnSoccer, matchEvent, fetchEspnNba, teamSim } from "../lib/espn.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const ledger = read("docs/ledger.json", []);
@@ -569,6 +569,8 @@ const valOf = t => t.val ?? (t.p0 != null ? t.p0 * estOf(t) - 1 : null);
 const tier2 = t => ["ftall", "fiyat", "bkou"].includes(t.rule) && valOf(t) != null && valOf(t) >= -0.02;
 for (const t of [...tips].sort((a, b) => (b.rule === "bkou") - (a.rule === "bkou") || String(a.recordedAt).localeCompare(String(b.recordedAt)))) { const dk = ist(Date.parse(t.kickoff)), mid = t.id.split("#")[0]; if (!boardDays.has(dk) || !shownTip(t) || !(trusted(ruleKey(t)) || tier2(t)) || (t.status === "pending" && !(estOf(t) >= MIN_ODDS)) || boardSeen.has(mid)) continue; boardSeen.add(mid);
   board.push({ id: t.id, rk: ruleKey(t), sport: t.sport, dayKey: dk, league: t.league, kickoff: t.kickoff, home: t.home, away: t.away, tier: trusted(ruleKey(t)) ? "saglam" : "orta", book: t.book || (t.rule === "ah" || t.rule === "fiyat" ? "bet365" : null), val: valOf(t) == null ? null : +valOf(t).toFixed(3), label: t.label, minPlay: t.minPlay, est: +Number(estOf(t)).toFixed(2), odds: t.odds, p: +(t.p0 ?? (t.rule === "bkou" ? (bkou.find(x => `${x.id}#bkou` === t.id)?.conf ?? 0.70) : null) ?? Math.min(0.85, 1.03 / t.minPlay)).toFixed(3), status: t.status, score: t.score || "", profit: t.profit ?? null }); }
+// Ayni mac farkli kaynaklardan iki kez kaydedildiyse ("Cardiff - Preston" / "Cardiff City FC - Preston North End FC") bir kez gosterilir.
+for (let i = board.length - 1; i >= 0; i--) { const a = board[i]; if (board.some((b, k) => k < i && b.sport === a.sport && Math.abs(Date.parse(b.kickoff) - Date.parse(a.kickoff)) < 3 * 3600e3 && teamSim(a.home, b.home) >= 0.6 && teamSim(a.away, b.away) >= 0.6)) board.splice(i, 1); }
 { const keep = new Set(); const byDay = {}; for (const x of board) (byDay[x.dayKey] ||= []).push(x);
   for (const L of Object.values(byDay)) { const done = L.filter(x => x.status !== "pending"); done.forEach(x => keep.add(x.id)); L.filter(x => x.status === "pending").sort((a, b) => (a.tier === "saglam" ? 0 : 1) - (b.tier === "saglam" ? 0 : 1) || (b.val ?? -1) - (a.val ?? -1) || b.p - a.p).slice(0, Math.max(0, PER_DAY - done.length)).forEach(x => keep.add(x.id)); }
   for (let i = board.length - 1; i >= 0; i--) if (!keep.has(board[i].id)) board.splice(i, 1); }
