@@ -551,7 +551,7 @@ fs.writeFileSync("docs/ledger.json", JSON.stringify(ledger, null, 1));
 // Sitede gösterilen tahminler tek kaynaktan (tahmin defteri) gelir: maç başlayınca ya da bitince de sayfada kalır, sonucu yanına yazılır.
 const shownTip = t => { const o = t.odds || t.minPlay;
   if (t.sport === "football") return (t.rule === "ah" && o >= 1.3 && o <= 3.2) || (t.rule === "fiyat" && (t.b365 || t.odds) >= 1.3 && (t.b365 || t.odds) <= 3.2) || (t.rule === "fpm" && t.minPlay >= 1.3 && t.status !== "pending") || (t.rule === "ftall" && t.minPlay >= 1.3);
-  if (t.sport === "basketball") return !(t.rule === "bkou" && !t.book) && ["test", "basket", "bkou"].includes(t.rule) && o >= 1.3 && o <= 1.85 && !/^pm-cbb/.test(t.id) && !/ncaa|college|wnba|g league|g-league/i.test(t.league || ""); // NBA ve diger ligler; Amerika alt ligleri yok
+  if (t.sport === "basketball") return !(t.rule === "bkou" && !t.book) && ["test", "basket", "bkou"].includes(t.rule) && o >= 1.3 && o <= (t.rule === "bkou" ? 2.2 : 1.85) && !/^pm-cbb/.test(t.id) && !/ncaa|college|wnba|g league|g-league/i.test(t.league || ""); // NBA ve diger ligler; Amerika alt ligleri yok
   if (t.sport === "volleyball") return t.rule === "voley2";
   return false; };
 const ruleKey = t => t.rule === "fiyat" ? "fiyat" : t.rule === "ah" ? "ah" : t.rule === "fpm" ? "futbol-pm" : t.rule === "ftall" ? "futbol-tum" : t.rule === "voley2" ? "voley" : t.rule === "bkou" ? "bkou" : t.kind === "spread" ? "basket-handikap" : t.kind === "total" ? "basket-toplam" : "basket-taraf";
