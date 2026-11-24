@@ -16,7 +16,7 @@ import { getText } from "../lib/sources.mjs";
 import { FD_LEAGUES, FD_SEASONS, fdSeason, fdFixtures, ESPN_SOCCER, ESPN_BASKET, espnBoard, sportsDbCount, mapLimit } from "../lib/sources.mjs";
 import { EXTRA_LEAGUES, ALL_LEAGUES, extraRows, clubElo } from "../lib/sources.mjs";
 import { livePicks, LIVE_URL } from "../docs/live.mjs";
-import { fetchEspnSoccer, matchEvent } from "../lib/espn.mjs";
+import { fetchEspnSoccer, matchEvent, fetchEspnNba } from "../lib/espn.mjs";
 const cfg = JSON.parse(fs.readFileSync("config/strategy.json", "utf8"));
 const read = (f, d) => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return d; } };
 const ledger = read("docs/ledger.json", []);
@@ -406,15 +406,19 @@ const nick = n => String(n).trim().split(/\s+/).at(-1).toLowerCase(), done = Obj
     const M = new BModel({ mean: done.length ? done.reduce((s, g) => s + g.hs + g.as, 0) / done.length / 2 : 112, home: 2, lr: 0.2 });
     for (const g of done) M.update(g.h, g.a, g.hs, g.as, g.day);
     const teamOf = n => M.t[nick(n)] ? nick(n) : null;
+    // Ana cizgi ve oran DraftKings'ten (ESPN). Eski hata: Polymarket'te islem gormeyen yan cizgiler 0,50 fiyatla ana cizgi saniliyordu.
+    let dk = []; try { dk = await fetchEspnNba(todayIst, afterIst); } catch {}
+    // Bu duzeltmeden once kaydedilmis, baslamamis NBA toplam tahminleri (dogrulanmamis cizgi) silinir.
+    for (let i = tips.length - 1; i >= 0; i--) { const t = tips[i]; if (t.rule === "bkou" && t.status === "pending" && !t.book && Date.parse(t.kickoff) > now) tips.splice(i, 1); }
     for (const c of candidates.filter(c => c.pmGame && /^nba/.test(c.pmGame.slug || "") && Date.parse(c.kickoff) > now && inWindow(Date.parse(c.kickoff)))) {
       const g = c.pmGame, H = teamOf(c.home), A = teamOf(c.away); if (!H || !A) continue;
-      const tl = (g.lines || []).filter(l => l.type === "totals" && l.prices?.length === 2 && Number.isFinite(+l.line)).sort((x, y) => Math.abs(x.prices[0] - .5) - Math.abs(y.prices[0] - .5))[0]; if (!tl) continue;
+      const de = dk.find(e => Math.abs(Date.parse(e.kickoff) - Date.parse(c.kickoff)) < 3 * 3600e3 && nick(e.homeNick || e.home) === nick(c.home) && nick(e.awayNick || e.away) === nick(c.away)); if (!de || !de.line || !de.over || !de.under) continue;
       const p = M.predict(H, A, c.kickoff.slice(0, 10)); if (p.games < 10) continue;
-      const po = bOver(p, +tl.line), oi = Math.max(0, tl.names.findIndex(n => /over/i.test(n))), up = po >= 0.5, i = up ? oi : 1 - oi, q = Math.max(po, 1 - po); if (q < 0.70) continue;
-      bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `PM_${tl.id}_${i}`, pmId: tl.id, pmIdx: i, label: `Toplam sayı ${String(tl.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: +tl.line, exp: +p.total.toFixed(1), pmOdds: +(1 / tl.prices[i]).toFixed(2), minPlay: 1.85, conf: +q.toFixed(3) });
+      const po = bOver(p, de.line), up = po >= 0.5, q = Math.max(po, 1 - po), od = up ? de.over : de.under; if (q < 0.70 || od < 1.4) continue;
+      bkou.push({ id: c.id, sport: "basketball", league: "NBA", home: c.home, away: c.away, kickoff: c.kickoff, date: c.date, dayKey: ist(Date.parse(c.kickoff)), key: `ALT_T_${up ? "O" : "U"}_${de.line}`, pmId: null, pmIdx: null, alt: { type: "total", line: de.line, dir: up ? "over" : "under" }, slug: c.pmGame.slug, book: de.provider, label: `Toplam sayı ${String(de.line).replace(".", ",")} ${up ? "Üst" : "Alt"}`, line: de.line, exp: +p.total.toFixed(1), est: od, minPlay: +Math.max(1.3, 1.03 / q).toFixed(2), conf: +q.toFixed(3) });
     }
     // Karnede kar, testteki gibi standart bahis orani (1,85) ile sayilir.
-    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: x.pmId, pmIdx: x.pmIdx, label: x.label, minPlay: 1.85, odds: 1.85, p: x.conf, est: 1.87 }, "bkou"));
+    for (const x of bkou) if (!tips.some(t => t.id === `${x.id}#bkou`)) tips.push(tipFrom({ ...x, fdDiv: null }, { key: x.key, pmId: null, pmIdx: null, alt: x.alt, slug: x.slug, book: x.book, label: x.label, minPlay: x.est, odds: x.est, p: x.conf, est: x.est }, "bkou"));
     note(nm, true, `${done.length} biten maç (${calls} sorgu), ${bkou.length} erken alt/üst seçimi`);
   } catch (e) { note(nm, false, e.message); } }
 // Voleybol (test): gecmis 400 macin istatistigine gore iki secenek. Guclu favori (olasilik 0,70-0,79) -> favori kazanir.
