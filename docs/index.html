@@ -90,6 +90,6 @@ const P=(CL.picks||[]).slice().sort((a,b)=>a.kickoff.localeCompare(b.kickoff)),H
 const w=Hu.filter(x=>x.status==="won").length,l=Hu.filter(x=>x.status==="lost").length,net=Hu.reduce((a,x)=>a+(x.status==="won"?x.odds-1:x.status==="lost"?-1:0),0);
 $("cl-sum").innerHTML=`<div class="sum"><div><b>${P.filter(x=>x.status==="pending").length}</b><span>bekleyen</span></div><div><b class="pos">${w}</b><span>kazandı</span></div><div><b class="neg">${l}</b><span>kaybetti</span></div><div><b class="${net>=0?"pos":"neg"}">${w+l?sg(net):"—"}</b><span>birim</span></div></div>`;
 const up=P.filter(x=>x.status==="pending");$("cl-list").innerHTML=up.length?up.map(clCard).join(""):'<div class="empty">Şu an bekleyen tahmin yok. Bir sonraki araştırmada güncellenecek.</div>';
-const hs=Hu.sort((a,b)=>b.kickoff.localeCompare(a.kickoff)).slice(0,40);$("cl-hist").innerHTML=hs.length?hs.map(clCard).join(""):'<div class="empty">Henüz sonuçlanan tahmin yok.</div>'}
+const hs=Hu.sort((a,b)=>b.kickoff.localeCompare(a.kickoff));$("cl-hist").innerHTML=hs.length?hs.map(clCard).join(""):'<div class="empty">Henüz sonuçlanan tahmin yok.</div>'}
 fetch("claude.json?"+Date.now()).then(r=>r.json()).then(j=>{CL=j;clDraw()}).catch(()=>{$("cl-list").innerHTML='<div class="empty">Claude analizi henüz yüklenmedi.</div>'});
 </script></body></html>
