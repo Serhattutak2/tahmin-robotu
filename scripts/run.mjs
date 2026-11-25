@@ -604,7 +604,7 @@ function ruleStatus() {
   // Arastirma (2026): karar kapanis orani degerine (CLV) gore. En az 50 bahiste CLV'nin %95 ust siniri 0'in altindaysa kural kapanir;
   // CLV yoksa kar/zarar ancak 300 bahisten sonra karar verir. Kapali kurallar golge modda kaydedilmeye devam eder, toparlanirsa acilir.
   const grp = { fiyat: t => t.rule === "fiyat", ah: t => t.rule === "ah", x1: t => t.rule === "x1", bkou: t => t.rule === "bkou",
-    "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total", voley: t => t.rule === "voley2", canli: t => t.rule === "canli", "futbol-pm": t => t.rule === "fpm", "futbol-tum": t => t.rule === "ftall" };
+    "basket-taraf": t => t.rule === "test" && t.kind === "side", "basket-handikap": t => t.rule === "test" && t.kind === "spread", "basket-toplam": t => t.rule === "test" && t.kind === "total", voley: t => t.rule === "voley2", canli: t => t.rule === "canli", "futbol-pm": t => t.rule === "fpm", "futbol-tum": t => t.rule === "ftall" && t.v === 2 }; // eski (olasilik secimli) tum pazarlar kaydi yeni deger secimli kuralin karnesine karismaz
   const inBand = t => { const o = t.odds || t.minPlay; return o >= 1.3 && o <= 3.2; }, out = {};
   for (const [k, f] of Object.entries(grp)) {
     const all = tips.filter(t => f(t) && inBand(t)).sort((a, b) => a.kickoff.localeCompare(b.kickoff)), l = all.filter(t => t.status === "won" || t.status === "lost"), kar = +l.reduce((a, t) => a + (t.profit || 0), 0).toFixed(1);
