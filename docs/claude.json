@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-26T12:05:53.630Z",
+  "updatedAt": "2026-11-26T16:06:49.282Z",
   "nextUpdate": "4 saatte bir",
   "note": "Bu sayfa robottan bağımsızdır. Claude her 4 saatte bir maçları web'de araştırır: başka sitelerin tahminleri (LiveScore, SI, Sports Mole, BettingPros vb.), oranlar, form, sakat/cezalılar. Birden çok kaynağın aynı yönü gösterdiği en sağlam tahminleri buraya yazar ve biten maçların sonucunu işler. Futbol, basketbol ve voleybol (uygun maç varsa). Oran en az 1,40. Kazanç garantisi yoktur; küçük birimle oyna. Verilen tahminler hiçbir zaman silinmez; sonuçlananlar Geçmiş sonuçlar bölümünde kalır.",
   "picks": [
@@ -275,6 +275,30 @@
         {
           "name": "UEFA 5. hafta fikstürü",
           "url": "https://www.uefa.com/uefaeuropaleague/news/02ab-221b7fac106f-ef047ae48cd4-1000--europa-league-matchday-5-briefing-bournemouth-and-olympiac/"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "2026-11-26-freiburg-twente",
+      "sport": "football",
+      "league": "UEFA Konferans Ligi",
+      "kickoff": "2026-11-26T20:00:00Z",
+      "home": "SC Freiburg",
+      "away": "FC Twente",
+      "pick": "2,5 Üst",
+      "odds": 1.6,
+      "minOdds": 1.5,
+      "confidence": 6,
+      "reason": "22Bet önizlemesi 2,5 Üst (1,58) öneriyor; Twente bu sezon 7 maçta 21 gol attı. Robotun modeli de 2,5 Üst olasılığını %59 görüyor (DraftKings ~1,63). Sakatlık bilgisi bulunamadı.",
+      "sources": [
+        {
+          "name": "22Bet tahmin",
+          "url": "https://news.22bet.com/predictions/sc-freiburg-vs-twente-prediction-booking-code-26-11-2026/"
+        },
+        {
+          "name": "Robot verisi (docs/data.json)",
+          "url": "https://serhattutak2.github.io/tahmin-robotu/data.json"
         }
       ],
       "status": "pending"
