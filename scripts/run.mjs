@@ -222,6 +222,9 @@ const pct = (s, n) => summarize(ledger.filter(n));
 const byEvaluated = { football: candidates.filter(c => c.sport === "football").length, basketball: candidates.filter(c => c.sport === "basketball").length };
 // Tek cumlelik tavsiye: matematik once. Kazanan ayara gore oran degerliyse o oran, degilse pazarin en az orani.
 const meta = read("config/meta.json", null), decision = read("config/decision.json", null), win = decision?.winner, cal = decision?.cal || null, tips = read("docs/tips.json", []);
+// Geri yukleme (kullanici: robotun gosterdigi tahminler silinmez): sitede gosterilmis ama defterden dusmus tahminler geri eklenir, gosterilmis isareti verilir.
+{ const have = new Set(tips.map(t => t.id)); for (const t of read("data/restore_tips.json", [])) if (!have.has(t.id)) { tips.push({ ...t, shown: t.shown || "geri" }); have.add(t.id); }
+  const sh = new Set(read("data/shown_ids.json", [])); for (const t of tips) if (sh.has(t.id) && !t.shown) t.shown = "geri"; }
 const dc3 = (o, a, b) => o?.[a] > 1 && o?.[b] > 1 ? +(1 / (1 / o[a] + 1 / o[b])).toFixed(2) : null;
 const toks = n => String(n).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length >= 4 && !/^(club|football|united|city|real|sport)$/.test(w));
 const acro = n => String(n).split(/\s+/).filter(Boolean).map(w => w[0]).join("").toLowerCase();
@@ -484,7 +487,7 @@ for (const t of tips.filter(x => !x.pmId && x.status === "pending" && Date.parse
         const side = k => /^(MS1|1X)$/.test(k) ? "home" : /^(MS2|X2)$/.test(k) ? "away" : null; for (const b of [m.price, m.bet?.second]) { const sd = b && side(b.key); if (sd && m.missing[sd].length >= 3) b.warn = `Seçilen tarafta ${m.missing[sd].length} eksik oyuncu var`; } }
       note(nm, true, `${cache.list.length} oyuncu, ${hit} maçta eşleşti${calls ? `, ${calls} sorgu` : ", önbellekten"}`);
     } catch (e) { note(nm, false, e.message); } } }
-fs.writeFileSync("docs/tips.json", JSON.stringify(tips.slice(-20000)));
+fs.writeFileSync("docs/tips.json", JSON.stringify(tips));
 // 2'yi gecen kuponlar: farkli maclardan en fazla 3 ayak, gercek oranlarla. Ilk ayak baslayinca kupon kilitlenir.
 for (const m of matches) if (m.sport === "football" && legMap.get(m.id)?.length) m.legs = legMap.get(m.id);
 // Kuponlar (docs/test3.json, son 3 yil): "en olası" kupon bet365 oranıyla sifira yakin; "deger" kuponu en yuksek oranla artida, bet365 ile ekside.
@@ -577,7 +580,7 @@ for (let i = board.length - 1; i >= 0; i--) { const a = board[i]; if (board.some
   for (const L of Object.values(byDay)) { const done = L.filter(x => x.shown); done.forEach(x => keep.add(x.id)); L.filter(x => !x.shown && x.status === "pending").sort((a, b) => (a.tier === "saglam" ? 0 : 1) - (b.tier === "saglam" ? 0 : 1) || (b.val ?? -1) - (a.val ?? -1) || b.p - a.p).slice(0, Math.max(0, PER_DAY - done.length)).forEach(x => keep.add(x.id)); }
   for (let i = board.length - 1; i >= 0; i--) if (!keep.has(board[i].id)) board.splice(i, 1); }
 // Gosterilen tahminleri deftere isaretle (gecmis gunlerde aynen kalsin, sonuc ve kar hesaplansin)
-{ const ids = new Set(board.map(x => x.id)), at = new Date(now).toISOString(); for (const t of tips) if (ids.has(t.id) && !t.shown) t.shown = at; }
+{ const ids = new Set(board.map(x => x.id)), at = new Date(now).toISOString(); for (const t of tips) if (ids.has(t.id) && !t.shown) t.shown = at; fs.writeFileSync("docs/tips.json", JSON.stringify(tips)); } // isaret deftere kaydedilir (eski hata: kaydedilmiyordu)
 board.sort((a, b) => a.kickoff.localeCompare(b.kickoff));
 // Kâr eğrisi: sitede gösterilen tahminlerin gün gün toplam kârı (her bahse 1 birim), spor bazında.
 const curveMap = {}; for (const t of tips) { if (!shownTip(t) || (t.status !== "won" && t.status !== "lost")) continue; const dk = ist(Date.parse(t.kickoff)); (curveMap[dk] ||= { football: 0, basketball: 0, volleyball: 0, n: 0 }); curveMap[dk][t.sport] += t.status === "won" ? estOf(t) - 1 : -1; curveMap[dk].n++; }
